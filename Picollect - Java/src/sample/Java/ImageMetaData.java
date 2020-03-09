@@ -7,6 +7,8 @@ import com.drew.metadata.Metadata;
 
 import java.io.*;
 
+//https://github.com/drewnoakes/metadata-extractor/wiki/Getting-Started-(Java) Follow this to understand more
+
 public class ImageMetaData {
 
     File file;
