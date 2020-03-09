@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added AlbumRegister class">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_drewnoakes_metadata_extractor_2_13_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ant.xml" beforeDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added some attributes in the java-classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Picollect - Java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Picollect - Java.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Java/AlbumRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Java/AlbumRegister.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Java/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Java/Image.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Java/ImageRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Java/ImageRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Java/MetaData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Java/ImageMetaData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Java/ImageRegister.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +195,7 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-      <workItem from="1583747458064" duration="3679000" />
+      <workItem from="1583747458064" duration="4544000" />
     </task>
     <task id="LOCAL−00001" summary="Added AlbumRegister class">
       <created>1583749073301</created>
@@ -207,7 +203,13 @@
       <option name="presentableId" value="LOCAL−00001" />
       <updated>1583749073301</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL−00002" summary="Added some attributes in the java-classes">
+      <created>1583751340138</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1583751340138</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +219,8 @@
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="Added AlbumRegister class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added AlbumRegister class" />
+    <MESSAGE value="Added some attributes in the java-classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some attributes in the java-classes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583748210424">
@@ -228,10 +231,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1583749297632" />
-    <state x="168" y="0" key="CommitChangelistDialog2" timestamp="1583751324109">
+    <state x="168" y="0" key="CommitChangelistDialog2" timestamp="1583751338677">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="168" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1583751324109" />
+    <state x="168" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1583751338677" />
     <state x="348" y="82" key="FileChooserDialogImpl" timestamp="1583748227018">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -260,10 +263,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583749965322" />
-    <state x="233" y="70" key="Vcs.Push.Dialog.v2" timestamp="1583749084876">
+    <state x="233" y="70" key="Vcs.Push.Dialog.v2" timestamp="1583751347469">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="70" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1583749084876" />
+    <state x="233" y="70" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1583751347469" />
     <state x="375" y="229" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1583749956688">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
