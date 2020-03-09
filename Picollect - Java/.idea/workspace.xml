@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/Java/AlbumRegister.java" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added AlbumRegister class">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_drewnoakes_metadata_extractor_2_13_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ant.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Picollect - Java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Picollect - Java.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Java/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Java/Image.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Java/ImageRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Java/ImageRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Java/MetaData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Java/ImageMetaData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +87,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -90,14 +95,17 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PATH_TO_FX$" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
   </component>
   <component name="RunManager">
@@ -191,8 +199,15 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-      <workItem from="1583747458064" duration="1567000" />
+      <workItem from="1583747458064" duration="3679000" />
     </task>
+    <task id="LOCAL−00001" summary="Added AlbumRegister class">
+      <created>1583749073301</created>
+      <option name="number" value="LOCAL−00001" />
+      <option name="presentableId" value="LOCAL−00001" />
+      <updated>1583749073301</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,23 +216,57 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="Added AlbumRegister class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added AlbumRegister class" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583748210424">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583748210424" />
+    <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1583749297632">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1583749297632" />
+    <state x="168" y="0" key="CommitChangelistDialog2" timestamp="1583751324109">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="168" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1583751324109" />
     <state x="348" y="82" key="FileChooserDialogImpl" timestamp="1583748227018">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="348" y="82" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1583748227018" />
-    <state x="121" y="0" key="SettingsEditor" timestamp="1583748231463">
+    <state width="1237" height="476" key="GridCell.Tab.0.bottom" timestamp="1583750968210">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583748231463" />
-  </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
+    <state width="1237" height="476" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583750968210" />
+    <state width="1237" height="476" key="GridCell.Tab.0.center" timestamp="1583750968210">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="476" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583750968210" />
+    <state width="1237" height="476" key="GridCell.Tab.0.left" timestamp="1583750968210">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="476" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583750968210" />
+    <state width="1237" height="476" key="GridCell.Tab.0.right" timestamp="1583750968210">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="476" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583750968210" />
+    <state x="309" y="0" key="RollbackChangesDialog" timestamp="1583750967024">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="309" y="0" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1583750967024" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1583749965322">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583749965322" />
+    <state x="233" y="70" key="Vcs.Push.Dialog.v2" timestamp="1583749084876">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="70" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1583749084876" />
+    <state x="375" y="229" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1583749956688">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="375" y="229" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.680@0.0.1280.680" timestamp="1583749956688" />
   </component>
 </project>
