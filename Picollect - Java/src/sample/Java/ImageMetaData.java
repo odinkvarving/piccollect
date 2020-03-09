@@ -15,10 +15,6 @@ public class ImageMetaData {
     public ImageMetaData(File imageFile){
         file = imageFile;
         readMetadataFromImage();
-        Iterable<Directory> directory = metaData.getDirectories();
-        ;
-
-
     }
 
     private void readMetadataFromImage(){
