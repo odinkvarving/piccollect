@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Deleted ImageRegister class because Album will work as the ImageRegister. Added private to the attributes in the java classes">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added some attributes in the java-classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Java/ImageMetaData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Java/ImageMetaData.java" afterDir="false" />
     </list>
@@ -67,6 +67,11 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="magnusbredeli" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
@@ -194,7 +199,7 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-      <workItem from="1583747458064" duration="6124000" />
+      <workItem from="1583747458064" duration="4544000" />
     </task>
     <task id="LOCAL−00001" summary="Added AlbumRegister class">
       <created>1583749073301</created>
@@ -208,11 +213,11 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1583751340138</updated>
     </task>
-    <task id="LOCAL−00003" summary="Deleted ImageRegister class because Album will work as the ImageRegister. Added private to the attributes in the java classes">
-      <created>1583752065584</created>
+    <task id="LOCAL−00003" summary="Added some attributes in the java-classes">
+      <created>1583753915050</created>
       <option name="number" value="LOCAL−00003" />
       <option name="presentableId" value="LOCAL−00003" />
-      <updated>1583752065584</updated>
+      <updated>1583753915050</updated>
     </task>
     <option name="localTasksCounter" value="4" />
     <servers />
@@ -225,8 +230,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="Added AlbumRegister class" />
     <MESSAGE value="Added some attributes in the java-classes" />
-    <MESSAGE value="Deleted ImageRegister class because Album will work as the ImageRegister. Added private to the attributes in the java classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleted ImageRegister class because Album will work as the ImageRegister. Added private to the attributes in the java classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some attributes in the java-classes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583748210424">
@@ -237,10 +241,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1583749297632" />
-    <state x="67" y="0" key="CommitChangelistDialog2" timestamp="1583753658730">
+    <state x="168" y="0" key="CommitChangelistDialog2" timestamp="1583753955264">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="67" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1583753658730" />
+    <state x="168" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1583753955264" />
     <state x="348" y="82" key="FileChooserDialogImpl" timestamp="1583748227018">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -261,6 +265,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="476" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583750968210" />
+    <state x="345" y="48" key="MultipleFileMergeDialog" timestamp="1583753998803">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="345" y="48" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1583753998803" />
     <state x="309" y="0" key="RollbackChangesDialog" timestamp="1583750967024">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -269,21 +277,21 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583749965322" />
-    <state x="233" y="70" key="Vcs.Push.Dialog.v2" timestamp="1583752071461">
+    <state x="233" y="70" key="Vcs.Push.Dialog.v2" timestamp="1583753974103">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="70" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1583752071461" />
+    <state x="233" y="70" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1583753974103" />
     <state x="375" y="229" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1583749956688">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="375" y="229" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.680@0.0.1280.680" timestamp="1583749956688" />
-    <state x="317" y="20" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583752517250">
+    <state x="449" y="253" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583754139775">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="317" y="20" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680@0.0.1280.680" timestamp="1583752517250" />
-    <state x="449" y="253" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583753643505">
+    <state x="449" y="253" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1583754139775" />
+    <state x="333" y="0" key="git4idea.branch.GitSmartOperationDialog" timestamp="1583753984804">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="449" y="253" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1583753643505" />
+    <state x="333" y="0" key="git4idea.branch.GitSmartOperationDialog/0.0.1280.680@0.0.1280.680" timestamp="1583753984804" />
   </component>
 </project>
