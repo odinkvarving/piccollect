@@ -19,7 +19,11 @@ public class Image {
 
     }
 
+<<<<<<< HEAD
     //test by scottrs my homies BBB
     //Liten test
 
+=======
+    //mathias var her
+>>>>>>> 3cf93fe764a50b1b55baaf6c2edd096ebf6df5cd
 }
