@@ -37,6 +37,10 @@ public class ImageMetaData {
         return width;
     }
 
+    public String getGeoDataFromMetadata() {
+        return null;
+    }
+
     public int getHeightFromMetadata(){
         int height = 0;
         JpegDirectory jpegDirectory = metaData.getFirstDirectoryOfType(JpegDirectory.class);
