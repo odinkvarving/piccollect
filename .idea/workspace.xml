@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Made getWidth and getHeight methods which works for GIF, PNG and JPEG files. In addition I have added a method for fetching GPS coordinates and date from images. Added some photos to test with as well.">
+      <change afterPath="$PROJECT_DIR$/out/production/PiccollectApplication/sample/Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/PiccollectApplication/sample/Java/Album.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/PiccollectApplication/sample/Java/AlbumRegister.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/PiccollectApplication/sample/Java/Image.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/PiccollectApplication/sample/Java/ImageMetaData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/PiccollectApplication/sample/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/PiccollectApplication/sample/datoTest.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/PiccollectApplication/sample/picklerick.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/PiccollectApplication/sample/sample.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/PiccollectApplication/sample/testBilde1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/PiccollectApplication/sample/testBildeGPS.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/PiccollectApplication/sample/testGIF.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/PiccollectApplication/sample/testPNG.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/datoTest.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/testBilde1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/testBildeGPS.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/testGIF.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/testPNG.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Java/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Java/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Java/ImageMetaData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Java/ImageMetaData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,6 +80,10 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1YvioBa5WmGZNjQzaAog61uShs3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -82,7 +110,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PATH_TO_FX$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -91,6 +119,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\magnu\OneDrive\Skrivebord\PiccollectApplication\src\sample" />
+      <recent name="C:\Users\magnu\OneDrive\Skrivebord\PiccollectApplication\src\sample\Java" />
     </key>
   </component>
   <component name="RunManager">
@@ -185,6 +214,7 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1583829651708" duration="264000" />
+      <workItem from="1584126966623" duration="9463000" />
     </task>
     <servers />
   </component>
@@ -194,16 +224,38 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="Made getWidth and getHeight methods which works for GIF, PNG and JPEG files. In addition I have added a method for fetching GPS coordinates and date from images. Added some photos to test with as well." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made getWidth and getHeight methods which works for GIF, PNG and JPEG files. In addition I have added a method for fetching GPS coordinates and date from images. Added some photos to test with as well." />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583829914991">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583829914991" />
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1584136601462">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584136601462" />
     <state x="348" y="82" key="FileChooserDialogImpl" timestamp="1583829771982">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="348" y="82" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1583829771982" />
+    <state width="1237" height="142" key="GridCell.Tab.0.bottom" timestamp="1584135834399">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="142" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1584135834399" />
+    <state width="1237" height="142" key="GridCell.Tab.0.center" timestamp="1584135834398">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="142" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1584135834398" />
+    <state width="1237" height="142" key="GridCell.Tab.0.left" timestamp="1584135834398">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="142" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1584135834398" />
+    <state width="1237" height="142" key="GridCell.Tab.0.right" timestamp="1584135834399">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="142" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1584135834399" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1583829835482">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -216,5 +268,13 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="375" y="229" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.680@0.0.1280.680" timestamp="1583829831175" />
+    <state x="449" y="253" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584135859903">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="449" y="253" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1584135859903" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1584129968341">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1584129968341" />
   </component>
 </project>
