@@ -1,38 +1,39 @@
 package sample;
 
-import com.drew.imaging.ImageMetadataReader;
-import com.drew.imaging.ImageProcessingException;
-import com.drew.lang.GeoLocation;
-import com.drew.metadata.Directory;
-import com.drew.metadata.Metadata;
-import com.drew.metadata.Tag;
-import com.drew.metadata.exif.ExifDirectoryBase;
-import com.drew.metadata.exif.ExifSubIFDDirectory;
-import com.drew.metadata.exif.GpsDirectory;
-import com.drew.metadata.png.PngDirectory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
-import sample.Java.ImageMetaData;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-
 
 public class Main extends Application {
 
+    int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
+    int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
+
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainMenuScene/MainMenu.fxml"));
 
+        // Responsive Design
+        int sceneWidth = 0;
+        int sceneHeight = 0;
+        if (screenWidth <= 800 && screenHeight <= 600) {
+            sceneWidth = 711;
+            sceneHeight = 400;
+        } else if (screenWidth <= 1280 && screenHeight <= 768) {
+            sceneWidth = 1066;
+            sceneHeight = 600;
+        } else if (screenWidth <= 1920 && screenHeight <= 1080) {
+            sceneWidth = 1422;
+            sceneHeight = 800;
+        }
+
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root, sceneWidth, sceneHeight));
+        primaryStage.show();
+/**
         File testFile = new File("C:\\Users\\magnu\\OneDrive\\Skrivebord\\PiccollectApplication\\src\\sample\\testBildeGPS.jpg");
         Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
 
@@ -42,6 +43,7 @@ public class Main extends Application {
 
         ImageMetaData test = new ImageMetaData(testFile);
         System.out.println(test.getGeoDataFromMetadata());
+ **/
     }
 
 
