@@ -21,8 +21,8 @@
       <Line endX="100.0" startX="-100.0" GridPane.rowIndex="1" />
       <Line endX="100.0" startX="-100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <Line endX="100.0" startX="-100.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <TextField promptText="Type name of album" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-      <Button mnemonicParsing="false" text="Search" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <TextField fx:id="albumSearchInput" promptText="Type name of album" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Button fx:id="albumSearchButton" mnemonicParsing="false" text="Search" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
       <Label text="Search for album" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
       <ScrollBar orientation="VERTICAL" prefWidth="15.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
       <ImageView fx:id="dogAlbum" fitHeight="114.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
@@ -33,12 +33,12 @@
             <Image url="@dog1.jpeg" />
          </image>
       </ImageView>
-      <Label text="Dog" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Label fx:id="dogLabel" text="Dog" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="20.0" />
          </GridPane.margin>
       </Label>
-      <ImageView fitHeight="93.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <ImageView fx:id="winterAlbum" fitHeight="93.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="40.0" />
          </GridPane.margin>
@@ -46,17 +46,17 @@
             <Image url="@winter1.jpg" />
          </image>
       </ImageView>
-      <Label text="Winter" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Label fx:id="winterLabel" text="Winter" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="20.0" />
          </GridPane.margin>
       </Label>
-      <Label text="Cake" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Label fx:id="cakeLabel" text="Cake" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="20.0" />
          </GridPane.margin>
       </Label>
-      <ImageView fitHeight="98.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <ImageView fx:id="cakeAlbum" fitHeight="98.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="40.0" />
          </GridPane.margin>
