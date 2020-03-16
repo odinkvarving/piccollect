@@ -34,16 +34,18 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, sceneWidth, sceneHeight));
         primaryStage.show();
 /**
-        File testFile = new File("C:\\Users\\magnu\\OneDrive\\Skrivebord\\PiccollectApplication\\src\\sample\\testBildeGPS.jpg");
-        Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
+ File testFile = new File("C:\\Users\\magnu\\OneDrive\\Skrivebord\\PiccollectApplication\\src\\sample\\testBildeGPS.jpg");
+ Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
 
-        for(Directory directory : testMetadata.getDirectories()){
-            System.out.println(directory);
-        }
+ for(Directory directory : testMetadata.getDirectories()){
+ System.out.println(directory);
+ }
 
-        ImageMetaData test = new ImageMetaData(testFile);
-        System.out.println(test.getGeoDataFromMetadata());
+ ImageMetaData test = new ImageMetaData(testFile);
+ System.out.println(test.getGeoDataFromMetadata());
  **/
+
+
     }
 
 
