@@ -7,6 +7,7 @@ import com.drew.lang.GeoLocation;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.MetadataException;
+import com.drew.metadata.Tag;
 import com.drew.metadata.exif.ExifIFD0Directory;
 import com.drew.metadata.exif.ExifSubIFDDirectory;
 import com.drew.metadata.exif.GpsDirectory;
@@ -35,6 +36,25 @@ public class ImageMetaData {
         try{
             metaData = ImageMetadataReader.readMetadata(file);
         }catch (ImageProcessingException | IOException e){
+            print(e);
+        }
+    }
+
+    public void printMetaDataFromImage() {
+        try {
+            metaData = ImageMetadataReader.readMetadata(file);
+            for (Directory directory : metaData.getDirectories()) {
+                for (Tag tag : directory.getTags()) {
+                    System.out.format("[%s] - %s = %s",
+                            directory.getName(), tag.getTagName(), tag.getDescription());
+                }
+                if (directory.hasErrors()) {
+                    for (String error : directory.getErrors()) {
+                        System.err.format("ERROR: %s", error);
+                    }
+                }
+            }
+        } catch (ImageProcessingException | IOException e){
             print(e);
         }
     }
@@ -174,6 +194,15 @@ public class ImageMetaData {
     private static void print(Exception exception)
     {
         System.err.println("EXCEPTION: " + exception);
+    }
+
+    public static void main(String []args) {
+        File testFile = new File("C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBilde1.jpg");
+        ImageMetaData imageMetaData = new ImageMetaData(testFile);
+
+        GeoLocation geolocation = imageMetaData.getGeoDataFromMetadata();
+        System.out.println(geolocation.getLatitude());
+
     }
 }
 
