@@ -31,7 +31,6 @@ public class test {
 
         System.out.println(image.getName());
         //System.out.println(image1.getName());
-        System.out.println(album.findImagesByTag("picklerick"));
-        System.out.println(album.findImagesByTag("test"));
+        System.out.println(image.getDate());
     }
 }

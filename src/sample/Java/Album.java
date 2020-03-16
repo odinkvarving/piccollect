@@ -104,7 +104,7 @@ public class Album {
      * @param criteria
      * @return criteria
      */
-    
+
     public String findImageByCriteria(String criteria){
         return criteria;
     }
