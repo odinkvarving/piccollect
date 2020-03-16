@@ -36,6 +36,7 @@ public class Image {
         this.location = metaData.getGeoDataFromMetadata();
     }
 
+
     /**
      * A method for checking if the image contains the tag
      * @return true or false based on

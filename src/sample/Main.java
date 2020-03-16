@@ -33,7 +33,7 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, sceneWidth, sceneHeight));
         primaryStage.show();
-/**
+/*
         File testFile = new File("C:\\Users\\magnu\\OneDrive\\Skrivebord\\PiccollectApplication\\src\\sample\\testBildeGPS.jpg");
         Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
 
@@ -43,7 +43,7 @@ public class Main extends Application {
 
         ImageMetaData test = new ImageMetaData(testFile);
         System.out.println(test.getGeoDataFromMetadata());
- **/
+ */
     }
 
 
