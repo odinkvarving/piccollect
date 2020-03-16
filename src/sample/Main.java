@@ -44,6 +44,8 @@ public class Main extends Application {
         ImageMetaData test = new ImageMetaData(testFile);
         System.out.println(test.getGeoDataFromMetadata());
  **/
+
+
     }
 
 
