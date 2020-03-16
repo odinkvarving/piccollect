@@ -1,6 +1,5 @@
 package sample.Java;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -9,11 +8,43 @@ public class Album {
     private String albumName;
     private ArrayList<Image> images;
 
+    public Album(String albumName, ArrayList<Image> images) {
+        this.albumName = albumName;
+        this.images = images;
+    }
+
+    /**
+     * Method to find all the images containing a certain tag
+     * @param tag
+     * @return returning a list of images containing the requested tag
+     */
+    public ArrayList<Image> findImagesByTag(String tag) {
+        ArrayList<Image> copy = new ArrayList<Image>();
+        for(int i = 0; i < this.images.size(); i++) {
+            if(this.images.get(i).checkTag(tag)) {
+                copy.add(this.images.get(i));
+            }
+        }
+        return copy;
+    }
+
+    /**
+     * The method will search for images by name
+     * @param name
+     * @return name
+     */
+    public String findImageByName(String name){
+        return name;
+    }
     /**
      * The method will upload an image
      * @return true or false, depending on if the sequence was a success or not
      */
-    public boolean uploadImage(){
+    public boolean uploadImage(Image image){
+        if(image == null) {
+            return false;
+        }
+        images.add(image);
         return true;
     }
 
@@ -33,14 +64,6 @@ public class Album {
         return true;
     }
 
-    /**
-     * The method will search for images by name
-     * @param name
-     * @return name
-     */
-    public String findImageByName(String name){
-        return name;
-    }
 
     /**
      * The method will search for images by using date
@@ -89,3 +112,4 @@ public class Album {
     }*/
 
 }
+

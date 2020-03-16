@@ -36,6 +36,36 @@ public class Image {
         this.location = metaData.getGeoDataFromMetadata();
     }
 
+    /**
+     * A method for checking if the image contains the tag
+     * @return true or false based on
+     */
+    public boolean checkTag(String tag) {
+        if (tag == null) {
+            return false;
+        }
+
+        if(this.tags.contains(tag)){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Overwriting the equals method to compare two images
+     * @param o
+     * @return true or false
+     */
+    public boolean equals(Object o) {
+        if (!(o instanceof Image)) {
+            return false;
+        }
+        if(o == null) {
+            return false;
+        }
+        Image image = (Image) o;
+        return this.file.equals(image.getFile());
+    }
 
     /**
      * Getters and setters for all the attributes
