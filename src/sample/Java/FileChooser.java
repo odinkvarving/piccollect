@@ -20,7 +20,7 @@ public class FileChooser extends JFileChooser {
         fc.setCurrentDirectory(new File("."));
         fc.setDialogTitle("Choose image");
         fc.setFileSelectionMode(JFileChooser.APPROVE_OPTION);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Images","jpg","gif","png");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Images","jpeg","gif","png");
         fc.setFileFilter(filter);
 
         //opens the file directory and if a file is selected, returns the files path

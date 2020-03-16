@@ -31,10 +31,15 @@ public class Album {
     /**
      * The method will search for images by name
      * @param name
-     * @return name
+     * @return An image if found by name, or null
      */
-    public String findImageByName(String name){
-        return name;
+    public Image findImageByName(String name){
+        for(Image image : images) {
+            if(image.getName().equals(name)) {
+                return image;
+            }
+        }
+        return null;
     }
     /**
      * The method will upload an image
@@ -50,10 +55,11 @@ public class Album {
 
     /**
      * The method will browse images on the users PC
-     * @return true or false, depending on if the sequence was a success or not
+     * @return the filepath of the image, or null
      */
-    public boolean browseImage(){
-        return true;
+    public String browseImage(){
+        FileChooser fileChooser = new FileChooser();
+        return fileChooser.browseFiles();
     }
 
     /**
@@ -66,21 +72,31 @@ public class Album {
 
 
     /**
-     * The method will search for images by using date
+     * The method will search for images by using Location
      * @param location
-     * @return location
+     * @return An image if found by location, or null
      */
-    public String findImageByLocation(String location){
-        return location;
+    public Image findImageByLocation(String location){
+        for(Image image : images) {
+            if(image.getLocation().equals(location)) {
+                return image;
+            }
+        }
+        return null;
     }
 
     /**
      * The method will search for images by using date
      * @param date
-     * @return date
+     * @return An image if found by date, or null
      */
-    public LocalDate findImageByDate(LocalDate date){
-        return date;
+    public Image findImageByDate(LocalDate date){
+        for(Image image : images) {
+            if(image.getDate().equals(date)) {
+                return image;
+            }
+        }
+        return null;
     }
 
     /**
@@ -88,6 +104,7 @@ public class Album {
      * @param criteria
      * @return criteria
      */
+    
     public String findImageByCriteria(String criteria){
         return criteria;
     }

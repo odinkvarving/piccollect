@@ -16,10 +16,10 @@ public class Image {
     //An object with metaData to the picture
     private ImageMetaData metaData;
 
-    private int width;
-    private int height;
+    private final int width;
+    private final int height;
 
-    private String name;
+    private final String name;
     private GeoLocation location;
     private Date date;
 
@@ -99,24 +99,12 @@ public class Image {
         return width;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
     public int getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public GeoLocation getLocation() {
