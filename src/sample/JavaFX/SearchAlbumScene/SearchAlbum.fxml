@@ -29,7 +29,7 @@
             <Font size="18.0" />
          </font></Button>
       <Label text="Search for album" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-      <ScrollBar orientation="VERTICAL" prefWidth="15.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+      <ScrollBar orientation="VERTICAL" prefWidth="15.0" style="-fx-background-color: lightgrey;" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
       <ImageView fx:id="dogAlbum" fitHeight="114.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="40.0" />
@@ -70,7 +70,7 @@
          </image>
       </ImageView>
       <Rectangle fx:id="box" fill="#3146a2" height="74.0" width="600.0" />
-      <Label text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label text="Album Search" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font size="25.0" />
          </font>

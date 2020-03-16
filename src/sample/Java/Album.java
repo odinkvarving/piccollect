@@ -9,6 +9,18 @@ public class Album {
     private String albumName;
     private ArrayList<Image> images;
 
+    public Album(String albumName, ArrayList<Image> images) {
+        this.albumName = albumName;
+        this.images = new ArrayList<>();
+    }
+
+    public String getAlbumName() {
+        return albumName;
+    }
+    public ArrayList<Image> getImages() {
+        return images;
+    }
+
     /**
      * The method will upload an image
      * @return true or false, depending on if the sequence was a success or not
