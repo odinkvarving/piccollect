@@ -23,7 +23,7 @@ public class Image {
     private GeoLocation location;
     private Date date;
 
-    public Image(ArrayList<String> userTags, String name, String filepath) throws MetadataException {
+    public Image(ArrayList<String> userTags, String filepath) throws MetadataException {
         this.file = new File(filepath);
         this.metaData = new ImageMetaData(file);
 
@@ -31,7 +31,7 @@ public class Image {
         this.height = metaData.getHeightFromMetadata();
 
         this.tags = userTags;
-        this.name = name;
+        this.name = file.getName();
         this.date = metaData.getDateFromMetaData();
         this.location = metaData.getGeoDataFromMetadata();
     }
