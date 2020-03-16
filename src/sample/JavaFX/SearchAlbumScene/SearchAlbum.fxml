@@ -5,27 +5,32 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
+      <RowConstraints maxHeight="128.39999237060547" minHeight="10.0" prefHeight="74.4" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="128.39999237060547" minHeight="10.0" prefHeight="74.4" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="212.40000762939454" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="326.4" minHeight="10.0" prefHeight="326.4" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="212.40000762939454" minHeight="0.0" prefHeight="3.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="326.4" minHeight="10.0" prefHeight="255.39999999999998" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Line endX="100.0" startX="-100.0" GridPane.rowIndex="1" />
-      <Line endX="100.0" startX="-100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Line endX="100.0" startX="-100.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <TextField fx:id="albumSearchInput" promptText="Type name of album" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-      <Button fx:id="albumSearchButton" mnemonicParsing="false" text="Search" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-      <Label text="Search for album" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-      <ScrollBar orientation="VERTICAL" prefWidth="15.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-      <ImageView fx:id="dogAlbum" fitHeight="114.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Line endX="100.0" startX="-100.0" GridPane.rowIndex="2" />
+      <Line endX="100.0" startX="-100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Line endX="100.0" startX="-100.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <TextField fx:id="albumSearchInput" promptText="Type name of album" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+      <Button fx:id="albumSearchButton" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #3146a2; -fx-background-radius: 8px; -fx-border-color: black; -fx-border-radius: 8px;" text="Search" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Label text="Search for album" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+      <ScrollBar orientation="VERTICAL" prefWidth="15.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+      <ImageView fx:id="dogAlbum" fitHeight="114.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="40.0" />
          </GridPane.margin>
@@ -33,12 +38,12 @@
             <Image url="@dog1.jpeg" />
          </image>
       </ImageView>
-      <Label fx:id="dogLabel" text="Dog" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Label fx:id="dogLabel" text="Dog" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="20.0" />
          </GridPane.margin>
       </Label>
-      <ImageView fx:id="winterAlbum" fitHeight="93.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <ImageView fx:id="winterAlbum" fitHeight="93.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="40.0" />
          </GridPane.margin>
@@ -46,17 +51,17 @@
             <Image url="@winter1.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="winterLabel" text="Winter" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Label fx:id="winterLabel" text="Winter" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="20.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="cakeLabel" text="Cake" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Label fx:id="cakeLabel" text="Cake" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="20.0" />
          </GridPane.margin>
       </Label>
-      <ImageView fx:id="cakeAlbum" fitHeight="98.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <ImageView fx:id="cakeAlbum" fitHeight="98.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="40.0" />
          </GridPane.margin>
@@ -64,5 +69,11 @@
             <Image url="@cake1.jpg" />
          </image>
       </ImageView>
+      <Rectangle fx:id="box" fill="#3146a2" height="74.0" width="600.0" />
+      <Label text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
    </children>
 </GridPane>
