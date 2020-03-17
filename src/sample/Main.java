@@ -42,15 +42,22 @@ public class Main extends Application {
 
         File testFile = new File("C:\\Users\\magnu\\OneDrive\\Skrivebord\\PicollectApplicationV2\\src\\sample\\testBildeGPS.jpg");
         Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
+/**
+        File testFile = new File("C:\\Users\\magnu\\OneDrive\\Skrivebord\\PiccollectApplication\\src\\sample\\testBildeGPS.jpg");
+        Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
 
-        for(Directory directory : testMetadata.getDirectories()){
-            System.out.println(directory);
+         for(Directory directory : testMetadata.getDirectories()){
+        System.out.println(directory);
         }
 
         ImageMetaData test = new ImageMetaData(testFile);
         System.out.println(test.getGeoDataFromMetadata());
         System.out.println(testFile.toURI().toString());
-    }
+        ImageMetaData test = new ImageMetaData(testFile);
+        System.out.println(test.getGeoDataFromMetadata());
+ **/
+
+}
 
 
     public static void main(String[] args) {
