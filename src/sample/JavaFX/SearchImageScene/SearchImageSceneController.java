@@ -60,16 +60,12 @@ public class SearchImageSceneController implements Initializable {
         testTags.add("Gaming");
         testTags.add("Nature");
 
-        Image testImage = new Image(testTags, "NatureIsCalling", "C:\\Users\\magnu\\OneDrive\\Skrivebord\\PicollectApplicationV2\\src\\sample\\testBildeGPS.jpg");
+        Image testImage = new Image(testTags, "C:\\Users\\Player One\\Desktop\\piccollect\\src\\sample\\testBildeGPS.jpg");
 
-        images.add(new Image(testImage.getTags(), testImage.getName(), testImage.getFile().getPath()));
-        images.add(new Image(testImage.getTags(), testImage.getName(), testImage.getFile().getPath()));
-        images.add(new Image(testImage.getTags(), testImage.getName(), testImage.getFile().getPath()));
-        images.add(new Image(testImage.getTags(), testImage.getName(), testImage.getFile().getPath()));
-        images.add(new Image(testImage.getTags(), testImage.getName(), testImage.getFile().getPath()));
-        images.add(new Image(testImage.getTags(), testImage.getName(), testImage.getFile().getPath()));
-        images.add(new Image(testImage.getTags(), testImage.getName(), testImage.getFile().getPath()));
-        images.add(new Image(testImage.getTags(), testImage.getName(), testImage.getFile().getPath()));
+        images.add(new Image(testImage.getTags(), testImage.getFile().getPath()));
+        images.add(new Image(testImage.getTags(), testImage.getFile().getPath()));
+        images.add(new Image(testImage.getTags(), testImage.getFile().getPath()));
+        images.add(new Image(testImage.getTags(), testImage.getFile().getPath()));
 
 
         images.forEach(image -> {

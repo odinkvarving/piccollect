@@ -48,7 +48,6 @@ public class Album {
         }
         return null;
     }
->>>>>>> 0e7867e5dd4a3d2ec573a527171773759b0afd77
     /**
      * The method will upload an image
      * @return true or false, depending on if the sequence was a success or not

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.MainMenuScene.MainMenuSceneController">
     <children>
         <Pane prefHeight="200.0" prefWidth="800.0" style="-fx-background-color: #2d75e8;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -38,22 +38,22 @@
             </rowConstraints>
             <children>
                 <FontAwesomeIcon />
-                <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Upload Image" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                <Button fx:id="uploadImageButton" onAction="#handleUploadImageButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Upload Image" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                     <graphic>
                         <FontAwesomeIcon fill="#2d75e8" glyphName="UPLOAD" size="50" />
                     </graphic>
                 </Button>
-                <Button alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Home" GridPane.columnIndex="3" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                <Button fx:id="exitButton" onAction="#handleExitButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Exit" GridPane.columnIndex="3" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                     <graphic>
-                        <FontAwesomeIcon fill="#2d75e8" glyphName="HOME" size="50" />
+                        <FontAwesomeIcon fill="#2d75e8" glyphName="TIMES" size="50" />
                     </graphic>
                 </Button>
-                <Button alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Home" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                <Button fx:id="albumsButton" onAction="#handleAlbumsButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Albums" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                     <graphic>
-                        <FontAwesomeIcon fill="#2d75e8" glyphName="HOME" size="50" />
+                        <FontAwesomeIcon fill="#2d75e8" glyphName="IMAGE" size="50" />
                     </graphic>
                 </Button>
-                <Button alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Search" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                <Button fx:id="searchImageButton" onAction="#handleSearchSceneButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Search" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                     <graphic>
                         <FontAwesomeIcon fill="#2d75e8" glyphName="SEARCH" size="50" />
                     </graphic>

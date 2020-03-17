@@ -20,7 +20,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("JavaFX/SearchImageScene/SearchScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainMenuScene/MainMenu.fxml"));
 
         // Responsive Design
         int sceneWidth = 0;
@@ -31,16 +31,18 @@ public class Main extends Application {
         } else if (screenWidth <= 1280 && screenHeight <= 768) {
             sceneWidth = 1066;
             sceneHeight = 600;
-        } else if (screenWidth <= 1920 && screenHeight <= 1080) {
+
+        }
+        /**else if (screenWidth <= 1920 && screenHeight <= 1080) {
             sceneWidth = 1422;
             sceneHeight = 800;
-        }
+        }**/
 
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, sceneWidth, sceneHeight));
         primaryStage.show();
 
-        File testFile = new File("C:\\Users\\magnu\\OneDrive\\Skrivebord\\PicollectApplicationV2\\src\\sample\\testBildeGPS.jpg");
+        File testFile = new File("C:\\Users\\Player One\\Desktop\\piccollect\\src\\sample\\testBildeGPS.jpg");
         Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
 /**
         File testFile = new File("C:\\Users\\magnu\\OneDrive\\Skrivebord\\PiccollectApplication\\src\\sample\\testBildeGPS.jpg");
