@@ -104,24 +104,39 @@ public class ImageMetaData {
      * @return the width of the image as an int
      * @throws MetadataException
      */
-    private int getWidthFromMetadataJPEG() throws MetadataException {
+    private int getWidthFromMetadataJPEG() {
         int width;
         JpegDirectory jpegDirectory = metaData.getFirstDirectoryOfType(JpegDirectory.class);
-        width = jpegDirectory.getInt(JpegDirectory.TAG_IMAGE_WIDTH);
+        try {
+            width = jpegDirectory.getInt(JpegDirectory.TAG_IMAGE_WIDTH);
+        } catch (MetadataException e) {
+            e.getStackTrace();
+            return -1;
+        }
         return width;
     }
 
-    private int getWidthFromMetadataPNG() throws MetadataException {
+    private int getWidthFromMetadataPNG() {
         int width;
         PngDirectory pngDirectory = metaData.getFirstDirectoryOfType(PngDirectory.class);
-        width = pngDirectory.getInt(PngDirectory.TAG_IMAGE_WIDTH);
+        try {
+            width = pngDirectory.getInt(PngDirectory.TAG_IMAGE_WIDTH);
+        } catch (MetadataException e) {
+            e.getStackTrace();
+            return -1;
+        }
         return width;
     }
 
-    private int getWidthFromMetadataGIF() throws MetadataException{
+    private int getWidthFromMetadataGIF() {
         int width;
         GifImageDirectory gifImageDirectory = metaData.getFirstDirectoryOfType(GifImageDirectory.class);
-        width = gifImageDirectory.getInt(GifImageDirectory.TAG_WIDTH);
+        try {
+            width = gifImageDirectory.getInt(GifImageDirectory.TAG_WIDTH);
+        } catch (MetadataException e) {
+            e.getStackTrace();
+            return -1;
+        }
         return width;
     }
 
@@ -131,23 +146,38 @@ public class ImageMetaData {
      * @return the width of the image as an int
      * @throws MetadataException
      */
-    private int getHeightFromMetadataJPEG() throws MetadataException {
+    private int getHeightFromMetadataJPEG() {
         int height;
         JpegDirectory jpegDirectory = metaData.getFirstDirectoryOfType(JpegDirectory.class);
-        height = jpegDirectory.getInt(JpegDirectory.TAG_IMAGE_HEIGHT);
+        try {
+            height = jpegDirectory.getInt(JpegDirectory.TAG_IMAGE_HEIGHT);
+        } catch (MetadataException e) {
+            e.getStackTrace();
+            return -1;
+        }
         return height;
     }
-    private int getHeightFromMetadataPNG() throws MetadataException {
+    private int getHeightFromMetadataPNG() {
         int height;
         PngDirectory pngDirectory = metaData.getFirstDirectoryOfType(PngDirectory.class);
-        height = pngDirectory.getInt(PngDirectory.TAG_IMAGE_HEIGHT);
+        try {
+            height = pngDirectory.getInt(PngDirectory.TAG_IMAGE_HEIGHT);
+        } catch (MetadataException e) {
+            e.getStackTrace();
+            return -1;
+        }
         return height;
     }
 
-    private int getHeightFromMetadataGIF() throws MetadataException{
+    private int getHeightFromMetadataGIF() {
         int height;
         GifImageDirectory gifImageDirectory = metaData.getFirstDirectoryOfType(GifImageDirectory.class);
-        height = gifImageDirectory.getInt(GifImageDirectory.TAG_HEIGHT);
+        try {
+            height = gifImageDirectory.getInt(GifImageDirectory.TAG_HEIGHT);
+        } catch (MetadataException e) {
+            e.getStackTrace();
+            return -1;
+        }
         return height;
     }
 
@@ -205,6 +235,4 @@ public class ImageMetaData {
 
     }
 }
-
-// Hallo
 
