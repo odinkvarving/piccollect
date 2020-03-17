@@ -1,11 +1,17 @@
 package sample;
 
+import com.drew.imaging.ImageMetadataReader;
+import com.drew.metadata.Directory;
+import com.drew.metadata.Metadata;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import sample.Java.ImageMetaData;
+
+import java.io.File;
 
 public class Main extends Application {
 
@@ -14,7 +20,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainMenuScene/MainMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("JavaFX/SearchImageScene/SearchScene.fxml"));
 
         // Responsive Design
         int sceneWidth = 0;
@@ -33,8 +39,8 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, sceneWidth, sceneHeight));
         primaryStage.show();
-/**
-        File testFile = new File("C:\\Users\\magnu\\OneDrive\\Skrivebord\\PiccollectApplication\\src\\sample\\testBildeGPS.jpg");
+
+        File testFile = new File("C:\\Users\\magnu\\OneDrive\\Skrivebord\\PicollectApplicationV2\\src\\sample\\testBildeGPS.jpg");
         Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
 
         for(Directory directory : testMetadata.getDirectories()){
@@ -43,7 +49,7 @@ public class Main extends Application {
 
         ImageMetaData test = new ImageMetaData(testFile);
         System.out.println(test.getGeoDataFromMetadata());
- **/
+        System.out.println(testFile.toURI().toString());
     }
 
 

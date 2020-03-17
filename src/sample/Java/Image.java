@@ -2,6 +2,7 @@ package sample.Java;
 
 import com.drew.lang.GeoLocation;
 import com.drew.metadata.MetadataException;
+import javafx.scene.image.ImageView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class Image {
     private int height;
 
     private String name;
+    private ImageView image;
     private GeoLocation location;
     private Date date;
 
@@ -32,6 +34,7 @@ public class Image {
 
         this.tags = userTags;
         this.name = name;
+        this.image = new ImageView(new javafx.scene.image.Image(file.toURI().toString()));
         this.date = metaData.getDateFromMetaData();
         this.location = metaData.getGeoDataFromMetadata();
     }
@@ -103,5 +106,9 @@ public class Image {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public ImageView getImage(){
+        return image;
     }
 }
