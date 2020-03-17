@@ -2,6 +2,7 @@ package sample.JavaFX.MainMenuScene;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -9,9 +10,11 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class MainMenuSceneController {
+public class MainMenuSceneController implements Initializable {
 
 
     @FXML
@@ -23,37 +26,22 @@ public class MainMenuSceneController {
     @FXML
     Button exitButton;
 
+    Scene uploadScene;
+    Scene searchScene;
+    Scene albumScene;
+
 
     public void handleUploadImageButton(){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("path to uploadScene"));
-            Stage stage = (Stage) uploadImageButton.getScene().getWindow();
-            Scene scene = new Scene(loader.load());
-            stage.setScene(scene);
-        }catch (IOException io){
-            io.printStackTrace();
-        }
+        Stage stage = (Stage) uploadImageButton.getScene().getWindow();
+        stage.setScene(uploadScene);
     }
     public void handleSearchSceneButton(){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../SearchImages/SearchImages.fxml"));
-            // pathen til andre er: ../SearchImageScene/SearchScene.fxml
-            Stage stage = (Stage) uploadImageButton.getScene().getWindow();
-            Scene scene = new Scene(loader.load());
-            stage.setScene(scene);
-        }catch (IOException io){
-            io.printStackTrace();
-        }
+        Stage stage = (Stage) uploadImageButton.getScene().getWindow();
+        stage.setScene(searchScene);
     }
     public void handleAlbumsButton(){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../SearchAlbumScene/SearchAlbum.fxml"));
-            Stage stage = (Stage) uploadImageButton.getScene().getWindow();
-            Scene scene = new Scene(loader.load());
-            stage.setScene(scene);
-        }catch (IOException io){
-            io.printStackTrace();
-        }
+        Stage stage = (Stage) uploadImageButton.getScene().getWindow();
+        stage.setScene(albumScene);
     }
     public void handleExitButton(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -67,6 +55,31 @@ public class MainMenuSceneController {
             stage.close();
         } else {
             // ... user chose CANCEL or closed the dialog
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Initialzes the upload scene
+        /**FXMLLoader uploadSceneLoader = new FXMLLoader(getClass().getResource("path to uploadScene"));
+        try {
+            uploadScene = new Scene(uploadSceneLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }**/
+        //Initializes search image scene
+        FXMLLoader searchSceneLoader = new FXMLLoader(getClass().getResource("../SearchImages/SearchImages.fxml"));
+        try {
+            searchScene = new Scene(searchSceneLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //Initializes album scene
+        FXMLLoader albumSceneLoader = new FXMLLoader(getClass().getResource("../SearchAlbumScene/SearchAlbum.fxml"));
+        try {
+            albumScene = new Scene(albumSceneLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
