@@ -20,11 +20,7 @@ import java.util.ResourceBundle;
 public class UploadSceneController {
 
     @FXML
-    Button dragAndDropArea;
-
-    @FXML
     private void browseImages() {
-
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Images", "*.jpg", "*.png", "*.gif"));
@@ -34,5 +30,6 @@ public class UploadSceneController {
             System.out.println(selectedFile.getAbsolutePath());
         }
     }
+
 
 }
