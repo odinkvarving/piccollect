@@ -8,7 +8,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  * A class to browse your files
  */
-public class FileChooser extends JFileChooser {
+public class SwingFileChooser extends JFileChooser {
 
     /**
      * Method to browse your files

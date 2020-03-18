@@ -3,12 +3,11 @@ package sample.Java;
 import com.drew.metadata.MetadataException;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class test {
     public static void main(String[] args) throws MetadataException {
 
-        FileChooser fileChooser = new FileChooser();
+        SwingFileChooser fileChooser = new SwingFileChooser();
 
         ArrayList<String> tags = new ArrayList<>();
         ArrayList<String> tags1 = new ArrayList<>();

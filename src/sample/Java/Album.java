@@ -65,7 +65,7 @@ public class Album {
      * @return the filepath of the image, or null
      */
     public String browseImage(){
-        FileChooser fileChooser = new FileChooser();
+        SwingFileChooser fileChooser = new SwingFileChooser();
         return fileChooser.browseFiles();
     }
 
