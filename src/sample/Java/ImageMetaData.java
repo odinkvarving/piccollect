@@ -1,6 +1,6 @@
 package sample.Java;
 
-import com.byteowls.jopencage.JOpenCageGeocoder;
+
 import com.drew.imaging.FileTypeDetector;
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.ImageProcessingException;

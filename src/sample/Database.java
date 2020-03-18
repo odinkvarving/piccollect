@@ -21,7 +21,7 @@ public class Database {
 
     public Database() throws SQLException {
         connect = DriverManager.getConnection(url, user, pass);
-        PreparedStatement statement = connect.prepareStatement("Insert into image_table (id, title, path, tags, latitude, longitude, registered)Values(?,?,?,?,?,?,?)");
+        PreparedStatement statement = connect.prepareStatement("INSERT INTO image_table (id, title, path, tags, latitude, longitude, registered)VALUES(?,?,?,?,?,?,?)");
         statement.setInt(1, 2);
         statement.setString(2, "TestTitle");
         statement.setString(3, "TestPath");

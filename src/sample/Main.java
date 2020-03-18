@@ -15,24 +15,25 @@ import java.io.File;
 
 public class Main extends Application {
 
+    /**
     int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
     int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
+     **/
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainMenuScene/MainMenu.fxml"));
 
         // Responsive Design
-        int sceneWidth = 0;
-        int sceneHeight = 0;
-        if (screenWidth <= 800 && screenHeight <= 600) {
-            sceneWidth = 711;
-            sceneHeight = 400;
-        } else if (screenWidth <= 1280 && screenHeight <= 768) {
+        int sceneWidth = 1066;
+        int sceneHeight = 600;
+        /**
+        if (screenWidth <= 1280 && screenHeight <= 768) {
             sceneWidth = 1066;
             sceneHeight = 600;
 
         }
+         **/
         /**else if (screenWidth <= 1920 && screenHeight <= 1080) {
             sceneWidth = 1422;
             sceneHeight = 800;
@@ -42,8 +43,10 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, sceneWidth, sceneHeight));
         primaryStage.show();
 
+        /**
         File testFile = new File("C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
         Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
+         **/
 /**
         File testFile = new File("C:\\Users\\magnu\\OneDrive\\Skrivebord\\PiccollectApplication\\src\\sample\\testBildeGPS.jpg");
         Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
