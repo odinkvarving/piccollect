@@ -15,21 +15,25 @@ import java.io.File;
 
 public class Main extends Application {
 
+    /**
     int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
     int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
+     **/
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainMenuScene/MainMenu.fxml"));
 
         // Responsive Design
-        int sceneWidth = 0;
-        int sceneHeight = 0;
+        int sceneWidth = 1066;
+        int sceneHeight = 600;
+        /**
         if (screenWidth <= 1280 && screenHeight <= 768) {
             sceneWidth = 1066;
             sceneHeight = 600;
 
         }
+         **/
         /**else if (screenWidth <= 1920 && screenHeight <= 1080) {
             sceneWidth = 1422;
             sceneHeight = 800;
