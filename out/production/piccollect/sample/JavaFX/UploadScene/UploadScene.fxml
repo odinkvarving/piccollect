@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"   fx:controller="sample.JavaFX.UploadScene.UploadSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.UploadScene.UploadSceneController">
    <children>
       <Pane prefHeight="114.0" prefWidth="1066.0" style="-fx-background-color: #2D75E8;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -27,7 +26,7 @@
          <children>
             <AnchorPane prefHeight="275.0" prefWidth="464.0" styleClass="dragAndDropArea" stylesheets="@UploadSceneStyle.css">
                <children>
-                  <Label layoutX="169.0" layoutY="158.0" text="Drop files to upload &#10;or browse" onMouseClicked="#browseImages"  textAlignment="CENTER" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="169.0" AnchorPane.rightAnchor="168.0" AnchorPane.topAnchor="158.0">
+                  <Label layoutX="169.0" layoutY="158.0" onMouseClicked="#browseImages" text="Drop files to upload &#10;or browse" textAlignment="CENTER" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="169.0" AnchorPane.rightAnchor="168.0" AnchorPane.topAnchor="158.0">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -59,37 +58,37 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="82.0" layoutY="177.0" prefHeight="30.0" prefWidth="364.0" promptText="tag...." />
+            <TextField fx:id="tagTextField" layoutX="82.0" layoutY="177.0" prefHeight="30.0" prefWidth="364.0" promptText="tag...." />
             <Label layoutX="82.0" layoutY="148.0" text="Write all your tags:">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <TextArea layoutX="82.0" layoutY="217.0" prefHeight="121.0" prefWidth="364.0" promptText="tag 1, tag2. tag3 ....." />
-            <Button layoutX="460.0" layoutY="177.0" mnemonicParsing="false" styleClass="button2" stylesheets="@UploadSceneStyle.css" text="+" textFill="WHITE">
+            <Button fx:id="addTagButton" layoutX="460.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleAddTagButtonClicked" styleClass="button2" stylesheets="@UploadSceneStyle.css" text="+" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <ChoiceBox layoutX="82.0" layoutY="85.0" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #bebebe; -fx-border-radius: 3;" />
+            <ChoiceBox fx:id="albumChoiceBox" layoutX="82.0" layoutY="85.0" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #bebebe; -fx-border-radius: 3;" />
             <Label layoutX="283.0" layoutY="90.0" text="Or">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Button layoutX="340.0" layoutY="85.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="button2" stylesheets="@UploadSceneStyle.css" text="Create new album" textFill="WHITE">
+            <Button fx:id="createAlbumButton" onAction="#handleCreateAlbumButton" layoutX="340.0" layoutY="85.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="button2" stylesheets="@UploadSceneStyle.css" text="Create new album" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="82.0" layoutY="406.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="185.0" styleClass="uploadButton" stylesheets="@UploadSceneStyle.css" text="Upload Image" textFill="WHITE">
+            <Button fx:id="uploadButton" layoutX="82.0" layoutY="406.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="185.0" styleClass="uploadButton" stylesheets="@UploadSceneStyle.css" text="Upload Image" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="283.0" layoutY="411.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="135.0" styleClass="cancelButton" stylesheets="@UploadSceneStyle.css" text="Cancel" textFill="WHITE">
+            <Button fx:id="cancelButton" layoutX="283.0" layoutY="411.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="135.0" styleClass="cancelButton" stylesheets="@UploadSceneStyle.css" text="Cancel" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
+            <ListView fx:id="tagListView" layoutX="82.0" layoutY="217.0" prefHeight="121.0" prefWidth="364.0" />
          </children>
       </AnchorPane>
    </children>
