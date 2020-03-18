@@ -1,5 +1,9 @@
 package sample;
 
+import com.sun.javafx.iio.ImageMetadata;
+import sample.Java.Image;
+import sample.Java.ImageMetaData;
+
 import java.io.File;
 import java.sql.*;
 import java.time.LocalDate;
@@ -30,6 +34,15 @@ public class Database {
         if(a > 0) {
             System.out.println("Row updated.");
         }
+    }
+
+    public void uploadImageToDatabase(Image image, String tags) {
+        image.getMetaData().getUniqueIdFromMetaData();
+        image.getFile().getAbsolutePath();
+        image.getMetaData().getGeoDataFromMetadata().getLatitude();
+        image.getMetaData().getGeoDataFromMetadata().getLongitude();
+        image.getMetaData().getTimeFromMetaData();
+
     }
 
     public static void main(String[] args) throws SQLException {
