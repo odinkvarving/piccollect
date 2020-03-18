@@ -12,7 +12,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"   fx:controller="sample.JavaFX.UploadScene.UploadSceneController">
    <children>
       <Pane prefHeight="114.0" prefWidth="1066.0" style="-fx-background-color: #2D75E8;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -26,7 +27,7 @@
          <children>
             <AnchorPane prefHeight="275.0" prefWidth="464.0" styleClass="dragAndDropArea" stylesheets="@UploadSceneStyle.css">
                <children>
-                  <Label layoutX="169.0" layoutY="158.0" text="Drop files to upload &#10;or browse" textAlignment="CENTER" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="169.0" AnchorPane.rightAnchor="168.0" AnchorPane.topAnchor="158.0">
+                  <Label layoutX="169.0" layoutY="158.0" text="Drop files to upload &#10;or browse" onMouseClicked="#browseImages"  textAlignment="CENTER" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="169.0" AnchorPane.rightAnchor="168.0" AnchorPane.topAnchor="158.0">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

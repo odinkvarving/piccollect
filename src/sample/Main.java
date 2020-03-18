@@ -43,13 +43,10 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, sceneWidth, sceneHeight));
         primaryStage.show();
 
-<<<<<<< HEAD
-=======
         /**
         File testFile = new File("C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
         Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
          **/
->>>>>>> cb559c534754e2f102f1c8d7086c13de4b35bae4
 /**
         File testFile = new File("C:\\Users\\magnu\\OneDrive\\Skrivebord\\PiccollectApplication\\src\\sample\\testBildeGPS.jpg");
         Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
