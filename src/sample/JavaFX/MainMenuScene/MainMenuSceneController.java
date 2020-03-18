@@ -61,12 +61,12 @@ public class MainMenuSceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Initialzes the upload scene
-        /**FXMLLoader uploadSceneLoader = new FXMLLoader(getClass().getResource("path to uploadScene"));
+        FXMLLoader uploadSceneLoader = new FXMLLoader(getClass().getResource("../UploadScene/UploadScene.fxml"));
         try {
             uploadScene = new Scene(uploadSceneLoader.load());
         } catch (IOException e) {
             e.printStackTrace();
-        }**/
+        }
         //Initializes search image scene
         FXMLLoader searchSceneLoader = new FXMLLoader(getClass().getResource("../SearchImages/SearchImages.fxml"));
         try {
