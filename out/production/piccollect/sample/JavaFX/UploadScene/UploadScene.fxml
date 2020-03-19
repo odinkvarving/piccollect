@@ -26,12 +26,12 @@
          <children>
             <AnchorPane prefHeight="275.0" prefWidth="464.0" styleClass="dragAndDropArea" stylesheets="@UploadSceneStyle.css">
                <children>
-                  <Label layoutX="169.0" layoutY="158.0" text="Drop files to upload or" textAlignment="CENTER" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="169.0" AnchorPane.rightAnchor="168.0" AnchorPane.topAnchor="158.0">
+                  <Label layoutX="169.0" layoutY="158.0" text="Drop files to upload" textAlignment="CENTER" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="169.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="158.0">
                      <font>
                         <Font name="System Normal" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="169.0" layoutY="168.0" text="browse" fx:id = "browse" onMouseClicked="#browseImages"  textAlignment="CENTER" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="169.0" AnchorPane.rightAnchor="168.0" AnchorPane.topAnchor="188.0">
+                  <Label layoutX="169.0" layoutY="168.0" text="or browse" fx:id = "browse" onMouseClicked="#browseImages" underline = "true" textAlignment="CENTER" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="169.0" AnchorPane.rightAnchor="168.0" AnchorPane.topAnchor="188.0">
                      <font>
                         <Font name="System Bold" size="14.0"/>
                      </font>
