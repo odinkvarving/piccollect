@@ -68,7 +68,7 @@ public class MainMenuSceneController implements Initializable {
             e.printStackTrace();
         }
         //Initializes search image scene
-        FXMLLoader searchSceneLoader = new FXMLLoader(getClass().getResource("../SearchImages/SearchImages.fxml"));
+        FXMLLoader searchSceneLoader = new FXMLLoader(getClass().getResource("../SearchImageScene/SearchScene.fxml"));
         try {
             searchScene = new Scene(searchSceneLoader.load());
         } catch (IOException e) {

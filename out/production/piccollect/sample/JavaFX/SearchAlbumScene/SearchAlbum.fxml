@@ -6,12 +6,21 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<<<<<<< HEAD
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+=======
+>>>>>>> 33466dd3d81b1c009e6221fb0c46a0dbbcfb39a3
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.SearchAlbumScene.SearchAlbumController">
+=======
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+>>>>>>> 33466dd3d81b1c009e6221fb0c46a0dbbcfb39a3
    <children>
       <VBox layoutY="97.0" prefHeight="500.0" prefWidth="318.0" style="-fx-background-color: #ebe8f9;">
          <children>
@@ -37,12 +46,20 @@
                   <Insets left="20.0" top="10.0" />
                </VBox.margin>
             </Label>
+<<<<<<< HEAD
+            <TextField prefHeight="30.0" promptText="Type name">
+=======
             <TextField fx:id="albumNameInput" prefHeight="30.0" promptText="Type name">
+>>>>>>> 33466dd3d81b1c009e6221fb0c46a0dbbcfb39a3
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
             </TextField>
+<<<<<<< HEAD
+            <Button mnemonicParsing="false" prefWidth="300.0" text="Search">
+=======
             <Button fx:id="albumSearchButton" mnemonicParsing="false" prefWidth="300.0" text="Search">
+>>>>>>> 33466dd3d81b1c009e6221fb0c46a0dbbcfb39a3
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="30.0" />
                </VBox.margin>
@@ -62,6 +79,18 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Label>
+<<<<<<< HEAD
+            <Button fx:id="backButton" layoutX="25.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="62.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/backButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+=======
+>>>>>>> 33466dd3d81b1c009e6221fb0c46a0dbbcfb39a3
          </children></Pane>
       <Pane layoutX="318.0" layoutY="100.0" prefHeight="87.0" prefWidth="748.0">
          <children>
@@ -75,7 +104,11 @@
       <TableView layoutX="350.0" layoutY="208.0" prefHeight="372.0" prefWidth="684.0">
          <columns>
             <TableColumn prefWidth="99.0" text="Name" />
+<<<<<<< HEAD
+            <TableColumn prefWidth="584.0" text="Album" />
+=======
             <TableColumn fx:id="albumtTableView" prefWidth="584.0" text="Album" />
+>>>>>>> 33466dd3d81b1c009e6221fb0c46a0dbbcfb39a3
          </columns>
       </TableView>
    </children>
