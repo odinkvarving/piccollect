@@ -4,9 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sample.Java.Image;
@@ -18,7 +16,23 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 
-public class UploadSceneController {
+public class UploadSceneController{
+
+    @FXML
+    private ChoiceBox albumChoiceBox;
+    @FXML
+    private Button createAlbumButton;
+    @FXML
+    private TextField tagTextField;
+    @FXML
+    private Button addTagButton;
+    @FXML
+    private ListView tagListView;
+    @FXML
+    private Button uploadButton;
+    @FXML
+    private Button cancelButton;
+
 
     @FXML
     private String browseImages() {
@@ -33,5 +47,29 @@ public class UploadSceneController {
         return null;
     }
 
+    public void handleUploadButtonClicked(){
 
+    }
+
+    public void handleAddTagButtonClicked(){
+        if(!tagTextField.getText().equals("")) {
+            String tag = tagTextField.getText();
+            tagListView.getItems().add(tag);
+            tagTextField.clear();
+        }
+    }
+
+    public void handleCreateAlbumButton(){
+        String albumName;
+        TextInputDialog albumDialog = new TextInputDialog();
+        albumDialog.setTitle("Create new album");
+        albumDialog.setHeaderText("Create a new album");
+        albumDialog.setContentText("Please enter album name: ");
+
+        Optional<String> result = albumDialog.showAndWait();
+
+        if(result.isPresent()){
+            albumName = result.get();
+        }
+    }
 }

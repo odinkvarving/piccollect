@@ -34,7 +34,8 @@ public class Image {
 
         this.tags = userTags;
 
-        this.image = new ImageView(new javafx.scene.image.Image(file.toURI().toString()));
+        //This line interrupts adding new images to database for some reason. Look for fix.
+        //this.image = new ImageView(new javafx.scene.image.Image(file.toURI().toString()));
         this.name = file.getName();
         this.date = metaData.getDateFromMetaData();
         this.location = metaData.getGeoDataFromMetadata();

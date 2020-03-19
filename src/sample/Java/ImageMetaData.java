@@ -19,6 +19,7 @@ import com.drew.metadata.jpeg.JpegDirectory;
 import com.drew.metadata.png.PngDirectory;
 
 import java.io.*;
+import java.sql.Array;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -205,7 +206,7 @@ public class ImageMetaData {
         Timestamp timestamp;
         ExifIFD0Directory exifIFD0Directory = metaData.getFirstDirectoryOfType(ExifIFD0Directory.class);
         try {
-            timestamp = (Timestamp) exifIFD0Directory.getObject(ExifIFD0Directory.TAG_DATETIME);
+            timestamp = (Timestamp) exifIFD0Directory.getDate(ExifIFD0Directory.TAG_DATETIME_ORIGINAL);
         } catch (NullPointerException e) {
             return null;
         }
