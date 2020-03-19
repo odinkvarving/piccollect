@@ -41,12 +41,19 @@ public class Database {
     }
 
     //ID is the primary key in the image_table, and will be auto-incremented to create a unique ID. We don't have to include this when adding values in the table. 
-    public void uploadImageToDatabase(Image image, String tags, String title) throws SQLException {
+    public void uploadImageToDatabase(Image image, ArrayList<String> tags, String title) throws SQLException {
         if(image != null) {
             statement = connect.prepareStatement("INSERT INTO image_table (title, path, tags, latitude, longitude, registered)VALUES(?,?,?,?,?,?)");
             statement.setString(1, title);
             statement.setString(2, image.getFile().getAbsolutePath());
-            statement.setObject(3, tags);
+
+            StringBuffer sb = new StringBuffer();
+            for(String s : tags) {
+                sb.append(s);
+                sb.append(" ");
+                String str = sb.toString();
+                statement.setObject(3, str);
+            }
             statement.setString(4, Double.toString(image.getMetaData().getGeoDataFromMetadata().getLatitude()));
             statement.setString(5, Double.toString(image.getMetaData().getGeoDataFromMetadata().getLongitude()));
             try {
@@ -63,12 +70,41 @@ public class Database {
         }
     }
 
+    //Find out how to select a row that matches given path or id etc. Does not currently work.
+    public void getImageInfoFromDatabase(Image image) {
+        try {
+            String ImagePath = image.getFile().getPath();
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connect = DriverManager.getConnection(url, user, pass);
+            Statement statement = connect.createStatement();
+            resultSet = statement.executeQuery("select * from image_table WHERE imagePath = path");
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                String title = resultSet.getString(2);
+                String path = resultSet.getString(3);
+                String tags = resultSet.getString(4);
+                String latitude = resultSet.getString(5);
+                String longitude = resultSet.getString(6);
+                java.util.Date timestamp = resultSet.getTimestamp(7);
+                System.out.println(id + " " + title + " " + path + " " + tags + " " + latitude + " " + longitude + " " + timestamp);
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+
+        }
+    }
+
     public static void main(String[] args) throws SQLException, MetadataException {
-        String tags = "TestImage";
         ArrayList<String> list = new ArrayList<>();
+        list.add("test4");
+        list.add("test5");
+        list.add("test6");
         Image image = new Image(list, "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
         Database database = new Database();
-        database.uploadImageToDatabase(image, tags, "TestImage");
+        database.uploadImageToDatabase(image, list, "TestImage");
+        database.getImageInfoFromDatabase(image);
 
         /*try {
             Class.forName("com.mysql.cj.jdbc.Driver");
