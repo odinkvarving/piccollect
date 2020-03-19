@@ -40,17 +40,21 @@ public class Database {
          */
     }
 
-    //Image can not be uploaded if some of the values have already been added to the database earlier. Deleting the row and re-adding the same values does not fix this problem. Look for fix.
+    //ID is the primary key in the image_table, and will be auto-incremented to create a unique ID. We don't have to include this when adding values in the table. 
     public void uploadImageToDatabase(Image image, String tags, String title) throws SQLException {
         if(image != null) {
-            PreparedStatement statement = connect.prepareStatement("INSERT INTO image_table (id, title, path, tags, latitude, longitude, registered)VALUES(?,?,?,?,?,?,?)");
-            statement.setInt(1, 124684);
-            statement.setString(2, title);
-            statement.setString(3, image.getFile().getAbsolutePath());
-            statement.setObject(4, tags);
-            statement.setString(5, Double.toString(image.getMetaData().getGeoDataFromMetadata().getLatitude()));
-            statement.setString(6, Double.toString(image.getMetaData().getGeoDataFromMetadata().getLongitude()));
-            statement.setTimestamp(7, image.getMetaData().getTimeFromMetaData());
+            statement = connect.prepareStatement("INSERT INTO image_table (title, path, tags, latitude, longitude, registered)VALUES(?,?,?,?,?,?)");
+            statement.setString(1, title);
+            statement.setString(2, image.getFile().getAbsolutePath());
+            statement.setObject(3, tags);
+            statement.setString(4, Double.toString(image.getMetaData().getGeoDataFromMetadata().getLatitude()));
+            statement.setString(5, Double.toString(image.getMetaData().getGeoDataFromMetadata().getLongitude()));
+            try {
+                statement.setTimestamp(6, image.getMetaData().getTimeFromMetaData());
+            } catch (NullPointerException e) {
+                statement.setTimestamp(6, null);
+                System.out.println("No timestamp found for this image. ");
+            }
 
             int a = statement.executeUpdate();
             if (a > 0) {
@@ -60,11 +64,11 @@ public class Database {
     }
 
     public static void main(String[] args) throws SQLException, MetadataException {
-        String tags = "ereerwe";
+        String tags = "TestImage";
         ArrayList<String> list = new ArrayList<>();
         Image image = new Image(list, "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
         Database database = new Database();
-        database.uploadImageToDatabase(image, tags, "Testing123");
+        database.uploadImageToDatabase(image, tags, "TestImage");
 
         /*try {
             Class.forName("com.mysql.cj.jdbc.Driver");
