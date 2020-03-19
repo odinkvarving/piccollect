@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import sample.Java.Image;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,15 +21,16 @@ import java.util.ResourceBundle;
 public class UploadSceneController {
 
     @FXML
-    private void browseImages() {
+    private String browseImages() {
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Images", "*.jpg", "*.png", "*.gif"));
         File selectedFile = fc.showOpenDialog(null);
 
         if (selectedFile != null) {
-            System.out.println(selectedFile.getAbsolutePath());
+            return selectedFile.getAbsolutePath();
         }
+        return null;
     }
 
 
