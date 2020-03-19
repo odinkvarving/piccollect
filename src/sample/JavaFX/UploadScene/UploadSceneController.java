@@ -33,7 +33,6 @@ public class UploadSceneController{
     @FXML
     private Button cancelButton;
 
-
     @FXML
     private String browseImages() {
         FileChooser fc = new FileChooser();
