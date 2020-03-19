@@ -125,9 +125,8 @@ public class Album {
      */
     public ArrayList<Image> searchImages(Metadata metaData){
         ArrayList<Image> returnImages = new ArrayList<>();
-        //returnImages = (ArrayList<Image>) images.stream().filter(i -> {if(i.getMetaData().equals(metaData))}).collect();
         for(Image i: images){
-            if(i.getMetaData().equals(metaData)){
+            if(i.getMetaData().equals(metaData)){ //if-statement will be something that can check if metadata of image equals metadata chosen by the user
                 returnImages.add(i);
             }
         }
