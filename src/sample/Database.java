@@ -45,7 +45,10 @@ public class Database {
         if(image != null) {
             statement = connect.prepareStatement("INSERT INTO image_table (title, path, tags, latitude, longitude, registered)VALUES(?,?,?,?,?,?)");
             statement.setString(1, title);
-            statement.setString(2, image.getFile().getAbsolutePath());
+
+            String path = image.getFile().getAbsolutePath();
+            path = path.replace("\\", "\\\\");
+            statement.setString(2, path);
 
             StringBuffer sb = new StringBuffer();
             for(String s : tags) {
@@ -72,12 +75,14 @@ public class Database {
 
     //Find out how to select a row that matches given path or id etc. Does not currently work.
     public void getImageInfoFromDatabase(Image image) {
+        String string = image.getFile().getAbsolutePath();
+        string = string.replace("\\", "\\\\");
+
         try {
-            String ImagePath = image.getFile().getPath();
             Class.forName("com.mysql.cj.jdbc.Driver");
             connect = DriverManager.getConnection(url, user, pass);
             Statement statement = connect.createStatement();
-            resultSet = statement.executeQuery("select * from image_table WHERE imagePath = path");
+            resultSet = statement.executeQuery("SELECT * FROM image_table WHERE path=''"); //Denne tar kun imot verdier, IKKE variabler
 
             while (resultSet.next()) {
                 int id = resultSet.getInt(1);
@@ -91,6 +96,7 @@ public class Database {
             }
 
         } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Error. ");
             e.printStackTrace();
 
         }
@@ -103,7 +109,7 @@ public class Database {
         list.add("test6");
         Image image = new Image(list, "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
         Database database = new Database();
-        database.uploadImageToDatabase(image, list, "TestImage");
+        //database.uploadImageToDatabase(image, list, "PathTest");
         database.getImageInfoFromDatabase(image);
 
         /*try {
