@@ -1,5 +1,6 @@
 package sample;
 
+import com.drew.metadata.MetadataException;
 import com.sun.javafx.iio.ImageMetadata;
 import sample.Java.Image;
 import sample.Java.ImageMetaData;
@@ -9,19 +10,20 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Database {
 
     private static Connection connect = null;
-    private static Statement statement = null;
+    private static PreparedStatement statement = null;
     private static ResultSet resultSet = null;
     private static String url = "jdbc:mysql://localhost:3306/connect_mysql_database";
     private static String user = "root";
     private static String pass = "123b1i64er0qx123";
 
     public Database() throws SQLException {
-        connect = DriverManager.getConnection(url, user, pass);
-        PreparedStatement statement = connect.prepareStatement("INSERT INTO image_table (id, title, path, tags, latitude, longitude, registered)VALUES(?,?,?,?,?,?,?)");
+        this.connect = DriverManager.getConnection(url, user, pass);
+        /*statement = connect.prepareStatement("INSERT INTO image_table (id, title, path, tags, latitude, longitude, registered)VALUES(?,?,?,?,?,?,?)");
         statement.setInt(1, 2);
         statement.setString(2, "TestTitle");
         statement.setString(3, "TestPath");
@@ -34,19 +36,32 @@ public class Database {
         if(a > 0) {
             System.out.println("Row updated.");
         }
+
+         */
     }
 
-    public void uploadImageToDatabase(Image image, String tags) {
-        image.getMetaData().getUniqueIdFromMetaData();
-        image.getFile().getAbsolutePath();
-        image.getMetaData().getGeoDataFromMetadata().getLatitude();
-        image.getMetaData().getGeoDataFromMetadata().getLongitude();
-        image.getMetaData().getTimeFromMetaData();
+    public void uploadImageToDatabase(Image image, String title, ArrayList<String> userTags) throws SQLException {
+        statement = connect.prepareStatement("INSERT INTO image_table (id, title, path, tags, latitude, longitude, registered)VALUE(?,?,?,?,?,?,?)");
+        statement.setInt(1, image.getMetaData().getUniqueIdFromMetaData());
+        statement.setString(2, title);
+        statement.setString(3, image.getFile().getAbsolutePath());
+        statement.setObject(4, userTags);
+        statement.setString(5, Double.toString(image.getMetaData().getGeoDataFromMetadata().getLatitude()));
+        statement.setString(6, Double.toString(image.getMetaData().getGeoDataFromMetadata().getLongitude()));
+        statement.setTimestamp(7, image.getMetaData().getTimeFromMetaData());
+
+        int a = statement.executeUpdate();
+        if(a > 0) {
+            System.out.println("Image added to database. ");
+        }
 
     }
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, MetadataException {
+        ArrayList<String> list = new ArrayList<>();
         Database database = new Database();
+        Image image = new Image(list, "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBilde1.jpg");
+        database.uploadImageToDatabase(image, "TestImage", "#Test, #Norway");
 
         /*try {
             Class.forName("com.mysql.cj.jdbc.Driver");
