@@ -213,17 +213,6 @@ public class ImageMetaData {
         return timestamp;
     }
 
-    public int getUniqueIdFromMetaData() {
-        int id;
-        ExifIFD0Directory exifIFD0Directory = metaData.getFirstDirectoryOfType(ExifIFD0Directory.class);
-        try {
-            id = (Integer) exifIFD0Directory.getObject(ExifIFD0Directory.TAG_IMAGE_UNIQUE_ID);
-        } catch (NullPointerException e) {
-            return -1;
-        }
-        return id;
-    }
-
     public GeoLocation getGeoDataFromMetadata() {
         GeoLocation geoLocation;
         GpsDirectory gpsDirectory = metaData.getFirstDirectoryOfType(GpsDirectory.class);
