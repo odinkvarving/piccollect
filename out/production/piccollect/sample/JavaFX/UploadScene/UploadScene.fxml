@@ -6,8 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -22,16 +20,12 @@
                <font>
                   <Font name="System Bold" size="24.0" />
                </font></Label>
-            <Button fx:id="backButton" onAction="#handleBackButtonClicked" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="84.0" style="-fx-background-color: transparent;" textFill="WHITE">
+            <Button fx:id="backButton" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" prefHeight="60.0" prefWidth="84.0" style="-fx-background-color: transparent;" styleClass="homeButton" stylesheets="@UploadSceneStyle.css" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="64.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/backButton.png" />
-                     </image>
-                  </ImageView>
+                  <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="50" />
                </graphic>
             </Button>
          </children>
@@ -45,7 +39,7 @@
                         <Font name="System Normal" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="browse" layoutX="200.0" layoutY="200.0" onMouseEntered="#handleHovered" onMouseClicked="#browseImages" text="browse" textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="161.0" AnchorPane.topAnchor="200.0">
+                  <Label fx:id="browse" layoutX="200.0" layoutY="200.0" onMouseClicked="#browseImages" onMouseEntered="#handleHovered" text="browse" textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="161.0" AnchorPane.topAnchor="200.0">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

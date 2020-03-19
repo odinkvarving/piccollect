@@ -44,6 +44,8 @@ public class UploadSceneController{
     @FXML
     private Button backButton;
 
+    private String uploadImagePath;
+
     @FXML
     private String browseImages() {
         FileChooser fc = new FileChooser();
