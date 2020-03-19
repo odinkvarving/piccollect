@@ -44,7 +44,7 @@ public class Database {
     public void uploadImageToDatabase(Image image, String tags, String title) throws SQLException {
         if(image != null) {
             PreparedStatement statement = connect.prepareStatement("INSERT INTO image_table (id, title, path, tags, latitude, longitude, registered)VALUES(?,?,?,?,?,?,?)");
-            statement.setInt(1, 13533);
+            statement.setInt(1, 124684);
             statement.setString(2, title);
             statement.setString(3, image.getFile().getAbsolutePath());
             statement.setObject(4, tags);
@@ -60,12 +60,16 @@ public class Database {
     }
 
     public static void main(String[] args) throws SQLException, MetadataException {
-        String tags = "randomTag";
+        String tags = "ereerwe";
         ArrayList<String> list = new ArrayList<>();
         Image image = new Image(list, "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
         Database database = new Database();
+<<<<<<< HEAD
         database.uploadImageToDatabase(image, tags, "Testing123");
 
+=======
+        database.uploadImageToDatabase(image, tags, "Testinggg");
+>>>>>>> OdinDatabase
         /*try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connect = DriverManager.getConnection(url, user, pass);
