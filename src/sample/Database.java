@@ -22,6 +22,7 @@ public class Database {
     private static String pass = "123b1i64er0qx123";
 
     public Database() throws SQLException {
+<<<<<<< HEAD
         this.connect = DriverManager.getConnection(url, user, pass);
         /*statement = connect.prepareStatement("INSERT INTO image_table (id, title, path, tags, latitude, longitude, registered)VALUES(?,?,?,?,?,?,?)");
         statement.setInt(1, 2);
@@ -54,15 +55,44 @@ public class Database {
         if(a > 0) {
             System.out.println("Image added to database. ");
         }
+=======
+        connect = DriverManager.getConnection(url, user, pass);
+    }
 
+    //Image can not be uploaded if some of the values have already been added to the database earlier. Deleting the row and re-adding the same values does not fix this problem. Look for fix.
+    public void uploadImageToDatabase(Image image, String tags, String title) throws SQLException {
+        if(image != null) {
+            PreparedStatement statement = connect.prepareStatement("INSERT INTO image_table (id, title, path, tags, latitude, longitude, registered)VALUES(?,?,?,?,?,?,?)");
+            statement.setInt(1, 13533);
+            statement.setString(2, title);
+            statement.setString(3, image.getFile().getAbsolutePath());
+            statement.setObject(4, tags);
+            statement.setString(5, Double.toString(image.getMetaData().getGeoDataFromMetadata().getLatitude()));
+            statement.setString(6, Double.toString(image.getMetaData().getGeoDataFromMetadata().getLongitude()));
+            statement.setTimestamp(7, image.getMetaData().getTimeFromMetaData());
+>>>>>>> OdinDatabase
+
+            int a = statement.executeUpdate();
+            if (a > 0) {
+                System.out.println("Image added to database. ");
+            }
+        }
     }
 
     public static void main(String[] args) throws SQLException, MetadataException {
+<<<<<<< HEAD
         ArrayList<String> list = new ArrayList<>();
         Database database = new Database();
         Image image = new Image(list, "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBilde1.jpg");
         database.uploadImageToDatabase(image, "TestImage", "#Test, #Norway");
 
+=======
+        String tags = "randomTag";
+        ArrayList<String> list = new ArrayList<>();
+        Image image = new Image(list, "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
+        Database database = new Database();
+        database.uploadImageToDatabase(image, tags, "Testing123");
+>>>>>>> OdinDatabase
         /*try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connect = DriverManager.getConnection(url, user, pass);
