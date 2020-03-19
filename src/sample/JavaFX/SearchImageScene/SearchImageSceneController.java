@@ -5,14 +5,19 @@ import javafx.beans.property.Property;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import sample.Java.Image;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,6 +31,9 @@ public class SearchImageSceneController implements Initializable {
     @FXML private TableColumn<Image, String> locationColumn;
     @FXML private TableColumn<Image, Date> dateColumn;
     @FXML private TableColumn<Image, ArrayList<String>> tagsColumn;
+
+    @FXML
+    private Button backButton;
 
 
     @Override
@@ -45,13 +53,14 @@ public class SearchImageSceneController implements Initializable {
         dateColumn.setCellValueFactory(new PropertyValueFactory<Image, Date>("date"));
         tagsColumn.setCellValueFactory(new PropertyValueFactory<Image, ArrayList<String>>("tags"));
 
-        table.setItems(getImages());
+        table.setItems(null);
     }
 
     /**
      * Dummy data just for testing for now
      * @return an observable list to populate the tableview
      */
+    /**
     private ObservableList<Image> getImages() throws MetadataException {
         ObservableList<Image> images = FXCollections.observableArrayList();
 
@@ -73,5 +82,17 @@ public class SearchImageSceneController implements Initializable {
             image.getImage().setFitHeight(100);
         });
         return images;
+    }
+    **/
+    public void handleBackButtonClicked(){
+        FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("../MainMenuScene/MainMenu.fxml"));
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        Scene scene;
+        try {
+            scene = new Scene(mainSceneLoader.load());
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

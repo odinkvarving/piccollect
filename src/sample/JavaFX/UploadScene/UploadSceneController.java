@@ -39,6 +39,9 @@ public class UploadSceneController{
     private Button cancelButton;
 
     @FXML
+    private Button backButton;
+
+    @FXML
     private String browseImages() {
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().addAll(
@@ -77,6 +80,18 @@ public class UploadSceneController{
 
         if(result.isPresent()){
             albumName = result.get();
+        }
+    }
+
+    public void handleBackButtonClicked(){
+        FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("../MainMenuScene/MainMenu.fxml"));
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        Scene scene;
+        try {
+            scene = new Scene(mainSceneLoader.load());
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
