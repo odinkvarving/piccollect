@@ -24,19 +24,24 @@
       </Pane>
       <VBox alignment="CENTER" layoutX="60.0" layoutY="114.0" prefHeight="486.0" prefWidth="464.0" spacing="20.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="114.0">
          <children>
-            <AnchorPane prefHeight="275.0" prefWidth="464.0" styleClass="dragAndDropArea" stylesheets="@UploadSceneStyle.css">
+            <AnchorPane fx:id="previewImagePane" prefHeight="275.0" prefWidth="464.0" styleClass="dragAndDropArea" stylesheets="@UploadSceneStyle.css">
                <children>
                   <Label layoutX="169.0" layoutY="158.0" text="Drop files to upload" textAlignment="CENTER" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="169.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="158.0">
                      <font>
                         <Font name="System Normal" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="169.0" layoutY="168.0" text="or browse" fx:id = "browse" onMouseClicked="#browseImages" underline = "true" textAlignment="CENTER" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="169.0" AnchorPane.rightAnchor="168.0" AnchorPane.topAnchor="188.0">
+                  <Label fx:id="browse" layoutX="200.0" layoutY="200.0" onMouseClicked="#browseImages" text="browse" textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="161.0" AnchorPane.topAnchor="200.0">
                      <font>
-                        <Font name="System Bold" size="14.0"/>
+                        <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
                   <FontAwesomeIcon fill="#a8a8a8" glyphName="CLOUD_UPLOAD" layoutX="203.0" layoutY="165.0" size="60" text="" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="202.71428680419922" AnchorPane.topAnchor="109.0" />
+                  <Label layoutX="172.0" layoutY="220.0" prefHeight="26.0" prefWidth="45.0" text="or" AnchorPane.bottomAnchor="118.0" AnchorPane.leftAnchor="172.0" AnchorPane.rightAnchor="283.0" AnchorPane.topAnchor="220.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <Label text="OR">
@@ -79,7 +84,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Button fx:id="createAlbumButton" onAction="#handleCreateAlbumButton" layoutX="340.0" layoutY="85.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="button2" stylesheets="@UploadSceneStyle.css" text="Create new album" textFill="WHITE">
+            <Button fx:id="createAlbumButton" layoutX="340.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleCreateAlbumButton" prefHeight="30.0" prefWidth="150.0" styleClass="button2" stylesheets="@UploadSceneStyle.css" text="Create new album" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
