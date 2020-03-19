@@ -45,7 +45,7 @@
                         <Font name="System Normal" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="browse" layoutX="200.0" layoutY="200.0" onMouseClicked="#browseImages" text="browse" textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="161.0" AnchorPane.topAnchor="200.0">
+                  <Label fx:id="browse" layoutX="200.0" layoutY="200.0" onMouseEntered="#handleHovered" onMouseClicked="#browseImages" text="browse" textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="161.0" AnchorPane.topAnchor="200.0">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

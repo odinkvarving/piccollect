@@ -1,5 +1,7 @@
 package sample.Java;
 
+import com.drew.metadata.Metadata;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -121,9 +123,14 @@ public class Album {
      * @param metaData: ArrayList of metadata
      * @return images
      */
-    public ArrayList<Image> searchImages(ArrayList<ImageMetaData> metaData){
-        ArrayList<Image> images = new ArrayList<>();
-        return images;
+    public ArrayList<Image> searchImages(Metadata metaData){
+        ArrayList<Image> returnImages = new ArrayList<>();
+        for(Image i: images){
+            if(i.getMetaData().equals(metaData)){ //if-statement will be something that can check if metadata of image equals metadata chosen by the user
+                returnImages.add(i);
+            }
+        }
+        return returnImages;
     }
 
     /**

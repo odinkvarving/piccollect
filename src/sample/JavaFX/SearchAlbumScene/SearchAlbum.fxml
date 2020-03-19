@@ -39,12 +39,12 @@
                   <Insets left="20.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField prefHeight="30.0" promptText="Type name">
+            <TextField fx:id="albumNameInput" prefHeight="30.0" promptText="Type name">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" prefWidth="300.0" text="Search">
+            <Button fx:id="albumSearchButton" mnemonicParsing="false" onAction="#handleAlbumSearchButtonClicked" prefWidth="300.0" style="-fx-cursor: pointer;" text="Search">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="30.0" />
                </VBox.margin>
@@ -83,10 +83,10 @@
             </Label>
          </children>
       </Pane>
-      <TableView layoutX="350.0" layoutY="208.0" prefHeight="372.0" prefWidth="684.0">
+      <TableView fx:id="albumTableView" layoutX="350.0" layoutY="208.0" prefHeight="372.0" prefWidth="684.0">
          <columns>
-            <TableColumn prefWidth="99.0" text="Name" />
-            <TableColumn prefWidth="584.0" text="Album" />
+            <TableColumn fx:id="nameColumn" prefWidth="99.0" text="Name" />
+            <TableColumn fx:id="albumColumn" prefWidth="584.0" text="Album" />
          </columns>
       </TableView>
    </children>
