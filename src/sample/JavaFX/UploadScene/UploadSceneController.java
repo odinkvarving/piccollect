@@ -3,6 +3,7 @@ package sample.JavaFX.UploadScene;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -11,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -22,7 +24,6 @@ public class UploadSceneController{
 
     @FXML
     private AnchorPane previewImagePane;
-
     @FXML
     private ChoiceBox albumChoiceBox;
     @FXML
@@ -37,6 +38,8 @@ public class UploadSceneController{
     private Button uploadButton;
     @FXML
     private Button cancelButton;
+    @FXML
+    Label browse;
 
     @FXML
     private String browseImages() {
@@ -54,6 +57,9 @@ public class UploadSceneController{
         return null;
     }
 
+    public void handleHovered() {
+        browse.setCursor(Cursor.HAND);
+    }
     public void handleUploadButtonClicked(){
 
     }
