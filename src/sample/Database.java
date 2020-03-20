@@ -17,9 +17,9 @@ public class Database {
     private static Connection connect = null;
     private static PreparedStatement statement = null;
     private static ResultSet resultSet = null;
-    private static String url = "jdbc:mysql://localhost:3306/connect_mysql_database";
-    private static String user = "root";
-    private static String pass = "123b1i64er0qx123";
+    private static String url = "jdbc:mysql://mysql-ait.stud.idi.ntnu.no:3306/odinkva";
+    private static String user = "odinkva";
+    private static String pass = "z5KnZxxu";
 
     public Database() throws SQLException {
         this.connect = DriverManager.getConnection(url, user, pass);
