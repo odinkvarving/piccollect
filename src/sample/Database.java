@@ -41,7 +41,7 @@ public class Database {
     }
 
     //ID is the primary key in the image_table, and will be auto-incremented to create a unique ID. We don't have to include this when adding values in the table. 
-    public void uploadImageToDatabase(Image image, ArrayList<String> tags, String title) throws SQLException {
+    public void uploadImageToDatabase(Image image, String title) throws SQLException {
         if(image != null) {
             statement = connect.prepareStatement("INSERT INTO image_table (title, path, tags, latitude, longitude, registered)VALUES(?,?,?,?,?,?)");
             statement.setString(1, title);
@@ -51,7 +51,7 @@ public class Database {
             statement.setString(2, path);
 
             StringBuffer sb = new StringBuffer();
-            for(String s : tags) {
+            for(String s : image.getTags()) {
                 sb.append(s);
                 sb.append(" ");
                 String str = sb.toString();

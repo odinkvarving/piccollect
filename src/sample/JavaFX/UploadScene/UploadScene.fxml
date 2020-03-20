@@ -39,7 +39,7 @@
                         <Font name="System Normal" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="browse" layoutX="200.0" layoutY="200.0" onMouseClicked="#browseImages" onMouseEntered="#handleHovered" text="browse" textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="161.0" AnchorPane.topAnchor="200.0">
+                  <Label fx:id="browse" layoutX="206.0" layoutY="221.0" onMouseClicked="#browseImages" onMouseEntered="#handleHovered" prefHeight="30.0" prefWidth="58.0" text="browse" textAlignment="CENTER" textFill="#1411bc" underline="true" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="206.0" AnchorPane.rightAnchor="218.0" AnchorPane.topAnchor="221.0">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -97,12 +97,12 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="uploadButton" layoutX="82.0" layoutY="406.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="185.0" styleClass="uploadButton" stylesheets="@UploadSceneStyle.css" text="Upload Image" textFill="WHITE">
+            <Button fx:id="uploadButton" layoutX="82.0" layoutY="406.0" mnemonicParsing="false" onAction="#handleUploadButtonClicked" prefHeight="40.0" prefWidth="185.0" styleClass="uploadButton" stylesheets="@UploadSceneStyle.css" text="Upload Image" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="cancelButton" layoutX="283.0" layoutY="411.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="135.0" styleClass="cancelButton" stylesheets="@UploadSceneStyle.css" text="Cancel" textFill="WHITE">
+            <Button fx:id="cancelButton" layoutX="283.0" layoutY="411.0" mnemonicParsing="false" onAction="#clearAllFields" prefHeight="35.0" prefWidth="135.0" styleClass="cancelButton" stylesheets="@UploadSceneStyle.css" text="Cancel" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
