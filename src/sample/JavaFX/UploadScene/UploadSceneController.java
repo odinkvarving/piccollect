@@ -202,6 +202,7 @@ public class UploadSceneController implements Initializable{
     /**
      * Code to clear all input fields. Gets called when upload or cancel button is pressed
      */
+    @FXML
     private void clearAllFields(){
         tagListView.getItems().clear();
         uploadImagePath = "";

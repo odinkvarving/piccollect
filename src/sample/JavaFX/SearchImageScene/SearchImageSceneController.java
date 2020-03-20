@@ -84,6 +84,11 @@ public class SearchImageSceneController implements Initializable {
         return images;
     }
     **/
+
+    /**
+     * A method for handling the backbutton.
+     * Sends you back to mainscene.
+     */
     public void handleBackButtonClicked(){
         FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("../MainMenuScene/MainMenu.fxml"));
         Stage stage = (Stage) backButton.getScene().getWindow();

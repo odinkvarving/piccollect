@@ -81,8 +81,10 @@ public class Database {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connect = DriverManager.getConnection(url, user, pass);
-            Statement statement = connect.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM image_table WHERE path=''"); //Denne tar kun imot verdier, IKKE variabler
+
+            PreparedStatement stmt = connect.prepareStatement("SELECT  * FROM image_table WHERE path = ?");
+            stmt.setString(1, string);
+            resultSet = stmt.executeQuery(); //Denne tar kun imot verdier, IKKE variabler
 
             while (resultSet.next()) {
                 int id = resultSet.getInt(1);

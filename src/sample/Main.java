@@ -9,9 +9,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import sample.Java.GeoConverter;
+import sample.Java.Image;
 import sample.Java.ImageMetaData;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -43,21 +46,19 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, sceneWidth, sceneHeight));
         primaryStage.show();
 
+        GeoConverter.reverseGeocoder(1, 1);
 
-/**
-        File testFile = new File("C:\\Users\\magnu\\OneDrive\\Skrivebord\\PiccollectApplication\\src\\sample\\testBildeGPS.jpg");
+
+        File testFile = new File("C:\\Users\\Player One\\Desktop\\piccollect\\src\\sample\\testBildeGPS.jpg");
         Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
 
-         for(Directory directory : testMetadata.getDirectories()){
-        System.out.println(directory);
-        }
+        ArrayList<String> testing = new ArrayList<>();
 
-        ImageMetaData test = new ImageMetaData(testFile);
-        System.out.println(test.getGeoDataFromMetadata());
-        System.out.println(testFile.toURI().toString());
-        ImageMetaData test = new ImageMetaData(testFile);
-        System.out.println(test.getGeoDataFromMetadata());
- **/
+        Image test = new Image(testing, "C:\\Users\\Player One\\Desktop\\piccollect\\src\\sample\\testBildeGPS.jpg");
+
+        GeoConverter.reverseGeocoder(test.getLocation().getLatitude(), test.getLocation().getLongitude());
+
+
 
 }
 
