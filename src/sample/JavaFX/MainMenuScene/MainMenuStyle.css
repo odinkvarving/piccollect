@@ -1,3 +1,7 @@
+.font{
+    -fx-font-family: Montserrat;
+}
+
 .button{
     -fx-background-color: #f3f3f3;
 }

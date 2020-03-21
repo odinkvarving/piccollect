@@ -14,12 +14,12 @@
     <children>
         <Pane prefHeight="200.0" prefWidth="800.0" style="-fx-background-color: #2d75e8;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="151.0" layoutY="58.0" text="Picollect" textFill="WHITE">
+                <Label fx:id="title" layoutX="151.0" layoutY="58.0" styleClass="font" stylesheets="@MainMenuStyle.css" text="Picollect" textFill="WHITE">
                     <font>
                         <Font size="57.0" />
                     </font>
                 </Label>
-                <Label layoutX="153.0" layoutY="132.0" text="An image organazing application" textFill="WHITE">
+                <Label fx:id="titleAddition" layoutX="153.0" layoutY="132.0" styleClass="font" stylesheets="@MainMenuStyle.css" text="An image organazing application" textFill="WHITE">
                     <font>
                         <Font size="16.0" />
                     </font>
