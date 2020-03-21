@@ -12,6 +12,11 @@ public class AlbumRegister {
         this.albumsSize = albums.size();
     }
 
+    public AlbumRegister(){
+        this.albums = new ArrayList<>();
+        this.albumsSize = albums.size();
+    }
+
     public ArrayList<Album> getAlbums() {
         return albums;
     }
