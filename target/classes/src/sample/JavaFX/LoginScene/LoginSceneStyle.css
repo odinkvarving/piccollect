@@ -1,0 +1,6 @@
+.linear-grad{
+    -fx-background-color: linear-gradient(to bottom left, #73a3ef, #2d75e8);
+}
+.loginBackground{
+    -fx-background-image: url("LoginSceneV2Background3.jpg");
+}

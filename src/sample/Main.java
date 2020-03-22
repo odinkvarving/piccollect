@@ -53,14 +53,14 @@ public class Main extends Application {
         GeoConverter.reverseGeocoder(1, 1);
 
 
-        File testFile = new File("C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
-        Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
+        //File testFile = new File("C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
+        //Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
 
         ArrayList<String> testing = new ArrayList<>();
 
-        Image test = new Image(testing, "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
+        //Image test = new Image(testing, "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
 
-        GeoConverter.reverseGeocoder(test.getLocation().getLatitude(), test.getLocation().getLongitude());
+        //GeoConverter.reverseGeocoder(test.getLocation().getLatitude(), test.getLocation().getLongitude());
 
 
 
