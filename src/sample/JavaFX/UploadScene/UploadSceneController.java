@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 
 public class UploadSceneController implements Initializable{
 
-    //private Database database = new Database();
+    private Database database = new Database();
 
     @FXML
     private AnchorPane previewImagePane;
@@ -89,7 +89,7 @@ public class UploadSceneController implements Initializable{
      * is clicked. Collects input from scene and sends it to the database
      * @return a boolean
      */
-    public boolean handleUploadButtonClicked(){
+    public boolean handleUploadButtonClicked() throws MetadataException, SQLException {
         Boolean noTagsOk;
         if(uploadImagePath.equals("")){
             showAlertDialog();
@@ -101,7 +101,7 @@ public class UploadSceneController implements Initializable{
                 return false;
             }
         }
-        //database.uploadImageToDatabase(new sample.Java.Image(collectListViewTags(), uploadImagePath), "Test");
+        database.uploadImageToDatabase(new sample.Java.Image(collectListViewTags(), uploadImagePath), "Test");
         clearAllFields();
         return true;
     }

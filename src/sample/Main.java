@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import sample.Java.GeoConverter;
@@ -23,9 +24,12 @@ public class Main extends Application {
     int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
      **/
 
+
     @Override
     public void start(Stage primaryStage) throws Exception{
+        Font.loadFont(getClass().getResourceAsStream("JavaFX/resources/Montserrat-Regular.ttf"), 18);
         Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainMenuScene/MainMenu.fxml"));
+
 
         // Responsive Design
         int sceneWidth = 1066;
