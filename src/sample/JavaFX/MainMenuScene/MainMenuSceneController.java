@@ -21,7 +21,18 @@ import java.util.ResourceBundle;
 
 public class MainMenuSceneController implements Initializable {
 
-
+    /**
+     * These are the object variables which is used in the controller.
+     * uploadImageButton
+     * searchImageButton
+     * albumsButton
+     * exitButton
+     * title
+     * titleAddition
+     * uploadScene
+     * searchScene
+     * albumScene
+     */
     @FXML
     Button uploadImageButton;
     @FXML
@@ -39,19 +50,35 @@ public class MainMenuSceneController implements Initializable {
     Scene searchScene;
     Scene albumScene;
 
-
+    /**
+     * handleUploadImageButton method displays uploadScene.
+     */
     public void handleUploadImageButton(){
         Stage stage = (Stage) uploadImageButton.getScene().getWindow();
         stage.setScene(uploadScene);
     }
+
+    /**
+     * handleSearchSceneButton method displays the searchScene.
+     */
     public void handleSearchSceneButton(){
         Stage stage = (Stage) uploadImageButton.getScene().getWindow();
         stage.setScene(searchScene);
     }
+
+    /**
+     * handleAlbumsButton method displays the albumScene.
+     */
     public void handleAlbumsButton(){
         Stage stage = (Stage) uploadImageButton.getScene().getWindow();
         stage.setScene(albumScene);
     }
+
+    /**
+     * handleExitButton method displays an alert which asks the user if he/she wants to exit the application.
+     * If the user clicks "OK", the application shuts down.
+     * If the user clicks "CANCEL" or closes the dialog box, the user will still be at mainMenuScene.
+     */
     public void handleExitButton(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Exit Application");
@@ -67,6 +94,11 @@ public class MainMenuSceneController implements Initializable {
         }
     }
 
+    /**
+     * initialize method loads and initializes the different fxml scenes.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

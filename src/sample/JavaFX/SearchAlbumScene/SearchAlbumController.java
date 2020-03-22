@@ -26,6 +26,16 @@ import java.util.ResourceBundle;
 
 
 public class SearchAlbumController implements Initializable {
+
+    /**
+     * These are the object variables of SearchAlbumController.
+     * albumSearchInput stores the input from the user.
+     * albumSearchButton makes the controller display the album which the user searched for.
+     * albumTableView displays all albums or the album the user has searched for.
+     * nameColumn is a column for albumName in albumTableView.
+     * albumColumn is a column which should display the first image of the album.
+     * albumRegister is just a test register, which will be replaced by a database or something.
+     */
     @FXML
     TextField albumSearchInput;
     @FXML
@@ -38,23 +48,31 @@ public class SearchAlbumController implements Initializable {
     TableColumn<Album, ArrayList<Image>> albumColumn;
     AlbumRegister albumRegister = new AlbumRegister();
 
+    /**
+     * This method runs when user presses "Search Album" in main scene. It initializes the class, and fills albumTableView with all albums in Database.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setAlbumTableViewColumnValues();
         albumTableView.setItems(fillAlbumTableView());
     }
 
+    /**
+     * This method runs when albumSearchButton is clicked. It will check if the input from the user is equal to any of the album names.
+     * If it is, the method will clear the albumTableView, and only add the correct album to the albumTableView.
+     * If none of the albums have the equivalent name, the method will display an alert.
+     */
     @FXML
     private void handleAlbumSearchButtonClicked(){
         for(Album album: albumRegister.getAlbums()){
             if(albumSearchInput.getText().equals(album.getAlbumName())){
-                //albums.add(album);
                 albumTableView.getItems().clear();
                 albumTableView.getItems().add(album);
                 break;
             }
         }
-        //String albumName = albumSearchInput.getText();
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Text field empty");
@@ -62,25 +80,33 @@ public class SearchAlbumController implements Initializable {
         alert.show();
     }
 
+    /**
+     * This method sets values to the columns in albumTableView.
+     */
     private void setAlbumTableViewColumnValues(){
         nameColumn.setCellValueFactory(new PropertyValueFactory<Album, String>("albumName"));
         albumColumn.setCellValueFactory(new PropertyValueFactory<Album, ArrayList<Image>>("images"));
     }
 
+    /**
+     * This method will make an ObservableList containing all albums in the Database.
+     * @return albums: ObservableList of albums
+     */
     private ObservableList<Album> fillAlbumTableView(){
         ObservableList<Album> albums = FXCollections.observableArrayList();
         albumRegister.getAlbums().forEach(a -> albums.add(a));
         return albums;
     }
 
-    private void getAlbums(){
-        ObservableList<Album> albums = FXCollections.observableArrayList();
-
-    }
-
+    /**
+     * A back button which will take the user back to the home page.
+     */
     @FXML
     private Button backButton;
 
+    /**
+     * This method will take the user back to the home page when backButton is clicked.
+     */
     public void handleBackButtonClicked(){
         FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("../MainMenuScene/MainMenu.fxml"));
         Stage stage = (Stage) backButton.getScene().getWindow();
