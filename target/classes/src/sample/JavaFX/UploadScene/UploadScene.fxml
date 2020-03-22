@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.UploadScene.UploadSceneController">
+   <children>
+      <Pane prefHeight="114.0" prefWidth="1066.0" style="-fx-background-color: #2D75E8;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="108.0" layoutY="40.0" text="Upload Image" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Label>
+            <Button fx:id="backButton" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" prefHeight="60.0" prefWidth="84.0" style="-fx-background-color: transparent;" styleClass="homeButton" stylesheets="@UploadSceneStyle.css" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="50" />
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+      <VBox alignment="CENTER" layoutX="60.0" layoutY="114.0" prefHeight="486.0" prefWidth="464.0" spacing="20.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="114.0">
+         <children>
+            <AnchorPane fx:id="previewImagePane" prefHeight="275.0" prefWidth="464.0" styleClass="dragAndDropArea" stylesheets="@UploadSceneStyle.css">
+               <children>
+                  <Label layoutX="169.0" layoutY="158.0" text="Drop files to upload" textAlignment="CENTER" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="169.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="158.0">
+                     <font>
+                        <Font name="System Normal" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="browse" layoutX="206.0" layoutY="221.0" onMouseClicked="#browseImages" onMouseEntered="#handleHovered" prefHeight="30.0" prefWidth="58.0" text="browse" textAlignment="CENTER" textFill="#1411bc" underline="true" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="206.0" AnchorPane.rightAnchor="218.0" AnchorPane.topAnchor="221.0">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIcon fill="#a8a8a8" glyphName="CLOUD_UPLOAD" layoutX="203.0" layoutY="165.0" size="60" text="" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="202.71428680419922" AnchorPane.topAnchor="109.0" />
+                  <Label layoutX="172.0" layoutY="220.0" prefHeight="26.0" prefWidth="45.0" text="or" AnchorPane.bottomAnchor="118.0" AnchorPane.leftAnchor="172.0" AnchorPane.rightAnchor="283.0" AnchorPane.topAnchor="220.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Label text="OR">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="25.0" prefWidth="428.0" spacing="20.0">
+               <children>
+                  <Label text="URL:">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField prefHeight="25.0" prefWidth="358.0" promptText="URL adress..." HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="533.0" layoutY="114.0" prefHeight="486.0" prefWidth="534.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="114.0">
+         <children>
+            <Label layoutX="82.0" layoutY="50.0" text="Album:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tagTextField" layoutX="82.0" layoutY="177.0" prefHeight="30.0" prefWidth="364.0" promptText="tag...." />
+            <Label layoutX="82.0" layoutY="148.0" text="Write all your tags:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="addTagButton" layoutX="460.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleAddTagButtonClicked" styleClass="button2" stylesheets="@UploadSceneStyle.css" text="+" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <ChoiceBox fx:id="albumChoiceBox" layoutX="82.0" layoutY="85.0" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #bebebe; -fx-border-radius: 3;" />
+            <Label layoutX="283.0" layoutY="90.0" text="Or">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="createAlbumButton" layoutX="340.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleCreateAlbumButton" prefHeight="30.0" prefWidth="150.0" styleClass="button2" stylesheets="@UploadSceneStyle.css" text="Create new album" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="uploadButton" layoutX="82.0" layoutY="406.0" mnemonicParsing="false" onAction="#handleUploadButtonClicked" prefHeight="40.0" prefWidth="185.0" styleClass="uploadButton" stylesheets="@UploadSceneStyle.css" text="Upload Image" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="cancelButton" layoutX="283.0" layoutY="411.0" mnemonicParsing="false" onAction="#clearAllFields" prefHeight="35.0" prefWidth="135.0" styleClass="cancelButton" stylesheets="@UploadSceneStyle.css" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
+            <ListView fx:id="tagListView" layoutX="82.0" layoutY="217.0" prefHeight="121.0" prefWidth="364.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
