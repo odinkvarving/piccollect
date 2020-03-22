@@ -74,7 +74,8 @@ public class Database {
     }
 
     //Find out how to select a row that matches given path or id etc. Does not currently work.
-    public void getImageInfoFromDatabase(Image image) {
+    public boolean getImageInfoFromDatabase(Image image) {
+        boolean success = true;
         String string = image.getFile().getAbsolutePath();
         string = string.replace("\\", "\\\\");
 
@@ -95,13 +96,15 @@ public class Database {
                 String longitude = resultSet.getString(6);
                 java.util.Date timestamp = resultSet.getTimestamp(7);
                 System.out.println(id + " " + title + " " + path + " " + tags + " " + latitude + " " + longitude + " " + timestamp);
+                success = true;
             }
 
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Error. ");
             e.printStackTrace();
+            success = false;
 
         }
+        return success;
     }
 
     public static void main(String[] args) throws SQLException, MetadataException {
@@ -111,7 +114,7 @@ public class Database {
         list.add("test6");
         Image image = new Image(list, "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
         Database database = new Database();
-        //database.uploadImageToDatabase(image, list, "PathTest");
+        //database.uploadImageToDatabase(image,"PathTest");
         database.getImageInfoFromDatabase(image);
 
         /*try {
