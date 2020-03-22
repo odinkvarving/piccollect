@@ -13,9 +13,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import sample.Database;
+import sample.Java.ImageV2;
+import sample.Java.ImageV2DAO;
 
-import java.awt.event.MouseEvent;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -26,8 +28,6 @@ import java.util.ResourceBundle;
 
 
 public class UploadSceneController implements Initializable{
-
-    private Database database = new Database();
 
     @FXML
     private AnchorPane previewImagePane;
@@ -101,7 +101,15 @@ public class UploadSceneController implements Initializable{
                 return false;
             }
         }
-        database.uploadImageToDatabase(new sample.Java.Image(collectListViewTags(), uploadImagePath), "Test");
+        String tags = "";
+        ArrayList<String> tagsList = collectListViewTags();
+        for(int i = 0; i < tagsList.size(); i ++){
+            tags += tagsList.get(i) + " ";
+        }
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Piccollect");
+        emf.createEntityManager();
+        ImageV2DAO imageV2DAO = new ImageV2DAO(emf);
+        imageV2DAO.storeNewImage(new ImageV2("MaggiebbTest", tags, uploadImagePath));
         clearAllFields();
         return true;
     }

@@ -8,7 +8,7 @@ public class GeoConverter {
 
 
 
-    public static void reverseGeocoder(double latitude, double longitude){
+    public static String reverseGeocoder(double latitude, double longitude){
         JOpenCageGeocoder jOpenCageGeocoder = new JOpenCageGeocoder("920cd22ea28d4d208d10b6b75e0bbbb6");
 
         JOpenCageReverseRequest request = new JOpenCageReverseRequest(latitude, longitude);
@@ -20,6 +20,6 @@ public class GeoConverter {
         // get the formatted address of the first result:
         String formattedAddress = response.getResults().get(0).getFormatted();
         // formattedAddress is now 'Travessera de Gràcia, 142, 08012 Barcelona, España'
-        System.out.println(formattedAddress);
+        return formattedAddress;
     }
 }

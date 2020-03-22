@@ -8,59 +8,16 @@ import java.util.ArrayList;
 public class Album {
     //An ArrayList with images
     private String albumName;
-    private ArrayList<Image> images;
 
-    public Album(String albumName, ArrayList<Image> images) {
+    public Album(String albumName) {
         this.albumName = albumName;
-        this.images = new ArrayList<>();
     }
 
     public String getAlbumName() {
         return albumName;
     }
-    public ArrayList<Image> getImages() {
-        return images;
-    }
 
-    /**
-     * Method to find all the images containing a certain tag
-     * @param tag
-     * @return returning a list of images containing the requested tag
-     */
-    public ArrayList<Image> findImagesByTag(String tag) {
-        ArrayList<Image> copy = new ArrayList<Image>();
-        for(int i = 0; i < this.images.size(); i++) {
-            if(this.images.get(i).checkTag(tag)) {
-                copy.add(this.images.get(i));
-            }
-        }
-        return copy;
-    }
 
-    /**
-     * The method will search for images by name
-     * @param name
-     * @return An image if found by name, or null
-     */
-    public Image findImageByName(String name){
-        for(Image image : images) {
-            if(image.getName().equals(name)) {
-                return image;
-            }
-        }
-        return null;
-    }
-    /**
-     * The method will upload an image
-     * @return true or false, depending on if the sequence was a success or not
-     */
-    public boolean uploadImage(Image image){
-        if(image == null) {
-            return false;
-        }
-        images.add(image);
-        return true;
-    }
 
     /**
      * The method will browse images on the users PC
@@ -80,33 +37,7 @@ public class Album {
     }
 
 
-    /**
-     * The method will search for images by using Location
-     * @param location
-     * @return An image if found by location, or null
-     */
-    public Image findImageByLocation(String location){
-        for(Image image : images) {
-            if(image.getLocation().equals(location)) {
-                return image;
-            }
-        }
-        return null;
-    }
 
-    /**
-     * The method will search for images by using date
-     * @param date
-     * @return An image if found by date, or null
-     */
-    public Image findImageByDate(LocalDate date){
-        for(Image image : images) {
-            if(image.getDate().equals(date)) {
-                return image;
-            }
-        }
-        return null;
-    }
 
     /**
      * The method will search for images by using criteria
@@ -118,20 +49,6 @@ public class Album {
         return criteria;
     }
 
-    /**
-     * searchImage() will search for all images with the equivalent metadata
-     * @param metaData: ArrayList of metadata
-     * @return images
-     */
-    public ArrayList<Image> searchImages(Metadata metaData){
-        ArrayList<Image> returnImages = new ArrayList<>();
-        for(Image i: images){
-            if(i.getMetaData().equals(metaData)){ //if-statement will be something that can check if metadata of image equals metadata chosen by the user
-                returnImages.add(i);
-            }
-        }
-        return returnImages;
-    }
 
     /**
      * makeAlbum() will make an album containing images the user have chosen
