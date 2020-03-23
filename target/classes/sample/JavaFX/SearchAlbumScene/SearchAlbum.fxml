@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ChoiceBox?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.SearchAlbumScene.SearchAlbumController">
    <children>
       <VBox layoutY="97.0" prefHeight="500.0" prefWidth="318.0" style="-fx-background-color: #ebe8f9;">
@@ -38,11 +39,11 @@
                   <Insets left="20.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="albumNameInput" prefHeight="30.0" promptText="Type name">
+            <ChoiceBox fx:id="albumChoiceBox" prefHeight="30.0" prefWidth="300" style="-fx-background-color: #ffffff; -fx-border-color: #bebebe; -fx-border-radius: 3;" >
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
-            </TextField>
+            </ChoiceBox>
             <Button fx:id="albumSearchButton" mnemonicParsing="false" onAction="#handleAlbumSearchButtonClicked" prefWidth="300.0" styleClass="searchButton" stylesheets="@SearchAlbumStyle.css" text="Search" textFill="WHITE">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="30.0" />
@@ -63,7 +64,7 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Label>
-            <Button fx:id="backButton" layoutX="25.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" style="-fx-background-color: transparent;" styleClass="homeButton" stylesheets="@SearchAlbumStyle.css">
+            <Button fx:id="backButton" layoutX="25.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" styleClass="homeButton" stylesheets="@SearchAlbumStyle.css">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="50" />
                </graphic>
@@ -78,10 +79,10 @@
             </Label>
          </children>
       </Pane>
-      <TableView fx:id="albumTableView" layoutX="350.0" layoutY="208.0" prefHeight="372.0" prefWidth="684.0">
+      <TableView fx:id="albumTableView" layoutX="350.0" layoutY="208.0" prefHeight="372.0" prefWidth="684.0" stylesheets="@SearchAlbumStyle.css">
          <columns>
-            <TableColumn fx:id="nameColumn" prefWidth="99.0" text="Name" />
-            <TableColumn fx:id="albumColumn" prefWidth="584.0" text="Album" />
+            <TableColumn fx:id="nameColumn" prefWidth="99.0" text="Name" style="-fx-cursor: hand;" styleClass="nameColumn"/>
+            <TableColumn fx:id="albumColumn" prefWidth="584.0" text="Album" style="-fx-cursor: hand;" styleClass="albumColumn"/>
          </columns>
       </TableView>
    </children>

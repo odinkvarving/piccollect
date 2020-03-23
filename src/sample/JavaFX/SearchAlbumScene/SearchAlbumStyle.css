@@ -12,6 +12,9 @@ img{
     -fx-background-color: #0C63CE;
     -fx-cursor: hand;
 }
+.homeButton{
+    -fx-background-color: transparent;
+}
 .homeButton:hover{
     -fx-cursor: hand;
 }
