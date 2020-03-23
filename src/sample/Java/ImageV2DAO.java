@@ -30,6 +30,7 @@ public class ImageV2DAO {
         }
     }
 
+
     /**
      * Metode for å lage og hente entitymanageren.
      *
@@ -53,7 +54,7 @@ public class ImageV2DAO {
     public static void main(String[] args) throws MetadataException {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Piccollect");
 
-        ImageV2 imageV2 = new ImageV2("BeachBoy", "Summer body cool", "C:\\Users\\Player One\\Desktop\\Piccollect-team9\\piccollect\\src\\sample\\testBildeGPS.jpg");
+        ImageV2 imageV2 = new ImageV2("SexYBoy", "Summer body cool", "C:\\Users\\Player One\\Desktop\\Piccollect-team9\\piccollect\\src\\sample\\testBildeGPS.jpg");
 
         EntityManager entityManager = emf.createEntityManager();
         entityManager.getTransaction().begin();

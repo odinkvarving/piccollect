@@ -1,63 +1,54 @@
 package sample.Java;
 
-import com.drew.metadata.Metadata;
 
-import java.time.LocalDate;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@Table(name="album_table")
 public class Album {
-    //An ArrayList with images
+
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @Column(name = "album_name")
     private String albumName;
 
-    public Album(String albumName) {
+    @ManyToMany(mappedBy = "albums")
+    private List<ImageV2> images = new ArrayList<>();
+
+    public Album(){}
+
+    public Album(String albumName){
         this.albumName = albumName;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getAlbumName() {
         return albumName;
     }
 
-
-
-    /**
-     * The method will browse images on the users PC
-     * @return the filepath of the image, or null
-     */
-    public String browseImage(){
-        SwingFileChooser fileChooser = new SwingFileChooser();
-        return fileChooser.browseFiles();
+    public void setAlbumName(String albumName) {
+        this.albumName = albumName;
     }
 
-    /**
-     * The method will drop an image into a box
-     * @return true or false, depending on if the sequence was a success or not
-     */
-    public boolean dropImage(){
-        return true;
+    public List<ImageV2> getImages() {
+        return images;
     }
 
-
-
-
-    /**
-     * The method will search for images by using criteria
-     * @param criteria
-     * @return criteria
-     */
-
-    public String findImageByCriteria(String criteria){
-        return criteria;
+    public void setImages(List<ImageV2> images) {
+        this.images = images;
     }
-
-
-    /**
-     * makeAlbum() will make an album containing images the user have chosen
-     * @param images: Images chosen by the user
-     * @return some sort of PDF
-     */
-    /*public PDF makeAlbum(ArrayList<Image> images){
-        return PDF;
-    }*/
 
 }
 
