@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class test {
     public static void main(String[] args) throws MetadataException {
 
-        SwingFileChooser fileChooser = new SwingFileChooser();
+        /**SwingFileChooser fileChooser = new SwingFileChooser();
 
         ArrayList<String> tags = new ArrayList<>();
         ArrayList<String> tags1 = new ArrayList<>();
@@ -19,7 +19,7 @@ public class test {
         if(path ==null) {
             System.out.println("you did not choose an image");
         }
-        Image image = new Image(tags,path);
+        Image image = new Image("asd",path);
         // image1 = new Image(tags,fileChooser.browseFiles());
 
         ArrayList<Image> images = new ArrayList<Image>();
@@ -30,6 +30,6 @@ public class test {
 
         System.out.println(image.getName());
         //System.out.println(image1.getName());
-        System.out.println(image.getDate());
+        System.out.println(image.getDate());**/
     }
 }
