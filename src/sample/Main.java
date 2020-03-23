@@ -1,15 +1,17 @@
 package sample;
 
 import com.drew.imaging.ImageMetadataReader;
+import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import sample.Java.GeoConverter;
-import sample.Java.ImageV2;
+import sample.Java.ImageMetaData;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -50,12 +52,14 @@ public class Main extends Application {
         GeoConverter.reverseGeocoder(1, 1);
 
 
-        File testFile = new File("C:\\Users\\Player One\\Desktop\\Piccollect-team9\\piccollect\\src\\sample\\testBildeGPS.jpg");
-        Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
+        //File testFile = new File("C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
+        //Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
 
-        ImageV2 test = new ImageV2("mAGNUS", "BEACH", "C:\\Users\\Player One\\Desktop\\Piccollect-team9\\piccollect\\src\\sample\\testBildeGPS.jpg");
-        System.out.println(test.getLocation());
+        ArrayList<String> testing = new ArrayList<>();
 
+        //Image test = new Image(testing, "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
+
+        //GeoConverter.reverseGeocoder(test.getLocation().getLatitude(), test.getLocation().getLongitude());
 
 
 
