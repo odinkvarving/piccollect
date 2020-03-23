@@ -32,14 +32,16 @@ public class SearchAlbumController implements Initializable {
     /**
      * These are the object variables of SearchAlbumController.
      * albumSearchInput stores the input from the user.
+     * albumChoiceBox lists all albums.
      * albumSearchButton makes the controller display the album which the user searched for.
      * albumTableView displays all albums or the album the user has searched for.
      * nameColumn is a column for albumName in albumTableView.
      * albumColumn is a column which should display the first image of the album.
      * albumRegister is just a test register, which will be replaced by a database or something.
+     * albums is an ArrayList containing all albums
      */
     @FXML
-    TextField albumSearchInput;
+    private ChoiceBox albumChoiceBox;
     @FXML
     Button albumSearchButton;
     @FXML
@@ -48,8 +50,10 @@ public class SearchAlbumController implements Initializable {
     TableColumn<Album, String> nameColumn;
     @FXML
     TableColumn<Album, ArrayList<ImageV2>> albumColumn;
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("Piccollect");
-    AlbumDAO albumDAO = new AlbumDAO(emf);
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("Piccollect");
+    private AlbumDAO albumDAO = new AlbumDAO(emf);
+    private ArrayList<Album> albums = (ArrayList<Album>) albumDAO.getAlbums();
+
 
     /**
      * This method runs when user presses "Search Album" in main scene. It initializes the class, and fills albumTableView with all albums in Database.
@@ -58,29 +62,43 @@ public class SearchAlbumController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadAlbumChoiceBox();
         setAlbumTableViewColumnValues();
         albumTableView.setItems(fillAlbumTableView());
     }
 
     /**
-     * This method runs when albumSearchButton is clicked. It will check if the input from the user is equal to any of the album names.
+     * This method runs when albumSearchButton is clicked. It will check if the album selected in albumChoiceBox is equal to any of the album names.
      * If it is, the method will clear the albumTableView, and only add the correct album to the albumTableView.
      * If none of the albums have the equivalent name, the method will display an alert.
      */
     @FXML
     private void handleAlbumSearchButtonClicked(){
-        /*for(Album album: albumRegister.getAlbums()){
-            if(albumSearchInput.getText().equals(album.getAlbumName())){
-                albumTableView.getItems().clear();
-                albumTableView.getItems().add(album);
-                break;
-            }
-        }*/
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Text field empty");
         alert.setContentText("You must type in a correct album name");
-        alert.show();
+
+        String albumChoice = (String) albumChoiceBox.getValue();
+        boolean albumChoiceBoxIsEmpty = albumChoiceBox.getSelectionModel().isEmpty();
+
+        if(albumChoiceBoxIsEmpty){
+            alert.show();
+        }
+        else{
+            for(Album album: albums){
+                if(albumChoice.equals("none")){
+                    alert.show();
+                    break;
+                }
+                if(albumChoice.equals(album.getAlbumName())){
+                    albumTableView.getItems().clear();
+                    albumTableView.getItems().add(album);
+                    System.out.println(albumChoice);
+                    break;
+                }
+            }
+        }
     }
 
     /**
@@ -88,7 +106,7 @@ public class SearchAlbumController implements Initializable {
      */
     private void setAlbumTableViewColumnValues(){
         nameColumn.setCellValueFactory(new PropertyValueFactory<Album, String>("albumName"));
-        albumColumn.setCellValueFactory(new PropertyValueFactory<Album, ArrayList<ImageV2>>("images"));
+        //albumColumn.setCellValueFactory(new PropertyValueFactory<Album, ArrayList<ImageV2>>("images"));
     }
 
     /**
@@ -99,6 +117,15 @@ public class SearchAlbumController implements Initializable {
         ObservableList<Album> albums = FXCollections.observableArrayList();
         //albumRegister.getAlbums().forEach(a -> albums.add(a));
         return albums;
+    }
+
+    /**
+     * Method for loading all the albums from database into the album choice box
+     */
+    private void loadAlbumChoiceBox(){
+        for(Album album : albums){
+            albumChoiceBox.getItems().add(album.getAlbumName());
+        }
     }
 
     /**
