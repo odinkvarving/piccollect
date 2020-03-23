@@ -65,10 +65,6 @@ public class ImageV2 {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getImageName() {
         return imageName;
     }
@@ -89,47 +85,23 @@ public class ImageV2 {
         return width;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
     public int getHeight() {
         return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
     }
 
     public String getFilePath() {
         return filePath;
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-
     public String getLocation() {
         return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public Date getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public List<Album> getAlbums() {
         return albums;
-    }
-
-    public void setAlbums(List<Album> albums) {
-        this.albums = albums;
     }
 }
