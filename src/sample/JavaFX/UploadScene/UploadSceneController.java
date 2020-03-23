@@ -124,10 +124,12 @@ public class UploadSceneController implements Initializable{
         for(int i = 0; i < tagsList.size(); i ++){
             tags += tagsList.get(i) + " ";
         }
-        //TODO gjør dette på penere måte, må nok ha try and catch greie ellrno greier
         EntityManagerFactory emf = getEntityManagerFactory();
         ImageV2DAO imageV2DAO = new ImageV2DAO(emf);
-        imageV2DAO.storeNewImage(new ImageV2(imageNameTextField.getText(), tags, uploadImagePath));
+
+        ImageV2 uploadImage = new ImageV2(imageNameTextField.getText(), tags, uploadImagePath);
+        imageV2DAO.storeNewImage(uploadImage, (Album) albumChoiceBox.getValue());
+
         clearAllFields();
         return true;
     }
@@ -150,6 +152,8 @@ public class UploadSceneController implements Initializable{
      */
     public void handleCreateAlbumButton(){
         String albumName;
+        AlbumDAO albumDAO = new AlbumDAO(Persistence.createEntityManagerFactory("Piccollect"));
+
         TextInputDialog albumDialog = new TextInputDialog();
         albumDialog.setTitle("Create new album");
         albumDialog.setHeaderText("Create a new album");
@@ -159,8 +163,22 @@ public class UploadSceneController implements Initializable{
 
         if(result.isPresent()){
             albumName = result.get();
-            //TODO code to send new album to database
+            albumDAO.storeNewAlbum(new Album(albumName));
+            ArrayList<Album> albumList = (ArrayList<Album>) albumDAO.getAlbums();
+            reloadAlbumChoiceBox(albumList);
         }
+    }
+
+    /**
+     * Method for reloading the album choicebox
+     * @param albums new list to be loaded into choicebox
+     */
+    private void reloadAlbumChoiceBox(ArrayList<Album> albums){
+        albumChoiceBox.getItems().clear();
+        for(Album album : albums){
+            albumChoiceBox.getItems().add(album.getAlbumName());
+        }
+        albumChoiceBox.setValue(albums.get(albums.size()-1));
     }
 
     /**
@@ -239,6 +257,7 @@ public class UploadSceneController implements Initializable{
         uploadImagePath = "";
         previewImagePane.getChildren().remove(uploadedImage);
         previewImagePane.setStyle("-fx-background-image: null");
+        imageNameTextField.clear();
     }
 
     /**
@@ -249,10 +268,14 @@ public class UploadSceneController implements Initializable{
         AlbumDAO albumDAO = new AlbumDAO(emf);
         ArrayList<Album> albums = (ArrayList<Album>) albumDAO.getAlbums();
         for(Album album : albums){
-            albumChoiceBox.getItems().add(album.getAlbumName());
+            albumChoiceBox.getItems().add(album);
         }
     }
 
+    /**
+     * Method for getting the entitymanagerfactory
+     * @return
+     */
     private EntityManagerFactory getEntityManagerFactory(){
         return Persistence.createEntityManagerFactory("Piccollect");
     }

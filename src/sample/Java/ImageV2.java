@@ -40,7 +40,7 @@ public class ImageV2 {
     @Column(name="date")
     private Date date;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private List<Album> albums = new ArrayList<>();
 
     public ImageV2(){}
