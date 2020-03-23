@@ -17,7 +17,7 @@ public class Album {
     @Column(name = "album_name")
     private String albumName;
 
-    @ManyToMany(mappedBy = "albums")
+    @ManyToMany(mappedBy = "albums", fetch = FetchType.EAGER)
     private List<ImageV2> images = new ArrayList<>();
 
     public Album(){}
@@ -50,5 +50,9 @@ public class Album {
         this.images = images;
     }
 
+    @Override
+    public String toString() {
+        return albumName;
+    }
 }
 

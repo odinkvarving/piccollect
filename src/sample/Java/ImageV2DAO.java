@@ -5,6 +5,7 @@ import com.drew.metadata.MetadataException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.awt.*;
 
 public class ImageV2DAO {
 
@@ -19,16 +20,21 @@ public class ImageV2DAO {
         this.emf = emf;
     }
 
-    public void storeNewImage(ImageV2 imageV2) {
+    public void storeNewImage(ImageV2 imageV2, Album album) {
         EntityManager em = getEM();
         try {
             em.getTransaction().begin();
+
+            imageV2.getAlbums().add(album);
+            album.getImages().add(imageV2);
+
             em.persist(imageV2);
             em.getTransaction().commit();
         } finally {
             closeEM(em);
         }
     }
+
 
 
     /**
