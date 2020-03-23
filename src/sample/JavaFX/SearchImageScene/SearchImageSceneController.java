@@ -1,6 +1,8 @@
 package sample.JavaFX.SearchImageScene;
 
 import com.drew.metadata.MetadataException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,7 +13,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import sample.Java.EMF;
 import sample.Java.ImageV2;
+import sample.Java.ImageV2DAO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,7 +26,7 @@ import java.util.ResourceBundle;
 public class SearchImageSceneController implements Initializable {
 
     @FXML private TableView<ImageV2> table;
-    @FXML private TableColumn<ImageV2, ImageView> imageColumn;
+    @FXML private TableColumn imageColumn;
     @FXML private TableColumn<ImageV2, String> nameColumn;
     @FXML private TableColumn<ImageV2, String> locationColumn;
     @FXML private TableColumn<ImageV2, Date> dateColumn;
@@ -31,9 +35,13 @@ public class SearchImageSceneController implements Initializable {
     @FXML
     private Button backButton;
 
+    ArrayList<ImageV2> allImages;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ImageV2DAO imageV2DAO = new ImageV2DAO(EMF.entityManagerFactory);
+        allImages = (ArrayList<ImageV2>) imageV2DAO.getImages();
         try {
             setColumnValues();
         } catch (MetadataException e) {
@@ -43,13 +51,17 @@ public class SearchImageSceneController implements Initializable {
     }
 
     private void setColumnValues() throws MetadataException {
-        imageColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, ImageView>("image"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, String>("name"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, String>("imageName"));
         locationColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, String>("location"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, Date>("date"));
         tagsColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, ArrayList<String>>("tags"));
 
-        table.setItems(null);
+        ObservableList<ImageV2> images = FXCollections.observableArrayList();
+        for(ImageV2 image : allImages){
+            images.add(image);
+        }
+
+        table.setItems(images);
     }
 
     /**

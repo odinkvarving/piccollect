@@ -241,13 +241,5 @@ public class ImageMetaData {
         System.err.println("EXCEPTION: " + exception);
     }
 
-    public static void main(String []args) throws MetadataException {
-        File testFile = new File("C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
-        ImageMetaData imageMetaData = new ImageMetaData(testFile);
-
-        GeoLocation geolocation = imageMetaData.getGeoDataFromMetadata();
-        System.out.println(imageMetaData.getTimeFromMetaData());
-
-    }
 }
 

@@ -5,7 +5,8 @@ import com.drew.metadata.MetadataException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.awt.*;
+import javax.persistence.Query;
+import java.util.List;
 
 public class ImageV2DAO {
 
@@ -35,6 +36,16 @@ public class ImageV2DAO {
         }
     }
 
+    public List<ImageV2> getImages(){
+        EntityManager em = getEM();
+        try {
+            Query q = em.createQuery("SELECT OBJECT(o) FROM ImageV2 o");
+            return q.getResultList();
+        }finally {
+            closeEM(em);
+        }
+    }
+
 
 
     /**
@@ -56,19 +67,5 @@ public class ImageV2DAO {
     }
 
 
-    //bare for testing
-    public static void main(String[] args) throws MetadataException {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Piccollect");
 
-        ImageV2 imageV2 = new ImageV2("SexYBoy", "Summer body cool", "C:\\Users\\Player One\\Desktop\\Piccollect-team9\\piccollect\\src\\sample\\testBildeGPS.jpg");
-
-        EntityManager entityManager = emf.createEntityManager();
-        entityManager.getTransaction().begin();
-
-        entityManager.persist(imageV2);
-        entityManager.getTransaction().commit();
-        System.out.println();
-
-        emf.close();
-    }
 }

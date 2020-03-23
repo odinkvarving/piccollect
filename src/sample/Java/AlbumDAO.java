@@ -56,44 +56,6 @@ public class AlbumDAO {
         if (em != null && em.isOpen()) em.close();
     }
 
-    public static void main(String[] args) throws MetadataException {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Piccollect");
-
-        Album all = new Album("none");
-        Album snow = new Album("Snow");
-        Album dogs = new Album("Dogs");
-
-        ImageV2 imageV2 = new ImageV2("SexYBoy", "Summer body cool", "C:\\Users\\Player One\\Desktop\\piccollect\\src\\sample\\testBildeGPS.jpg");
-        ImageV2 imageV22 = new ImageV2("HotBoyMan!", "Nature philosophy heres my key", "C:\\Users\\Player One\\Desktop\\piccollect\\src\\sample\\testBildeGPS.jpg");
-
-
-
-        EntityManager entityManager = emf.createEntityManager();
-        entityManager.getTransaction().begin();
-
-        entityManager.persist(all);
-
-        imageV2.getAlbums().add(all);
-        imageV2.getAlbums().add(snow);
-
-        snow.getImages().add(imageV2);
-        all.getImages().add(imageV2);
-
-
-        imageV22.getAlbums().add(dogs);
-        imageV22.getAlbums().add(snow);
-
-        snow.getImages().add(imageV22);
-        dogs.getImages().add(imageV22);
-
-        entityManager.persist(imageV22);
-        entityManager.persist(imageV2);
-
-        entityManager.getTransaction().commit();
-
-
-        emf.close();
-    }
 
 
 }
