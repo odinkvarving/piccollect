@@ -21,6 +21,7 @@ import javax.persistence.Persistence;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -64,15 +65,23 @@ public class UploadSceneController implements Initializable{
     @FXML
     private void browseImages() {
         FileChooser fc = new FileChooser();
-        fc.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Images", "*.jpg", "*.png", "*.gif"));
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Images", "*.jpg", "*.png", "*.gif"));
         File selectedFile = fc.showOpenDialog(null);
 
         if (selectedFile != null) {
             uploadedImage = new ImageView(new Image(selectedFile.toURI().toString()));
-            previewImagePane.getChildren().add(uploadedImage);
-            uploadedImage.setFitHeight(uploadedImage.getImage().getHeight()/3);
-            uploadedImage.setFitWidth(uploadedImage.getImage().getWidth()/3);
+            String uploadedImageURL = selectedFile.toURI().toString();
+            previewImagePane.setStyle(
+                    "-fx-background-image: url('" + uploadedImageURL + "');" +
+                    "-fx-background-position: center center;" +
+                    "-fx-background-repeat: no-repeat;" +
+                    "-fx-background-origin: padding-box;" +
+                    "-fx-background-size: contain;" + //or auto if the image should cover the background, but the size will increase aswell.
+                    "-fx-background-radius: 15;" +
+                    "-fx-border-radius: 15;");
+            //previewImagePane.getChildren().add(uploadedImage);
+            //uploadedImage.setFitHeight(uploadedImage.getImage().getHeight()/3);
+            //uploadedImage.setFitWidth(uploadedImage.getImage().getWidth()/3);
             uploadImagePath = selectedFile.getPath();
         }
     }
@@ -215,6 +224,7 @@ public class UploadSceneController implements Initializable{
         tagListView.getItems().clear();
         uploadImagePath = "";
         previewImagePane.getChildren().remove(uploadedImage);
+        previewImagePane.setStyle("-fx-background-image: null");
     }
 
     /**
