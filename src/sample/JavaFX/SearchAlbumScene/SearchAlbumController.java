@@ -17,8 +17,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.Java.Album;
+import sample.Java.AlbumDAO;
 import sample.Java.ImageV2;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -45,6 +48,8 @@ public class SearchAlbumController implements Initializable {
     TableColumn<Album, String> nameColumn;
     @FXML
     TableColumn<Album, ArrayList<ImageV2>> albumColumn;
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("Piccollect");
+    AlbumDAO albumDAO = new AlbumDAO(emf);
 
     /**
      * This method runs when user presses "Search Album" in main scene. It initializes the class, and fills albumTableView with all albums in Database.

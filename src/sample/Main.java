@@ -16,14 +16,21 @@ import sample.Java.ImageMetaData;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * The Main class has the task of launching the whole application.
+ */
 public class Main extends Application {
 
-    /**
+    /*
     int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
     int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
-     **/
+     */
 
-
+    /**
+     * start method is a method Main can run when extending Application. start method initializes the Application.
+     * @param primaryStage: The primary stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
         Font.loadFont(getClass().getResourceAsStream("JavaFX/resources/Montserrat-Regular.ttf"), 18);
@@ -33,17 +40,17 @@ public class Main extends Application {
         // Responsive Design
         int sceneWidth = 1066;
         int sceneHeight = 600;
-        /**
+        /*
         if (screenWidth <= 1280 && screenHeight <= 768) {
             sceneWidth = 1066;
             sceneHeight = 600;
 
         }
-         **/
-        /**else if (screenWidth <= 1920 && screenHeight <= 1080) {
+         */
+        /*else if (screenWidth <= 1920 && screenHeight <= 1080) {
             sceneWidth = 1422;
             sceneHeight = 800;
-        }**/
+        }*/
 
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, sceneWidth, sceneHeight));
@@ -65,7 +72,10 @@ public class Main extends Application {
 
 }
 
-
+    /**
+     * main method launches the Application, with help from start method.
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
