@@ -11,7 +11,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import sample.Java.GeoConverter;
-import sample.Java.Image;
 import sample.Java.ImageMetaData;
 
 import java.io.File;

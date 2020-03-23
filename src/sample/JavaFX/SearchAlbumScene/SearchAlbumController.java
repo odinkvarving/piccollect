@@ -17,8 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.Java.Album;
-import sample.Java.AlbumRegister;
-import sample.Java.Image;
+import sample.Java.ImageV2;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -45,8 +44,7 @@ public class SearchAlbumController implements Initializable {
     @FXML
     TableColumn<Album, String> nameColumn;
     @FXML
-    TableColumn<Album, ArrayList<Image>> albumColumn;
-    AlbumRegister albumRegister = new AlbumRegister();
+    TableColumn<Album, ArrayList<ImageV2>> albumColumn;
 
     /**
      * This method runs when user presses "Search Album" in main scene. It initializes the class, and fills albumTableView with all albums in Database.
@@ -66,13 +64,13 @@ public class SearchAlbumController implements Initializable {
      */
     @FXML
     private void handleAlbumSearchButtonClicked(){
-        for(Album album: albumRegister.getAlbums()){
+        /*for(Album album: albumRegister.getAlbums()){
             if(albumSearchInput.getText().equals(album.getAlbumName())){
                 albumTableView.getItems().clear();
                 albumTableView.getItems().add(album);
                 break;
             }
-        }
+        }*/
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Text field empty");
@@ -85,7 +83,7 @@ public class SearchAlbumController implements Initializable {
      */
     private void setAlbumTableViewColumnValues(){
         nameColumn.setCellValueFactory(new PropertyValueFactory<Album, String>("albumName"));
-        albumColumn.setCellValueFactory(new PropertyValueFactory<Album, ArrayList<Image>>("images"));
+        albumColumn.setCellValueFactory(new PropertyValueFactory<Album, ArrayList<ImageV2>>("images"));
     }
 
     /**
@@ -94,7 +92,7 @@ public class SearchAlbumController implements Initializable {
      */
     private ObservableList<Album> fillAlbumTableView(){
         ObservableList<Album> albums = FXCollections.observableArrayList();
-        albumRegister.getAlbums().forEach(a -> albums.add(a));
+        //albumRegister.getAlbums().forEach(a -> albums.add(a));
         return albums;
     }
 
