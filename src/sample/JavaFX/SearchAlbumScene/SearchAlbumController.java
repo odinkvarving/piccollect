@@ -1,10 +1,8 @@
 package sample.JavaFX.SearchAlbumScene;
 
 
-import com.drew.metadata.MetadataException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
@@ -20,8 +18,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.Java.Album;
-import sample.Java.AlbumRegister;
-import sample.Java.Image;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -38,7 +34,7 @@ public class SearchAlbumController implements Initializable {
     @FXML
     TableColumn<Album, String> nameColumn;
     @FXML
-    TableColumn<Album, ArrayList<Image>> albumColumn;
+    //TableColumn<Album, ArrayList<Image>> albumColumn;
     //AlbumRegister albumRegister = new AlbumRegister(new ArrayList<Album>(new Album("Dog", new ArrayList<Image>())));
 
     @Override
@@ -55,7 +51,7 @@ public class SearchAlbumController implements Initializable {
 
     private void setAlbumTableViewColumnValues(){
         nameColumn.setCellValueFactory(new PropertyValueFactory<Album, String>("albumName"));
-        albumColumn.setCellValueFactory(new PropertyValueFactory<Album, ArrayList<Image>>("images"));
+        //albumColumn.setCellValueFactory(new PropertyValueFactory<Album, ArrayList<Image>>("images"));
     }
 
     private void getAlbums(){

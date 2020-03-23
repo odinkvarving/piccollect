@@ -1,17 +1,18 @@
 package sample;
 
 import com.drew.imaging.ImageMetadataReader;
-import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Screen;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import sample.Java.ImageMetaData;
+import sample.Java.GeoConverter;
+import sample.Java.ImageV2;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -20,9 +21,12 @@ public class Main extends Application {
     int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
      **/
 
+
     @Override
     public void start(Stage primaryStage) throws Exception{
+        Font.loadFont(getClass().getResourceAsStream("JavaFX/resources/Montserrat-Regular.ttf"), 18);
         Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainMenuScene/MainMenu.fxml"));
+
 
         // Responsive Design
         int sceneWidth = 1066;
@@ -43,21 +47,17 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, sceneWidth, sceneHeight));
         primaryStage.show();
 
+        GeoConverter.reverseGeocoder(1, 1);
 
-/**
-        File testFile = new File("C:\\Users\\magnu\\OneDrive\\Skrivebord\\PiccollectApplication\\src\\sample\\testBildeGPS.jpg");
+
+        File testFile = new File("C:\\Users\\Player One\\Desktop\\Piccollect-team9\\piccollect\\src\\sample\\testBildeGPS.jpg");
         Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
 
-         for(Directory directory : testMetadata.getDirectories()){
-        System.out.println(directory);
-        }
+        ImageV2 test = new ImageV2("mAGNUS", "BEACH", "C:\\Users\\Player One\\Desktop\\Piccollect-team9\\piccollect\\src\\sample\\testBildeGPS.jpg");
+        System.out.println(test.getLocation());
 
-        ImageMetaData test = new ImageMetaData(testFile);
-        System.out.println(test.getGeoDataFromMetadata());
-        System.out.println(testFile.toURI().toString());
-        ImageMetaData test = new ImageMetaData(testFile);
-        System.out.println(test.getGeoDataFromMetadata());
- **/
+
+
 
 }
 

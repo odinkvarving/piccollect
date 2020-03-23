@@ -7,8 +7,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import sample.Main;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -25,6 +30,10 @@ public class MainMenuSceneController implements Initializable {
     Button albumsButton;
     @FXML
     Button exitButton;
+    @FXML
+    Label title;
+    @FXML
+    Label titleAddition;
 
     Scene uploadScene;
     Scene searchScene;
@@ -60,6 +69,7 @@ public class MainMenuSceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         //Initialzes the upload scene
         FXMLLoader uploadSceneLoader = new FXMLLoader(getClass().getResource("../UploadScene/UploadScene.fxml"));
         try {
