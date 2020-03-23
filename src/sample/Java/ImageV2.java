@@ -6,7 +6,9 @@ import com.sun.xml.fastinfoset.tools.FI_DOM_Or_XML_DOM_SAX_SAXEvent;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "image_table")
@@ -38,6 +40,9 @@ public class ImageV2 {
     @Column(name="date")
     private Date date;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Album> albums = new ArrayList<>();
+
     public ImageV2(){}
 
     public ImageV2(String imageName, String tags, String filePath) throws MetadataException {
@@ -47,18 +52,14 @@ public class ImageV2 {
         this.filePath = filePath;
         this.width = imageMetaData.getWidthFromMetadata();
         this.height = imageMetaData.getHeightFromMetadata();
-        this.location = GeoConverter.reverseGeocoder(imageMetaData.getGeoDataFromMetadata().getLatitude(), imageMetaData.getGeoDataFromMetadata().getLongitude());
+        try {
+            this.location = GeoConverter.reverseGeocoder(imageMetaData.getGeoDataFromMetadata().getLatitude(), imageMetaData.getGeoDataFromMetadata().getLongitude());
+        }catch (NullPointerException e){
+            this.location = "No location found";
+        }
         this.date = imageMetaData.getDateFromMetaData();
     }
 
-    private void getMetaData() throws MetadataException {
-        ImageMetaData imageMetaData = new ImageMetaData(new File(filePath));
-
-        this.width = imageMetaData.getWidthFromMetadata();
-        this.height = imageMetaData.getHeightFromMetadata();
-        this.location = GeoConverter.reverseGeocoder(imageMetaData.getGeoDataFromMetadata().getLatitude(), imageMetaData.getGeoDataFromMetadata().getLongitude());
-        this.date = imageMetaData.getDateFromMetaData();
-    }
 
     public Integer getId() {
         return id;
@@ -122,5 +123,13 @@ public class ImageV2 {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public List<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<Album> albums) {
+        this.albums = albums;
     }
 }

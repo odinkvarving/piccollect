@@ -13,6 +13,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import sample.Java.Album;
+import sample.Java.AlbumDAO;
 import sample.Java.ImageV2;
 import sample.Java.ImageV2DAO;
 
@@ -23,6 +25,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -31,6 +34,8 @@ public class UploadSceneController implements Initializable{
 
     @FXML
     private AnchorPane previewImagePane;
+    @FXML
+    private TextField imageNameTextField;
     @FXML
     private ChoiceBox albumChoiceBox;
     @FXML
@@ -89,10 +94,14 @@ public class UploadSceneController implements Initializable{
      * is clicked. Collects input from scene and sends it to the database
      * @return a boolean
      */
-    public boolean handleUploadButtonClicked() throws MetadataException, SQLException {
+    public boolean handleUploadButtonClicked() throws MetadataException {
         Boolean noTagsOk;
         if(uploadImagePath.equals("")){
-            showAlertDialog();
+            showAlertDialog("image");
+            return false;
+        }
+        else if(imageNameTextField.getText().trim().equals("")){
+            showAlertDialog("imageName");
             return false;
         }
         else if(collectListViewTags().size() == 0){
@@ -106,10 +115,10 @@ public class UploadSceneController implements Initializable{
         for(int i = 0; i < tagsList.size(); i ++){
             tags += tagsList.get(i) + " ";
         }
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Piccollect");
-        emf.createEntityManager();
+        //TODO gjør dette på penere måte, må nok ha try and catch greie ellrno greier
+        EntityManagerFactory emf = getEntityManagerFactory();
         ImageV2DAO imageV2DAO = new ImageV2DAO(emf);
-        imageV2DAO.storeNewImage(new ImageV2("MaggiebbTest", tags, uploadImagePath));
+        imageV2DAO.storeNewImage(new ImageV2(imageNameTextField.getText(), tags, uploadImagePath));
         clearAllFields();
         return true;
     }
@@ -177,11 +186,16 @@ public class UploadSceneController implements Initializable{
     /**
      * Shows alert dialog, used when user did not select an image
      */
-    public void showAlertDialog(){
+    public void showAlertDialog(String alertType){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Error");
         alert.setHeaderText(null);
-        alert.setContentText("You have to select and image!");
+        if(alertType.equals("image")){
+            alert.setContentText("You have to select and image!");
+        }
+        if(alertType.equals("imageName")){
+            alert.setContentText("You have to enter image name!");
+        }
 
         alert.showAndWait();
     }
@@ -221,8 +235,18 @@ public class UploadSceneController implements Initializable{
      * Method for loading all the albums from database into the album choice box
      */
     private void loadAlbumChoiceBox(){
-        //TODO code to add items in the choicebox
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Piccollect");
+        AlbumDAO albumDAO = new AlbumDAO(emf);
+        ArrayList<Album> albums = (ArrayList<Album>) albumDAO.getAlbums();
+        for(Album album : albums){
+            albumChoiceBox.getItems().add(album.getAlbumName());
+        }
     }
+
+    private EntityManagerFactory getEntityManagerFactory(){
+        return Persistence.createEntityManagerFactory("Piccollect");
+    }
+
 
     /**
      * Initialize method that gets run when the scene is loaded.
