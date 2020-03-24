@@ -15,6 +15,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sample.Java.*;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -55,6 +58,7 @@ public class UploadSceneController implements Initializable{
     //Variables that holds the current uploaded image and its path
     private String uploadImagePath = "";
     private ImageView uploadedImage;
+    private File file = null;
 
     public UploadSceneController() throws SQLException {
     }
@@ -69,6 +73,7 @@ public class UploadSceneController implements Initializable{
         File selectedFile = fc.showOpenDialog(null);
 
         if (selectedFile != null) {
+            file = selectedFile;
             uploadedImage = new ImageView(new Image(selectedFile.toURI().toString()));
             String uploadedImageURL = selectedFile.toURI().toString();
             previewImagePane.setStyle(
@@ -121,11 +126,32 @@ public class UploadSceneController implements Initializable{
         }
         ImageV2DAO imageV2DAO = new ImageV2DAO(EMF.entityManagerFactory);
 
-        ImageV2 uploadImage = new ImageV2(imageNameTextField.getText(), tags, uploadImagePath);
+        saveImageToFolder();
+        String filePath = createImagePath();
+
+        ImageV2 uploadImage = new ImageV2(imageNameTextField.getText(), tags, filePath);
         imageV2DAO.storeNewImage(uploadImage, (Album) albumChoiceBox.getValue());
 
         clearAllFields();
         return true;
+    }
+
+    public void saveImageToFolder(){
+        try{
+            BufferedImage image = ImageIO.read(file);
+            ImageIO.write(image, findFormat().toUpperCase(), new File(createImagePath()));
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    private String createImagePath(){
+        String location = "C:/PiccollectPictures/" + file.getName();
+        return location;
+    }
+
+    private String findFormat(){
+        String[] splittedPath = (file.getName()).split("[.]");
+        return splittedPath[splittedPath.length-1];
     }
 
     /**
@@ -187,6 +213,7 @@ public class UploadSceneController implements Initializable{
         }
         return tagsList;
     }
+
 
     /**
      * A method for handling the backbutton.

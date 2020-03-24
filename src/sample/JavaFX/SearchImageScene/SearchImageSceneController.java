@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 public class SearchImageSceneController implements Initializable {
 
     @FXML private TableView<ImageV2> table;
-    @FXML private TableColumn imageColumn;
+    @FXML private TableColumn<ImageV2, ImageView> imageColumn;
     @FXML private TableColumn<ImageV2, String> nameColumn;
     @FXML private TableColumn<ImageV2, String> locationColumn;
     @FXML private TableColumn<ImageV2, Date> dateColumn;
@@ -51,6 +51,7 @@ public class SearchImageSceneController implements Initializable {
     }
 
     private void setColumnValues() throws MetadataException {
+        imageColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, ImageView>("image"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, String>("imageName"));
         locationColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, String>("location"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, Date>("date"));
