@@ -18,6 +18,7 @@ import sample.Java.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -126,10 +127,13 @@ public class UploadSceneController implements Initializable{
         }
         ImageV2DAO imageV2DAO = new ImageV2DAO(EMF.entityManagerFactory);
 
-        saveImageToFolder();
         String filePath = createImagePath();
 
-        ImageV2 uploadImage = new ImageV2(imageNameTextField.getText(), tags, filePath);
+        ImageMetaData imageMetaData = new ImageMetaData(file);
+
+        ImageV2 uploadImage = new ImageV2(imageNameTextField.getText(), tags, filePath, imageMetaData);
+        saveImageToFolder();
+
         imageV2DAO.storeNewImage(uploadImage, (Album) albumChoiceBox.getValue());
 
         clearAllFields();

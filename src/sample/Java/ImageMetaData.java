@@ -219,6 +219,7 @@ public class ImageMetaData {
         try {
             geoLocation = gpsDirectory.getGeoLocation();
         }catch (NullPointerException e){
+            System.out.println("HER ER FEILEN");
             return null;
         }
         return geoLocation;
