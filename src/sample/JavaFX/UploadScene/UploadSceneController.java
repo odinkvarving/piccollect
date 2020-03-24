@@ -196,7 +196,7 @@ public class UploadSceneController implements Initializable{
     private void reloadAlbumChoiceBox(ArrayList<Album> albums){
         albumChoiceBox.getItems().clear();
         for(Album album : albums){
-            albumChoiceBox.getItems().add(album.getAlbumName());
+            albumChoiceBox.getItems().add(album);
         }
         albumChoiceBox.setValue(albums.get(albums.size()-1));
     }
