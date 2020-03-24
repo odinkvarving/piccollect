@@ -59,7 +59,7 @@ public class UploadSceneController implements Initializable{
     //Variables that holds the current uploaded image and its path
     private String uploadImagePath = "";
     private ImageView uploadedImage;
-    private File file = null;
+
 
     public UploadSceneController() throws SQLException {
     }
@@ -74,7 +74,6 @@ public class UploadSceneController implements Initializable{
         File selectedFile = fc.showOpenDialog(null);
 
         if (selectedFile != null) {
-            file = selectedFile;
             uploadedImage = new ImageView(new Image(selectedFile.toURI().toString()));
             String uploadedImageURL = selectedFile.toURI().toString();
             previewImagePane.setStyle(
@@ -127,12 +126,7 @@ public class UploadSceneController implements Initializable{
         }
         ImageV2DAO imageV2DAO = new ImageV2DAO(EMF.entityManagerFactory);
 
-        String filePath = createImagePath();
-
-        ImageMetaData imageMetaData = new ImageMetaData(file);
-
-        ImageV2 uploadImage = new ImageV2(imageNameTextField.getText(), tags, filePath, imageMetaData);
-        saveImageToFolder();
+        ImageV2 uploadImage = new ImageV2(imageNameTextField.getText(), tags, uploadImagePath);
 
         imageV2DAO.storeNewImage(uploadImage, (Album) albumChoiceBox.getValue());
 
@@ -140,37 +134,7 @@ public class UploadSceneController implements Initializable{
         return true;
     }
 
-    /**
-     * Method for saving the image to a spesific folder so the picture can be found again
-     * on different computers given that everyone has the same pictures in the file, which we can try
-     * to fix later
-     */
-    public void saveImageToFolder(){
-        try{
-            BufferedImage image = ImageIO.read(file);
-            ImageIO.write(image, findFormat().toUpperCase(), new File(createImagePath()));
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }
 
-    /**
-     * Method for creating the path where the stored images should be in
-     * @return String path
-     */
-    private String createImagePath(){
-        String location = "C:/PiccollectPictures/" + file.getName();
-        return location;
-    }
-
-    /**
-     * Method for finding the format of the file
-     * @return String format
-     */
-    private String findFormat(){
-        String[] splittedPath = (file.getName()).split("[.]");
-        return splittedPath[splittedPath.length-1];
-    }
 
     /**
      * Method for handling when the "+" button is

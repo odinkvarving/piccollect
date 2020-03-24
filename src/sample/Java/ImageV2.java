@@ -52,8 +52,8 @@ public class ImageV2 {
 
     public ImageV2(){}
 
-    public ImageV2(String imageName, String tags, String filePath, ImageMetaData imd) throws MetadataException {
-        ImageMetaData imageMetaData = imd;
+    public ImageV2(String imageName, String tags, String filePath) throws MetadataException {
+        ImageMetaData imageMetaData = new ImageMetaData(new File(filePath));
         this.imageName = imageName;
         this.tags = tags;
         this.filePath = filePath;
@@ -72,10 +72,9 @@ public class ImageV2 {
         ImageView imageView = null;
         try {
             FileInputStream input = new FileInputStream(filePath);
-            image = new Image(input);
+            image = new Image(input, 60, 60, true, false);
             imageView = new ImageView(image);
-            imageView.setFitHeight(60);
-            imageView.setFitWidth(60);
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

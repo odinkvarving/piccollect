@@ -17,6 +17,8 @@ import sample.Java.EMF;
 import sample.Java.ImageV2;
 import sample.Java.ImageV2DAO;
 
+import javax.swing.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ import java.util.ResourceBundle;
 public class SearchImageSceneController implements Initializable {
 
     @FXML private TableView<ImageV2> table;
-    @FXML private TableColumn<ImageV2, ImageView> imageColumn;
+    @FXML private TableColumn<ImageV2, ImageIcon> imageColumn;
     @FXML private TableColumn<ImageV2, String> nameColumn;
     @FXML private TableColumn<ImageV2, String> locationColumn;
     @FXML private TableColumn<ImageV2, Date> dateColumn;
@@ -51,7 +53,7 @@ public class SearchImageSceneController implements Initializable {
     }
 
     private void setColumnValues() throws MetadataException {
-        imageColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, ImageView>("image"));
+        imageColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, ImageIcon>("image"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, String>("imageName"));
         locationColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, String>("location"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, Date>("date"));
