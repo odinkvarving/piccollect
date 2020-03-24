@@ -136,6 +136,11 @@ public class UploadSceneController implements Initializable{
         return true;
     }
 
+    /**
+     * Method for saving the image to a spesific folder so the picture can be found again
+     * on different computers given that everyone has the same pictures in the file, which we can try
+     * to fix later
+     */
     public void saveImageToFolder(){
         try{
             BufferedImage image = ImageIO.read(file);
@@ -144,11 +149,20 @@ public class UploadSceneController implements Initializable{
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
+
+    /**
+     * Method for creating the path where the stored images should be in
+     * @return String path
+     */
     private String createImagePath(){
         String location = "C:/PiccollectPictures/" + file.getName();
         return location;
     }
 
+    /**
+     * Method for finding the format of the file
+     * @return String format
+     */
     private String findFormat(){
         String[] splittedPath = (file.getName()).split("[.]");
         return splittedPath[splittedPath.length-1];
