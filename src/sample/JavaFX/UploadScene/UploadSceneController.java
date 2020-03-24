@@ -308,6 +308,7 @@ public class UploadSceneController implements Initializable{
         for(Album album : albums){
             albumChoiceBox.getItems().add(album);
         }
+        albumChoiceBox.setValue(albums.get(0));
     }
 
 
