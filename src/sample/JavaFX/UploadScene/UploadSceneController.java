@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sample.Java.*;
+import sample.Main;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -124,7 +125,7 @@ public class UploadSceneController implements Initializable{
         for(int i = 0; i < tagsList.size(); i ++){
             tags += tagsList.get(i) + " ";
         }
-        ImageV2DAO imageV2DAO = new ImageV2DAO(EMF.entityManagerFactory);
+        ImageV2DAO imageV2DAO = new ImageV2DAO(Main.entityManagerFactory);
 
         ImageV2 uploadImage = new ImageV2(imageNameTextField.getText(), tags, uploadImagePath);
 
@@ -154,7 +155,7 @@ public class UploadSceneController implements Initializable{
      */
     public void handleCreateAlbumButton(){
         String albumName;
-        AlbumDAO albumDAO = new AlbumDAO(EMF.entityManagerFactory);
+        AlbumDAO albumDAO = new AlbumDAO(Main.entityManagerFactory);
 
         TextInputDialog albumDialog = new TextInputDialog();
         albumDialog.setTitle("Create new album");
@@ -267,7 +268,7 @@ public class UploadSceneController implements Initializable{
      * Method for loading all the albums from database into the album choice box
      */
     private void loadAlbumChoiceBox(){
-        AlbumDAO albumDAO = new AlbumDAO(EMF.entityManagerFactory);
+        AlbumDAO albumDAO = new AlbumDAO(Main.entityManagerFactory);
         ArrayList<Album> albums = (ArrayList<Album>) albumDAO.getAlbums();
         for(Album album : albums){
             albumChoiceBox.getItems().add(album);

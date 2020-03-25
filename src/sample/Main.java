@@ -24,6 +24,8 @@ import java.util.ArrayList;
  */
 public class Main extends Application {
 
+    public static EntityManagerFactory entityManagerFactory;
+
     /*
     int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
     int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
@@ -36,6 +38,7 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception{
+        entityManagerFactory = Persistence.createEntityManagerFactory("Piccollect");
         Font.loadFont(getClass().getResourceAsStream("JavaFX/resources/Montserrat-Regular.ttf"), 18);
         Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainMenuScene/MainMenu.fxml"));
 
