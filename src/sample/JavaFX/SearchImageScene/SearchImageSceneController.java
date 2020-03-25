@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import sample.Java.DatabaseConnection;
 import sample.Java.ImageV2;
 import sample.Java.ImageV2DAO;
 import sample.Main;
@@ -66,7 +67,7 @@ public class SearchImageSceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ImageV2DAO imageV2DAO = new ImageV2DAO(Main.entityManagerFactory);
+        ImageV2DAO imageV2DAO = new ImageV2DAO(DatabaseConnection.getInstance().getEntityManagerFactory());
         allImages = (ArrayList<ImageV2>) imageV2DAO.getImages();
         try {
             setColumnValues();

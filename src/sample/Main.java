@@ -1,22 +1,14 @@
 package sample;
 
-import com.drew.imaging.ImageMetadataReader;
-import com.drew.metadata.Directory;
-import com.drew.metadata.Metadata;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
+import sample.Java.DatabaseConnection;
 import sample.Java.GeoConverter;
-import sample.Java.ImageMetaData;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -24,7 +16,6 @@ import java.util.ArrayList;
  */
 public class Main extends Application {
 
-    public static EntityManagerFactory entityManagerFactory;
 
     /*
     int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
@@ -38,7 +29,6 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception{
-        entityManagerFactory = Persistence.createEntityManagerFactory("Piccollect");
         Font.loadFont(getClass().getResourceAsStream("JavaFX/resources/Montserrat-Regular.ttf"), 18);
         Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainMenuScene/MainMenu.fxml"));
 
@@ -83,6 +73,7 @@ public class Main extends Application {
      * @param args
      */
     public static void main(String[] args) {
+        DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
         launch(args);
     }
 }
