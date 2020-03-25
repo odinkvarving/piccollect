@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sample.Java.DatabaseConnection;
 import sample.Java.ImageV2;
@@ -61,45 +62,30 @@ public class SearchImageSceneController implements Initializable {
     @FXML
     private Button backButton;
 
+    @FXML
+    private VBox imageList;
+
     ArrayList<ImageV2> allImages;
     ArrayList<Label> tagLabels = new ArrayList<>();
+    ArrayList<SearchListItem> searchListItems = new ArrayList<>();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ImageV2DAO imageV2DAO = new ImageV2DAO(DatabaseConnection.getInstance().getEntityManagerFactory());
         allImages = (ArrayList<ImageV2>) imageV2DAO.getImages();
-        try {
-            setColumnValues();
-        } catch (MetadataException e) {
-            e.printStackTrace();
-        }
-        setTableItems();
-
-    }
-
-    /**
-     * Sets up the columns that is used in the tableview
-     * @throws MetadataException
-     */
-
-    private void setColumnValues() throws MetadataException {
-        imageColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, ImageIcon>("image"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, String>("imageName"));
-        locationColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, String>("location"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, Date>("date"));
-        tagsColumn.setCellValueFactory(new PropertyValueFactory<ImageV2, ArrayList<String>>("tags"));
+        setListItems();
     }
 
     /**
      * Method for creating observable list and setting it as table items
      */
-    private void setTableItems(){
-        ObservableList<ImageV2> images = FXCollections.observableArrayList();
-        for(ImageV2 image : allImages){
-            images.add(image);
+    private void setListItems(){
+        for(ImageV2 imageV2 : allImages){
+            SearchListItem item = new SearchListItem(imageV2);
+            searchListItems.add(item);
+            imageList.getChildren().add(item);
         }
-        table.setItems(images);
     }
 
     /**
@@ -121,7 +107,7 @@ public class SearchImageSceneController implements Initializable {
         if(!(tagHBox.getChildren().size() == 1)){
             filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(this::checkIfImageContainsSameTags).collect(Collectors.toList());
         }
-        refreshTable(filteredImages);
+        refreshList(filteredImages);
         clearAllSearchInputs();
     }
 
@@ -139,6 +125,11 @@ public class SearchImageSceneController implements Initializable {
         return false;
     }
 
+    /**
+     * Method for converting localdate to date
+     * @param date
+     * @return Date
+     */
     private Date convertDateFormat(LocalDate date){
         return java.sql.Date.valueOf(date);
     }
@@ -155,16 +146,14 @@ public class SearchImageSceneController implements Initializable {
     }
 
     /**
-     * Method for refreshing the tableview when the search has been done
+     * Method for refreshing the list when the search has been done
      * @param filteredImages
      */
-    private void refreshTable(ArrayList<ImageV2> filteredImages){
-        ObservableList<ImageV2> images = FXCollections.observableArrayList();
-        for(ImageV2 imageV2 : filteredImages){
-            images.add(imageV2);
-        }
-        table.getItems().clear();
-        table.setItems(images);
+    private void refreshList(ArrayList<ImageV2> filteredImages){
+        searchListItems.clear();
+        filteredImages.stream().forEach(imageV2 -> searchListItems.add(new SearchListItem(imageV2)));
+        imageList.getChildren().clear();
+        searchListItems.stream().forEach(searchListItem -> imageList.getChildren().add(searchListItem));
     }
 
 

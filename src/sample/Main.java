@@ -29,7 +29,7 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Font.loadFont(getClass().getResourceAsStream("JavaFX/resources/Montserrat-Regular.ttf"), 18);
+        Font.loadFont(getClass().getResourceAsStream("JavaFX/resources/Montserrat-Medium.ttf"), 18);
         Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainMenuScene/MainMenu.fxml"));
 
 
