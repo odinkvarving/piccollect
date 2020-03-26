@@ -8,25 +8,25 @@
 }
 
 .uploadButton{
-    -fx-background-color: #1E4E9A;
+    -fx-background-color: #2B3774;
 }
 .uploadButton:hover{
-    -fx-background-color: #2D75E8;
+    -fx-background-color: #7179A2;
     -fx-cursor: hand;
 }
 .uploadButton:pressed{
-    -fx-background-color: #143466;
+    -fx-background-color: #1C244D;
     -fx-cursor: hand;
 }
 .button2{
-    -fx-background-color: #2D75E8;
+    -fx-background-color: #4153AF;
 }
 .button2:hover{
-    -fx-background-color: #73A3EF;
+    -fx-background-color: #757FE1;
     -fx-cursor: hand;
 }
 .button2:pressed{
-    -fx-background-color: #1E4E9A;
+    -fx-background-color: #082C7F;
     -fx-cursor: hand;
 }
 .cancelButton{

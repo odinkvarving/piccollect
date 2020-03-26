@@ -1,12 +1,12 @@
 .searchButton{
-    -fx-background-color: #0E71EB;
+    -fx-background-color: #4153AF;
 }
 .searchButton:hover{
-    -fx-background-color: #2681F2;
+    -fx-background-color: #757FE1;
     -fx-cursor: hand;
 }
 .searchButton:pressed{
-    -fx-background-color: #0C63CE;
+    -fx-background-color: #082C7F;
     -fx-cursor: hand;
 }
 .homeButton:hover{
@@ -14,14 +14,6 @@
 }
 .homeButton:pressed{
     -fx-cursor: hand;
-}
-.table-view{
-    -fx-background-color: #ebe8f9;
-    -fx-background-radius: 30;
-}
-.table-view .column-header-background{
-    -fx-background-color: #ebe8f9;
-    -fx-background-radius: 30;
 }
 .label{
     -fx-font-family: 'Montserrat Medium';

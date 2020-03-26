@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="1066.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.MainMenuScene.MainMenuSceneController">
     <children>
-        <Pane prefHeight="200.0" prefWidth="800.0" style="-fx-background-color: #2d75e8;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane prefHeight="200.0" prefWidth="800.0" style="-fx-background-color: #4153AF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label fx:id="title" layoutX="151.0" layoutY="58.0" styleClass="font" stylesheets="@MainMenuStyle.css" text="Picollect" textFill="WHITE">
                     <font>
@@ -40,22 +40,22 @@
                 <FontAwesomeIcon />
                 <Button fx:id="uploadImageButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleUploadImageButton" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Upload Image" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                     <graphic>
-                        <FontAwesomeIcon fill="#2d75e8" glyphName="UPLOAD" size="50" />
+                        <FontAwesomeIcon fill="#4153af" glyphName="UPLOAD" size="50" />
                     </graphic>
                 </Button>
                 <Button fx:id="exitButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Exit" GridPane.columnIndex="3" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                     <graphic>
-                        <FontAwesomeIcon fill="#2d75e8" glyphName="TIMES" size="50" />
+                        <FontAwesomeIcon fill="#4153af" glyphName="TIMES" size="50" />
                     </graphic>
                 </Button>
                 <Button fx:id="albumsButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleAlbumsButton" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Albums" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                     <graphic>
-                        <FontAwesomeIcon fill="#2d75e8" glyphName="IMAGE" size="50" />
+                        <FontAwesomeIcon fill="#4153af" glyphName="IMAGE" size="50" />
                     </graphic>
                 </Button>
                 <Button fx:id="searchImageButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleSearchSceneButton" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Search" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                     <graphic>
-                        <FontAwesomeIcon fill="#2d75e8" glyphName="SEARCH" size="50" />
+                        <FontAwesomeIcon fill="#4153af" glyphName="SEARCH" size="50" />
                     </graphic>
                 </Button>
             </children>
