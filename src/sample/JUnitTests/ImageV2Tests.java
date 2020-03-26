@@ -3,6 +3,7 @@ package sample.JUnitTests;
 import com.drew.metadata.MetadataException;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,6 +21,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
+import sample.Java.DatabaseConnection;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -31,7 +33,7 @@ public class ImageV2Tests {
     private ImageV2 imageV2;
     private ImageMetaData imageMetaData;
     private File file;
-    private EntityManagerFactory emf;
+    private EntityManagerFactory entityManagerFactory;
 
     @BeforeEach
     public void BeforeEach() throws MetadataException {
@@ -40,14 +42,16 @@ public class ImageV2Tests {
         this.imageV2 = new ImageV2("testName", "Test Nature", "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\resources\\testBildeGPS.jpg");
     }
 
+    //Since DatabaseConnection is static, this might result in not being able to create another instance for testing
+    //Look for fix
     @Before
     public void init() {
-        emf = Persistence.createEntityManagerFactory("TemplatePU");
+        entityManagerFactory = DatabaseConnection.getInstance().getEntityManagerFactory();
     }
 
     @After
     public void destroy() {
-        emf.close();
+        entityManagerFactory.close();
     }
 
 
@@ -112,7 +116,7 @@ public class ImageV2Tests {
 
     @Test
     public void testUploadDatabase() throws Exception {
-        EntityManager entityManager = emf.createEntityManager();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         Event event = new Event( new Date() );
         entityManager.persist( event );
