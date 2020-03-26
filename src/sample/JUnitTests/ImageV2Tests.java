@@ -29,6 +29,7 @@ public class ImageV2Tests {
     private ImageMetaData imageMetaData;
     private File file;
 
+<<<<<<< HEAD
     @BeforeEach
     public void BeforeEach() throws MetadataException {
         this.file = new File("C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\resources\\testBildeGPS.jpg");
@@ -37,6 +38,15 @@ public class ImageV2Tests {
 
     }
 
+=======
+
+    @BeforeEach
+    public void BeforeEach() throws MetadataException {
+        this.file = new File("C:\\PiccollectPictures\\testBildeGPS.jpg");
+        this.imageMetaData = new ImageMetaData(file);
+        this.imageV2 = new ImageV2("testName", "Test Nature", "C:\\PiccollectPictures\\testBildeGPS.jpg");
+    }
+>>>>>>> a47a1d3c523631321a206bad654cd6ac7a2decda
     @Test
     public void testCreatingInstanceWithValidData() {
         assertEquals("testName", imageV2.getImageName());

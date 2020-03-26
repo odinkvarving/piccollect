@@ -18,7 +18,9 @@ import java.io.IOException;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.Java.Album;
 import sample.Java.AlbumDAO;
+import sample.Java.DatabaseConnection;
 import sample.Java.ImageV2;
+import sample.Main;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -50,8 +52,7 @@ public class SearchAlbumController implements Initializable {
     TableColumn<Album, String> nameColumn;
     @FXML
     TableColumn<Album, ArrayList<ImageV2>> albumColumn;
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("Piccollect");
-    private AlbumDAO albumDAO = new AlbumDAO(emf);
+    private AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
     private ArrayList<Album> albums = (ArrayList<Album>) albumDAO.getAlbums();
 
 

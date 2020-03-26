@@ -15,3 +15,14 @@
 .homeButton:pressed{
     -fx-cursor: hand;
 }
+.table-view{
+    -fx-background-color: #ebe8f9;
+    -fx-background-radius: 30;
+}
+.table-view .column-header-background{
+    -fx-background-color: #ebe8f9;
+    -fx-background-radius: 30;
+}
+.label{
+    -fx-font-family: 'Montserrat Medium';
+}
