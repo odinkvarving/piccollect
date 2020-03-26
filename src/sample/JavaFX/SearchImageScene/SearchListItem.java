@@ -25,7 +25,11 @@ public class SearchListItem extends HBox {
         this.imageV2 = imageV2;
 
         this.checkBox = new CheckBox("");
-        this.imageView = imageV2.getImage();
+        try {
+            this.imageView = imageV2.getImage();
+        } catch (Exception e) {
+            this.imageView = null;
+        }
         this.imageName = new Label(imageV2.getImageName());
         this.location = new Label(imageV2.getLocation());
         try {
@@ -39,6 +43,7 @@ public class SearchListItem extends HBox {
         adjustImageView();
         setPrefSizes();
         adjustHBox();
+        initializeMouseEvents();
 
         getChildren().addAll(imageView, imageName, location, date, tags, checkBox);
     }
@@ -59,6 +64,24 @@ public class SearchListItem extends HBox {
         setPadding(new Insets(10,0,10,10));
         setStyle("-fx-background-color: #ffffff; -fx-background-insets: 0;");
     }
+
+    private void initializeMouseEvents(){
+        setOnMouseEntered(mouseEvent -> {
+            setStyle("-fx-background-color: #DCDCDC; -fx-cursor: hand");
+        });
+        setOnMouseExited(mouseEvent -> {
+            setStyle("-fx-background-color: #ffffff; -fx-cursor: pointer");
+        });
+        setOnMouseClicked(mouseEvent -> {
+            if(checkBox.isSelected()){
+               checkBox.setSelected(false);
+            }
+            else{
+                checkBox.setSelected(true);
+            }
+        });
+    }
+
 
     private void adjustImageView(){
         this.imageView.setFitHeight(50);

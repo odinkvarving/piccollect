@@ -215,25 +215,25 @@ public class SearchImageSceneController implements Initializable {
     }
 
     public void handleCreateButtonClicked(){
-        String albumName;
-        Album newAlbum;
-        AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
+        if(!collectAllSelectedImages().isEmpty()) {
+            String albumName;
+            Album newAlbum;
+            AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
 
-        TextInputDialog albumDialog = new TextInputDialog();
-        albumDialog.setTitle("Create new album");
-        albumDialog.setHeaderText("Create a new album");
-        albumDialog.setContentText("Please enter album name: ");
+            TextInputDialog albumDialog = new TextInputDialog();
+            albumDialog.setTitle("Create new album");
+            albumDialog.setHeaderText("Create a new album");
+            albumDialog.setContentText("Please enter album name: ");
 
-        Optional<String> result = albumDialog.showAndWait();
+            Optional<String> result = albumDialog.showAndWait();
 
-        if(result.isPresent() && !result.get().equals("")){
-            albumName = result.get();
-            newAlbum = new Album(albumName);
-            albumDAO.storeNewAlbum(newAlbum);
-            ArrayList<ImageV2> selectedImages = collectAllSelectedImages();
-            selectedImages.forEach(imageV2 -> albumDAO.createNewAlbumWithImages(newAlbum, imageV2));
+            if (result.isPresent() && !result.get().equals("")) {
+                albumName = result.get();
+                newAlbum = new Album(albumName);
+                albumDAO.storeNewAlbum(newAlbum);
+                ArrayList<ImageV2> selectedImages = collectAllSelectedImages();
+                selectedImages.forEach(imageV2 -> albumDAO.createNewAlbumWithImages(newAlbum, imageV2));
+            }
         }
-
-
     }
 }
