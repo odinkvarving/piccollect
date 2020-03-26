@@ -38,6 +38,23 @@ public class AlbumDAO {
         }
     }
 
+    public void createNewAlbumWithImages(Album album, ImageV2 imageV2){
+        EntityManager em = getEM();
+        try {
+            em.getTransaction().begin();
+
+            imageV2.getAlbums().add(album);
+            album.getImages().add(imageV2);
+
+            em.merge(album);
+            em.merge(imageV2);
+            em.getTransaction().commit();
+        } finally {
+            closeEM(em);
+        }
+
+    }
+
     /**
      * Metode for å lage og hente entitymanageren.
      *

@@ -166,6 +166,7 @@ public class UploadSceneController implements Initializable{
         }
     }
 
+
     /**
      * Method for reloading the album choicebox
      * @param albums new list to be loaded into choicebox

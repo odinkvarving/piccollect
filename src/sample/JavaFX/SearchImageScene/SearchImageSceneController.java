@@ -12,9 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import sample.Java.DatabaseConnection;
-import sample.Java.ImageV2;
-import sample.Java.ImageV2DAO;
+import sample.Java.*;
 import sample.Main;
 
 import javax.swing.*;
@@ -26,6 +24,7 @@ import java.time.chrono.ChronoLocalDate;
 import java.time.chrono.Chronology;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -206,5 +205,35 @@ public class SearchImageSceneController implements Initializable {
         fromDatePicker.setValue(null);
         toDatePicker.setValue(null);
         clearAllTags();
+    }
+
+    private ArrayList<ImageV2> collectAllSelectedImages(){
+        ArrayList<ImageV2> selectedImages = new ArrayList<>();
+
+        searchListItems.stream().filter(searchListItem -> searchListItem.getCheckBox().isSelected()).forEach(searchListItem -> selectedImages.add(searchListItem.getImageV2()));
+        return selectedImages;
+    }
+
+    public void handleCreateButtonClicked(){
+        String albumName;
+        Album newAlbum;
+        AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
+
+        TextInputDialog albumDialog = new TextInputDialog();
+        albumDialog.setTitle("Create new album");
+        albumDialog.setHeaderText("Create a new album");
+        albumDialog.setContentText("Please enter album name: ");
+
+        Optional<String> result = albumDialog.showAndWait();
+
+        if(result.isPresent() && !result.get().equals("")){
+            albumName = result.get();
+            newAlbum = new Album(albumName);
+            albumDAO.storeNewAlbum(newAlbum);
+            ArrayList<ImageV2> selectedImages = collectAllSelectedImages();
+            selectedImages.forEach(imageV2 -> albumDAO.createNewAlbumWithImages(newAlbum, imageV2));
+        }
+
+
     }
 }

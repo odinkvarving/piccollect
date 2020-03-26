@@ -74,8 +74,12 @@ public class SearchListItem extends HBox {
         tags.setStyle("-fx-font-family: 'Montserrat Medium'");
     }
 
-    private ImageV2 getImageV2(){
+    public ImageV2 getImageV2(){
         return imageV2;
+    }
+
+    public CheckBox getCheckBox(){
+        return checkBox;
     }
 
 

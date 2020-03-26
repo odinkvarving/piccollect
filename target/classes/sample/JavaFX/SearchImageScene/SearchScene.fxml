@@ -120,7 +120,7 @@
          </children></Pane>
       <HBox alignment="CENTER" layoutX="336.0" layoutY="523.0" prefHeight="66.0" prefWidth="711.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="201.0" styleClass="searchButton" stylesheets="@SearchImageStyle.css" text="Create Album" textFill="WHITE">
+            <Button onAction="#handleCreateButtonClicked" mnemonicParsing="false" prefHeight="36.0" prefWidth="201.0" styleClass="searchButton" stylesheets="@SearchImageStyle.css" text="Create Album" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Button>
