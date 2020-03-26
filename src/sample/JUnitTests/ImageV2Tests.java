@@ -33,26 +33,12 @@ public class ImageV2Tests {
     private File file;
     private EntityManagerFactory emf;
 
-<<<<<<< HEAD
-    @BeforeEach
-    public void BeforeEach() throws MetadataException {
-        this.file = new File("C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\resources\\testBildeGPS.jpg");
-        this.imageMetaData = new ImageMetaData(file);
-        this.imageV2 = new ImageV2("testName", "Test Nature", "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\resources\\testBildeGPS.jpg", imageMetaData);
-
-    }
-
-=======
-
     @BeforeEach
     public void BeforeEach() throws MetadataException {
         this.file = new File("C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\resources\\testBildeGPS.jpg");
         this.imageMetaData = new ImageMetaData(file);
         this.imageV2 = new ImageV2("testName", "Test Nature", "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\resources\\testBildeGPS.jpg");
     }
-<<<<<<< HEAD
->>>>>>> a47a1d3c523631321a206bad654cd6ac7a2decda
-=======
 
     @Before
     public void init() {
@@ -65,7 +51,6 @@ public class ImageV2Tests {
     }
 
 
->>>>>>> OdinTests
     @Test
     public void testCreatingInstanceWithValidData() {
         assertEquals("testName", imageV2.getImageName());
