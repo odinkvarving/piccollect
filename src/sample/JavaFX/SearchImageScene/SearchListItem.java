@@ -4,10 +4,12 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import sample.Java.ImageV2;
 
+import java.io.File;
 import java.util.Date;
 
 public class SearchListItem extends HBox {
@@ -25,10 +27,13 @@ public class SearchListItem extends HBox {
         this.imageV2 = imageV2;
 
         this.checkBox = new CheckBox("");
-        try {
+        if(imageV2.getImage() == null){
+            Image image = new Image(new File("src/sample/JavaFX/resources/imageNotFound.png").toURI().toString());
+            ImageView imageNotFound = new ImageView(image);
+            this.imageView = imageNotFound;
+        }
+        else {
             this.imageView = imageV2.getImage();
-        } catch (Exception e) {
-            this.imageView = null;
         }
         this.imageName = new Label(imageV2.getImageName());
         this.location = new Label(imageV2.getLocation());

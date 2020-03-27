@@ -76,7 +76,7 @@ public class ImageV2 {
             imageView = new ImageView(image);
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            return null;
         }
         return imageView;
     }
