@@ -158,11 +158,12 @@ public class SearchAlbumController implements Initializable {
         for(int i = 0; i < albumAmount/3; i++){
             HBox albumRow = new HBox();
             for(int j = 0; j < 3; j++){
-                if(albums.get(counter).getImages() == null) {
-                    albumRow.getChildren().addAll(new Label(albums.get(counter).getAlbumName()), imageNotFound);
+                albumRow.getChildren().add(new Label(albums.get(counter).getAlbumName()));
+                if(albums.get(counter).getImages().isEmpty()) {
+                    albumRow.getChildren().add(imageNotFound);
                 }
                 else{
-                    albumRow.getChildren().addAll(new Label(albums.get(counter).getAlbumName()), albums.get(counter).getImages().get(0).getImage());
+                    albumRow.getChildren().add(albums.get(counter).getImages().get(0).getImage());
 
                 }
                 /*try{
