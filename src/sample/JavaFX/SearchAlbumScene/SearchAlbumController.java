@@ -152,15 +152,13 @@ public class SearchAlbumController implements Initializable {
             }
         }*/
 
-        Image img = new Image(new File("src/sample/JavaFX/resources/imageNotFound.png").toURI().toString());
-        ImageView imageNotFound = new ImageView();
-        imageNotFound.setImage(img);
+        //imageNotFound.setImage(img);
         int albumAmount = albums.size();
         int counter = 0;
         for(int i = 0; i < albumAmount/3; i++){
             HBox albumRow = new HBox();
             for(int j = 0; j < 3; j++){
-                if(albums.get(counter).getImages().isEmpty()) {
+                if(albums.get(counter).getImages() == null) {
                     albumRow.getChildren().addAll(new Label(albums.get(counter).getAlbumName()), imageNotFound);
                 }
                 else{
