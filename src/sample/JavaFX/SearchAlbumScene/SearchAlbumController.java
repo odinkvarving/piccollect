@@ -12,6 +12,11 @@ import javafx.scene.Scene;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -64,6 +69,7 @@ public class SearchAlbumController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadAlbumChoiceBox();
+        makeAlbumOverview();
         setAlbumTableViewColumnValues();
         albumTableView.setItems(fillAlbumTableView());
     }
@@ -118,6 +124,40 @@ public class SearchAlbumController implements Initializable {
         ObservableList<Album> albums = FXCollections.observableArrayList();
         //albumRegister.getAlbums().forEach(a -> albums.add(a));
         return albums;
+    }
+
+    private void makeAlbumOverview(){
+        /*GridPane gridPane = new GridPane();
+        gridPane.setHgap(20);
+        gridPane.setVgap(20);
+        int albumAmount = albums.size();
+        int counter = 0;
+        Album album;
+        for(int i = 0; i < albums.size(); i++){
+            for(int j = 0; j < 3; i++){
+                album = albums.get(counter);
+                gridPane.add(album, j, i);
+                counter++;
+            }
+        }*/
+
+        VBox albumOverview = new VBox();
+        HBox albumRow;
+        int albumAmount = albums.size();
+        int counter = 0;
+        Label albumName;
+        Image image;
+        ImageView imageView;
+        for(int i = 0; i < albumAmount/3; i++){
+            albumRow = new HBox();
+            for(int j = 0; j < 3; j++){
+                albumName = new Label(albums.get(counter).getAlbumName());
+                image = new Image(albums.get(counter).getImages().get(0).getFilePath());
+                imageView = new ImageView(image);
+                albumRow.getChildren().addAll(albumName, imageView);
+                counter++;
+            }
+        }
     }
 
     /**
