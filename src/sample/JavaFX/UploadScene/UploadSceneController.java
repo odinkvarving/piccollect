@@ -13,20 +13,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import sample.Java.Album;
-import sample.Java.AlbumDAO;
-import sample.Java.ImageV2;
-import sample.Java.ImageV2DAO;
+import sample.Java.*;
+import sample.Main;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -60,6 +54,7 @@ public class UploadSceneController implements Initializable{
     //Variables that holds the current uploaded image and its path
     private String uploadImagePath = "";
     private ImageView uploadedImage;
+
 
     public UploadSceneController() throws SQLException {
     }
@@ -124,15 +119,17 @@ public class UploadSceneController implements Initializable{
         for(int i = 0; i < tagsList.size(); i ++){
             tags += tagsList.get(i) + " ";
         }
-        EntityManagerFactory emf = getEntityManagerFactory();
-        ImageV2DAO imageV2DAO = new ImageV2DAO(emf);
+        ImageV2DAO imageV2DAO = new ImageV2DAO(DatabaseConnection.getInstance().getEntityManagerFactory());
 
         ImageV2 uploadImage = new ImageV2(imageNameTextField.getText(), tags, uploadImagePath);
+
         imageV2DAO.storeNewImage(uploadImage, (Album) albumChoiceBox.getValue());
 
         clearAllFields();
         return true;
     }
+
+
 
     /**
      * Method for handling when the "+" button is
@@ -152,7 +149,7 @@ public class UploadSceneController implements Initializable{
      */
     public void handleCreateAlbumButton(){
         String albumName;
-        AlbumDAO albumDAO = new AlbumDAO(Persistence.createEntityManagerFactory("Piccollect"));
+        AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
 
         TextInputDialog albumDialog = new TextInputDialog();
         albumDialog.setTitle("Create new album");
@@ -161,13 +158,14 @@ public class UploadSceneController implements Initializable{
 
         Optional<String> result = albumDialog.showAndWait();
 
-        if(result.isPresent()){
+        if(result.isPresent() && !result.get().equals("")){
             albumName = result.get();
             albumDAO.storeNewAlbum(new Album(albumName));
             ArrayList<Album> albumList = (ArrayList<Album>) albumDAO.getAlbums();
             reloadAlbumChoiceBox(albumList);
         }
     }
+
 
     /**
      * Method for reloading the album choicebox
@@ -176,7 +174,7 @@ public class UploadSceneController implements Initializable{
     private void reloadAlbumChoiceBox(ArrayList<Album> albums){
         albumChoiceBox.getItems().clear();
         for(Album album : albums){
-            albumChoiceBox.getItems().add(album.getAlbumName());
+            albumChoiceBox.getItems().add(album);
         }
         albumChoiceBox.setValue(albums.get(albums.size()-1));
     }
@@ -193,6 +191,7 @@ public class UploadSceneController implements Initializable{
         }
         return tagsList;
     }
+
 
     /**
      * A method for handling the backbutton.
@@ -264,20 +263,12 @@ public class UploadSceneController implements Initializable{
      * Method for loading all the albums from database into the album choice box
      */
     private void loadAlbumChoiceBox(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Piccollect");
-        AlbumDAO albumDAO = new AlbumDAO(emf);
+        AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
         ArrayList<Album> albums = (ArrayList<Album>) albumDAO.getAlbums();
         for(Album album : albums){
             albumChoiceBox.getItems().add(album);
         }
-    }
-
-    /**
-     * Method for getting the entitymanagerfactory
-     * @return
-     */
-    private EntityManagerFactory getEntityManagerFactory(){
-        return Persistence.createEntityManagerFactory("Piccollect");
+        albumChoiceBox.setValue(albums.get(0));
     }
 
 

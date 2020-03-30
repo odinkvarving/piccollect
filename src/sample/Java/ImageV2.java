@@ -3,9 +3,16 @@ package sample.Java;
 
 import com.drew.metadata.MetadataException;
 import com.sun.xml.fastinfoset.tools.FI_DOM_Or_XML_DOM_SAX_SAXEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import javax.persistence.*;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,7 +47,7 @@ public class ImageV2 {
     @Column(name="date")
     private Date date;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Album> albums = new ArrayList<>();
 
     public ImageV2(){}
@@ -60,6 +67,19 @@ public class ImageV2 {
         this.date = imageMetaData.getDateFromMetaData();
     }
 
+    public ImageView getImage(){
+        Image image;
+        ImageView imageView = null;
+        try {
+            FileInputStream input = new FileInputStream(filePath);
+            image = new Image(input, 60, 60, true, false);
+            imageView = new ImageView(image);
+
+        } catch (FileNotFoundException e) {
+            return null;
+        }
+        return imageView;
+    }
 
     public Integer getId() {
         return id;

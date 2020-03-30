@@ -54,6 +54,13 @@ public class MainMenuSceneController implements Initializable {
      * handleUploadImageButton method displays uploadScene.
      */
     public void handleUploadImageButton(){
+        //Initialzes the upload scene
+        FXMLLoader uploadSceneLoader = new FXMLLoader(getClass().getResource("../UploadScene/UploadScene.fxml"));
+        try {
+            uploadScene = new Scene(uploadSceneLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Stage stage = (Stage) uploadImageButton.getScene().getWindow();
         stage.setScene(uploadScene);
     }
@@ -62,6 +69,13 @@ public class MainMenuSceneController implements Initializable {
      * handleSearchSceneButton method displays the searchScene.
      */
     public void handleSearchSceneButton(){
+        //Initializes search image scene
+        FXMLLoader searchSceneLoader = new FXMLLoader(getClass().getResource("../SearchImageScene/SearchScene.fxml"));
+        try {
+            searchScene = new Scene(searchSceneLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Stage stage = (Stage) uploadImageButton.getScene().getWindow();
         stage.setScene(searchScene);
     }
@@ -69,8 +83,13 @@ public class MainMenuSceneController implements Initializable {
     /**
      * handleAlbumsButton method displays the albumScene.
      */
-    public void handleAlbumsButton(){
-        Stage stage = (Stage) uploadImageButton.getScene().getWindow();
+    public void handleAlbumsButton(){//Initializes album scene
+        FXMLLoader albumSceneLoader = new FXMLLoader(getClass().getResource("../SearchAlbumScene/SearchAlbum.fxml"));
+        try {
+            albumScene = new Scene(albumSceneLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }        Stage stage = (Stage) uploadImageButton.getScene().getWindow();
         stage.setScene(albumScene);
     }
 
@@ -102,26 +121,6 @@ public class MainMenuSceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        //Initialzes the upload scene
-        FXMLLoader uploadSceneLoader = new FXMLLoader(getClass().getResource("../UploadScene/UploadScene.fxml"));
-        try {
-            uploadScene = new Scene(uploadSceneLoader.load());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //Initializes search image scene
-        FXMLLoader searchSceneLoader = new FXMLLoader(getClass().getResource("../SearchImageScene/SearchScene.fxml"));
-        try {
-            searchScene = new Scene(searchSceneLoader.load());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //Initializes album scene
-        FXMLLoader albumSceneLoader = new FXMLLoader(getClass().getResource("../SearchAlbumScene/SearchAlbum.fxml"));
-        try {
-            albumScene = new Scene(albumSceneLoader.load());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 }
