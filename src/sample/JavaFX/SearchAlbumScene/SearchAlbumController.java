@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 
 import javafx.fxml.Initializable;
@@ -19,6 +20,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.Java.Album;
@@ -54,11 +56,15 @@ public class SearchAlbumController implements Initializable {
     @FXML
     TableView<Album> albumTableView;
     @FXML
+    VBox albumOverview;
+    @FXML
     TableColumn<Album, String> nameColumn;
     @FXML
     TableColumn<Album, ArrayList<ImageV2>> albumColumn;
     private AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
     private ArrayList<Album> albums = (ArrayList<Album>) albumDAO.getAlbums();
+    Image img = new Image(new File("src/sample/JavaFX/resources/imageNotFound.png").toURI().toString());
+    ImageView imageNotFound = new ImageView(img);
 
 
     /**
@@ -70,8 +76,8 @@ public class SearchAlbumController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadAlbumChoiceBox();
         makeAlbumOverview();
-        setAlbumTableViewColumnValues();
-        albumTableView.setItems(fillAlbumTableView());
+        //setAlbumTableViewColumnValues();
+        //albumTableView.setItems(fillAlbumTableView());
     }
 
     /**
@@ -98,9 +104,14 @@ public class SearchAlbumController implements Initializable {
                     alert.show();
                     break;
                 }
-                if(albumChoice.equals(album.getAlbumName())){
-                    albumTableView.getItems().clear();
-                    albumTableView.getItems().add(album);
+                else if(albumChoice.equals(album.getAlbumName())){
+                    albumOverview.getChildren().clear();
+                    if(album.getImages().isEmpty()){
+                        albumOverview.getChildren().addAll(new Label(album.getAlbumName(), imageNotFound));
+                    }
+                    else{
+                        albumOverview.getChildren().addAll(new Label(album.getAlbumName()), album.getImages().get(0).getImage());
+                    }
                     System.out.println(albumChoice);
                     break;
                 }
@@ -141,22 +152,33 @@ public class SearchAlbumController implements Initializable {
             }
         }*/
 
-        VBox albumOverview = new VBox();
-        HBox albumRow;
+        Image img = new Image(new File("src/sample/JavaFX/resources/imageNotFound.png").toURI().toString());
+        ImageView imageNotFound = new ImageView();
+        imageNotFound.setImage(img);
         int albumAmount = albums.size();
         int counter = 0;
-        Label albumName;
-        Image image;
-        ImageView imageView;
         for(int i = 0; i < albumAmount/3; i++){
-            albumRow = new HBox();
+            HBox albumRow = new HBox();
             for(int j = 0; j < 3; j++){
-                albumName = new Label(albums.get(counter).getAlbumName());
-                image = new Image(albums.get(counter).getImages().get(0).getFilePath());
-                imageView = new ImageView(image);
-                albumRow.getChildren().addAll(albumName, imageView);
+                if(albums.get(counter).getImages().isEmpty()) {
+                    albumRow.getChildren().addAll(new Label(albums.get(counter).getAlbumName()), imageNotFound);
+                }
+                else{
+                    albumRow.getChildren().addAll(new Label(albums.get(counter).getAlbumName()), albums.get(counter).getImages().get(0).getImage());
+
+                }
+                /*try{
+                    Image image = new Image(albums.get(counter).getImages().get(0).getFilePath());
+                    ImageView imageView = new ImageView(image);
+                    albumRow.getChildren().addAll(albumName, imageView);
+                }
+                catch(Exception e){
+
+                }*/
+
                 counter++;
             }
+            albumOverview.getChildren().add(albumRow);
         }
     }
 
