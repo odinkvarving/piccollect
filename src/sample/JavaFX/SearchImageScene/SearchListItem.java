@@ -67,15 +67,15 @@ public class SearchListItem extends HBox {
         prefWidth(700);
         setSpacing(20);
         setPadding(new Insets(10,0,10,10));
-        setStyle("-fx-background-color: #ffffff; -fx-background-insets: 0;");
+        setStyle("-fx-background-color: #ffffff; -fx-background-insets: 0; -fx-border-radius: 5; -fx-border-color: #2681F2");
     }
 
     private void initializeMouseEvents(){
         setOnMouseEntered(mouseEvent -> {
-            setStyle("-fx-background-color: #DCDCDC; -fx-cursor: hand");
+            setStyle("-fx-background-color: #DCDCDC; -fx-cursor: hand; -fx-border-radius: 5; -fx-border-color: #2681F2");
         });
         setOnMouseExited(mouseEvent -> {
-            setStyle("-fx-background-color: #ffffff; -fx-cursor: pointer");
+            setStyle("-fx-background-color: #ffffff; -fx-cursor: pointer; -fx-border-radius: 5; -fx-border-color: #2681F2");
         });
         setOnMouseClicked(mouseEvent -> {
             if(checkBox.isSelected()){

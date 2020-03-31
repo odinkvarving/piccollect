@@ -130,7 +130,7 @@
                </font></Button>
          </children>
       </HBox>
-      <ScrollPane layoutX="331.0" layoutY="187.0" prefHeight="336.0" prefWidth="721.0" style="-fx-border-color: #AAB2DB;">
+      <ScrollPane layoutX="331.0" layoutY="187.0" prefHeight="336.0" prefWidth="721.0" style="-fx-background-color: transparent">
          <content>
             <VBox fx:id="imageList" prefHeight="334.0" prefWidth="700" />
          </content>
