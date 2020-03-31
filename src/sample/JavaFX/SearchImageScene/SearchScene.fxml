@@ -7,6 +7,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -84,7 +86,10 @@
             <HBox spacing="10.0">
                <children>
                   <TextField fx:id="tagSearchField" prefHeight="40.0" prefWidth="243.0" promptText="Tag..." />
-                  <Button fx:id="addTagButton" mnemonicParsing="false" onAction="#handleAddTagButtonClicked" prefHeight="40.0" prefWidth="40.0" text="+" />
+                  <Button fx:id="addTagButton" mnemonicParsing="false" onAction="#handleAddTagButtonClicked" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #757FE1;" text="+">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
                </children>
             </HBox>
             <Button mnemonicParsing="false" onAction="#handleSearchButtonClicked" prefHeight="40.0" prefWidth="278.0" styleClass="searchButton" stylesheets="@SearchImageStyle.css" text="Search" textFill="WHITE">
@@ -120,14 +125,28 @@
          </children></Pane>
       <HBox alignment="CENTER" layoutX="336.0" layoutY="523.0" prefHeight="66.0" prefWidth="711.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#handleCreateButtonClicked" prefHeight="36.0" prefWidth="201.0" styleClass="searchButton" stylesheets="@SearchImageStyle.css" text="Create Album" textFill="WHITE">
+            <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleCreateButtonClicked" prefHeight="36.0" prefWidth="201.0" styleClass="createButtons" stylesheets="@SearchImageStyle.css" text="Create Album" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
-               </font></Button>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="203.0" styleClass="searchButton" stylesheets="@SearchImageStyle.css" text="Generate PDF" textFill="WHITE">
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/newAlbumIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="35.0" prefWidth="203.0" styleClass="createButtons" stylesheets="@SearchImageStyle.css" text="Generate PDF" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
-               </font></Button>
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/newPDFIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </HBox>
       <ScrollPane layoutX="331.0" layoutY="187.0" prefHeight="336.0" prefWidth="721.0" style="-fx-background-color: transparent">

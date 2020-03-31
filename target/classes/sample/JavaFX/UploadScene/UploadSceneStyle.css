@@ -42,6 +42,9 @@
 }
 .homeButton:hover{
     -fx-cursor: hand;
+    -fx-border-color: white;
+    -fx-border-radius: 5;
+    -fx-border-width: 2px;
 }
 .homeButton:pressed{
     -fx-cursor: hand;
