@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.UploadScene.UploadSceneController">
    <children>
@@ -28,24 +29,26 @@
       </Pane>
       <VBox alignment="CENTER" layoutX="60.0" layoutY="114.0" prefHeight="486.0" prefWidth="464.0" spacing="20.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="114.0">
          <children>
-            <AnchorPane fx:id="previewImagePane" prefHeight="275.0" prefWidth="464.0" styleClass="dragAndDropArea" stylesheets="@UploadSceneStyle.css">
+            <AnchorPane fx:id="previewImagePane" onDragDropped="#handleFilesDropped" onDragOver="#handleFilesDragged" prefHeight="275.0" prefWidth="464.0" styleClass="dragAndDropArea" stylesheets="@UploadSceneStyle.css">
                <children>
-                  <Label layoutX="169.0" layoutY="158.0" text="Drop files to upload" textAlignment="CENTER" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="169.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="158.0">
-                     <font>
-                        <Font name="System Normal" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="browse" layoutX="206.0" layoutY="221.0" onMouseClicked="#browseImages" onMouseEntered="#handleHovered" prefHeight="30.0" prefWidth="58.0" text="browse" textAlignment="CENTER" textFill="#1411bc" underline="true" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="206.0" AnchorPane.rightAnchor="218.0" AnchorPane.topAnchor="221.0">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <FontAwesomeIcon fill="#a8a8a8" glyphName="CLOUD_UPLOAD" layoutX="203.0" layoutY="165.0" size="60" text="" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="202.71428680419922" AnchorPane.topAnchor="109.0" />
-                  <Label layoutX="172.0" layoutY="220.0" prefHeight="26.0" prefWidth="45.0" text="or" AnchorPane.bottomAnchor="118.0" AnchorPane.leftAnchor="172.0" AnchorPane.rightAnchor="283.0" AnchorPane.topAnchor="220.0">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
+                  <AnchorPane fx:id="dragAreaInfoBox" layoutX="130.0" layoutY="77.0" prefHeight="138.0" prefWidth="205.0">
+                     <children>
+                        <FontAwesomeIcon fill="#3a81c0" glyphName="CLOUD_UPLOAD" layoutX="73.0" layoutY="55.0" size="55" text="" wrappingWidth="58.92856979370117" />
+                        <Text layoutX="46.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Montserrat Medium';" text="Drag and drop &#10;or" textAlignment="CENTER" wrappingWidth="113.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Text>
+                        <Button fx:id="browse" layoutX="53.0" layoutY="99.0" mnemonicParsing="false" onAction="#browseImages" prefHeight="25.0" prefWidth="99.0" styleClass="browse" stylesheets="@UploadSceneStyle.css" text="Browse..." textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Button>
+                     </children>
+                  </AnchorPane>
+                  <Button fx:id="closeImageButton" layoutX="417.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleCloseImageButtonClicked" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <FontAwesomeIcon fill="#f80000" glyphName="TIMES_CIRCLE" size="35" styleClass="test" text="" wrappingWidth="30.0" />
+                     </graphic>
+                  </Button>
                </children>
             </AnchorPane>
          </children>

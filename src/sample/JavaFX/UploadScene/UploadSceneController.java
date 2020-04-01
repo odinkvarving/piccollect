@@ -2,6 +2,7 @@ package sample.JavaFX.UploadScene;
 
 import com.drew.metadata.MetadataException;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,6 +11,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -30,6 +34,12 @@ public class UploadSceneController implements Initializable{
     @FXML
     private AnchorPane previewImagePane;
     @FXML
+    private AnchorPane dragAreaInfoBox;
+    @FXML
+    private Button browse;
+    @FXML
+    private Button closeImageButton;
+    @FXML
     private TextField imageNameTextField;
     @FXML
     private ChoiceBox albumChoiceBox;
@@ -45,8 +55,7 @@ public class UploadSceneController implements Initializable{
     private Button uploadButton;
     @FXML
     private Button cancelButton;
-    @FXML
-    Label browse;
+
 
     @FXML
     private Button backButton;
@@ -79,19 +88,61 @@ public class UploadSceneController implements Initializable{
                     "-fx-background-size: contain;" + //or auto if the image should cover the background, but the size will increase aswell.
                     "-fx-background-radius: 15;" +
                     "-fx-border-radius: 15;");
-            //previewImagePane.getChildren().add(uploadedImage);
-            //uploadedImage.setFitHeight(uploadedImage.getImage().getHeight()/3);
-            //uploadedImage.setFitWidth(uploadedImage.getImage().getWidth()/3);
+            dragAreaInfoBox.setVisible(false);
+            closeImageButton.setVisible(true);
             uploadImagePath = selectedFile.getPath();
         }
     }
 
     /**
-     * Changes cursor to hand when hovers over mouse.
+     * A method to handle when some files are dropped in the pane where you can drop files
+     * @param dragEvent
      */
-    public void handleHovered() {
-        browse.setCursor(Cursor.HAND);
+    public void handleFilesDropped(DragEvent dragEvent){
+        Dragboard db = dragEvent.getDragboard();
+        Boolean success = false;
+        if(db.hasFiles()){
+            File uploadedFile = new File(db.getFiles().get(0).getAbsolutePath());
+            uploadedImage = new ImageView(new Image(uploadedFile.toURI().toString()));
+
+            String uploadedImageURL = uploadedFile.toURI().toString();
+            previewImagePane.setStyle(
+                    "-fx-background-image: url('" + uploadedImageURL + "');" +
+                            "-fx-background-position: center center;" +
+                            "-fx-background-repeat: no-repeat;" +
+                            "-fx-background-origin: padding-box;" +
+                            "-fx-background-size: contain;" + //or auto if the image should cover the background, but the size will increase aswell.
+                            "-fx-background-radius: 15;" +
+                            "-fx-border-radius: 15;");
+            uploadImagePath = uploadedFile.getPath();
+            dragAreaInfoBox.setVisible(false);
+            closeImageButton.setVisible(true);
+            success = true;
+        }
+        dragEvent.setDropCompleted(success);
+        dragEvent.consume();
     }
+
+    /**
+     * Method for accepting files to be dropped in the pane
+     * @param dragEvent
+     */
+    public void handleFilesDragged(DragEvent dragEvent){
+        if(dragEvent.getGestureSource() != previewImagePane && dragEvent.getDragboard().hasFiles()){
+            dragEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+        }
+        dragEvent.consume();
+    }
+
+    public void handleCloseImageButtonClicked(){
+        uploadedImage = null;
+        previewImagePane.getChildren().remove(uploadedImage);
+        previewImagePane.setStyle("-fx-background-image: null");
+        uploadImagePath = "";
+        closeImageButton.setVisible(false);
+        dragAreaInfoBox.setVisible(true);
+    }
+
 
     /**
      * Method for handling when the upload button
@@ -257,6 +308,8 @@ public class UploadSceneController implements Initializable{
         previewImagePane.getChildren().remove(uploadedImage);
         previewImagePane.setStyle("-fx-background-image: null");
         imageNameTextField.clear();
+        dragAreaInfoBox.setVisible(true);
+        closeImageButton.setVisible(false);
     }
 
     /**
@@ -279,6 +332,7 @@ public class UploadSceneController implements Initializable{
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        closeImageButton.setVisible(false);
         loadAlbumChoiceBox();
     }
 }

@@ -49,3 +49,25 @@
 .homeButton:pressed{
     -fx-cursor: hand;
 }
+.browse  {
+    -fx-background-color: #3A81C0;
+}
+.browse:hover {
+    -fx-background-color: #3E8ACC;
+    -fx-cursor: hand;
+}
+.browse:pressed {
+    -fx-background-color: #397CB8;
+    -fx-cursor: hand;
+}
+.test{
+    -fx-fill: #F80000;
+}
+.test:hover{
+    -fx-fill: #FA5555;
+    -fx-cursor: hand;
+}
+.test:pressed{
+    -fx-fill: #f80000;
+    -fx-cursor: hand;
+}
