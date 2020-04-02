@@ -12,6 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.HBox?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.SearchAlbumScene.SearchAlbumController">
    <children>
       <VBox layoutY="97.0" prefHeight="500.0" prefWidth="318.0" style="-fx-background-color: #ebe8f9;">
@@ -78,11 +81,12 @@
             </Label>
          </children>
       </Pane>
-      <TableView fx:id="albumTableView" layoutX="350.0" layoutY="208.0" prefHeight="372.0" prefWidth="684.0" stylesheets="@SearchAlbumStyle.css">
+      <VBox fx:id="albumOverview" layoutX="350.0" layoutY="200.0" prefHeight="380.0" prefWidth="680.0"/>
+      <!--<TableView fx:id="albumTableView" layoutX="350.0" layoutY="208.0" prefHeight="372.0" prefWidth="684.0" stylesheets="@SearchAlbumStyle.css">
          <columns>
             <TableColumn fx:id="nameColumn" prefWidth="99.0" style="-fx-cursor: hand;" styleClass="nameColumn" text="Name" />
             <TableColumn fx:id="albumColumn" prefWidth="584.0" style="-fx-cursor: hand;" styleClass="albumColumn" text="Album" />
          </columns>
-      </TableView>
+      </TableView>-->
    </children>
 </AnchorPane>
