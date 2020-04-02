@@ -12,11 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-=======
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.layout.HBox?>
->>>>>>> scottrs
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.SearchAlbumScene.SearchAlbumController">
    <children>
       <VBox layoutY="97.0" prefHeight="500.0" prefWidth="318.0" style="-fx-background-color: #ebe8f9;">

@@ -144,7 +144,7 @@ public class SearchAlbumController implements Initializable {
         int albumAmount = albums.size();
         int counter = 0;
         Album album;
-        for(int i = 0; i < albums.size(); i++){
+        for(int i = 0; i < albums.size()/3; i++){
             for(int j = 0; j < 3; i++){
                 album = albums.get(counter);
                 gridPane.add(album, j, i);
@@ -152,7 +152,6 @@ public class SearchAlbumController implements Initializable {
             }
         }*/
 
-        //imageNotFound.setImage(img);
         String pathImageNotFound = "src/sample/JavaFX/resources/imageNotFound.png";
         int albumAmount = albums.size();
         int counter = 0;

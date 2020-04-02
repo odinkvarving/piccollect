@@ -22,10 +22,11 @@ public class AlbumItem extends Button {
             this.imageView = imageNotFound;
         }
         setText(albumName);
+        createButtonLayout();
     }
 
     private void createButtonLayout(){
         setContentDisplay(ContentDisplay.TOP);
-
+        getChildren().add(this.imageView);
     }
 }
