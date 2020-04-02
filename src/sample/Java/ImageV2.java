@@ -69,7 +69,7 @@ public class ImageV2 {
 
     public ImageView getImage(){
         Image image;
-        ImageView imageView = null;
+        ImageView imageView;
         try {
             FileInputStream input = new FileInputStream(filePath);
             image = new Image(input, 60, 60, true, false);

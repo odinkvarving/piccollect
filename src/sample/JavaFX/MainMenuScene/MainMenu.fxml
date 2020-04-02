@@ -53,7 +53,7 @@
                         <FontAwesomeIcon fill="#4153af" glyphName="IMAGE" size="50" />
                     </graphic>
                 </Button>
-                <Button fx:id="searchImageButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleSearchSceneButton" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Search" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                <Button fx:id="searchImageButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleSearchSceneButton" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Create album or pdf" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                     <graphic>
                         <FontAwesomeIcon fill="#4153af" glyphName="SEARCH" size="50" />
                     </graphic>
