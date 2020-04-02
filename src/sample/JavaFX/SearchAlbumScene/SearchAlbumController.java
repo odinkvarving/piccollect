@@ -78,8 +78,6 @@ public class SearchAlbumController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadAlbumComboBox();
         makeAlbumOverview();
-        //setAlbumTableViewColumnValues();
-        //albumTableView.setItems(fillAlbumTableView());
     }
 
     /**
@@ -121,24 +119,6 @@ public class SearchAlbumController implements Initializable {
                 }
             }
         }
-    }
-
-    /**
-     * This method sets values to the columns in albumTableView.
-     */
-    private void setAlbumTableViewColumnValues(){
-        nameColumn.setCellValueFactory(new PropertyValueFactory<Album, String>("albumName"));
-        //albumColumn.setCellValueFactory(new PropertyValueFactory<Album, ArrayList<ImageV2>>("images"));
-    }
-
-    /**
-     * This method will make an ObservableList containing all albums in the Database.
-     * @return albums: ObservableList of albums
-     */
-    private ObservableList<Album> fillAlbumTableView(){
-        ObservableList<Album> albums = FXCollections.observableArrayList();
-        //albumRegister.getAlbums().forEach(a -> albums.add(a));
-        return albums;
     }
 
     /**
