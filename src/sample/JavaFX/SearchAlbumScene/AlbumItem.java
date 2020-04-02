@@ -25,6 +25,7 @@ public class AlbumItem extends Button {
         setText(albumName);
         createButtonLayout();
         setImageViewProperties();
+
     }
 
     private void createButtonLayout(){

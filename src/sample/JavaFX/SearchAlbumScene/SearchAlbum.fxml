@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.SearchAlbumScene.SearchAlbumController">
    <children>
-      <VBox layoutY="97.0" prefHeight="500.0" prefWidth="318.0" style="-fx-background-color: #ebe8f9;">
+      <VBox layoutY="97.0" prefHeight="500.0" prefWidth="318.0" style="-fx-background-color: #ebe8f9;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
             <Label text="Search filter">
                <font>
@@ -52,7 +52,7 @@
             </Button>
          </children>
       </VBox>
-      <Pane prefHeight="100.0" prefWidth="1066.0" style="-fx-background-color: #4153AF;">
+      <Pane prefHeight="100.0" prefWidth="1066.0" style="-fx-background-color: #4153AF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="162.0" layoutY="31.0" text="Search albums" textFill="WHITE">
                <font>
