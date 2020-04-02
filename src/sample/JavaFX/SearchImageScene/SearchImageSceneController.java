@@ -1,6 +1,14 @@
 package sample.JavaFX.SearchImageScene;
 
 import com.drew.metadata.MetadataException;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Image;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,11 +19,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sample.Java.*;
 import sample.Main;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -26,6 +39,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.LogManager;
 import java.util.stream.Collectors;
 
 public class SearchImageSceneController implements Initializable {
@@ -233,6 +247,61 @@ public class SearchImageSceneController implements Initializable {
                 albumDAO.storeNewAlbum(newAlbum);
                 ArrayList<ImageV2> selectedImages = collectAllSelectedImages();
                 selectedImages.forEach(imageV2 -> albumDAO.createNewAlbumWithImages(newAlbum, imageV2));
+            }
+        }
+    }
+
+    /**
+     * Method for generating a pdf based on selected images
+     * IMPORTANT: Access to directory needs to be public, if a FileNotFoundException will be thrown
+     * @throws Exception
+     */
+    public void handleGeneratePDFButtonClicked() throws Exception {
+        if(!collectAllSelectedImages().isEmpty()) {
+
+            TextInputDialog albumDialog = new TextInputDialog();
+            albumDialog.setTitle("Create new album");
+            albumDialog.setHeaderText("Create a new album");
+            albumDialog.setContentText("Please enter album name: ");
+
+            Optional<String> result = albumDialog.showAndWait();
+            if(result.isPresent() && !result.get().equals("")) {
+
+
+                DirectoryChooser chooser = new DirectoryChooser();
+                chooser.setTitle("Select the directory to save the pdf in");
+                File defaultDirectory = new File("C:/");
+                chooser.setInitialDirectory(defaultDirectory);
+                File selectedDirectory = chooser.showDialog(null);
+
+
+                // Creating a PdfWriter
+                String dest = selectedDirectory.getAbsolutePath()  + "\\" + result.get() + ".pdf";
+                PdfWriter writer = new PdfWriter(dest);
+
+                // Creating a PdfDocument
+                PdfDocument pdf = new PdfDocument(writer);
+
+                // Creating a Document
+                Document document = new Document(pdf);
+
+                ArrayList<ImageV2> selectedImages = collectAllSelectedImages();
+                for(ImageV2 images: selectedImages) {
+                    String imFile = images.getFilePath();
+
+                    // Creating an ImageData object
+
+                    ImageData data = ImageDataFactory.create(imFile);
+
+                    // Creating an Image object
+                    Image image = new Image(data);
+
+                    // Adding image to the document
+                    document.add(image);
+                }
+
+                // Closing the document
+                document.close();
             }
         }
     }
