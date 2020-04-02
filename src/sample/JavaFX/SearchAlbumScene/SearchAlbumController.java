@@ -153,19 +153,37 @@ public class SearchAlbumController implements Initializable {
         }*/
 
         //imageNotFound.setImage(img);
+        String pathImageNotFound = "src/sample/JavaFX/resources/imageNotFound.png";
         int albumAmount = albums.size();
         int counter = 0;
         for(int i = 0; i < albumAmount/3; i++){
             HBox albumRow = new HBox();
             for(int j = 0; j < 3; j++){
-                albumRow.getChildren().add(new Label(albums.get(counter).getAlbumName()));
-                if(albums.get(counter).getImages().isEmpty()) {
-                    albumRow.getChildren().add(imageNotFound);
-                }
-                else{
-                    albumRow.getChildren().add(albums.get(counter).getImages().get(0).getImage());
+                AlbumItem albumItem;
+                if(albums.get(counter).getImages().isEmpty()){
+                    albumItem = new AlbumItem(pathImageNotFound, albums.get(counter).getAlbumName());
 
                 }
+                else{
+                    albumItem = new AlbumItem(albums.get(counter).getImages().get(0).getFilePath(), albums.get(counter).getAlbumName());
+                }
+                albumRow.getChildren().add(albumItem);
+
+                /*albumRow.getChildren().add(new Label(albums.get(counter).getAlbumName()));
+                if(albums.get(counter).getImages().isEmpty()) {
+                    ImageView imgView = new ImageView(img);
+                    albumRow.getChildren().add(imgView); //error here
+                }
+                else{
+                    try{
+                        albumRow.getChildren().add(albums.get(counter).getImages().get(0).getImage());
+                    }
+                    catch(NullPointerException e){
+                        ImageView imgView = new ImageView(img);
+                        albumRow.getChildren().add(imgView);
+                    }
+
+                }*/
                 /*try{
                     Image image = new Image(albums.get(counter).getImages().get(0).getFilePath());
                     ImageView imageView = new ImageView(image);
