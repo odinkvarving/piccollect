@@ -52,6 +52,8 @@ public class SearchAlbumController implements Initializable {
     @FXML
     private ChoiceBox albumChoiceBox;
     @FXML
+    private ComboBox<String> albumComboBox;
+    @FXML
     Button albumSearchButton;
     @FXML
     TableView<Album> albumTableView;
@@ -74,28 +76,29 @@ public class SearchAlbumController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadAlbumChoiceBox();
+        loadAlbumComboBox();
         makeAlbumOverview();
         //setAlbumTableViewColumnValues();
         //albumTableView.setItems(fillAlbumTableView());
     }
 
     /**
-     * This method runs when albumSearchButton is clicked. It will check if the album selected in albumChoiceBox is equal to any of the album names.
-     * If it is, the method will clear the albumTableView, and only add the correct album to the albumTableView.
+     * This method runs when albumSearchButton is clicked. It will check if the album selected in albumComboBox is equal to any of the album names.
+     * If it is, the method will clear the albumOverview, and only add the correct album to the albumOverview.
      * If none of the albums have the equivalent name, the method will display an alert.
      */
     @FXML
     private void handleAlbumSearchButtonClicked(){
+        String pathImageNotFound = "src/sample/JavaFX/resources/imageNotFound.png";
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Text field empty");
         alert.setContentText("You must type in a correct album name");
 
-        String albumChoice = (String) albumChoiceBox.getValue();
-        boolean albumChoiceBoxIsEmpty = albumChoiceBox.getSelectionModel().isEmpty();
+        String albumChoice = albumComboBox.getValue();
+        boolean albumComboBoxIsEmpty = albumComboBox.getSelectionModel().isEmpty();
 
-        if(albumChoiceBoxIsEmpty){
+        if(albumComboBoxIsEmpty){
             alert.show();
         }
         else{
@@ -105,14 +108,15 @@ public class SearchAlbumController implements Initializable {
                     break;
                 }
                 else if(albumChoice.equals(album.getAlbumName())){
+                    AlbumItem albumItem;
                     albumOverview.getChildren().clear();
                     if(album.getImages().isEmpty()){
-                        albumOverview.getChildren().addAll(new Label(album.getAlbumName(), imageNotFound));
+                        albumItem = new AlbumItem(pathImageNotFound, album.getAlbumName());
                     }
                     else{
-                        albumOverview.getChildren().addAll(new Label(album.getAlbumName()), album.getImages().get(0).getImage());
+                        albumItem = new AlbumItem(album.getImages().get(0).getFilePath(), album.getAlbumName());
                     }
-                    System.out.println(albumChoice);
+                    albumOverview.getChildren().add(albumItem);
                     break;
                 }
             }
@@ -137,6 +141,13 @@ public class SearchAlbumController implements Initializable {
         return albums;
     }
 
+    /**
+     * A method for displaying every album in the Database.
+     * The display is a VBox with multiple HBoxes, depending on how many albums the Database contains.
+     * Each albumRow contains up to 3 albumItems.
+     * If there are no pictures in an album, the albumItem displays a default image: imageNotFound, and albumName.
+     * Else, the albumItem displays the first image in the album and albumName.
+     */
     private void makeAlbumOverview(){
         String pathImageNotFound = "src/sample/JavaFX/resources/imageNotFound.png";
         int albumAmount = albums.size();
@@ -162,9 +173,9 @@ public class SearchAlbumController implements Initializable {
     /**
      * Method for loading all the albums from database into the album choice box
      */
-    private void loadAlbumChoiceBox(){
+    private void loadAlbumComboBox(){
         for(Album album : albums){
-            albumChoiceBox.getItems().add(album.getAlbumName());
+            albumComboBox.getItems().add(album.getAlbumName());
         }
     }
 

@@ -11,12 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-=======
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.layout.HBox?>
-
->>>>>>> e8a3eb62db6385988f03657c91e3878ae4766e3d
+<?import javafx.scene.control.ComboBox?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.SearchAlbumScene.SearchAlbumController">
    <children>
       <VBox layoutY="97.0" prefHeight="500.0" prefWidth="318.0" style="-fx-background-color: #ebe8f9;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="100.0">
@@ -43,11 +38,11 @@
                   <Insets left="20.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <ChoiceBox fx:id="albumChoiceBox" prefHeight="30.0" prefWidth="300" style="-fx-background-color: #ffffff; -fx-border-color: #bebebe; -fx-border-radius: 3;">
+            <ComboBox fx:id="albumComboBox" prefHeight="30.0" prefWidth="300" style="-fx-background-color: #ffffff; -fx-border-color: #bebebe; -fx-border-radius: 3;" promptText="Album name" editable="true">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
-            </ChoiceBox>
+            </ComboBox>
             <Button fx:id="albumSearchButton" mnemonicParsing="false" onAction="#handleAlbumSearchButtonClicked" prefWidth="300.0" styleClass="searchButton" stylesheets="@SearchAlbumStyle.css" text="Search" textFill="WHITE">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="30.0" />
@@ -83,7 +78,7 @@
             </Label>
          </children>
       </Pane>
-      <ScrollPane layoutX="350.0" layoutY="200.0">
+      <ScrollPane layoutX="350.0" layoutY="200.0" style="-fx-color: white">
          <content>
             <VBox fx:id="albumOverview" prefHeight="380.0" prefWidth="680.0">
          </VBox>
