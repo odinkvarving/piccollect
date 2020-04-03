@@ -1,4 +1,4 @@
 /PicollectApplicationV2.iml
 .idea/
 piccollect.iml
-target/:
+/target/
