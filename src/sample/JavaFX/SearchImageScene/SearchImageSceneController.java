@@ -1,14 +1,15 @@
 package sample.JavaFX.SearchImageScene;
 
-import com.drew.metadata.MetadataException;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
-
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7eb854f0a6b9d4f4ffb282099eaa337ccb4e55a2
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,30 +17,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sample.Java.*;
-import sample.Main;
 
 import javax.swing.*;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.chrono.ChronoLocalDate;
-import java.time.chrono.Chronology;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.LogManager;
 import java.util.stream.Collectors;
 
 public class SearchImageSceneController implements Initializable {
@@ -260,16 +252,16 @@ public class SearchImageSceneController implements Initializable {
         if(!collectAllSelectedImages().isEmpty()) {
 
             TextInputDialog albumDialog = new TextInputDialog();
-            albumDialog.setTitle("Create new album");
-            albumDialog.setHeaderText("Create a new album");
-            albumDialog.setContentText("Please enter album name: ");
+            albumDialog.setTitle("Create new pdf");
+            albumDialog.setHeaderText("Create a new pdf");
+            albumDialog.setContentText("Please enter pdf name: ");
 
             Optional<String> result = albumDialog.showAndWait();
             if(result.isPresent() && !result.get().equals("")) {
 
 
                 DirectoryChooser chooser = new DirectoryChooser();
-                chooser.setTitle("Select the directory to save the pdf in");
+                chooser.setTitle("Select directory");
                 File defaultDirectory = new File("C:/");
                 chooser.setInitialDirectory(defaultDirectory);
                 File selectedDirectory = chooser.showDialog(null);
