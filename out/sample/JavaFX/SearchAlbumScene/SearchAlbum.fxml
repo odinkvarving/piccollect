@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.ComboBox?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.SearchAlbumScene.SearchAlbumController">
+   <children>
+      <VBox layoutY="97.0" prefHeight="500.0" prefWidth="318.0" style="-fx-background-color: #ebe8f9;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <Label text="Search filter">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" top="50.0" />
+               </VBox.margin></Label>
+            <Label prefHeight="65.0" prefWidth="191.0" text="Use the input box below to search for album name" wrapText="true">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin></Label>
+            <Label text="Album name:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <ComboBox fx:id="albumComboBox" prefHeight="30.0" prefWidth="300" style="-fx-background-color: #ffffff; -fx-border-color: #bebebe; -fx-border-radius: 3;" promptText="Album name" editable="true">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Button fx:id="albumSearchButton" mnemonicParsing="false" onAction="#handleAlbumSearchButtonClicked" prefWidth="300.0" styleClass="searchButton" stylesheets="@SearchAlbumStyle.css" text="Search" textFill="WHITE">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Pane prefHeight="100.0" prefWidth="1066.0" style="-fx-background-color: #4153AF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="162.0" layoutY="31.0" text="Search albums" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Label>
+            <Label layoutX="162.0" layoutY="59.0" text="Search and browse albums" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Button fx:id="backButton" layoutX="25.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" prefHeight="66.0" prefWidth="77.0" styleClass="homeButton" stylesheets="@SearchAlbumStyle.css">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="50" />
+               </graphic>
+            </Button>
+         </children></Pane>
+      <Pane layoutX="318.0" layoutY="100.0" prefHeight="87.0" prefWidth="748.0">
+         <children>
+            <Label layoutX="77.0" layoutY="44.0" text="All albums in database">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ScrollPane layoutX="350.0" layoutY="200.0">
+         <content>
+            <VBox fx:id="albumOverview" prefHeight="380.0" prefWidth="680.0">
+         </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
