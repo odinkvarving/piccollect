@@ -14,19 +14,21 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.UploadScene.UploadSceneController">
    <children>
-      <Pane prefHeight="114.0" prefWidth="1066.0" style="-fx-background-color: #4153AF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="114.0" style="-fx-background-color: #4153AF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="108.0" layoutY="40.0" text="Upload Image" textFill="WHITE">
+            <Label layoutX="97.0" layoutY="40.0" text="Upload Image" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
-               </font></Label>
-            <Button fx:id="backButton" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" prefHeight="66.0" prefWidth="77.0" style="-fx-background-color: transparent;" styleClass="homeButton" stylesheets="@UploadSceneStyle.css" textFill="WHITE">
+               </font>
+            </Label>
+            <Button fx:id="backButton" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" prefHeight="66.0" prefWidth="77.0" style="-fx-background-color: transparent;" styleClass="homeButton" stylesheets="@UploadSceneStyle.css" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="50" />
                </graphic>
             </Button>
+            <Pane fx:id="windowMenuButtonBox" layoutX="866.0" layoutY="-1.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="866.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0" />
          </children>
-      </Pane>
+      </AnchorPane>
       <VBox alignment="CENTER" layoutX="60.0" layoutY="114.0" prefHeight="486.0" prefWidth="464.0" spacing="20.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="114.0">
          <children>
             <AnchorPane fx:id="previewImagePane" onDragDropped="#handleFilesDropped" onDragOver="#handleFilesDragged" prefHeight="275.0" prefWidth="464.0" styleClass="dragAndDropArea" stylesheets="@UploadSceneStyle.css">
@@ -37,11 +39,13 @@
                         <Text layoutX="46.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Montserrat Medium';" text="Drag and drop &#10;or" textAlignment="CENTER" wrappingWidth="113.0">
                            <font>
                               <Font name="System Bold" size="14.0" />
-                           </font></Text>
+                           </font>
+                        </Text>
                         <Button fx:id="browse" layoutX="53.0" layoutY="99.0" mnemonicParsing="false" onAction="#browseImages" prefHeight="25.0" prefWidth="99.0" styleClass="browse" stylesheets="@UploadSceneStyle.css" text="Browse..." textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="13.0" />
-                           </font></Button>
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                   <Button fx:id="closeImageButton" layoutX="417.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleCloseImageButtonClicked" style="-fx-background-color: transparent;">
@@ -69,7 +73,8 @@
             <Button fx:id="addTagButton" layoutX="460.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleAddTagButtonClicked" styleClass="button2" stylesheets="@UploadSceneStyle.css" text="+" textFill="WHITE">
                <font>
                   <Font size="14.0" />
-               </font></Button>
+               </font>
+            </Button>
             <ChoiceBox fx:id="albumChoiceBox" layoutX="79.0" layoutY="151.0" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #bebebe; -fx-border-radius: 3;" />
             <Label layoutX="255.0" layoutY="156.0" text="Or">
                <font>
@@ -95,7 +100,8 @@
                </font>
                <graphic>
                   <FontAwesomeIcon fill="#720a0a" glyphName="TIMES" size="18" />
-               </graphic></Button>
+               </graphic>
+            </Button>
             <ListView fx:id="tagListView" layoutX="82.0" layoutY="287.0" prefHeight="121.0" prefWidth="364.0" />
             <Label layoutX="79.0" layoutY="32.0" text="Image name:">
                <font>

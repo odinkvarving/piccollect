@@ -3,11 +3,14 @@ package sample.JavaFX.MainMenuScene;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import sample.Main;
@@ -34,21 +37,23 @@ public class MainMenuSceneController implements Initializable {
      * albumScene
      */
     @FXML
-    Button uploadImageButton;
+    private Pane windowMenuButtonsBox;
     @FXML
-    Button searchImageButton;
+    private Button uploadImageButton;
     @FXML
-    Button albumsButton;
+    private Button searchImageButton;
     @FXML
-    Button exitButton;
+    private Button albumsButton;
     @FXML
-    Label title;
+    private Button exitButton;
     @FXML
-    Label titleAddition;
+    private Label title;
+    @FXML
+    private Label titleAddition;
 
-    Scene uploadScene;
-    Scene searchScene;
-    Scene albumScene;
+    private Scene uploadScene;
+    private Scene searchScene;
+    private Scene albumScene;
 
     /**
      * handleUploadImageButton method displays uploadScene.
@@ -120,7 +125,11 @@ public class MainMenuSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
+        try {
+            Node windowMenuButtonsNode = FXMLLoader.load(getClass().getResource("../WindowMenuButtons/WindowMenuButtons.fxml"));
+            windowMenuButtonsBox.getChildren().add(windowMenuButtonsNode);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -37,16 +37,16 @@ public class ImageV2Tests {
 
     @BeforeEach
     public void BeforeEach() throws MetadataException {
-        this.file = new File("C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\resources\\testBildeGPS.jpg");
+        this.file = new File("C:\\PiccollectPictures\\testgps4.jpg");
         this.imageMetaData = new ImageMetaData(file);
-        this.imageV2 = new ImageV2("testName", "Test Nature", "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\resources\\testBildeGPS.jpg");
+        this.imageV2 = new ImageV2("testName", "Test Nature", "C:\\PiccollectPictures\\testgps4.jpg");
     }
 
     //Since DatabaseConnection is static, this might result in not being able to create another instance for testing
     //Look for fix
     @Before
     public void init() {
-        entityManagerFactory = DatabaseConnection.getInstance().getEntityManagerFactory();
+        entityManagerFactory = Persistence.createEntityManagerFactory("Piccollect");
     }
 
     @After
@@ -59,7 +59,7 @@ public class ImageV2Tests {
     public void testCreatingInstanceWithValidData() {
         assertEquals("testName", imageV2.getImageName());
         assertEquals("Test Nature", imageV2.getTags());
-        assertEquals("C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\resources\\testBildeGPS.jpg", imageV2.getFilePath());
+        assertEquals("C:\\PiccollectPictures\\testBildeGPS.jpg", imageV2.getFilePath());
     }
 
     @ParameterizedTest
@@ -78,10 +78,10 @@ public class ImageV2Tests {
 
     @Test
     public void testExtractingImageMetaData() {
-        assertEquals(6000, imageV2.getWidth());
-        assertEquals(4000, imageV2.getHeight());
-        assertEquals("Kalalau Lookout, Kalepa Ridge Trail, Kauaʻi County, HI, United States of America", imageV2.getLocation());
-        LocalDateTime ldt = LocalDateTime.of(2018, 11, 10, 13, 28, 42);
+        assertEquals(640, imageV2.getWidth());
+        assertEquals(480, imageV2.getHeight());
+        assertEquals("Francesco Petrarca, Vicolo del Canello, 52100 Arezzo AR, Italy", imageV2.getLocation());
+        LocalDateTime ldt = LocalDateTime.of(2008, 11, 1, 22, 15, 7);
         Date date = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
         assertEquals(date, imageV2.getDate());
         assertEquals("JPEG", imageMetaData.checkFileType());
