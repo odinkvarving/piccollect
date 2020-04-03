@@ -2,3 +2,4 @@
 .idea/
 piccollect.iml
 /target/
+/target/classes/
