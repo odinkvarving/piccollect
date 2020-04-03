@@ -249,16 +249,16 @@ public class SearchImageSceneController implements Initializable {
         if(!collectAllSelectedImages().isEmpty()) {
 
             TextInputDialog albumDialog = new TextInputDialog();
-            albumDialog.setTitle("Create new album");
-            albumDialog.setHeaderText("Create a new album");
-            albumDialog.setContentText("Please enter album name: ");
+            albumDialog.setTitle("Create new pdf");
+            albumDialog.setHeaderText("Create a new pdf");
+            albumDialog.setContentText("Please enter pdf name: ");
 
             Optional<String> result = albumDialog.showAndWait();
             if(result.isPresent() && !result.get().equals("")) {
 
 
                 DirectoryChooser chooser = new DirectoryChooser();
-                chooser.setTitle("Select the directory to save the pdf in");
+                chooser.setTitle("Select directory");
                 File defaultDirectory = new File("C:/");
                 chooser.setInitialDirectory(defaultDirectory);
                 File selectedDirectory = chooser.showDialog(null);
