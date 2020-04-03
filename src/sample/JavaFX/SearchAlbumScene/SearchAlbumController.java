@@ -155,6 +155,11 @@ public class SearchAlbumController implements Initializable {
         }
     }
 
+    @FXML
+    private void handleAlbumResetButtonClicked(){
+        
+    }
+
     /**
      * Method for loading all the albums from database into the album choice box
      */
