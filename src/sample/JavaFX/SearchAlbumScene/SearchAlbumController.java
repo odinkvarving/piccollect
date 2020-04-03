@@ -157,7 +157,8 @@ public class SearchAlbumController implements Initializable {
 
     @FXML
     private void handleAlbumResetButtonClicked(){
-        
+        albumOverview.getChildren().clear();
+
     }
 
     /**
