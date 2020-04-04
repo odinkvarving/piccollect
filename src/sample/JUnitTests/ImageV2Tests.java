@@ -40,6 +40,7 @@ public class ImageV2Tests {
         this.file = new File("C:\\PiccollectPictures\\testgps4.jpg");
         this.imageMetaData = new ImageMetaData(file);
         this.imageV2 = new ImageV2("testName", "Test Nature", "C:\\PiccollectPictures\\testgps4.jpg");
+
     }
 
     //Since DatabaseConnection is static, this might result in not being able to create another instance for testing
@@ -59,7 +60,7 @@ public class ImageV2Tests {
     public void testCreatingInstanceWithValidData() {
         assertEquals("testName", imageV2.getImageName());
         assertEquals("Test Nature", imageV2.getTags());
-        assertEquals("C:\\PiccollectPictures\\testBildeGPS.jpg", imageV2.getFilePath());
+        assertEquals("C:\\PiccollectPictures\\testBilde2.jpg", imageV2.getFilePath());
     }
 
     @ParameterizedTest

@@ -139,24 +139,35 @@ public class SearchAlbumController implements Initializable {
      */
     private void makeAlbumOverview(){
         String pathImageNotFound = "src/sample/JavaFX/resources/imageNotFound.png";
-        int albumAmount = albums.size();
-        int counter = 0;
-        for(int i = 0; i < albumAmount/3; i++){
+        int amount = albums.size()/3;
+        int difference = 0;
+        if(albums.size()%3 != 0){
+            difference = 1;
+        }
+        int counter = 1;
+        for(int i = 0; i < (amount+difference); i++){
             HBox albumRow = new HBox();
-            for(int j = 0; j < 3; j++){
+            int rowCounter = 0;
+            while(counter < albums.size() && rowCounter < 3){
                 AlbumItem albumItem;
                 if(albums.get(counter).getImages().isEmpty()){
                     albumItem = new AlbumItem(pathImageNotFound, albums.get(counter).getAlbumName());
-
                 }
                 else{
                     albumItem = new AlbumItem(albums.get(counter).getImages().get(0).getFilePath(), albums.get(counter).getAlbumName());
                 }
                 albumRow.getChildren().add(albumItem);
                 counter++;
+                rowCounter++;
             }
             albumOverview.getChildren().add(albumRow);
         }
+    }
+
+    @FXML
+    private void handleAlbumResetButtonClicked(){
+        albumOverview.getChildren().clear();
+
     }
 
     /**

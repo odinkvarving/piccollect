@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="jpa" name="JPA">
+      <configuration>
+        <setting name="validation-enabled" value="true" />
+        <setting name="provider-name" value="Hibernate" />
+        <datasource-mapping>
+          <factory-entry name="Piccollect" />
+        </datasource-mapping>
+        <naming-strategy-map />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_12">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -9,6 +22,15 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="com.drewnoakes:metadata-extractor:2.13.0" level="project" />
+    <orderEntry type="library" name="com.itextpdf:itextpdf:5.5.13" level="project" />
+    <orderEntry type="library" name="com.itextpdf:kernel:7.1.1" level="project" />
+    <orderEntry type="library" name="com.itextpdf:layout:7.1.2" level="project" />
+    <orderEntry type="library" name="com.drewnoakes:metadata-extractor:2.13.0" level="project" />
+    <orderEntry type="library" name="com.itextpdf:itextpdf:5.5.13" level="project" />
+    <orderEntry type="library" name="com.itextpdf:kernel:7.1.1" level="project" />
+    <orderEntry type="library" name="com.itextpdf:layout:7.1.2" level="project" />
+    <orderEntry type="library" name="fontawesomefx-8.2" level="project" />
     <orderEntry type="library" name="Maven: com.byteowls:jopencage:1.0.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.httpcomponents:httpclient:4.5" level="project" />
@@ -59,10 +81,5 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.6.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.junit.platform:junit-platform-engine:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:itextpdf:5.5.13.1" level="project" />
-    <orderEntry type="library" name="com.drewnoakes:metadata-extractor:2.13.0" level="project" />
-    <orderEntry type="library" name="com.itextpdf:itextpdf:5.5.13" level="project" />
-    <orderEntry type="library" name="com.itextpdf:kernel:7.1.1" level="project" />
-    <orderEntry type="library" name="com.itextpdf:layout:7.1.2" level="project" />
-    <orderEntry type="library" name="fontawesomefx-8.2" level="project" />
   </component>
 </module>
