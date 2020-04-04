@@ -64,6 +64,8 @@ public class Main extends Application {
 
         //GeoConverter.reverseGeocoder(test.getLocation().getLatitude(), test.getLocation().getLongitude());
 
+        //Maggie er gay
+
 
 
 }
