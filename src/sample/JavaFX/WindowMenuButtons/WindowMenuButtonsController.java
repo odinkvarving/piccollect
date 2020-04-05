@@ -37,11 +37,17 @@ public class WindowMenuButtonsController {
     }
 
     public void handleSizeButton(){
-
+        Stage stage = (Stage) sizeButton.getScene().getWindow();
+        if(stage.isFullScreen()){
+            stage.setFullScreen(false);
+        }
+        else {
+            stage.setFullScreen(true);
+        }
     }
 
     public void handleHideButton(){
         Stage stage = (Stage) hideButton.getScene().getWindow();
-        stage.hide();
+        stage.setIconified(true);
     }
 }

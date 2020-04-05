@@ -84,7 +84,7 @@ public class Main extends Application {
         //Image test = new Image(testing, "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
 
         //GeoConverter.reverseGeocoder(test.getLocation().getLatitude(), test.getLocation().getLongitude());
-        
+
 }
 
     /**

@@ -26,7 +26,7 @@
                   <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="50" />
                </graphic>
             </Button>
-            <Pane fx:id="windowMenuButtonBox" layoutX="866.0" layoutY="-1.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="866.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0" />
+            <Pane fx:id="windowMenuButtonBox" layoutX="866.0" layoutY="-1.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0" />
          </children>
       </AnchorPane>
       <VBox alignment="CENTER" layoutX="60.0" layoutY="114.0" prefHeight="486.0" prefWidth="464.0" spacing="20.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="114.0">

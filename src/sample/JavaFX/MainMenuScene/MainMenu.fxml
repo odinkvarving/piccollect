@@ -25,7 +25,7 @@
                     </font>
                 </Label>
                 <FontAwesomeIcon fill="WHITE" glyphName="CAMERA" layoutX="32.0" layoutY="128.0" selectionFill="#f8f5f5" size="80" />
-            <Pane fx:id="windowMenuButtonsBox" layoutX="866.0" layoutY="-1.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="866.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0" />
+            <Pane fx:id="windowMenuButtonsBox" layoutX="866.0" layoutY="-1.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0" />
          </children>
       </AnchorPane>
         <GridPane alignment="CENTER" hgap="10.0" layoutX="98.0" layoutY="278.0" prefHeight="124.0" prefWidth="604.0" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="278.0">
@@ -47,7 +47,7 @@
                 </Button>
                 <Button fx:id="exitButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Exit" GridPane.columnIndex="3" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                     <graphic>
-                        <FontAwesomeIcon fill="#4153af" glyphName="TIMES" size="50" />
+                        <FontAwesomeIcon fill="#4153af" glyphName="MAP_ALT" size="50" />
                     </graphic>
                 </Button>
                 <Button fx:id="albumsButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleAlbumsButton" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Albums" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
