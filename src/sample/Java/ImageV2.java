@@ -47,7 +47,7 @@ public class ImageV2 {
     @Column(name="date")
     private Date date;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private List<Album> albums = new ArrayList<>();
 
     public ImageV2(){}
@@ -72,11 +72,13 @@ public class ImageV2 {
         ImageView imageView;
         try {
             FileInputStream input = new FileInputStream(filePath);
-            image = new Image(input, 60, 60, true, false);
+            image = new Image(input, 50, 50, true, false);
             imageView = new ImageView(image);
 
         } catch (FileNotFoundException e) {
-            return null;
+            Image imageError = new Image(new File("src/sample/JavaFX/resources/imageNotFound.png").toURI().toString());
+            ImageView imageNotFound = new ImageView(imageError);
+            return imageNotFound;
         }
         return imageView;
     }

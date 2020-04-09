@@ -36,7 +36,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Font.loadFont(getClass().getResourceAsStream("JavaFX/resources/Montserrat-Medium.ttf"), 18);
-        Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainMenuScene/MainMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MapScene/MapScene.fxml"));
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

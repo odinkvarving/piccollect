@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import sample.JavaFX.MapScene.MapSceneV2;
 import sample.Main;
 
 import java.io.FileInputStream;
@@ -104,6 +105,12 @@ public class MainMenuSceneController implements Initializable {
      * If the user clicks "CANCEL" or closes the dialog box, the user will still be at mainMenuScene.
      */
     public void handleExitButton(){
+        MapSceneV2 mapSceneV2 = new MapSceneV2();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        Scene scene = new Scene(mapSceneV2.getMapView());
+
+        stage.setScene(scene);
+        /**
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Exit Application");
         alert.setHeaderText("Exit");
@@ -116,6 +123,7 @@ public class MainMenuSceneController implements Initializable {
         } else {
             // ... user chose CANCEL or closed the dialog
         }
+         **/
     }
 
     /**

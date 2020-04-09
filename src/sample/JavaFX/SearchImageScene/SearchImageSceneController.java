@@ -93,6 +93,7 @@ public class SearchImageSceneController implements Initializable {
      */
     private void setListItems(){
         for(ImageV2 imageV2 : allImages){
+            System.out.println("Lager item");
             SearchListItem item = new SearchListItem(imageV2);
             searchListItems.add(item);
             imageList.getChildren().add(item);

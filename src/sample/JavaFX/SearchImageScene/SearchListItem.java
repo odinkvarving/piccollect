@@ -27,14 +27,8 @@ public class SearchListItem extends HBox {
         this.imageV2 = imageV2;
 
         this.checkBox = new CheckBox("");
-        if(imageV2.getImage() == null){
-            Image image = new Image(new File("src/sample/JavaFX/resources/imageNotFound.png").toURI().toString());
-            ImageView imageNotFound = new ImageView(image);
-            this.imageView = imageNotFound;
-        }
-        else {
-            this.imageView = imageV2.getImage();
-        }
+        this.imageView = imageV2.getImage();
+
         this.imageName = new Label(imageV2.getImageName());
         this.location = new Label(imageV2.getLocation());
         try {
@@ -89,10 +83,7 @@ public class SearchListItem extends HBox {
 
 
     private void adjustImageView(){
-        this.imageView.setFitHeight(50);
-        this.imageView.setFitWidth(50);
         this.imageView.isPickOnBounds();
-        this.imageView.isPreserveRatio();
     }
 
     private void setLabelFonts(){

@@ -30,7 +30,7 @@ public class Album {
     /**
      * Each album has a List containing images.
      */
-    @ManyToMany(mappedBy = "albums", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "albums", fetch = FetchType.LAZY)
     private List<ImageV2> images = new ArrayList<>();
 
     /**
