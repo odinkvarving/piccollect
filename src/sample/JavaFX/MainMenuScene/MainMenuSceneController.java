@@ -5,22 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import sample.JavaFX.MapScene.MapSceneV2;
-import sample.Main;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainMenuSceneController implements Initializable {
@@ -55,6 +46,7 @@ public class MainMenuSceneController implements Initializable {
     private Scene uploadScene;
     private Scene searchScene;
     private Scene albumScene;
+    private Scene mapScene;
 
     /**
      * handleUploadImageButton method displays uploadScene.
@@ -105,11 +97,13 @@ public class MainMenuSceneController implements Initializable {
      * If the user clicks "CANCEL" or closes the dialog box, the user will still be at mainMenuScene.
      */
     public void handleExitButton(){
-        MapSceneV2 mapSceneV2 = new MapSceneV2();
-        Stage stage = (Stage) exitButton.getScene().getWindow();
-        Scene scene = new Scene(mapSceneV2.getMapView());
-
-        stage.setScene(scene);
+        FXMLLoader mapSceneLoader = new FXMLLoader(getClass().getResource("../MapScene/MapScene.fxml"));
+        try {
+            mapScene = new Scene(mapSceneLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }        Stage stage = (Stage) exitButton.getScene().getWindow();
+        stage.setScene(mapScene);
         /**
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Exit Application");

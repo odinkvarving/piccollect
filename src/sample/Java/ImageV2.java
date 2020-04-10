@@ -1,10 +1,12 @@
 package sample.Java;
 
 
+import com.drew.lang.GeoLocation;
 import com.drew.metadata.MetadataException;
 import com.sun.xml.fastinfoset.tools.FI_DOM_Or_XML_DOM_SAX_SAXEvent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.File;
@@ -47,7 +49,7 @@ public class ImageV2 {
     @Column(name="date")
     private Date date;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.MERGE)
     private List<Album> albums = new ArrayList<>();
 
     public ImageV2(){}
@@ -76,11 +78,29 @@ public class ImageV2 {
             imageView = new ImageView(image);
 
         } catch (FileNotFoundException e) {
-            Image imageError = new Image(new File("src/sample/JavaFX/resources/imageNotFound.png").toURI().toString());
+            Image imageError = new Image(new File("src/sample/JavaFX/resources/imageNotFound.png").toURI().toString(), 50, 50, true, false);
             ImageView imageNotFound = new ImageView(imageError);
             return imageNotFound;
         }
         return imageView;
+    }
+    public void addAlbum(Album album){
+        this.albums.add(album);
+        album.getImages().add(this);
+    }
+    public void removeAlbum(Album album){
+        this.albums.remove(album);
+        album.getImages().remove(this);
+    }
+
+    public GeoLocation getGeoLocation(){
+        ImageMetaData imageMetaData;
+        try {
+            imageMetaData = new ImageMetaData(new File(filePath));
+            return imageMetaData.getGeoDataFromMetadata();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public Integer getId() {

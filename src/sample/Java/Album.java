@@ -30,7 +30,7 @@ public class Album {
     /**
      * Each album has a List containing images.
      */
-    @ManyToMany(mappedBy = "albums", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "albums")
     private List<ImageV2> images = new ArrayList<>();
 
     /**
@@ -68,6 +68,15 @@ public class Album {
 
     public List<ImageV2> getImages() {
         return images;
+    }
+
+    public void addImage(ImageV2 imageV2){
+        this.images.add(imageV2);
+        imageV2.getAlbums().add(this);
+    }
+    public void removeImage(ImageV2 imageV2){
+        this.images.remove(imageV2);
+        imageV2.getAlbums().remove(this);
     }
 
     public void setImages(List<ImageV2> images) {

@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import sample.Java.*;
 import sample.Main;
 
+import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -179,6 +180,7 @@ public class UploadSceneController implements Initializable{
         ImageV2 uploadImage = new ImageV2(imageNameTextField.getText(), tags, uploadImagePath);
 
         imageV2DAO.storeNewImage(uploadImage, (Album) albumChoiceBox.getValue());
+
 
         clearAllFields();
         return true;
