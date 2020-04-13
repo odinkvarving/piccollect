@@ -1,14 +1,19 @@
 package sample.JavaFX.MainMenuScene;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,13 +26,15 @@ public class MainMenuSceneController implements Initializable {
      * uploadImageButton
      * searchImageButton
      * albumsButton
-     * exitButton
+     * mapButton
      * title
      * titleAddition
      * uploadScene
      * searchScene
      * albumScene
      */
+    @FXML
+    private AnchorPane mainMenuPane;
     @FXML
     private Pane windowMenuButtonsBox;
     @FXML
@@ -37,7 +44,7 @@ public class MainMenuSceneController implements Initializable {
     @FXML
     private Button albumsButton;
     @FXML
-    private Button exitButton;
+    private Button mapButton;
     @FXML
     private Label title;
     @FXML
@@ -48,6 +55,9 @@ public class MainMenuSceneController implements Initializable {
     private Scene albumScene;
     private Scene mapScene;
 
+    private double xOffset = 0;
+    private double yOffset = 0;
+
     /**
      * handleUploadImageButton method displays uploadScene.
      */
@@ -56,11 +66,12 @@ public class MainMenuSceneController implements Initializable {
         FXMLLoader uploadSceneLoader = new FXMLLoader(getClass().getResource("../UploadScene/UploadScene.fxml"));
         try {
             uploadScene = new Scene(uploadSceneLoader.load());
+            Stage stage = (Stage) uploadImageButton.getScene().getWindow();
+            makeSceneDraggable(uploadScene.getRoot(), stage);
+            stage.setScene(uploadScene);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Stage stage = (Stage) uploadImageButton.getScene().getWindow();
-        stage.setScene(uploadScene);
     }
 
     /**
@@ -71,11 +82,12 @@ public class MainMenuSceneController implements Initializable {
         FXMLLoader searchSceneLoader = new FXMLLoader(getClass().getResource("../SearchImageScene/SearchScene.fxml"));
         try {
             searchScene = new Scene(searchSceneLoader.load());
+            Stage stage = (Stage) searchImageButton.getScene().getWindow();
+            makeSceneDraggable(searchScene.getRoot(), stage);
+            stage.setScene(searchScene);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Stage stage = (Stage) uploadImageButton.getScene().getWindow();
-        stage.setScene(searchScene);
     }
 
     /**
@@ -85,41 +97,48 @@ public class MainMenuSceneController implements Initializable {
         FXMLLoader albumSceneLoader = new FXMLLoader(getClass().getResource("../SearchAlbumScene/SearchAlbum.fxml"));
         try {
             albumScene = new Scene(albumSceneLoader.load());
+            Stage stage = (Stage) albumsButton.getScene().getWindow();
+            makeSceneDraggable(albumScene.getRoot(), stage);
+            stage.setScene(albumScene);
         } catch (IOException e) {
             e.printStackTrace();
-        }        Stage stage = (Stage) uploadImageButton.getScene().getWindow();
-        stage.setScene(albumScene);
+        }
     }
 
-    /**
-     * handleExitButton method displays an alert which asks the user if he/she wants to exit the application.
-     * If the user clicks "OK", the application shuts down.
-     * If the user clicks "CANCEL" or closes the dialog box, the user will still be at mainMenuScene.
-     */
-    public void handleExitButton(){
+    public void handleMapButton(){
         FXMLLoader mapSceneLoader = new FXMLLoader(getClass().getResource("../MapScene/MapScene.fxml"));
         try {
             mapScene = new Scene(mapSceneLoader.load());
+            Stage stage = (Stage) mapButton.getScene().getWindow();
+            makeSceneDraggable(mapScene.getRoot(), stage);
+            stage.setScene(mapScene);
         } catch (IOException e) {
             e.printStackTrace();
-        }        Stage stage = (Stage) exitButton.getScene().getWindow();
-        stage.setScene(mapScene);
-        /**
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Exit Application");
-        alert.setHeaderText("Exit");
-        alert.setContentText("Are you ok with this?");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            Stage stage = (Stage) exitButton.getScene().getWindow();
-            stage.close();
-        } else {
-            // ... user chose CANCEL or closed the dialog
         }
-         **/
     }
 
+    public void makeSceneDraggable(Parent root, Stage stage){
+        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            }
+        });
+    }
+
+    public void makeMainMenuPaneMovable(){
+        Stage stage;
+        stage = (Stage) mainMenuPane.getScene().getWindow();
+        makeSceneDraggable(stage.getScene().getRoot(), stage);
+    }
     /**
      * initialize method loads and initializes the different fxml scenes.
      * @param url

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="1066.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.MainMenuScene.MainMenuSceneController">
+<AnchorPane onMouseEntered="#makeMainMenuPaneMovable" fx:id="mainMenuPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="1066.0" style="-fx-background-color: #fff;-fx-border-color: #4153AF" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.MainMenuScene.MainMenuSceneController">
     <children>
       <AnchorPane fx:id="headerPane" prefHeight="200.0" prefWidth="1066.0" style="-fx-background-color: #4153AF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -45,7 +45,7 @@
                         <FontAwesomeIcon fill="#4153af" glyphName="UPLOAD" size="50" />
                     </graphic>
                 </Button>
-                <Button fx:id="exitButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Exit" GridPane.columnIndex="3" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                <Button fx:id="mapButton" alignment="CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleMapButton" prefHeight="173.0" prefWidth="200.0" stylesheets="@MainMenuStyle.css" text="Map" GridPane.columnIndex="3" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                     <graphic>
                         <FontAwesomeIcon fill="#4153af" glyphName="MAP_ALT" size="50" />
                     </graphic>

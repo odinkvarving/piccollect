@@ -37,20 +37,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Font.loadFont(getClass().getResourceAsStream("JavaFX/resources/Montserrat-Medium.ttf"), 18);
         Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainMenuScene/MainMenu.fxml"));
-        root.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
-        });
-        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                primaryStage.setX(event.getScreenX() - xOffset);
-                primaryStage.setY(event.getScreenY() - yOffset);
-            }
-        });
 
         // Responsive Design
         int sceneWidth = 1066;

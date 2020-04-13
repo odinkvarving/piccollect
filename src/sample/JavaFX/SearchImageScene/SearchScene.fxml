@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1066.0" style="-fx-background-color: #fff" stylesheets="@SearchImageStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.SearchImageScene.SearchImageSceneController">
+<AnchorPane prefHeight="600.0" prefWidth="1066.0" style="-fx-background-color: #fff;-fx-border-color: #4153AF" stylesheets="@SearchImageStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.SearchImageScene.SearchImageSceneController">
     <children>
       <VBox layoutY="100.0" prefHeight="500.0" prefWidth="318.0" style="-fx-background-color: #D4D8ED;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
