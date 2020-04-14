@@ -7,3 +7,6 @@
 .homeButton:pressed{
     -fx-cursor: hand;
 }
+.dialogButton{
+    -fx-background-color: green;
+}

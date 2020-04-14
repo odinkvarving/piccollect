@@ -1,6 +1,11 @@
 package sample.JavaFX.MapScene;
 
 import com.drew.metadata.MetadataException;
+import com.jfoenix.animation.alert.JFXAlertAnimation;
+import com.jfoenix.controls.JFXAlert;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
@@ -12,30 +17,38 @@ import com.lynden.gmapsfx.util.MarkerImageFactory;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import netscape.javascript.JSObject;
-import sample.Java.DatabaseConnection;
-import sample.Java.ImageMetaData;
-import sample.Java.ImageV2;
-import sample.Java.ImageV2DAO;
+import sample.Java.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MapSceneController implements Initializable, MapComponentInitializedListener {
 
@@ -45,7 +58,10 @@ public class MapSceneController implements Initializable, MapComponentInitialize
     private GeocodingService geocodingService;
 
     @FXML
-    private BorderPane borderPane;
+    private AnchorPane scenePane;
+
+    @FXML
+    private AnchorPane mapAnchorPane;
 
     @FXML
     private TextField addressTextField;
@@ -55,17 +71,27 @@ public class MapSceneController implements Initializable, MapComponentInitialize
     @FXML
     private Pane windowMenuButtonBox;
 
+    @FXML
+    private StackPane imageDialogPane;
 
     private StringProperty address = new SimpleStringProperty();
     private ArrayList<ImageV2> images;
 
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fetchImagesFromDB();
+
         mapView = new GoogleMapView(Locale.getDefault().getLanguage(), "AIzaSyAaCPNXgEw5zlJTHLr0MYOmvxOcQ50vLdw");
         mapView.addMapInializedListener(this);
-        borderPane.setRight(mapView);
+
+        mapAnchorPane.getChildren().add(mapView);
+        mapAnchorPane.setLeftAnchor(mapView, 0.0);
+        mapAnchorPane.setRightAnchor(mapView, mapAnchorPane.getWidth());
+
+        addressTextField.toFront();
         address.bind(addressTextField.textProperty());
 
         try {
@@ -81,7 +107,7 @@ public class MapSceneController implements Initializable, MapComponentInitialize
         geocodingService = new GeocodingService();
         MapOptions mapOptions = new MapOptions();
 
-        mapOptions.center(new LatLong(47.6097, -122.3331))
+        mapOptions.center(new LatLong(62, 10))
                 .mapType(MapTypeIdEnum.ROADMAP)
                 .overviewMapControl(false)
                 .panControl(false)
@@ -89,22 +115,10 @@ public class MapSceneController implements Initializable, MapComponentInitialize
                 .scaleControl(false)
                 .streetViewControl(false)
                 .zoomControl(false)
-                .zoom(12);
+                .zoom(5).mapTypeControl(false);
 
         map = mapView.createMap(mapOptions);
         placeImagesOnMap();
-
-
-        InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
-        infoWindowOptions.content("<img src=\"https://photos.queens.cz/queens/2018-03/large/ambassadors-komplet-skateboard-black-crown-80662_2.jpg\" alt=\"Italian Trulli\">\n" );
-
-        InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
-
-        /**
-        map.addUIEventHandler(fredWilkieMarker, UIEventType.mouseover, (JSObject obj) -> {
-            fredWilkeInfoWindow.open(map, fredWilkieMarker);
-        });
-**/
     }
 
     private void fetchImagesFromDB(){
@@ -114,20 +128,79 @@ public class MapSceneController implements Initializable, MapComponentInitialize
     private void placeImagesOnMap(){
         images.stream().forEach(imageV2 -> {
             if(imageV2.getGeoLocation() != null) {
-                showMarker(imageV2.getGeoLocation().getLatitude(), imageV2.getGeoLocation().getLongitude());
+                Marker marker = createMarker(imageV2.getGeoLocation().getLatitude(), imageV2.getGeoLocation().getLongitude());
+                addMarkerClickHandler(marker, imageV2);
+                map.addMarker(marker);
             }
         });
+    }
+    private void addMarkerClickHandler(Marker marker, ImageV2 imageV2){
+        map.addUIEventHandler(marker, UIEventType.click, (JSObject obj) -> {
+
+            if(imageDialogPane.getChildren().size() > 0){
+                imageDialogPane.getChildren().clear();
+            }
+
+            JFXDialogLayout dialogLayout = new JFXDialogLayout();
+
+            JFXButton addToAlbumButton = new JFXButton("Add to album");
+            addToAlbumButton.setStyle("-fx-font-family: 'Montserrat Medium'");
+            addToAlbumButton.setAlignment(Pos.CENTER);
+
+            JFXButton doneButton = new JFXButton("Done");
+            doneButton.setStyle("-fx-font-family: 'Montserrat Medium'");
+            doneButton.setAlignment(Pos.CENTER);
+
+            JFXDialog dialog = new JFXDialog(imageDialogPane, dialogLayout, JFXDialog.DialogTransition.CENTER);
+            doneButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                dialog.close();
+                imageDialogPane.toBack();
+            });
+            addToAlbumButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) ->{
+                handleAddToAlbumButtonPressed(imageV2);
+            });
+
+            dialogLayout.setActions(addToAlbumButton, doneButton);
+            dialogLayout.setBody(createPreviewImage(imageV2));
+
+
+            imageDialogPane.toFront();
+            dialog.show();
+        });
+    }
+
+    private ImageView createPreviewImage(ImageV2 imageV2){
+        File file = new File(imageV2.getFilePath());
+        Image image = new Image(file.toURI().toString(), 400, 400, true, false);
+        ImageView imageView = new ImageView(image);
+        return imageView;
+    }
+
+    private void handleAddToAlbumButtonPressed(ImageV2 imageV2){
+        List<Album> albums = new ArrayList<>();
+
+        AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
+        albums = albumDAO.getAlbums();
+
+        ChoiceDialog<Album> dialog = new ChoiceDialog<Album>(albums.get(0), albums);
+        dialog.setTitle("Choose album");
+        dialog.setHeaderText("Add image to an album");
+        dialog.setContentText("Choose album:");
+
+        // Traditional way to get the response value.
+        Optional<Album> result = dialog.showAndWait();
+        if (result.isPresent()){
+            albumDAO.createNewAlbumWithImages(dialog.getSelectedItem(), imageV2);
+        }
     }
 
     /**
      * Adds a marker to the map.
      */
-    public void showMarker(double lat, double lng) {
+    public Marker createMarker(double lat, double lng) {
         MarkerOptions options = new MarkerOptions();
-        options
-                .position(new LatLong(lat, lng));
-        Marker marker = new Marker(options);
-        map.addMarker(marker);
+        options.position(new LatLong(lat, lng));
+        return new Marker(options);
     }
 
     /**

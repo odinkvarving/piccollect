@@ -52,12 +52,10 @@ public class AlbumDAO {
         try {
             em.getTransaction().begin();
 
-            List<ImageV2> images = em.createQuery("SELECT i FROM ImageV2 i JOIN FETCH i.albums", ImageV2.class).getResultList();
-            images.stream().filter(image -> image.getId() == imageV2.getId()).forEach(image -> album.addImage(image));
+            ImageV2 imageV22 = em.find(ImageV2.class, imageV2.getId());
+            Album album2 = em.find(Album.class, album.getId());
+            imageV22.addAlbum(album2);
 
-
-            em.merge(album);
-            em.merge(imageV2);
             em.getTransaction().commit();
         } finally {
             closeEM(em);
