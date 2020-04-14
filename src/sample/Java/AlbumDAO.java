@@ -38,13 +38,23 @@ public class AlbumDAO {
         }
     }
 
+    public Album findAlbum(Integer id){
+        EntityManager em = getEM();
+        try {
+            return em.find(Album.class, id);
+        }finally {
+            closeEM(em);
+        }
+    }
+
     public void createNewAlbumWithImages(Album album, ImageV2 imageV2){
         EntityManager em = getEM();
         try {
             em.getTransaction().begin();
 
-            imageV2.getAlbums().add(album);
-            album.getImages().add(imageV2);
+            List<ImageV2> images = em.createQuery("SELECT i FROM ImageV2 i JOIN FETCH i.albums", ImageV2.class).getResultList();
+            images.stream().filter(image -> image.getId() == imageV2.getId()).forEach(image -> album.addImage(image));
+
 
             em.merge(album);
             em.merge(imageV2);

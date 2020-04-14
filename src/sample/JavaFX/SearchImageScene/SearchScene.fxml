@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1066.0" style="-fx-background-color: #fff" stylesheets="@SearchImageStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.SearchImageScene.SearchImageSceneController">
+<AnchorPane prefHeight="600.0" prefWidth="1066.0" style="-fx-background-color: #fff;-fx-border-color: #4153AF" stylesheets="@SearchImageStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.SearchImageScene.SearchImageSceneController">
     <children>
       <VBox layoutY="100.0" prefHeight="500.0" prefWidth="318.0" style="-fx-background-color: #D4D8ED;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
@@ -105,24 +105,26 @@
             <Insets left="20.0" right="20.0" top="40.0" />
          </padding>
       </VBox>
-        <Pane prefHeight="100.0" prefWidth="1066.0" style="-fx-background-color: #4153AF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="100.0" prefWidth="1066.0" style="-fx-background-color: #4153AF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="123.0" layoutY="14.0" text="Search images" textFill="WHITE">
+            <Label layoutX="103.0" layoutY="17.0" text="Search images" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="123.0" layoutY="48.0" prefHeight="35.0" prefWidth="203.0" text="Filter and collects all images that &#10;fits your criterias" textFill="WHITE">
+            <Label layoutX="103.0" layoutY="52.0" prefHeight="35.0" prefWidth="203.0" text="Filter and collects all images that &#10;fits your criterias" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="backButton" layoutX="26.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" prefHeight="66.0" prefWidth="77.0" style="-fx-background-color: transparent;" styleClass="homeButton" stylesheets="@SearchImageStyle.css">
+            <Button fx:id="backButton" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" prefHeight="66.0" prefWidth="77.0" style="-fx-background-color: transparent;" styleClass="homeButton" stylesheets="@SearchImageStyle.css">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="50" />
                </graphic>
             </Button>
-         </children></Pane>
+            <Pane fx:id="windowMenuButtonsBox" layoutX="866.0" layoutY="-1.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0" />
+         </children>
+      </AnchorPane>
       <HBox alignment="CENTER" layoutX="336.0" layoutY="523.0" prefHeight="66.0" prefWidth="711.0" spacing="20.0">
          <children>
             <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleCreateButtonClicked" prefHeight="36.0" prefWidth="201.0" styleClass="createButtons" stylesheets="@SearchImageStyle.css" text="Create Album" textFill="WHITE">

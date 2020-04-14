@@ -17,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -50,6 +51,8 @@ public class SearchAlbumController implements Initializable {
      * albums is an ArrayList containing all albums
      */
     @FXML
+    private Pane windowMenuButtonsBox;
+    @FXML
     private ChoiceBox albumChoiceBox;
     @FXML
     private ComboBox<String> albumComboBox;
@@ -78,6 +81,12 @@ public class SearchAlbumController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadAlbumComboBox();
         makeAlbumOverview();
+        try {
+            Node windowMenuButtonsNode = FXMLLoader.load(getClass().getResource("../WindowMenuButtons/WindowMenuButtons.fxml"));
+            windowMenuButtonsBox.getChildren().add(windowMenuButtonsNode);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

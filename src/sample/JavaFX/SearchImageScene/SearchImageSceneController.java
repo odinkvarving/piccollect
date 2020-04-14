@@ -6,15 +6,16 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -40,6 +41,8 @@ public class SearchImageSceneController implements Initializable {
     @FXML private TableColumn<ImageV2, Date> dateColumn;
     @FXML private TableColumn<ImageV2, ArrayList<String>> tagsColumn;
 
+    @FXML
+    private Pane windowMenuButtonsBox;
     @FXML
     private TextField nameSearchField;
 
@@ -77,6 +80,12 @@ public class SearchImageSceneController implements Initializable {
         ImageV2DAO imageV2DAO = new ImageV2DAO(DatabaseConnection.getInstance().getEntityManagerFactory());
         allImages = (ArrayList<ImageV2>) imageV2DAO.getImages();
         setListItems();
+        try {
+            Node windowMenuButtonsNode = FXMLLoader.load(getClass().getResource("../WindowMenuButtons/WindowMenuButtons.fxml"));
+            windowMenuButtonsBox.getChildren().add(windowMenuButtonsNode);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -84,6 +93,7 @@ public class SearchImageSceneController implements Initializable {
      */
     private void setListItems(){
         for(ImageV2 imageV2 : allImages){
+            System.out.println("Lager item");
             SearchListItem item = new SearchListItem(imageV2);
             searchListItems.add(item);
             imageList.getChildren().add(item);

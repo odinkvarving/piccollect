@@ -1,11 +1,13 @@
 package sample.Java;
 
 import com.drew.metadata.MetadataException;
+import org.hibernate.Hibernate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
 public class ImageV2DAO {
@@ -21,17 +23,33 @@ public class ImageV2DAO {
         this.emf = emf;
     }
 
+
     public void storeNewImage(ImageV2 imageV2, Album album) {
         EntityManager em = getEM();
         try {
             em.getTransaction().begin();
 
-            imageV2.getAlbums().add(album);
-            album.getImages().add(imageV2);
+            List<Album> albums = em.createQuery("SELECT a from Album a JOIN FETCH a.images", Album.class).getResultList();
+            for(Album album1 : albums){
+                if(album1.getId() == album.getId()){
+                    imageV2.addAlbum(album1);
+                }
+            }
 
             em.persist(imageV2);
             em.getTransaction().commit();
         } finally {
+            closeEM(em);
+        }
+    }
+
+    public void updateImage(ImageV2 imageV2){
+        EntityManager em = getEM();
+        try {
+            em.getTransaction().begin();
+            em.merge(imageV2);
+            em.getTransaction().commit();
+        }finally {
             closeEM(em);
         }
     }

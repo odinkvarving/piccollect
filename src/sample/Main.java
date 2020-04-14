@@ -1,11 +1,15 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import sample.Java.DatabaseConnection;
 import sample.Java.GeoConverter;
 
@@ -22,6 +26,8 @@ public class Main extends Application {
     int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
      */
 
+    private double xOffset = 0;
+    private double yOffset = 0;
     /**
      * start method is a method Main can run when extending Application. start method initializes the Application.
      * @param primaryStage: The primary stage
@@ -32,10 +38,10 @@ public class Main extends Application {
         Font.loadFont(getClass().getResourceAsStream("JavaFX/resources/Montserrat-Medium.ttf"), 18);
         Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainMenuScene/MainMenu.fxml"));
 
-
         // Responsive Design
         int sceneWidth = 1066;
         int sceneHeight = 600;
+
         /*
         if (screenWidth <= 1280 && screenHeight <= 768) {
             sceneWidth = 1066;
@@ -49,6 +55,7 @@ public class Main extends Application {
         }*/
 
         primaryStage.setTitle("Hello World");
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, sceneWidth, sceneHeight));
         primaryStage.show();
 
@@ -63,8 +70,6 @@ public class Main extends Application {
         //Image test = new Image(testing, "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
 
         //GeoConverter.reverseGeocoder(test.getLocation().getLatitude(), test.getLocation().getLongitude());
-
-
 
 }
 

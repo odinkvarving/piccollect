@@ -1,0 +1,10 @@
+.window-menu-button{
+    -fx-fill: #373C43;
+}
+.window-menu-button:hover{
+    -fx-fill: #797D81;
+    -fx-cursor: hand;
+}.window-menu-button:pressed{
+     -fx-fill: #24282C;
+    -fx-cursor: hand;
+ }
