@@ -115,6 +115,10 @@ public class SearchAlbumController implements Initializable {
                         albumItem = new AlbumItem(album.getImages().get(0).getFilePath(), album.getAlbumName());
                     }
                     albumOverview.getChildren().add(albumItem);
+
+                    albumItem.setOnMouseClicked(e -> {if(e.getClickCount() == 2)
+                        loadAllPicturesFromAlbum(album.getAlbumName());
+                    });
                     break;
                 }
             }
@@ -130,13 +134,13 @@ public class SearchAlbumController implements Initializable {
      */
     private void makeAlbumOverview(){
         String pathImageNotFound = "src/sample/JavaFX/resources/imageNotFound.png";
-        int amount = albums.size()/3;
+        int amountRows = albums.size()/3;
         int difference = 0;
         if(albums.size()%3 != 0){
             difference = 1;
         }
         int counter = 1;
-        for(int i = 0; i < (amount+difference); i++){
+        for(int i = 0; i < (amountRows+difference); i++){
             HBox albumRow = new HBox();
             int rowCounter = 0;
             while(counter < albums.size() && rowCounter < 3){
@@ -148,6 +152,10 @@ public class SearchAlbumController implements Initializable {
                     albumItem = new AlbumItem(albums.get(counter).getImages().get(0).getFilePath(), albums.get(counter).getAlbumName());
                 }
                 albumRow.getChildren().add(albumItem);
+                int finalCounter = counter;
+                albumItem.setOnMouseClicked(e -> {if(e.getClickCount() == 2)
+                    loadAllPicturesFromAlbum(albums.get(finalCounter).getAlbumName());
+                });
                 counter++;
                 rowCounter++;
             }
@@ -155,10 +163,13 @@ public class SearchAlbumController implements Initializable {
         }
     }
 
+    /**
+     * Method for resetting albumOverview. The method clears albumOverview and runs the method makeAlbumOverview().
+     */
     @FXML
     private void handleAlbumResetButtonClicked(){
         albumOverview.getChildren().clear();
-
+        makeAlbumOverview();
     }
 
     /**
@@ -167,6 +178,46 @@ public class SearchAlbumController implements Initializable {
     private void loadAlbumComboBox(){
         for(Album album : albums){
             albumComboBox.getItems().add(album.getAlbumName());
+        }
+    }
+
+    /**
+     * Method for showing all images in a chosen album. If the album contains zero images, the user will be notified by text in albumOverview.
+     * @param albumName: albumName is used to check what album was clicked
+     */
+    private void loadAllPicturesFromAlbum(String albumName){
+        for(Album album: albums){
+            if(albumName.equals(album.getAlbumName())) {
+                if (album.getImages().isEmpty()) {
+                    Label label = new Label("No images found");
+                    albumOverview.getChildren().clear();
+                    albumOverview.getChildren().add(label);
+                } else {
+                    albumOverview.getChildren().clear();
+                    int amountRows = album.getImages().size() / 3;
+                    int difference = 0;
+                    int counter = 0;
+                    if (album.getImages().size() % 3 != 0) {
+                        difference = 1;
+                    }
+                    for (int i = 0; i < (amountRows + difference); i++) {
+                        HBox imageRow = new HBox();
+                        int rowCounter = 0;
+                        while (counter < album.getImages().size() && rowCounter < 3) {
+                            ImageItem imageItem;
+                            if (album.getImages().get(counter).getImageName().equals("") || album.getImages().get(counter).getImageName() == null) {
+                                imageItem = new ImageItem(album.getImages().get(counter).getFilePath(), "No name");
+                            } else {
+                                imageItem = new ImageItem(album.getImages().get(counter).getFilePath(), album.getImages().get(counter).getImageName());
+                            }
+                            imageRow.getChildren().add(imageItem);
+                            counter++;
+                            rowCounter++;
+                        }
+                        albumOverview.getChildren().add(imageRow);
+                    }
+                }
+            }
         }
     }
 

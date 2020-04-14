@@ -6,10 +6,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
-<<<<<<< HEAD
-=======
 
->>>>>>> 7eb854f0a6b9d4f4ffb282099eaa337ccb4e55a2
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
