@@ -66,8 +66,7 @@ public class SearchAlbumController implements Initializable {
     TableColumn<Album, String> nameColumn;
     @FXML
     TableColumn<Album, ArrayList<ImageV2>> albumColumn;
-    private AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
-    private ArrayList<Album> albums = (ArrayList<Album>) albumDAO.getAlbums();
+    private ArrayList<Album> albums;
     Image img = new Image(new File("src/sample/JavaFX/resources/imageNotFound.png").toURI().toString());
     ImageView imageNotFound = new ImageView(img);
 
@@ -79,6 +78,8 @@ public class SearchAlbumController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
+        albums = (ArrayList<Album>) albumDAO.getAlbums();
         loadAlbumComboBox();
         makeAlbumOverview();
         try {

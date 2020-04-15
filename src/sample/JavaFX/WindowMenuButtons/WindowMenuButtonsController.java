@@ -20,7 +20,10 @@ public class WindowMenuButtonsController {
     private Button hideButton;
 
 
-
+    /**
+     * Method for showing a dialog that gets confirmation about closing the program. And closes the program
+     * if the user selects ok.
+     */
     public void handleExitButton(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Exit Application");
@@ -36,6 +39,9 @@ public class WindowMenuButtonsController {
         }
     }
 
+    /**
+     * Makes the program fullscreen if the program is small and vise versa.
+     */
     public void handleSizeButton(){
         Stage stage = (Stage) sizeButton.getScene().getWindow();
         if(stage.isFullScreen()){
@@ -46,6 +52,9 @@ public class WindowMenuButtonsController {
         }
     }
 
+    /**
+     * Hides the program.
+     */
     public void handleHideButton(){
         Stage stage = (Stage) hideButton.getScene().getWindow();
         stage.setIconified(true);

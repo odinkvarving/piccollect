@@ -7,8 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -130,25 +128,11 @@
             <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleCreateButtonClicked" prefHeight="36.0" prefWidth="201.0" styleClass="createButtons" stylesheets="@SearchImageStyle.css" text="Create Album" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/newAlbumIcon.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
+               </font></Button>
             <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleGeneratePDFButtonClicked" prefHeight="35.0" prefWidth="203.0" styleClass="createButtons" stylesheets="@SearchImageStyle.css" text="Generate PDF" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/newPDFIcon.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
+               </font></Button>
          </children>
       </HBox>
       <ScrollPane layoutX="331.0" layoutY="187.0" prefHeight="336.0" prefWidth="721.0" style="-fx-background-color: transparent">

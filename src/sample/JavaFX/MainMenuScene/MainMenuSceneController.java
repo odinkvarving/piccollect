@@ -50,16 +50,22 @@ public class MainMenuSceneController implements Initializable {
     @FXML
     private Label titleAddition;
 
+    /**
+     * All the different scenes besides the MainMenuScene
+     */
     private Scene uploadScene;
     private Scene searchScene;
     private Scene albumScene;
     private Scene mapScene;
 
+    /**
+     * Variables for making it possible to drag the window
+     */
     private double xOffset = 0;
     private double yOffset = 0;
 
     /**
-     * handleUploadImageButton method displays uploadScene.
+     * handleUploadImageButton method displays uploadScene and makes it draggable.
      */
     public void handleUploadImageButton(){
         //Initialzes the upload scene
@@ -75,7 +81,7 @@ public class MainMenuSceneController implements Initializable {
     }
 
     /**
-     * handleSearchSceneButton method displays the searchScene.
+     * handleSearchSceneButton method displays the searchScene and makes it draggable.
      */
     public void handleSearchSceneButton(){
         //Initializes search image scene
@@ -91,7 +97,7 @@ public class MainMenuSceneController implements Initializable {
     }
 
     /**
-     * handleAlbumsButton method displays the albumScene.
+     * handleAlbumsButton method displays the albumScene and makes it draggable
      */
     public void handleAlbumsButton(){//Initializes album scene
         FXMLLoader albumSceneLoader = new FXMLLoader(getClass().getResource("../SearchAlbumScene/SearchAlbum.fxml"));
@@ -105,6 +111,9 @@ public class MainMenuSceneController implements Initializable {
         }
     }
 
+    /**
+     * Loads in the MapScene and makes it draggable
+     */
     public void handleMapButton(){
         FXMLLoader mapSceneLoader = new FXMLLoader(getClass().getResource("../MapScene/MapScene.fxml"));
         try {
@@ -117,6 +126,11 @@ public class MainMenuSceneController implements Initializable {
         }
     }
 
+    /**
+     * Method for making the scene draggable
+     * @param root
+     * @param stage
+     */
     public void makeSceneDraggable(Parent root, Stage stage){
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -134,13 +148,17 @@ public class MainMenuSceneController implements Initializable {
         });
     }
 
+    /**
+     * Method for making the MainMenuScene draggable. Attached to the main pane in the FXML file.
+     */
     public void makeMainMenuPaneMovable(){
         Stage stage;
         stage = (Stage) mainMenuPane.getScene().getWindow();
         makeSceneDraggable(stage.getScene().getRoot(), stage);
     }
+
     /**
-     * initialize method loads and initializes the different fxml scenes.
+     * Initialize where we load in the custom window-menubuttons-
      * @param url
      * @param resourceBundle
      */

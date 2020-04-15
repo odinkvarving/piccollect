@@ -34,13 +34,6 @@ import java.util.stream.Collectors;
 
 public class SearchImageSceneController implements Initializable {
 
-    @FXML private TableView<ImageV2> table;
-    @FXML private TableColumn<ImageV2, ImageIcon> imageColumn;
-    @FXML private TableColumn<ImageV2, String> nameColumn;
-    @FXML private TableColumn<ImageV2, String> locationColumn;
-    @FXML private TableColumn<ImageV2, Date> dateColumn;
-    @FXML private TableColumn<ImageV2, ArrayList<String>> tagsColumn;
-
     @FXML
     private Pane windowMenuButtonsBox;
     @FXML
@@ -70,11 +63,19 @@ public class SearchImageSceneController implements Initializable {
     @FXML
     private VBox imageList;
 
+    //ArrayList with all the images from the database
     ArrayList<ImageV2> allImages;
+    //ArrayList with all the tags from the images
     ArrayList<Label> tagLabels = new ArrayList<>();
+    //An ArrayList with the searchListItems that is an HBox that contains the image information.
     ArrayList<SearchListItem> searchListItems = new ArrayList<>();
 
-
+    /**
+     * Initializemethod where we fill inn the images-arraylist with images from the database, and fill the scrollpane with
+     * all the SearchListItems.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ImageV2DAO imageV2DAO = new ImageV2DAO(DatabaseConnection.getInstance().getEntityManagerFactory());
@@ -89,11 +90,10 @@ public class SearchImageSceneController implements Initializable {
     }
 
     /**
-     * Method for creating observable list and setting it as table items
+     * Method where we go through all the images and creates a SearchListItem object with them and adds them to the corresponding lists.
      */
     private void setListItems(){
         for(ImageV2 imageV2 : allImages){
-            System.out.println("Lager item");
             SearchListItem item = new SearchListItem(imageV2);
             searchListItems.add(item);
             imageList.getChildren().add(item);
@@ -101,7 +101,8 @@ public class SearchImageSceneController implements Initializable {
     }
 
     /**
-     * Handles the search button clicked
+     * Handles the search button clicked. Goes through all input-fields and checks whether they are empty or not. Usese streams to
+     * filter through each criteria. At the end we reload the scrollpane with all the search-results and clear all input-fields.
      */
     public void handleSearchButtonClicked(){
         ArrayList<ImageV2> filteredImages = (ArrayList<ImageV2>) allImages.clone();
@@ -220,6 +221,10 @@ public class SearchImageSceneController implements Initializable {
         clearAllTags();
     }
 
+    /**
+     * Goes through all the SearchListItems-objects and checks if the checkbox is checkd, and adds them to the list of selected images if so.
+     * @return
+     */
     private ArrayList<ImageV2> collectAllSelectedImages(){
         ArrayList<ImageV2> selectedImages = new ArrayList<>();
 
@@ -227,6 +232,10 @@ public class SearchImageSceneController implements Initializable {
         return selectedImages;
     }
 
+    /**
+     * Opens a dialog where the user enters the name of the new album. After that we go through all selected images
+     * and adds them to the new album.
+     */
     public void handleCreateButtonClicked(){
         if(!collectAllSelectedImages().isEmpty()) {
             String albumName;
