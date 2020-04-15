@@ -24,10 +24,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sample.Java.Album;
-import sample.Java.AlbumDAO;
-import sample.Java.DatabaseConnection;
-import sample.Java.ImageV2;
+import sample.Java.*;
 import sample.Main;
 
 import javax.persistence.EntityManagerFactory;

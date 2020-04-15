@@ -19,8 +19,8 @@ public class AlbumDAO {
     public List<Album> getAlbums(){
         EntityManager em = getEM();
         try{
-            Query q = em.createQuery("SELECT OBJECT(o) FROM Album o");
-            return q.getResultList();
+            List<Album> albums = em.createQuery("SELECT a from Album a JOIN FETCH a.images", Album.class).getResultList();
+            return albums;
         }
         finally {
             closeEM(em);
@@ -60,9 +60,7 @@ public class AlbumDAO {
         } finally {
             closeEM(em);
         }
-
     }
-
     /**
      * Metode for å lage og hente entitymanageren.
      *

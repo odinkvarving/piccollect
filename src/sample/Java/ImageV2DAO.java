@@ -42,7 +42,6 @@ public class ImageV2DAO {
             closeEM(em);
         }
     }
-
     public void updateImage(ImageV2 imageV2){
         EntityManager em = getEM();
         try {
