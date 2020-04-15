@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -15,11 +16,13 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sample.Java.*;
 import sample.Main;
 
+import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -31,6 +34,8 @@ import java.util.ResourceBundle;
 
 public class UploadSceneController implements Initializable{
 
+    @FXML
+    private Pane windowMenuButtonBox;
     @FXML
     private AnchorPane previewImagePane;
     @FXML
@@ -175,6 +180,7 @@ public class UploadSceneController implements Initializable{
         ImageV2 uploadImage = new ImageV2(imageNameTextField.getText(), tags, uploadImagePath);
 
         imageV2DAO.storeNewImage(uploadImage, (Album) albumChoiceBox.getValue());
+
 
         clearAllFields();
         return true;
@@ -334,5 +340,11 @@ public class UploadSceneController implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         closeImageButton.setVisible(false);
         loadAlbumChoiceBox();
+        try {
+            Node windowMenuButtonsNode = FXMLLoader.load(getClass().getResource("../WindowMenuButtons/WindowMenuButtons.fxml"));
+            windowMenuButtonBox.getChildren().add(windowMenuButtonsNode);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

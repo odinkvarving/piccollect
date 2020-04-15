@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" style="-fx-border-color: #4153AF" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.MapScene.MapSceneController">
+    <children>
+        <AnchorPane prefHeight="114.0" style="-fx-background-color: #4153AF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label layoutX="97.0" layoutY="40.0" text="Upload Image" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Button fx:id="backButton" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" prefHeight="66.0" prefWidth="77.0" style="-fx-background-color: transparent;" styleClass="homeButton" stylesheets="@MapSceneStyle.css" textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="50" />
+                    </graphic>
+                </Button>
+                <Pane fx:id="windowMenuButtonBox" layoutX="866.0" layoutY="-1.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0" />
+            </children>
+        </AnchorPane>
+      <AnchorPane fx:id="mapAnchorPane" layoutY="115.0" prefHeight="485.0" prefWidth="1066.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="115.0">
+         <children>
+              <TextField fx:id="addressTextField" layoutX="14.0" layoutY="14.0" onAction="#addressTextFieldAction" prefHeight="27.0" prefWidth="242.0" promptText="Address" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+            <StackPane fx:id="imageDialogPane" layoutX="433.0" layoutY="167.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="167.0" AnchorPane.leftAnchor="433.0" AnchorPane.rightAnchor="432.0" AnchorPane.topAnchor="167.0" />
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>

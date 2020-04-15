@@ -1,12 +1,9 @@
 package sample.JavaFX.SearchImageScene;
 
-import com.drew.metadata.MetadataException;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
-
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import javafx.collections.FXCollections;
@@ -14,43 +11,31 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sample.Java.*;
-import sample.Main;
 
 import javax.swing.*;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.chrono.ChronoLocalDate;
-import java.time.chrono.Chronology;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.LogManager;
 import java.util.stream.Collectors;
 
 public class SearchImageSceneController implements Initializable {
 
-    @FXML private TableView<ImageV2> table;
-    @FXML private TableColumn<ImageV2, ImageIcon> imageColumn;
-    @FXML private TableColumn<ImageV2, String> nameColumn;
-    @FXML private TableColumn<ImageV2, String> locationColumn;
-    @FXML private TableColumn<ImageV2, Date> dateColumn;
-    @FXML private TableColumn<ImageV2, ArrayList<String>> tagsColumn;
-
+    @FXML
+    private Pane windowMenuButtonsBox;
     @FXML
     private TextField nameSearchField;
 
@@ -78,20 +63,34 @@ public class SearchImageSceneController implements Initializable {
     @FXML
     private VBox imageList;
 
+    //ArrayList with all the images from the database
     ArrayList<ImageV2> allImages;
+    //ArrayList with all the tags from the images
     ArrayList<Label> tagLabels = new ArrayList<>();
+    //An ArrayList with the searchListItems that is an HBox that contains the image information.
     ArrayList<SearchListItem> searchListItems = new ArrayList<>();
 
-
+    /**
+     * Initializemethod where we fill inn the images-arraylist with images from the database, and fill the scrollpane with
+     * all the SearchListItems.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ImageV2DAO imageV2DAO = new ImageV2DAO(DatabaseConnection.getInstance().getEntityManagerFactory());
         allImages = (ArrayList<ImageV2>) imageV2DAO.getImages();
         setListItems();
+        try {
+            Node windowMenuButtonsNode = FXMLLoader.load(getClass().getResource("../WindowMenuButtons/WindowMenuButtons.fxml"));
+            windowMenuButtonsBox.getChildren().add(windowMenuButtonsNode);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
-     * Method for creating observable list and setting it as table items
+     * Method where we go through all the images and creates a SearchListItem object with them and adds them to the corresponding lists.
      */
     private void setListItems(){
         for(ImageV2 imageV2 : allImages){
@@ -102,7 +101,8 @@ public class SearchImageSceneController implements Initializable {
     }
 
     /**
-     * Handles the search button clicked
+     * Handles the search button clicked. Goes through all input-fields and checks whether they are empty or not. Usese streams to
+     * filter through each criteria. At the end we reload the scrollpane with all the search-results and clear all input-fields.
      */
     public void handleSearchButtonClicked(){
         ArrayList<ImageV2> filteredImages = (ArrayList<ImageV2>) allImages.clone();
@@ -221,6 +221,10 @@ public class SearchImageSceneController implements Initializable {
         clearAllTags();
     }
 
+    /**
+     * Goes through all the SearchListItems-objects and checks if the checkbox is checkd, and adds them to the list of selected images if so.
+     * @return
+     */
     private ArrayList<ImageV2> collectAllSelectedImages(){
         ArrayList<ImageV2> selectedImages = new ArrayList<>();
 
@@ -228,6 +232,10 @@ public class SearchImageSceneController implements Initializable {
         return selectedImages;
     }
 
+    /**
+     * Opens a dialog where the user enters the name of the new album. After that we go through all selected images
+     * and adds them to the new album.
+     */
     public void handleCreateButtonClicked(){
         if(!collectAllSelectedImages().isEmpty()) {
             String albumName;
