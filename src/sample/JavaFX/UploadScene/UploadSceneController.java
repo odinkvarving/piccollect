@@ -257,10 +257,8 @@ public class UploadSceneController implements Initializable{
     public void handleBackButtonClicked(){
         FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("../MainMenuScene/MainMenu.fxml"));
         Stage stage = (Stage) backButton.getScene().getWindow();
-        Scene scene;
         try {
-            scene = new Scene(mainSceneLoader.load());
-            stage.setScene(scene);
+            stage.getScene().setRoot(mainSceneLoader.load());
         } catch (IOException e) {
             e.printStackTrace();
         }

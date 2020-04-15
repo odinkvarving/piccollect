@@ -71,10 +71,11 @@ public class MainMenuSceneController implements Initializable {
         //Initialzes the upload scene
         FXMLLoader uploadSceneLoader = new FXMLLoader(getClass().getResource("../UploadScene/UploadScene.fxml"));
         try {
-            uploadScene = new Scene(uploadSceneLoader.load());
+            Parent uploadSceneRoot = uploadSceneLoader.load();
             Stage stage = (Stage) uploadImageButton.getScene().getWindow();
-            makeSceneDraggable(uploadScene.getRoot(), stage);
-            stage.setScene(uploadScene);
+            makeSceneDraggable(uploadSceneRoot, stage);
+            stage.getScene().setRoot(uploadSceneRoot);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,10 +88,10 @@ public class MainMenuSceneController implements Initializable {
         //Initializes search image scene
         FXMLLoader searchSceneLoader = new FXMLLoader(getClass().getResource("../SearchImageScene/SearchScene.fxml"));
         try {
-            searchScene = new Scene(searchSceneLoader.load());
+            Parent searchSceneRoot = searchSceneLoader.load();
             Stage stage = (Stage) searchImageButton.getScene().getWindow();
-            makeSceneDraggable(searchScene.getRoot(), stage);
-            stage.setScene(searchScene);
+            makeSceneDraggable(searchSceneRoot, stage);
+            stage.getScene().setRoot(searchSceneRoot);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -99,13 +100,15 @@ public class MainMenuSceneController implements Initializable {
     /**
      * handleAlbumsButton method displays the albumScene and makes it draggable
      */
-    public void handleAlbumsButton(){//Initializes album scene
+    public void handleAlbumsButton(){
         FXMLLoader albumSceneLoader = new FXMLLoader(getClass().getResource("../SearchAlbumScene/SearchAlbum.fxml"));
         try {
-            albumScene = new Scene(albumSceneLoader.load());
+            Parent albumSceneRoot = albumSceneLoader.load();
             Stage stage = (Stage) albumsButton.getScene().getWindow();
-            makeSceneDraggable(albumScene.getRoot(), stage);
-            stage.setScene(albumScene);
+
+            makeSceneDraggable(albumSceneRoot, stage);
+            stage.getScene().setRoot(albumSceneRoot);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -117,10 +120,10 @@ public class MainMenuSceneController implements Initializable {
     public void handleMapButton(){
         FXMLLoader mapSceneLoader = new FXMLLoader(getClass().getResource("../MapScene/MapScene.fxml"));
         try {
-            mapScene = new Scene(mapSceneLoader.load());
+            Parent mapSceneRoot = mapSceneLoader.load();
             Stage stage = (Stage) mapButton.getScene().getWindow();
-            makeSceneDraggable(mapScene.getRoot(), stage);
-            stage.setScene(mapScene);
+            makeSceneDraggable(mapSceneRoot, stage);
+            stage.getScene().setRoot(mapSceneRoot);
         } catch (IOException e) {
             e.printStackTrace();
         }
