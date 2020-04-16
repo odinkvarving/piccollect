@@ -37,9 +37,9 @@ public class ImageV2Tests {
 
     @BeforeEach
     public void BeforeEach() throws MetadataException {
-        this.file = new File("C:\\PiccollectPictures\\testgps4.jpg");
+        this.file = new File("C:\\PiccollectSamplePictures\\testBildeGPS.jpg");
         this.imageMetaData = new ImageMetaData(file);
-        this.imageV2 = new ImageV2("testName", "Test Nature", "C:\\PiccollectPictures\\testgps4.jpg");
+        this.imageV2 = new ImageV2("testName", "Test Nature", "C:\\PiccollectSamplePictures\\testBildeGPS.jpg");
 
     }
 
@@ -60,7 +60,7 @@ public class ImageV2Tests {
     public void testCreatingInstanceWithValidData() {
         assertEquals("testName", imageV2.getImageName());
         assertEquals("Test Nature", imageV2.getTags());
-        assertEquals("C:\\PiccollectPictures\\testBilde2.jpg", imageV2.getFilePath());
+        assertEquals("C:\\PiccollectSamplePictures\\testBildeGPS.jpg", imageV2.getFilePath());
     }
 
     @ParameterizedTest
