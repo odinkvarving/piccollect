@@ -20,6 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import sample.Java.*;
+import sample.JavaFX.ResponseDialogs.InformationDialog;
 
 import javax.swing.*;
 import java.io.File;
@@ -253,6 +254,7 @@ public class SearchImageSceneController implements Initializable {
                 albumDAO.storeNewAlbum(newAlbum);
                 ArrayList<ImageV2> selectedImages = collectAllSelectedImages();
                 selectedImages.forEach(imageV2 -> albumDAO.createNewAlbumWithImages(newAlbum, imageV2));
+                InformationDialog.showInformationDialog("Create album", "Album created successfully!");
             }
         }
     }
@@ -308,6 +310,7 @@ public class SearchImageSceneController implements Initializable {
 
                 // Closing the document
                 document.close();
+                InformationDialog.showInformationDialog("PDF-Document successfully created", "Your PDF with the images is now stored in the folder you chose to place it in.");
             }
         }
     }
