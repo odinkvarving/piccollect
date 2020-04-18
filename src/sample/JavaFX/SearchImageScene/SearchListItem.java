@@ -84,6 +84,12 @@ public class SearchListItem extends HBox {
 
     private void adjustImageView(){
         this.imageView.isPickOnBounds();
+        this.imageView.setOnMouseEntered(e -> {
+            imageView.setStyle("-fx-cursor: hand");
+        });
+        this.imageView.setOnMouseExited(e -> {
+            imageView.setStyle("-fx-cursor: pointer");
+        });
     }
 
     private void setLabelFonts(){

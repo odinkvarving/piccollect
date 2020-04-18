@@ -16,12 +16,17 @@
    <children>
       <AnchorPane prefHeight="114.0" style="-fx-background-color: #4153AF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="97.0" layoutY="40.0" text="Upload Image" textFill="WHITE">
+            <Label layoutX="32.0" layoutY="80.0" text="Go back" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="95.0" layoutY="40.0" text="Upload Image" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="backButton" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" prefHeight="66.0" prefWidth="77.0" style="-fx-background-color: transparent;" styleClass="homeButton" stylesheets="@UploadSceneStyle.css" textFill="WHITE">
+            <Button fx:id="backButton" layoutX="15.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: transparent;" styleClass="homeButton" stylesheets="@UploadSceneStyle.css" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="50" />
                </graphic>
@@ -91,15 +96,15 @@
                   <Font name="System Bold" size="15.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fill="#75acf5" glyphName="UPLOAD" size="18" />
+                  <FontAwesomeIcon fill="#249016" glyphName="UPLOAD" size="18" />
                </graphic>
             </Button>
-            <Button fx:id="cancelButton" contentDisplay="RIGHT" layoutX="283.0" layoutY="437.0" mnemonicParsing="false" onAction="#clearAllFields" prefHeight="35.0" prefWidth="135.0" styleClass="cancelButton" stylesheets="@UploadSceneStyle.css" text="Cancel" textFill="WHITE">
+            <Button fx:id="cancelButton" contentDisplay="RIGHT" layoutX="283.0" layoutY="437.0" mnemonicParsing="false" onAction="#clearAllFields" prefHeight="35.0" prefWidth="135.0" styleClass="cancelButton" stylesheets="@UploadSceneStyle.css" text="Clear" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fill="#720a0a" glyphName="TIMES" size="18" />
+                  <FontAwesomeIcon fill="RED" glyphName="TIMES" size="18" />
                </graphic>
             </Button>
             <ListView fx:id="tagListView" layoutX="82.0" layoutY="287.0" prefHeight="121.0" prefWidth="364.0" />

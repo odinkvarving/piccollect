@@ -8,12 +8,15 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -59,6 +62,9 @@ public class SearchImageSceneController implements Initializable {
     private TextField tagSearchField;
 
     @FXML
+    private Button resetSearchButton;
+
+    @FXML
     private Button backButton;
 
     @FXML
@@ -72,13 +78,14 @@ public class SearchImageSceneController implements Initializable {
     ArrayList<SearchListItem> searchListItems = new ArrayList<>();
 
     /**
-     * Initializemethod where we fill inn the images-arraylist with images from the database, and fill the scrollpane with
+     * Initialize-method where we fill inn the images-arraylist with images from the database, and fill the scrollpane with
      * all the SearchListItems.
      * @param url
      * @param resourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        initializeTagTextFieldListener();
         ImageV2DAO imageV2DAO = new ImageV2DAO(DatabaseConnection.getInstance().getEntityManagerFactory());
         allImages = (ArrayList<ImageV2>) imageV2DAO.getImages();
         setListItems();
@@ -108,10 +115,10 @@ public class SearchImageSceneController implements Initializable {
     public void handleSearchButtonClicked(){
         ArrayList<ImageV2> filteredImages = (ArrayList<ImageV2>) allImages.clone();
         if(!(nameSearchField.getText().equals("") )){
-            filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getImageName().contains(nameSearchField.getText())).collect(Collectors.toList());
+            filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getImageName().toLowerCase().contains(nameSearchField.getText().toLowerCase())).collect(Collectors.toList());
         }
         if(!(locationSearchField.getText().equals(""))){
-            filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getLocation().equals(locationSearchField.getText())).collect(Collectors.toList());
+            filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getLocation().toLowerCase().contains(locationSearchField.getText().toLowerCase())).collect(Collectors.toList());
         }
         if(!(fromDatePicker.getValue() == null || toDatePicker.getValue() == null)){
             Date fromDate = convertDateFormat(fromDatePicker.getValue());
@@ -132,7 +139,7 @@ public class SearchImageSceneController implements Initializable {
      */
     private boolean checkIfImageContainsSameTags(ImageV2 imageV2){
         for(int j = 0; j < tagLabels.size(); j ++){
-            if(imageV2.getTags().contains(tagLabels.get(j).getText())){
+            if(imageV2.getTags().toLowerCase().contains(tagLabels.get(j).getText().toLowerCase())){
                 return true;
             }
         }
@@ -185,10 +192,19 @@ public class SearchImageSceneController implements Initializable {
         }
     }
 
+    public void handleResetSearchButtonClicked(){
+        clearAllSearchInputs();
+        refreshList((ArrayList<ImageV2>) allImages.clone());
+    }
+
     /**
      * Button to handle when the add tag button is clicked
      */
     public void handleAddTagButtonClicked(){
+        addTag();
+    }
+
+    private void addTag(){
         if(!(tagSearchField.equals(""))) {
             Label tag = new Label();
             tag.setText(tagSearchField.getText());
@@ -196,6 +212,15 @@ public class SearchImageSceneController implements Initializable {
             tagLabels.add(tag);
             tagSearchField.clear();
         }
+    }
+    private void initializeTagTextFieldListener(){
+        tagSearchField.setOnKeyPressed(new EventHandler<KeyEvent>(){
+            public void handle(KeyEvent keyEvent){
+                if(keyEvent.getCode() == KeyCode.ENTER){
+                    addTag();
+                }
+            }
+        });
     }
 
     /**
