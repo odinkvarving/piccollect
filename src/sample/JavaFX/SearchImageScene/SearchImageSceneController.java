@@ -114,22 +114,26 @@ public class SearchImageSceneController implements Initializable {
      */
     public void handleSearchButtonClicked(){
         ArrayList<ImageV2> filteredImages = (ArrayList<ImageV2>) allImages.clone();
-        if(!(nameSearchField.getText().equals("") )){
-            filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getImageName().toLowerCase().contains(nameSearchField.getText().toLowerCase())).collect(Collectors.toList());
+        if(nameSearchField.getText().equals("") && locationSearchField.getText().equals("") && (fromDatePicker.getValue() == null || toDatePicker.getValue() == null) && tagHBox.getChildren().size() == 1 ) {
+            InformationDialog.showInformationDialog("Error", "All boxes are empty");
+        } else {
+            if (!(nameSearchField.getText().equals(""))) {
+                filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getImageName().toLowerCase().contains(nameSearchField.getText().toLowerCase())).collect(Collectors.toList());
+            }
+            if (!(locationSearchField.getText().equals(""))) {
+                filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getLocation().toLowerCase().contains(locationSearchField.getText().toLowerCase())).collect(Collectors.toList());
+            }
+            if (!(fromDatePicker.getValue() == null || toDatePicker.getValue() == null)) {
+                Date fromDate = convertDateFormat(fromDatePicker.getValue());
+                Date toDate = convertDateFormat(toDatePicker.getValue());
+                filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getDate() != null).filter(image -> (checkIfDateIsInBetween(fromDate, toDate, image.getDate()))).collect(Collectors.toList());
+            }
+            if (!(tagHBox.getChildren().size() == 1)) {
+                filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(this::checkIfImageContainsSameTags).collect(Collectors.toList());
+            }
+            refreshList(filteredImages);
+            clearAllSearchInputs();
         }
-        if(!(locationSearchField.getText().equals(""))){
-            filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getLocation().toLowerCase().contains(locationSearchField.getText().toLowerCase())).collect(Collectors.toList());
-        }
-        if(!(fromDatePicker.getValue() == null || toDatePicker.getValue() == null)){
-            Date fromDate = convertDateFormat(fromDatePicker.getValue());
-            Date toDate = convertDateFormat(toDatePicker.getValue());
-            filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getDate() != null).filter(image -> (checkIfDateIsInBetween(fromDate, toDate, image.getDate()))).collect(Collectors.toList());
-        }
-        if(!(tagHBox.getChildren().size() == 1)){
-            filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(this::checkIfImageContainsSameTags).collect(Collectors.toList());
-        }
-        refreshList(filteredImages);
-        clearAllSearchInputs();
     }
 
     /**
@@ -304,7 +308,6 @@ public class SearchImageSceneController implements Initializable {
             Optional<String> result = albumDialog.showAndWait();
             if (result.isPresent() && !result.get().equals("")) {
 
-
                 DirectoryChooser chooser = new DirectoryChooser();
                 chooser.setTitle("Select directory");
                 File defaultDirectory = new File("C:/");
@@ -341,6 +344,8 @@ public class SearchImageSceneController implements Initializable {
                 // Closing the document
                 document.close();
                 InformationDialog.showInformationDialog("PDF-Document successfully created", "Your PDF with the images is now stored in the folder you chose to place it in.");
+            } else {
+                InformationDialog.showInformationDialog("Error", "The pdf file needs a name");
             }
         }
     }
