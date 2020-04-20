@@ -261,7 +261,9 @@ public class SearchImageSceneController implements Initializable {
      * and adds them to the new album.
      */
     public void handleCreateButtonClicked(){
-        if(!collectAllSelectedImages().isEmpty()) {
+        if(collectAllSelectedImages().isEmpty()) {
+            InformationDialog.showInformationDialog("Error", "You have not selected any photos");
+        } else {
             String albumName;
             Album newAlbum;
             AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
@@ -290,7 +292,9 @@ public class SearchImageSceneController implements Initializable {
      * @throws Exception
      */
     public void handleGeneratePDFButtonClicked() throws Exception {
-        if(!collectAllSelectedImages().isEmpty()) {
+        if(collectAllSelectedImages().isEmpty()) {
+            InformationDialog.showInformationDialog("Error", "You have not selected any photos");
+        } else {
 
             TextInputDialog albumDialog = new TextInputDialog();
             albumDialog.setTitle("Create new pdf");
@@ -298,7 +302,7 @@ public class SearchImageSceneController implements Initializable {
             albumDialog.setContentText("Please enter pdf name: ");
 
             Optional<String> result = albumDialog.showAndWait();
-            if(result.isPresent() && !result.get().equals("")) {
+            if (result.isPresent() && !result.get().equals("")) {
 
 
                 DirectoryChooser chooser = new DirectoryChooser();
@@ -309,7 +313,7 @@ public class SearchImageSceneController implements Initializable {
 
 
                 // Creating a PdfWriter
-                String dest = selectedDirectory.getAbsolutePath()  + "\\" + result.get() + ".pdf";
+                String dest = selectedDirectory.getAbsolutePath() + "\\" + result.get() + ".pdf";
                 PdfWriter writer = new PdfWriter(dest);
 
                 // Creating a PdfDocument
@@ -319,7 +323,7 @@ public class SearchImageSceneController implements Initializable {
                 Document document = new Document(pdf);
 
                 ArrayList<ImageV2> selectedImages = collectAllSelectedImages();
-                for(ImageV2 images: selectedImages) {
+                for (ImageV2 images : selectedImages) {
                     String imFile = images.getFilePath();
 
                     // Creating an ImageData object
@@ -332,6 +336,7 @@ public class SearchImageSceneController implements Initializable {
                     // Adding image to the document
                     document.add(image);
                 }
+
 
                 // Closing the document
                 document.close();
