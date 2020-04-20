@@ -114,22 +114,26 @@ public class SearchImageSceneController implements Initializable {
      */
     public void handleSearchButtonClicked(){
         ArrayList<ImageV2> filteredImages = (ArrayList<ImageV2>) allImages.clone();
-        if(!(nameSearchField.getText().equals("") )){
-            filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getImageName().toLowerCase().contains(nameSearchField.getText().toLowerCase())).collect(Collectors.toList());
+        if(nameSearchField.getText().equals("") && locationSearchField.getText().equals("") && (fromDatePicker.getValue() == null || toDatePicker.getValue() == null) && tagHBox.getChildren().size() == 1 ) {
+            InformationDialog.showInformationDialog("Error", "All boxes are empty");
+        } else {
+            if (!(nameSearchField.getText().equals(""))) {
+                filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getImageName().toLowerCase().contains(nameSearchField.getText().toLowerCase())).collect(Collectors.toList());
+            }
+            if (!(locationSearchField.getText().equals(""))) {
+                filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getLocation().toLowerCase().contains(locationSearchField.getText().toLowerCase())).collect(Collectors.toList());
+            }
+            if (!(fromDatePicker.getValue() == null || toDatePicker.getValue() == null)) {
+                Date fromDate = convertDateFormat(fromDatePicker.getValue());
+                Date toDate = convertDateFormat(toDatePicker.getValue());
+                filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getDate() != null).filter(image -> (checkIfDateIsInBetween(fromDate, toDate, image.getDate()))).collect(Collectors.toList());
+            }
+            if (!(tagHBox.getChildren().size() == 1)) {
+                filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(this::checkIfImageContainsSameTags).collect(Collectors.toList());
+            }
+            refreshList(filteredImages);
+            clearAllSearchInputs();
         }
-        if(!(locationSearchField.getText().equals(""))){
-            filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getLocation().toLowerCase().contains(locationSearchField.getText().toLowerCase())).collect(Collectors.toList());
-        }
-        if(!(fromDatePicker.getValue() == null || toDatePicker.getValue() == null)){
-            Date fromDate = convertDateFormat(fromDatePicker.getValue());
-            Date toDate = convertDateFormat(toDatePicker.getValue());
-            filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(image -> image.getDate() != null).filter(image -> (checkIfDateIsInBetween(fromDate, toDate, image.getDate()))).collect(Collectors.toList());
-        }
-        if(!(tagHBox.getChildren().size() == 1)){
-            filteredImages = (ArrayList<ImageV2>) filteredImages.stream().filter(this::checkIfImageContainsSameTags).collect(Collectors.toList());
-        }
-        refreshList(filteredImages);
-        clearAllSearchInputs();
     }
 
     /**
@@ -261,7 +265,9 @@ public class SearchImageSceneController implements Initializable {
      * and adds them to the new album.
      */
     public void handleCreateButtonClicked(){
-        if(!collectAllSelectedImages().isEmpty()) {
+        if(collectAllSelectedImages().isEmpty()) {
+            InformationDialog.showInformationDialog("Error", "You have not selected any photos");
+        } else {
             String albumName;
             Album newAlbum;
             AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
@@ -290,7 +296,9 @@ public class SearchImageSceneController implements Initializable {
      * @throws Exception
      */
     public void handleGeneratePDFButtonClicked() throws Exception {
-        if(!collectAllSelectedImages().isEmpty()) {
+        if(collectAllSelectedImages().isEmpty()) {
+            InformationDialog.showInformationDialog("Error", "You have not selected any photos");
+        } else {
 
             TextInputDialog albumDialog = new TextInputDialog();
             albumDialog.setTitle("Create new pdf");
@@ -298,8 +306,7 @@ public class SearchImageSceneController implements Initializable {
             albumDialog.setContentText("Please enter pdf name: ");
 
             Optional<String> result = albumDialog.showAndWait();
-            if(result.isPresent() && !result.get().equals("")) {
-
+            if (result.isPresent() && !result.get().equals("")) {
 
                 DirectoryChooser chooser = new DirectoryChooser();
                 chooser.setTitle("Select directory");
@@ -309,7 +316,7 @@ public class SearchImageSceneController implements Initializable {
 
 
                 // Creating a PdfWriter
-                String dest = selectedDirectory.getAbsolutePath()  + "\\" + result.get() + ".pdf";
+                String dest = selectedDirectory.getAbsolutePath() + "\\" + result.get() + ".pdf";
                 PdfWriter writer = new PdfWriter(dest);
 
                 // Creating a PdfDocument
@@ -319,7 +326,7 @@ public class SearchImageSceneController implements Initializable {
                 Document document = new Document(pdf);
 
                 ArrayList<ImageV2> selectedImages = collectAllSelectedImages();
-                for(ImageV2 images: selectedImages) {
+                for (ImageV2 images : selectedImages) {
                     String imFile = images.getFilePath();
 
                     // Creating an ImageData object
@@ -333,9 +340,12 @@ public class SearchImageSceneController implements Initializable {
                     document.add(image);
                 }
 
+
                 // Closing the document
                 document.close();
                 InformationDialog.showInformationDialog("PDF-Document successfully created", "Your PDF with the images is now stored in the folder you chose to place it in.");
+            } else {
+                InformationDialog.showInformationDialog("Error", "The pdf file needs a name");
             }
         }
     }
