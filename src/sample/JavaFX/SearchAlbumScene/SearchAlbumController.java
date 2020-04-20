@@ -76,7 +76,7 @@ public class SearchAlbumController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
-        albums = (ArrayList<Album>) albumDAO.getAlbums();
+        albums = (ArrayList<Album>) albumDAO.getAlbumsAndTheirImages();
         loadAlbumComboBox();
         makeAlbumOverview();
         try {

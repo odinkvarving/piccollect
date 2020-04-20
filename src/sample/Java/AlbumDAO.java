@@ -26,6 +26,16 @@ public class AlbumDAO {
             closeEM(em);
         }
     }
+
+    public List<Album> getAlbumsAndTheirImages(){
+        EntityManager em = getEM();
+        try {
+            Query q = em.createQuery("SELECT a FROM Album a JOIN FETCH a.images", Album.class);
+            return q.getResultList();
+        }finally {
+            closeEM(em);
+        }
+    }
     public boolean storeNewAlbum(Album album) {
         EntityManager em = getEM();
         try {

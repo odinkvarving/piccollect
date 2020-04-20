@@ -103,7 +103,7 @@
                         <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" />
                      </graphic>
                   </Button>
-                  <Button fx:id="resetSearchButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleResetSearchButtonClicked" prefHeight="30.0" prefWidth="249.0" styleClass="clearSearchButton" text="Reset" textFill="WHITE">
+                  <Button fx:id="resetSearchButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleResetSearchButtonClicked" prefHeight="30.0" prefWidth="249.0" styleClass="searchButton" text="Reset" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

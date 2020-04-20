@@ -5,6 +5,7 @@
 .button{
     -fx-background-color: #f3f3f3;
     -fx-font-family: 'Montserrat Medium';
+    -fx-font-size: 15px;
 }
 .button:hover{
     -fx-background-color: #D4D8ED;
