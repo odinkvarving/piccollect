@@ -21,6 +21,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="com.drewnoakes:metadata-extractor:2.13.0" level="project" />
+    <orderEntry type="library" name="GMapsFX-2.12.0" level="project" />
+    <orderEntry type="library" name="com.itextpdf:itextpdf:5.5.13" level="project" />
+    <orderEntry type="library" name="com.itextpdf:kernel:7.1.1" level="project" />
+    <orderEntry type="library" name="com.itextpdf:layout:7.1.2" level="project" />
     <orderEntry type="library" name="Maven: com.byteowls:jopencage:1.0.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.httpcomponents:httpclient:4.5" level="project" />
@@ -57,6 +63,7 @@
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:13" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:13" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:13" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:13" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:13" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:13" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.12" level="project" />
@@ -70,18 +77,7 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.6.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.junit.platform:junit-platform-engine:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:itextpdf:5.5.13.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:mac:11.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:11.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:mac:11.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:mac:11.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:mac:11.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.jfoenix:jfoenix:9.0.8" level="project" />
-    <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" name="com.drewnoakes:metadata-extractor:2.13.0" level="project" />
-    <orderEntry type="library" name="GMapsFX-2.12.0" level="project" />
-    <orderEntry type="library" name="com.itextpdf:itextpdf:5.5.13" level="project" />
-    <orderEntry type="library" name="com.itextpdf:kernel:7.1.1" level="project" />
-    <orderEntry type="library" name="com.itextpdf:layout:7.1.2" level="project" />
-    <orderEntry type="library" name="fontawesomefx-8.2" level="project" />
+    <orderEntry type="library" name="fontawesomefx-8.2 (1)" level="project" />
   </component>
 </module>
