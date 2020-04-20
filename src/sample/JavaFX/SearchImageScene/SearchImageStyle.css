@@ -32,3 +32,17 @@
 .createButtons:pressed{
     -fx-background-color: #051D54;
 }
+.clearSearchButton{
+    -fx-background-color: #ACAFC2;
+}
+.clearSearchButton:hover{
+    -fx-background-color: #C7C9D6;
+    -fx-cursor: hand;
+}
+.clearSearchButton:pressed{
+    -fx-background-color: #797E98;
+    -fx-cursor: hand;
+}
+.labelNoFontFamily{
+    -fx-font-family: System;
+}

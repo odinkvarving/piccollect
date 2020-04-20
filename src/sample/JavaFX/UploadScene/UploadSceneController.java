@@ -2,27 +2,23 @@ package sample.JavaFX.UploadScene;
 
 import com.drew.metadata.MetadataException;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.TransferMode;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sample.Java.*;
-import sample.Main;
+import sample.JavaFX.ResponseDialogs.InformationDialog;
 
-import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -65,9 +61,10 @@ public class UploadSceneController implements Initializable{
     @FXML
     private Button backButton;
 
-    //Variables that holds the current uploaded image and its path
+    //Variables that holds the current uploaded image and its path and tags
     private String uploadImagePath = "";
     private ImageView uploadedImage;
+    private String tags = "";
 
 
     public UploadSceneController() throws SQLException {
@@ -151,10 +148,31 @@ public class UploadSceneController implements Initializable{
 
     /**
      * Method for handling when the upload button
-     * is clicked. Collects input from scene and sends it to the database
+     * is clicked. Clear all fields if operation is successful
      * @return a boolean
      */
-    public boolean handleUploadButtonClicked() throws MetadataException {
+    public void handleUploadButtonClicked(){
+        boolean uploadingSuccessful = false;
+
+
+        boolean inputsOk = checkIfInputsAreOk();
+        if(inputsOk){
+            collectImageTags();
+            uploadingSuccessful = uploadImage();
+        }
+
+        if(uploadingSuccessful){
+            InformationDialog.showInformationDialog("Image uploaded", "Your image is now uploaded!");
+            clearAllFields();
+        }
+
+    }
+
+    /**
+     * Checks if the inputs are ok, if not show a explaining dialog
+     * @return boolean
+     */
+    private boolean checkIfInputsAreOk(){
         Boolean noTagsOk;
         if(uploadImagePath.equals("")){
             showAlertDialog("image");
@@ -170,20 +188,35 @@ public class UploadSceneController implements Initializable{
                 return false;
             }
         }
-        String tags = "";
+        return true;
+    }
+
+    /**
+     * Collects all tags from the listview and put them into a string
+     */
+    private void collectImageTags(){
         ArrayList<String> tagsList = collectListViewTags();
         for(int i = 0; i < tagsList.size(); i ++){
             tags += tagsList.get(i) + " ";
         }
+    }
+
+    /**
+     * Uploads the image to the database
+     * @return
+     */
+    private boolean uploadImage(){
         ImageV2DAO imageV2DAO = new ImageV2DAO(DatabaseConnection.getInstance().getEntityManagerFactory());
 
-        ImageV2 uploadImage = new ImageV2(imageNameTextField.getText(), tags, uploadImagePath);
-
-        imageV2DAO.storeNewImage(uploadImage, (Album) albumChoiceBox.getValue());
-
-
-        clearAllFields();
-        return true;
+        ImageV2 uploadImage = null;
+        try {
+            uploadImage = new ImageV2(imageNameTextField.getText(), tags, uploadImagePath);
+            imageV2DAO.storeNewImage(uploadImage, (Album) albumChoiceBox.getValue());
+            return true;
+        } catch (MetadataException e) {
+            InformationDialog.showInformationDialog("Error", "Oops! Something went wrong. Check all fields and try again.");
+            return false;
+        }
     }
 
 
@@ -193,11 +226,25 @@ public class UploadSceneController implements Initializable{
      * clicked. Adds tag then clears the input field.
      */
     public void handleAddTagButtonClicked(){
+        addTagToList();
+    }
+
+    private void addTagToList(){
         if(!tagTextField.getText().equals("")) {
             String tag = tagTextField.getText();
             tagListView.getItems().add(tag);
             tagTextField.clear();
         }
+    }
+
+    private void initializeTagTextFieldListener(){
+        tagTextField.setOnKeyPressed(new EventHandler<KeyEvent>(){
+            public void handle(KeyEvent keyEvent){
+                if(keyEvent.getCode() == KeyCode.ENTER){
+                    addTagToList();
+                }
+            }
+        });
     }
 
     /**
@@ -217,9 +264,15 @@ public class UploadSceneController implements Initializable{
 
         if(result.isPresent() && !result.get().equals("")){
             albumName = result.get();
-            albumDAO.storeNewAlbum(new Album(albumName));
-            ArrayList<Album> albumList = (ArrayList<Album>) albumDAO.getAlbums();
-            reloadAlbumChoiceBox(albumList);
+            boolean operationSuccessful = albumDAO.storeNewAlbum(new Album(albumName));
+            if(operationSuccessful) {
+                InformationDialog.showInformationDialog("Album created", "Album created successfully!");
+                ArrayList<Album> albumList = (ArrayList<Album>) albumDAO.getAlbums();
+                reloadAlbumChoiceBox(albumList);
+            }
+            else {
+                InformationDialog.showInformationDialog("Creating album failed", "Oops. Something went wrong!");
+            }
         }
     }
 
@@ -257,10 +310,8 @@ public class UploadSceneController implements Initializable{
     public void handleBackButtonClicked(){
         FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("../MainMenuScene/MainMenu.fxml"));
         Stage stage = (Stage) backButton.getScene().getWindow();
-        Scene scene;
         try {
-            scene = new Scene(mainSceneLoader.load());
-            stage.setScene(scene);
+            stage.getScene().setRoot(mainSceneLoader.load());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -311,6 +362,7 @@ public class UploadSceneController implements Initializable{
     private void clearAllFields(){
         tagListView.getItems().clear();
         uploadImagePath = "";
+        tags = "";
         previewImagePane.getChildren().remove(uploadedImage);
         previewImagePane.setStyle("-fx-background-image: null");
         imageNameTextField.clear();
@@ -338,6 +390,7 @@ public class UploadSceneController implements Initializable{
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        initializeTagTextFieldListener();
         closeImageButton.setVisible(false);
         loadAlbumChoiceBox();
         try {

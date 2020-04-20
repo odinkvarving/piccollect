@@ -13,12 +13,16 @@
     <children>
         <AnchorPane prefHeight="114.0" style="-fx-background-color: #4153AF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
+            <Label layoutX="32.0" layoutY="75.0" text="Go back" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
                 <Label layoutX="97.0" layoutY="40.0" text="Upload Image" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-                <Button fx:id="backButton" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" prefHeight="66.0" prefWidth="77.0" style="-fx-background-color: transparent;" styleClass="homeButton" stylesheets="@MapSceneStyle.css" textFill="WHITE">
+                <Button fx:id="backButton" layoutX="15.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleBackButtonClicked" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: transparent;" styleClass="homeButton" stylesheets="@MapScene.css" textFill="WHITE">
                     <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="50" />
                     </graphic>

@@ -19,21 +19,23 @@ public class AlbumDAO {
     public List<Album> getAlbums(){
         EntityManager em = getEM();
         try{
-            List<Album> albums = em.createQuery("SELECT a from Album a JOIN FETCH a.images", Album.class).getResultList();
-            return albums;
+            Query q = em.createQuery("SELECT OBJECT(o) FROM Album o");
+            return q.getResultList();
         }
         finally {
             closeEM(em);
         }
     }
-
-    public void storeNewAlbum(Album album) {
+    public boolean storeNewAlbum(Album album) {
         EntityManager em = getEM();
         try {
             em.getTransaction().begin();
             em.persist(album);
             em.getTransaction().commit();
-        } finally {
+            return true;
+        } catch (Exception e){
+            return false;
+        }finally {
             closeEM(em);
         }
     }

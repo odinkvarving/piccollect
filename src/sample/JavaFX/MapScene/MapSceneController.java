@@ -32,6 +32,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import netscape.javascript.JSObject;
 import sample.Java.*;
+import sample.JavaFX.ResponseDialogs.InformationDialog;
 
 import java.io.File;
 import java.io.IOException;
@@ -238,6 +239,7 @@ public class MapSceneController implements Initializable, MapComponentInitialize
         Optional<Album> result = dialog.showAndWait();
         if (result.isPresent()){
             albumDAO.createNewAlbumWithImages(dialog.getSelectedItem(), imageV2);
+            InformationDialog.showInformationDialog("Image added to album", "Your image has been successfully added in the album!");
         }
     }
 
@@ -257,10 +259,8 @@ public class MapSceneController implements Initializable, MapComponentInitialize
     public void handleBackButtonClicked(){
         FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("../MainMenuScene/MainMenu.fxml"));
         Stage stage = (Stage) backButton.getScene().getWindow();
-        Scene scene;
         try {
-            scene = new Scene(mainSceneLoader.load());
-            stage.setScene(scene);
+            stage.getScene().setRoot(mainSceneLoader.load());
         } catch (IOException e) {
             e.printStackTrace();
         }

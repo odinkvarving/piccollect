@@ -1,29 +1,19 @@
 package sample.JUnitTests;
 
 import com.drew.metadata.MetadataException;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import sample.Java.ImageMetaData;
 import sample.Java.ImageV2;
 
 import javax.persistence.*;
 import java.io.File;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Calendar;
 import java.util.Date;
-import sample.Java.DatabaseConnection;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -33,34 +23,33 @@ public class ImageV2Tests {
     private ImageV2 imageV2;
     private ImageMetaData imageMetaData;
     private File file;
-    private EntityManagerFactory entityManagerFactory;
 
     @BeforeEach
     public void BeforeEach() throws MetadataException {
-        this.file = new File("C:\\PiccollectPictures\\testgps4.jpg");
+        this.file = new File("C:\\PiccollectSamplePictures\\boatIbiza.jpg");
         this.imageMetaData = new ImageMetaData(file);
-        this.imageV2 = new ImageV2("testName", "Test Nature", "C:\\PiccollectPictures\\testgps4.jpg");
+        this.imageV2 = new ImageV2("testName", "Test Nature", "C:\\PiccollectSamplePictures\\boatIbiza.jpg");
 
     }
-
-    //Since DatabaseConnection is static, this might result in not being able to create another instance for testing
-    //Look for fix
-    @Before
-    public void init() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("Piccollect");
-    }
-
-    @After
-    public void destroy() {
-        entityManagerFactory.close();
-    }
-
 
     @Test
     public void testCreatingInstanceWithValidData() {
         assertEquals("testName", imageV2.getImageName());
         assertEquals("Test Nature", imageV2.getTags());
-        assertEquals("C:\\PiccollectPictures\\testBilde2.jpg", imageV2.getFilePath());
+        assertEquals("C:\\PiccollectSamplePictures\\boatIbiza.jpg", imageV2.getFilePath());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    public void testCreatingInstanceWithInvalidData() {
+        try {
+            this.file = new File ("1234");
+            this.imageMetaData = new ImageMetaData(file);
+            this.imageV2 = new ImageV2("invalidTest", "error", "1234");
+            fail();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @ParameterizedTest
@@ -79,57 +68,13 @@ public class ImageV2Tests {
 
     @Test
     public void testExtractingImageMetaData() {
-        assertEquals(640, imageV2.getWidth());
-        assertEquals(480, imageV2.getHeight());
-        assertEquals("Francesco Petrarca, Vicolo del Canello, 52100 Arezzo AR, Italy", imageV2.getLocation());
-        LocalDateTime ldt = LocalDateTime.of(2008, 11, 1, 22, 15, 7);
+        assertEquals(800, imageV2.getWidth());
+        assertEquals(598, imageV2.getHeight());
+        assertEquals("Avinguda de les Andanes, 07800 Ibiza, Spain", imageV2.getLocation());
+        LocalDateTime ldt = LocalDateTime.of(2011, 9, 4, 14, 51, 11);
         Date date = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
         assertEquals(date, imageV2.getDate());
         assertEquals("JPEG", imageMetaData.checkFileType());
         assertNull(imageMetaData.getTimeFromMetaData());
-    }
-
-    @Entity
-    public class Event {
-        @Id
-        @GeneratedValue
-        private long id;
-
-        @Temporal(TemporalType.TIMESTAMP)
-        private Date createdOn;
-
-        public Event() {
-        }
-
-        public Event(Date createdOn) {
-            this.createdOn = createdOn;
-        }
-
-        public long getId() {
-            return id;
-        }
-
-        public Date getCreatedOn() {
-            return createdOn;
-        }
-    }
-
-
-    @Test
-    public void testUploadDatabase() throws Exception {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
-        Event event = new Event( new Date() );
-        entityManager.persist( event );
-
-        Event dbEvent = entityManager.createQuery(
-                "select e " +
-                        "from Event e", Event.class)
-                .getSingleResult();
-        assertEquals(event.getCreatedOn(), dbEvent.getCreatedOn());
-
-        entityManager.getTransaction().commit();
-        entityManager.close();
-
     }
 }
