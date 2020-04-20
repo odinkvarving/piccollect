@@ -16,10 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -66,6 +63,8 @@ public class SearchAlbumController implements Initializable {
     TableColumn<Album, ArrayList<ImageV2>> albumColumn;
     @FXML
     ScrollPane albumsOverviewScrollPane;
+    @FXML
+    private StackPane imagePreviewPane;
 
     private ArrayList<Album> albums;
     private ArrayList<Album> albumsWithoutImageList;
@@ -146,7 +145,7 @@ public class SearchAlbumController implements Initializable {
                     alert.show();
                     break;
                 }
-                else if(albumChoice.equals(album.getAlbumName())){
+                else if(albumChoice.equalsIgnoreCase(album.getAlbumName())){
                     AlbumItem albumItem;
                     albumOverview.getChildren().clear();
                     if(album.getImages().isEmpty()){
@@ -157,7 +156,7 @@ public class SearchAlbumController implements Initializable {
                     }
                     albumOverview.getChildren().add(albumItem);
 
-                    albumItem.setOnMouseClicked(e -> {if(e.getClickCount() == 2)
+                    albumItem.setOnMouseClicked(e -> {
                         loadAllPicturesFromAlbum(album.getAlbumName());
                     });
                     break;
@@ -254,9 +253,9 @@ public class SearchAlbumController implements Initializable {
                         while (counter < album.getImages().size() && rowCounter < 3) {
                             ImageItem imageItem;
                             if (album.getImages().get(counter).getImageName().equals("") || album.getImages().get(counter).getImageName() == null) {
-                                imageItem = new ImageItem(album.getImages().get(counter).getFilePath(), "No name");
+                                imageItem = new ImageItem(album.getImages().get(counter).getFilePath(), "No name", imagePreviewPane);
                             } else {
-                                imageItem = new ImageItem(album.getImages().get(counter).getFilePath(), album.getImages().get(counter).getImageName());
+                                imageItem = new ImageItem(album.getImages().get(counter).getFilePath(), album.getImages().get(counter).getImageName(), imagePreviewPane);
                             }
                             imageRow.getChildren().add(imageItem);
                             counter++;
