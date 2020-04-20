@@ -94,11 +94,9 @@
             </Label>
          </children>
       </Pane>
-      <ScrollPane layoutX="350.0" layoutY="200.0">
+      <ScrollPane fx:id="albumsOverviewScrollPane" layoutX="350.0" layoutY="200.0" prefHeight="365.0" prefWidth="680.0" style="-fx-background-color: #ffffff;">
          <content>
-            <VBox fx:id="albumOverview" prefHeight="380.0" prefWidth="680.0">
-         </VBox>
-         </content>
-      </ScrollPane>
+            <VBox fx:id="albumOverview" alignment="CENTER" prefHeight="366.0" prefWidth="663.0" spacing="30.0" style="-fx-background-color: #ffffff;" />
+         </content></ScrollPane>
    </children>
 </AnchorPane>
