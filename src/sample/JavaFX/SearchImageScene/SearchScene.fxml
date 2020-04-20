@@ -108,7 +108,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                      <graphic>
-                        <FontAwesomeIcon fill="RED" glyphName="CLOSE" size="17" />
+                        <FontAwesomeIcon fill="WHITE" glyphName="CLOSE" size="17" />
                      </graphic>
                   </Button>
                </children>

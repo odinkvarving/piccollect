@@ -30,14 +30,14 @@
     -fx-cursor: hand;
 }
 .cancelButton{
-    -fx-background-color: #8388A4;
+    -fx-background-color: #ACAFC2;
 }
 .cancelButton:hover{
-    -fx-background-color: #ACAFC2;
+    -fx-background-color: #C7C9D6;
     -fx-cursor: hand;
 }
 .cancelButton:pressed{
-    -fx-background-color: #575A6D;
+    -fx-background-color: #797E98;
     -fx-cursor: hand;
 }
 .homeButton:hover{
