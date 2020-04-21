@@ -65,10 +65,12 @@ public class ImageV2 {
 
     /**
      *
-     * @param imageName
-     * @param tags
-     * @param filePath
+     * @param imageName String parameter for name of the image
+     * @param tags String parameter for tags
+     * @param filePath String parameter for file-path of the image
      * @throws MetadataException
+     * Some of the object-variables is defined using methods from external libraries - like location and date, which uses the GeoConverter API and the ImageMetaData API
+     * There is also created a ImageMetaData-object using the same filepath, so that we gain access to the metadata stored in the image.
      */
 
     public ImageV2(String imageName, String tags, String filePath) throws MetadataException {
@@ -86,6 +88,10 @@ public class ImageV2 {
         this.date = imageMetaData.getDateFromMetaData();
     }
 
+    /**
+     * Method for creating an ImageView, which is used to display the image in a certain way
+     * @return Returns a pre-defined image if no file is found, and the image itself if it is found
+     */
     public ImageView getImage(){
         Image image;
         ImageView imageView;
@@ -101,15 +107,31 @@ public class ImageV2 {
         }
         return imageView;
     }
+
+    /**
+     * Method for adding the image to a album
+     * Takes in a album in the parameter to decide which album the image should be stored in
+     * @param album
+     */
     public void addAlbum(Album album){
         this.albums.add(album);
         album.getImages().add(this);
     }
+
+    /**
+     * Method for removing an image from a specified album
+     * Takes in a album in the parameter to decide which album the image should be removed from
+     * @param album
+     */
     public void removeAlbum(Album album){
         this.albums.remove(album);
         album.getImages().remove(this);
     }
 
+    /**
+     * Method for extracting the GeoLocation from an image
+     * @return GeoLocation
+     */
     public GeoLocation getGeoLocation(){
         ImageMetaData imageMetaData;
         try {
