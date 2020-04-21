@@ -34,6 +34,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * SearchAlbumController covers all methods which are needed to run AlbumScene properly.
+ */
 
 public class SearchAlbumController implements Initializable {
 
@@ -75,7 +78,9 @@ public class SearchAlbumController implements Initializable {
     @FXML
     private GridPane albumGridPane;
 
-
+    /**
+     * This is a method which fills albumGridPane. It shows 3 albums per row.
+     */
     public void fillAlbumsGridPane(){
         int rows = albumsWithoutImageList.size()/3;
         if(albumsWithoutImageList.size() % 3 != 0){
@@ -108,9 +113,6 @@ public class SearchAlbumController implements Initializable {
         AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
         albums = (ArrayList<Album>) albumDAO.getAlbumsAndTheirImages();
         albumsWithoutImageList = (ArrayList<Album>) albumDAO.getAlbums();
-
-
-
         loadAlbumComboBox();
         makeAlbumOverview();
         try {
