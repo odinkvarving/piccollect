@@ -33,6 +33,7 @@ import java.util.ResourceBundle;
 
 /**
  * SearchAlbumController covers all methods which are needed to run AlbumScene properly.
+ * The class implements Initializable
  */
 
 public class SearchAlbumController implements Initializable {

@@ -39,6 +39,7 @@ import java.util.stream.Collectors;
 /**
  * SearchImageSceneController controls the SearchImageScene.
  * Every method in this class is used to handle the different functionalities on the SearchImageScene.
+ * The class implements Initializable
  */
 
 public class SearchImageSceneController implements Initializable {

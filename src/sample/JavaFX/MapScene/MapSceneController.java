@@ -39,37 +39,42 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * MapSceneController controls the mapScene.
+ * It implements Initalizable and MapComponentInitializedListener.
+ */
+
 public class MapSceneController implements Initializable, MapComponentInitializedListener {
 
-    //The layout with the map
+    /**
+     * mapView is the layout with the map
+     * map is the map which is connected to the mapview. Controls the options of the mapView
+     * geocodingService is for locating areas in the world
+     * scenePane is the root pane
+     * mapAnchorPane is an Anchorpane where the mapview and adresstextfield is in
+     * addressTextField is an input field where user can search for a place
+     * backButton is a homebutton to get back to mainscene
+     * windowMenuButtonBox is a pane with custom window-menu buttons
+     * imageDialogPane is a stackpane where the preview image dialog pops up
+     * address is a StringProperty that is bound to the adresstextfield
+     * images is an ArrayList with all the images from the database
+     */
     private GoogleMapView mapView;
-    //The map which is connected to the mapview. Controls the options of the mapView
     private GoogleMap map;
-    //For locating areas in the world
     private GeocodingService geocodingService;
-
-    //root pane
     @FXML
     private AnchorPane scenePane;
-    //Anchorpane where the mapview and adresstextfield is in
     @FXML
     private AnchorPane mapAnchorPane;
-    //Inputfield where user can search for a place
     @FXML
     private TextField addressTextField;
-    //Homebutton to get back to mainscene
     @FXML
     private Button backButton;
-    //A pane with custom window-menu buttons
     @FXML
     private Pane windowMenuButtonBox;
-    //A stackpane where the preview image dialog pops up
     @FXML
     private StackPane imageDialogPane;
-
-    //StringProperty that is bound to the adresstextfield
     private StringProperty address = new SimpleStringProperty();
-    //ArrayList with all the images from the database
     private ArrayList<ImageV2> images;
 
 

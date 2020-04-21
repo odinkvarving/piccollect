@@ -30,6 +30,7 @@ import java.util.ResourceBundle;
 /**
  * UploadSceneController controls the UploadScene.
  * It covers all methods needed for the UploadScene.
+ * The class implements Initializable.
  */
 
 public class UploadSceneController implements Initializable{

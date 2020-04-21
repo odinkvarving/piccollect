@@ -19,19 +19,27 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * MainMenuSceneController controls the MainMenuScene.
+ * The class implements Initializable.
+ */
+
 public class MainMenuSceneController implements Initializable {
 
     /**
      * These are the object variables which is used in the controller.
-     * uploadImageButton
-     * searchImageButton
-     * albumsButton
-     * mapButton
-     * title
-     * titleAddition
-     * uploadScene
-     * searchScene
-     * albumScene
+     * uploadImageButton is a button the user can click to go to SploadImageScene
+     * searchImageButton is a button the user can click to go to SearchImageScene
+     * albumsButton is a button the user can click to go to SearchAlbumScene
+     * mapButton is a button the user can click to go to MapScene
+     * title is a label for the title of the application
+     * titleAddition is a label for the title additions below the title
+     * uploadScene is a scene where the user can upload an image
+     * searchScene is a scene where the user can search for an image
+     * albumScene is a scene where the user can search and browse images
+     * mapScene is a scene where the user can use a map to find images
+     * xOffset is a variable for making it possible to drag the window in x-axis
+     * yOffset is a variable for making it possible to drag the window in y-axis
      */
     @FXML
     private AnchorPane mainMenuPane;
@@ -49,18 +57,10 @@ public class MainMenuSceneController implements Initializable {
     private Label title;
     @FXML
     private Label titleAddition;
-
-    /**
-     * All the different scenes besides the MainMenuScene
-     */
     private Scene uploadScene;
     private Scene searchScene;
     private Scene albumScene;
     private Scene mapScene;
-
-    /**
-     * Variables for making it possible to drag the window
-     */
     private double xOffset = 0;
     private double yOffset = 0;
 
