@@ -6,30 +6,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The Album class is a class which makes an Album object.
+ * Album is a class that is used for making an Album-object, and is defined as an entity, so that objects of this class can be mapped to a relation database-table
+ * @Entity Used for defining objects of this class as an entity
+ * @Table Defines the name of the table that correlates with the name in our database
+ * @Id Defines this column as an Id-column
+ * @Column Used for defining information about the column
+ * @GeneratedValue Defines how this value is generated
+ * @ManyToMany Used to define what relationship this class has with other entities
  */
 @Entity
 @Table(name="album_table")
 public class Album {
 
-    /**
-     * Each album has its own unique id.
-     */
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    /**
-     * Each album has a name.
-     */
     @Column(name = "album_name")
     private String albumName;
 
-
-    /**
-     * Each album has a List containing images.
-     */
     @ManyToMany(mappedBy = "albums")
     private List<ImageV2> images = new ArrayList<>();
 
