@@ -4,10 +4,17 @@ import com.byteowls.jopencage.JOpenCageGeocoder;
 import com.byteowls.jopencage.model.JOpenCageResponse;
 import com.byteowls.jopencage.model.JOpenCageReverseRequest;
 
+/**
+ * GeoConverter is a class which converts latitude and longitude to a real address
+ */
 public class GeoConverter {
-
-
-
+    /**
+     * This method takes in latitude and longitude as parameters.
+     * It uses JOpenCage to convert latitude and longitude to a real address.
+     * @param latitude
+     * @param longitude
+     * @return
+     */
     public static String reverseGeocoder(double latitude, double longitude){
         JOpenCageGeocoder jOpenCageGeocoder = new JOpenCageGeocoder("920cd22ea28d4d208d10b6b75e0bbbb6");
 

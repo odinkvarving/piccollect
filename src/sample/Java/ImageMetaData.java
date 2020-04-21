@@ -26,6 +26,9 @@ import java.util.Date;
 
 //https://github.com/drewnoakes/metadata-extractor/wiki/Getting-Started-(Java) Follow this to understand more
 
+/**
+ * ImageMetaData is a class which is used
+ */
 public class ImageMetaData {
 
     File file;
