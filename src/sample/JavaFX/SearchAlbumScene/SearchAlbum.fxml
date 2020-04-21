@@ -8,11 +8,13 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1066.0" style="-fx-border-color: #4153AF" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.JavaFX.SearchAlbumScene.SearchAlbumController">
    <children>
+      <StackPane fx:id="imagePreviewPane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="433.0" AnchorPane.rightAnchor="433.0" AnchorPane.topAnchor="225.0" />
       <VBox layoutY="97.0" prefHeight="500.0" prefWidth="318.0" style="-fx-background-color: #ebe8f9;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
             <Label text="Search filter">
