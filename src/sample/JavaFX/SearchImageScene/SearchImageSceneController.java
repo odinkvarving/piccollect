@@ -36,52 +36,60 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+/**
+ * SearchImageSceneController controls the SearchImageScene.
+ * Every method in this class is used to handle the different functionalities on the SearchImageScene.
+ */
+
 public class SearchImageSceneController implements Initializable {
 
+    /**
+     * windowMenuButtonsBox is is a pane which contains exit button etc.
+     * nameSearchField is a text field where the user types in the image name
+     * locationSearchField is a text field where the user types in the image location
+     * fromDatePicker is a DatePicker where the user chooses a from-date
+     * toDatePicker is a DatePicker where the user chooses a to-date. These two DatePickers are used to find a/multiple image(s) by their date
+     * addTagButton is a button used to add tags for search
+     * tagHBox is a HBox which shows every tag in the search
+     * tagSearchField is a text field where the user can write a tag to add to the search
+     * resetSearchButton is a button which resets the search
+     * backButton is a button the user can press to go back to the main menu
+     * imageList is a VBox of all images
+     * allImages is an ArrayList with all the images from the database
+     * tagLabels is an ArrayList with all the tags from the images
+     * searchListItems is an ArrayList with the searchListItems that is an HBox that contains the image information
+     */
     @FXML
     private Pane windowMenuButtonsBox;
     @FXML
     private TextField nameSearchField;
-
     @FXML
     private TextField locationSearchField;
-
     @FXML
     private DatePicker fromDatePicker;
-
     @FXML
     private DatePicker toDatePicker;
-
     @FXML
     private Button addTagButton;
-
     @FXML
     private HBox tagHBox;
-
     @FXML
     private TextField tagSearchField;
-
     @FXML
     private Button resetSearchButton;
-
     @FXML
     private Button backButton;
-
     @FXML
     private VBox imageList;
-
-    //ArrayList with all the images from the database
     ArrayList<ImageV2> allImages;
-    //ArrayList with all the tags from the images
     ArrayList<Label> tagLabels = new ArrayList<>();
-    //An ArrayList with the searchListItems that is an HBox that contains the image information.
     ArrayList<SearchListItem> searchListItems = new ArrayList<>();
 
     /**
      * Initialize-method where we fill inn the images-arraylist with images from the database, and fill the scrollpane with
      * all the SearchListItems.
-     * @param url
-     * @param resourceBundle
+     * @param url: URL
+     * @param resourceBundle: ResourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

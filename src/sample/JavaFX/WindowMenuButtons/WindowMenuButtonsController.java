@@ -8,10 +8,17 @@ import javafx.stage.Stage;
 
 import java.util.Optional;
 
+/**
+ * WindowsMenyButtonsController controls the window-menu-buttons
+ */
+
 public class WindowMenuButtonsController {
 
-
-
+    /**
+     * exitButton is a button the user can click to exit the application
+     * sizeButton is a button the user can click to minimize or enlarge the application
+     * hideButton is a button the user can click to hide the application
+     */
     @FXML
     private Button exitButton;
     @FXML

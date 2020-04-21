@@ -27,9 +27,32 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * UploadSceneController controls the UploadScene.
+ * It covers all methods needed for the UploadScene.
+ */
 
 public class UploadSceneController implements Initializable{
 
+    /**
+     * windowMenuButtonBox is a pane which contains exit button etc.
+     * previewImagePane is the pane which previews the image
+     * dragAreaInfoBox is the place where the user can choose an image
+     * browse is a button for browsing images on the users PC
+     * closeImageButton removes the image which the user chose, but didn't upload
+     * imageNameTextField is a text field where the user can write the image name
+     * albumChoiceBox is a choicebox where the user can choose an album to add the image to
+     * createAlbumButton is a button which creates a new album for the image added
+     * tagTextField is a text field for tags
+     * addTagButton is a button that will add the tag written in tagTextField
+     * tagListView is an overview over all tags added to the image
+     * uploadButton is a button used for uploading the image
+     * cancelButton is a button which cancels the whole process
+     * backButton is a button the user presses when he/she wants to go back to the main menu
+     * uploadImagePath is a String which holds the image path
+     * uploadedImage is an ImageView which stores the uploaded image
+     * tags is a String with all tags
+     */
     @FXML
     private Pane windowMenuButtonBox;
     @FXML
@@ -56,8 +79,6 @@ public class UploadSceneController implements Initializable{
     private Button uploadButton;
     @FXML
     private Button cancelButton;
-
-
     @FXML
     private Button backButton;
 
@@ -66,7 +87,10 @@ public class UploadSceneController implements Initializable{
     private ImageView uploadedImage;
     private String tags = "";
 
-
+    /**
+     * This constructor is an emtpy constructor which throws an SQLException
+     * @throws SQLException
+     */
     public UploadSceneController() throws SQLException {
     }
 

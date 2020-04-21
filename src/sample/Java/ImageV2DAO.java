@@ -10,20 +10,35 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 
+/**
+ * ImageV2DAO is a class which connects ImageV2 (and Album) class to a database.
+ * The class adds and collects information about the images from database.
+ */
 public class ImageV2DAO {
 
+    /**
+     * emf is an EntityManagerFactory
+     */
     private EntityManagerFactory emf;
 
-
     /* NB! EntityManagerFactory is thread safe, EntityManger is not!
-     * The make the solution thread safe use/create the EntityManger locally when needed, do not keep
-     * as object variable.
+     To make the solution thread safe use/create the EntityManger locally when needed, do not keep
+     as object variable.*/
+
+    /**
+     * This constructor takes in emf as a parameter
+     * @param emf: EntityManagerFactory
      */
     public ImageV2DAO(EntityManagerFactory emf) {
         this.emf = emf;
     }
 
-
+    /**
+     * This method stores a new image.
+     * It stores the image in an album (if an album is chosen)
+     * @param imageV2: The image from user
+     * @param album: The album user can choose (NB: user doesn't need to choose an album)
+     */
     public void storeNewImage(ImageV2 imageV2, Album album) {
         EntityManager em = getEM();
         try {
@@ -42,6 +57,11 @@ public class ImageV2DAO {
             closeEM(em);
         }
     }
+
+    /**
+     * This method updates a given image from the user
+     * @param imageV2: Image from user
+     */
     public void updateImage(ImageV2 imageV2){
         EntityManager em = getEM();
         try {
@@ -53,6 +73,10 @@ public class ImageV2DAO {
         }
     }
 
+    /**
+     * This method returns a list of all images in the database
+     * @return q.getResultList(): a list of all images
+     */
     public List<ImageV2> getImages(){
         EntityManager em = getEM();
         try {
@@ -63,26 +87,19 @@ public class ImageV2DAO {
         }
     }
 
-
-
     /**
-     * Metode for å lage og hente entitymanageren.
-     *
-     * @return en entitymanager
+     * Method for creating and returning the EntityManager
+     * @return EntityManager
      */
     private EntityManager getEM() {
         return emf.createEntityManager();
     }
 
     /**
-     * Metode for å lukke connectionen
-     *
-     * @param em
+     * Method for closing the connection and EntityManager
+     * @param em: EntityManager
      */
     private void closeEM(EntityManager em) {
         if (em != null && em.isOpen()) em.close();
     }
-
-
-
 }
