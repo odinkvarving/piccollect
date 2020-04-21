@@ -19,6 +19,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * ImageV2 is a class that is used for making an ImageV2-object, and is defined as an entity, so that objects of this class can be mapped to a relation database-table
+ * @Entity Used for defining objects of this class as an entity
+ * @Table Defines the name of the table that correlates with the name in our database
+ * @Id Defines this column as an Id-column
+ * @Column Used for defining information about the column
+ * @GeneratedValue Defines how this value is generated
+ * @ManyToMany Used to define what relationship this class has with other entities
+ */
 @Entity
 @Table(name = "image_table")
 public class ImageV2 {
@@ -53,6 +62,14 @@ public class ImageV2 {
     private List<Album> albums = new ArrayList<>();
 
     public ImageV2(){}
+
+    /**
+     *
+     * @param imageName
+     * @param tags
+     * @param filePath
+     * @throws MetadataException
+     */
 
     public ImageV2(String imageName, String tags, String filePath) throws MetadataException {
         ImageMetaData imageMetaData = new ImageMetaData(new File(filePath));
