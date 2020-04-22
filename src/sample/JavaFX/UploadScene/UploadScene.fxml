@@ -53,9 +53,9 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <Button fx:id="closeImageButton" layoutX="417.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleCloseImageButtonClicked" style="-fx-background-color: transparent;">
+                  <Button fx:id="closeImageButton" layoutX="417.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleCloseImageButtonClicked" style="-fx-background-color: #ffffff;">
                      <graphic>
-                        <FontAwesomeIcon fill="#f80000" glyphName="TIMES_CIRCLE" size="35" styleClass="test" text="" wrappingWidth="30.0" />
+                        <FontAwesomeIcon fill="#f80000" glyphName="CLOSE" size="35" styleClass="test" text="" wrappingWidth="30.0" />
                      </graphic>
                   </Button>
                </children>

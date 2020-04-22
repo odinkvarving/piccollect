@@ -75,27 +75,6 @@ public class SearchAlbumController implements Initializable {
     private GridPane albumGridPane;
 
 
-    public void fillAlbumsGridPane(){
-        int rows = albumsWithoutImageList.size()/3;
-        if(albumsWithoutImageList.size() % 3 != 0){
-            rows ++;
-        }
-        for(int i = 0; i < rows; i ++){
-            for(int j = 0; j < 3; j ++){
-                int albumIndex = i*3 + j;
-                if(albumIndex != albums.size()) {
-                    AlbumItem albumItem;
-                    if (albums.get(albumIndex).getImages().isEmpty()) {
-                        albumItem = new AlbumItem("", albumsWithoutImageList.get(albumIndex).getAlbumName());
-                    } else {
-                        albumItem = new AlbumItem(albums.get(albumIndex).getImages().get(0).getFilePath(), albumsWithoutImageList.get(albumIndex).getAlbumName());
-                    }
-                    albumGridPane.add(albumItem, j, i);
-                }
-            }
-        }
-    }
-
 
     /**
      * This method runs when user presses "Search Album" in main scene. It initializes the class, and fills albumTableView with all albums in Database.
@@ -188,7 +167,7 @@ public class SearchAlbumController implements Initializable {
             int rowCounter = 0;
             while(counter < albumsWithoutImageList.size() && rowCounter < 3){
                 AlbumItem albumItem;
-                if(counter != albums.size()) {
+                if(!(counter >= albums.size())) {
                     if (albums.get(counter).getImages().isEmpty()) {
                         albumItem = new AlbumItem("", albumsWithoutImageList.get(counter).getAlbumName());
                     } else {
