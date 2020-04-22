@@ -74,8 +74,8 @@ public class SearchAlbumController implements Initializable {
 
     /**
      * This method runs when user presses "Search Album" in main scene. It initializes the class, and fills albumTableView with all albums in Database.
-     * @param url
-     * @param resourceBundle
+     * @param url Location used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle Used to localize the root object, or null if the root object was not localized
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -83,8 +83,8 @@ public class MapSceneController implements Initializable, MapComponentInitialize
      * then we add the GoogleMapView to the mapAnchorPane and attaches it to the sides so it is stretchable.
      * We then moves the search textfield to the front and binds it to the StringProperty-variable above.
      * At last we load in the custom window menu buttons.
-     * @param location
-     * @param resources
+     * @param location Location used to resolve relative paths for the root object, or null if the location is not known
+     * @param resources Used to localize the root object, or null if the root object was not localized
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -162,7 +162,7 @@ public class MapSceneController implements Initializable, MapComponentInitialize
      *
      * any other images is being previewed, if so, we clear all children to the stackpane before we add the
      * new imagepreviewdialog. After that we create an image preview dialog with the marker/image.
-     * @param marker
+     * @param marker 
      * @param imageV2
      */
     private void addMarkerClickHandler(Marker marker, ImageV2 imageV2){

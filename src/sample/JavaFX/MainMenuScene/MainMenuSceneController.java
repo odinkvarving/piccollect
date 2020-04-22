@@ -27,7 +27,7 @@ public class MainMenuSceneController implements Initializable {
 
     /**
      * These are the object variables which is used in the controller.
-     * uploadImageButton is a button the user can click to go to SploadImageScene
+     * uploadImageButton is a button the user can click to go to uploadImageScene
      * searchImageButton is a button the user can click to go to SearchImageScene
      * albumsButton is a button the user can click to go to SearchAlbumScene
      * mapButton is a button the user can click to go to MapScene
@@ -130,8 +130,8 @@ public class MainMenuSceneController implements Initializable {
 
     /**
      * Method for making the scene draggable
-     * @param root
-     * @param stage
+     * @param root Parent object - Base class for all nodes that have children in the scene graph
+     * @param stage Used to set a new stage
      */
     public void makeSceneDraggable(Parent root, Stage stage){
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -161,8 +161,8 @@ public class MainMenuSceneController implements Initializable {
 
     /**
      * Initialize where we load in the custom window-menubuttons-
-     * @param url
-     * @param resourceBundle
+     * @param url Location used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle Used to localize the root object, or null if the root object was not localized
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
