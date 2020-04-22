@@ -235,7 +235,10 @@ public class MapSceneController implements Initializable, MapComponentInitialize
     }
 
     /**
-     * Adds a marker to the map.
+     * Adds a marker to the map
+     * @param lat the latitude as a double
+     * @param lng the longitude as a double
+     * @return a Marker with given longitude and latitude
      */
     public Marker createMarker(double lat, double lng) {
         MarkerOptions options = new MarkerOptions();
