@@ -24,8 +24,6 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
-//https://github.com/drewnoakes/metadata-extractor/wiki/Getting-Started-(Java) Follow this to understand more
-
 /**
  * ImageMetaData is a class which is used to collect all metadata from a image
  */
@@ -40,6 +38,7 @@ public class ImageMetaData {
 
     /**
      * This constructor takes the image file as a parameter
+     * Uses a method from the metadata-extractor API to read metadata from the given image-file
      * @param imageFile: image file
      */
     public ImageMetaData(File imageFile) {
@@ -48,7 +47,7 @@ public class ImageMetaData {
     }
 
     /**
-     * This method reads metadata from an image
+     * This is the method that reads metadata from an image
      * @throws MetadataException
      */
     private void readMetadataFromImage(){
@@ -60,7 +59,7 @@ public class ImageMetaData {
     }
 
     /**
-     * This method prints out metadata from an image
+     * This method prints out metadata from an image and displays it in a defined order
      * @throws MetadataException
      */
     public void printMetaDataFromImage() {
@@ -83,7 +82,7 @@ public class ImageMetaData {
     }
 
     /**
-     * Method for fetching width from image
+     * Method for fetching width from image based on what datatype the image is (jpeg, png or gif)
      * @return width as an Integer
      * @throws MetadataException
      */
@@ -102,7 +101,7 @@ public class ImageMetaData {
     }
 
     /**
-     * Method for fetching height from image
+     * Method for fetching height from image based in what datatype the image is (jpeg, png or gif)
      * @return image height as an Integer
      * @throws MetadataException
      */

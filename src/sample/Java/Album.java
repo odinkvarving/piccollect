@@ -9,7 +9,7 @@ import java.util.List;
  * Album is a class that is used for making an Album-object, and is defined as an entity, so that objects of this class can be mapped to a relation database-table
  * @Entity Used for defining objects of this class as an entity
  * @Table Defines the name of the table that correlates with the name in our database
- * @Id Defines this column as an Id-column
+ * @Id Defines the primary key as an Id-column
  * @Column Used for defining information about the column
  * @GeneratedValue Defines how this value is generated
  * @ManyToMany Used to define what relationship this class has with other entities
@@ -66,10 +66,19 @@ public class Album {
         return images;
     }
 
+    /**
+     * Method for adding images to an album
+     * @param imageV2 Defines what image should be added
+     */
     public void addImage(ImageV2 imageV2){
         this.images.add(imageV2);
         imageV2.getAlbums().add(this);
     }
+
+    /**
+     * Method for removing images from an album
+     * @param imageV2 Defines what image should be removed
+     */
     public void removeImage(ImageV2 imageV2){
         this.images.remove(imageV2);
         imageV2.getAlbums().remove(this);

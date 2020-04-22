@@ -13,7 +13,7 @@ public class GeoConverter {
      * It uses JOpenCage to convert latitude and longitude to a real address.
      * @param latitude
      * @param longitude
-     * @return
+     * @return a formatted address in the form of a string, which displays the location correlating with given longitude and latitude
      */
     public static String reverseGeocoder(double latitude, double longitude){
         JOpenCageGeocoder jOpenCageGeocoder = new JOpenCageGeocoder("920cd22ea28d4d208d10b6b75e0bbbb6");

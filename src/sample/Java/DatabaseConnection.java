@@ -32,7 +32,7 @@ public class DatabaseConnection {
     }
 
     /**
-     * This method returns DatabaseConnection. If it is equal to null, it will be defined.
+     * This method returns DatabaseConnection. If there are no other existing instances of DatabaseConnection, a new connection will be created
      * @return instance: DatabaseConnection
      */
     public static DatabaseConnection getInstance(){
