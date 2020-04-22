@@ -201,9 +201,8 @@ public class ImageMetaData {
     }
 
     /**
-     * A method for retrieving the date the image was created/captured
-     * Not all images gives the information we need to read the date, may have to
-     * find a fix for that.
+     * A method for retrieving the date the image was created/captured by looking for a specific Date-tag in the ExifIFD0Directory
+     * Not all images gives the information we need to read the date
      * @return the date.
      * @throws NullPointerException
      */
@@ -219,7 +218,7 @@ public class ImageMetaData {
     }
 
     /**
-     * This method returns timestamp from when the image was taken
+     * This method returns timestamp from when the image was taken by looking for a specific Datetime-tag in the ExifIFD0Directory
      * @return timestamp from image
      * @throws NullPointerException
      */
@@ -235,7 +234,7 @@ public class ImageMetaData {
     }
 
     /**
-     * This method returns geolocation as longitude and latitude in a GeoLocation object
+     * This method returns the location in the form of a Geolocation object. This method can later be used for extracting the longitude and latitude
      * @return geoLocation from image
      * @throws NullPointerException
      */
@@ -251,8 +250,8 @@ public class ImageMetaData {
     }
 
     /**
-     * Method for finding out what the filetype is.
-     * @return filetype as a String
+     * Method for finding out what the type of file the image is
+     * @return Type of file as a String
      */
     public String checkFileType(){
         String fileType;
