@@ -3,6 +3,7 @@ package sample.Java;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,6 +49,40 @@ public class AlbumDAO {
         try {
             Query q = em.createQuery("SELECT a FROM Album a JOIN FETCH a.images", Album.class);
             return q.getResultList();
+        }finally {
+            closeEM(em);
+        }
+    }
+
+    public String getAlbumsFirstImagePath(Album album){
+        EntityManager em = getEM();
+        try {
+            Query q = em.createQuery("SELECT a FROM Album a JOIN FETCH a.images WHERE a.id = :albumID", Album.class);
+            q.setParameter("albumID", album.getId());
+            Album a = (Album) q.getSingleResult();
+            if(!a.getImages().isEmpty()){
+                return a.getImages().get(0).getFilePath();
+            }else {
+                return "";
+            }
+        }finally {
+            closeEM(em);
+        }
+    }
+
+    public List<String> getAllAlbumsFirstImagePath(){
+        EntityManager em = getEM();
+        List<String> albumsFirstImagePaths = new ArrayList<>();
+        try {
+            List<Album> albums = em.createQuery("SELECT a FROM Album a JOIN FETCH a.images", Album.class).getResultList();
+            albums.forEach(a -> {
+                if(a.getImages().isEmpty()){
+                    albumsFirstImagePaths.add("");
+                }else{
+                    albumsFirstImagePaths.add(a.getImages().get(0).getFilePath());
+                }
+            });
+            return  albumsFirstImagePaths;
         }finally {
             closeEM(em);
         }
