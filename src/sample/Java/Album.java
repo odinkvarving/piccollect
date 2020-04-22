@@ -7,12 +7,12 @@ import java.util.List;
 
 /**
  * Album is a class that is used for making an Album-object, and is defined as an entity, so that objects of this class can be mapped to a relation database-table
- * the @Entity is used for defining objects of this class as an entity
- * the @Table defines the name of the table that correlates with the name in our database
- * the @Id defines the primary key as an Id-column
- * the @Column is used for defining information about the column
- * the @GeneratedValue defines how this value is generated
- * the @ManyToMany is used to define what relationship this class has with other entities
+ * <br>The @Entity is used for defining objects of this class as an entity
+ * <br>The @Table defines the name of the table that correlates with the name in our database
+ * <br>The @Id defines the primary key as an Id-column
+ * <br>The @Column is used for defining information about the column
+ * <br>The @GeneratedValue defines how this value is generated
+ * <br>The @ManyToMany is used to define what relationship this class has with other entities
  */
 @Entity
 @Table(name="album_table")
@@ -30,21 +30,18 @@ public class Album {
     private List<ImageV2> images = new ArrayList<>();
 
     /**
-     * We need an empty constructor for Album. If not, an error will occur right below "public class Album".
+     * Empty constructor
      */
     public Album(){}
 
     /**
-     * We also have another constructor that takes albumName as a parameter.
+     * Parameterized constructor
      * @param albumName the name of the album
      */
     public Album(String albumName){
         this.albumName = albumName;
     }
 
-    /**
-     * Below there are some getters and setters for each object variable. //DO WE NEED JAVADOC FOR EACH GETTER AND SETTER METHOD???
-     */
     public Integer getId() {
         return id;
     }
