@@ -20,8 +20,8 @@ import java.util.ResourceBundle;
 
 /**
  * MainMenuSceneController controls the MainMenuScene.
- * The class implements Initializable.
- * the @FXML tells the compiler that this variable is connected to an FXML-file
+ * <br>The class implements Initializable.
+ * <br>The @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class MainMenuSceneController implements Initializable {
@@ -100,7 +100,8 @@ public class MainMenuSceneController implements Initializable {
     }
 
     /**
-     * Method for what happens when MapButton is clicked. Loads in the MapScene and makes it draggable
+     * Method for what happens when MapButton is clicked.
+     * <br>Loads in the MapScene and makes it draggable
      */
     public void handleMapButton(){
         FXMLLoader mapSceneLoader = new FXMLLoader(getClass().getResource("../MapScene/MapScene.fxml"));
@@ -137,7 +138,8 @@ public class MainMenuSceneController implements Initializable {
     }
 
     /**
-     * Method for making the MainMenuScene draggable. Attached to the main pane in the FXML file.
+     * Method for making the MainMenuScene draggable
+     * <br>Attached to the main pane in the FXML file.
      */
     public void makeMainMenuPaneMovable(){
         Stage stage;
@@ -146,7 +148,7 @@ public class MainMenuSceneController implements Initializable {
     }
 
     /**
-     * Initialize where we load in the custom window-menubuttons-
+     * Initialize method to load in the custom window-menu-buttons
      * @param url the URL used to resolve relative paths for the root object, or null if the location is not known
      * @param resourceBundle the ResourceBundle used to localize the root object, or null if the root object was not localized
      */

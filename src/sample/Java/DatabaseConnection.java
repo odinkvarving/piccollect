@@ -5,8 +5,8 @@ import javax.persistence.Persistence;
 
 /**
  * DatabaseConnection is a class which makes a database connection to all classes using the DatabaseConnection class
- * Used to obtain an EntityManagerFactory in Java SE environments (EntityManagerFactory only exists to support instantiation of an EntityManager)
- * EntityManager is used to represent a connection to a database
+ * <br>Used to obtain an EntityManagerFactory in Java SE environments (EntityManagerFactory only exists to support instantiation of an EntityManager)
+ * <br>EntityManager is used to represent a connection to a database
  */
 public class DatabaseConnection {
 

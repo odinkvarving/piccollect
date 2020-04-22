@@ -10,7 +10,7 @@ import java.io.File;
 
 /**
  * AlbumItem is a class which extends Button to apply a button's traits.
- * An AlbumItem is an ImageView with the first image of the album, and the album name below it.
+ * <br>An AlbumItem is an ImageView with the first image of the album, and the album name below it.
  */
 public class AlbumItem extends Button {
 
@@ -39,7 +39,7 @@ public class AlbumItem extends Button {
 
     /**
      * This method creates the layout of the button.
-     * The method is responsible for how AlbumItem looks.
+     * <br>The method is responsible for how AlbumItem looks.
      */
     private void createButtonLayout(){
         setContentDisplay(ContentDisplay.TOP);

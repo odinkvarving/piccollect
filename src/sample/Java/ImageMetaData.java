@@ -30,7 +30,7 @@ public class ImageMetaData {
 
     /**
      * This constructor takes the image file as a parameter
-     * Uses a method from the metadata-extractor API to read metadata from the given image-file
+     * <br>Uses a method from the metadata-extractor API to read metadata from the given image-file
      * @param imageFile the image file that will be read
      */
     public ImageMetaData(File imageFile) {
@@ -109,8 +109,7 @@ public class ImageMetaData {
 
     /**
      * The methods below is fetching the width from the image
-     * we need different methods for different files because not every file
-     * has the same directories.
+     * <br>We need different methods for different files because not every file has the same directories
      * @return the width of the image as an int
      */
     private int getWidthFromMetadataJPEG() {
@@ -148,8 +147,8 @@ public class ImageMetaData {
     }
 
     /**
-     * Methods for fetching height from the image. Need more than
-     * one method for the same reason stated above.
+     * Methods for fetching height from the image
+     * <br>We need different methods for different files because not every file has the same directories.
      * @return the width of the image as an int
      */
     private int getHeightFromMetadataJPEG() {
@@ -188,7 +187,7 @@ public class ImageMetaData {
 
     /**
      * A method for retrieving the date the image was created/captured by looking for a specific Date-tag in the ExifIFD0Directory
-     * Not all images gives the information we need to read the date
+     * <br>Not all images gives the information we need to read the date
      * @return the date stored in the metadata
      */
     public Date getDateFromMetaData(){

@@ -28,9 +28,9 @@ import java.util.ResourceBundle;
 
 /**
  * UploadSceneController controls the UploadScene.
- * It covers all methods needed for the UploadScene.
- * The class implements Initializable.
- * the @FXML tells the compiler that this variable is connected to an FXML-file
+ * <br>Covers all methods needed for the UploadScene.
+ * <br>The class implements Initializable.
+ * <br>The @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class UploadSceneController implements Initializable{
@@ -158,7 +158,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * Method for handling when the upload button is clicked
-     * Clear all fields if operation is successful
+     * <br>Clear all fields if operation is successful
      */
     public void handleUploadButtonClicked(){
         boolean uploadingSuccessful = false;
@@ -232,7 +232,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * Method for handling when the "+" button i clicked
-     * Adds tag then clears the input field.
+     * <br>Adds tag then clears the input field.
      */
     public void handleAddTagButtonClicked(){
         addTagToList();
@@ -316,7 +316,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * A method for handling the BackButton.
-     * Sends you back to MainScene.
+     * <br>Sends you back to MainScene.
      */
     public void handleBackButtonClicked(){
         FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("../MainMenuScene/MainMenu.fxml"));
@@ -349,7 +349,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * Method that comes up when the ListView with tags is empty and user tries to upload
-     * Asks them if they are sure they want no tags
+     * <br>Asks user if they are sure they want no tags
      * @return boolean representing yes or no from user
      */
     public boolean showConfirmationDialog(){

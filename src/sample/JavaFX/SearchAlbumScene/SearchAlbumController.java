@@ -28,8 +28,8 @@ import java.util.ResourceBundle;
 
 /**
  * SearchAlbumController covers all methods which are needed to run AlbumScene properly.
- * The class implements Initializable
- * the @FXML tells the compiler that this variable is connected to an FXML-file
+ * <br>The class implements Initializable
+ * <br>The @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class SearchAlbumController implements Initializable {
@@ -83,9 +83,8 @@ public class SearchAlbumController implements Initializable {
     }
 
     /**
-     * This method runs when albumSearchButton is clicked. It will check if the album selected in albumComboBox is equal to any of the album names.
-     * If it is, the method will clear the albumOverview, and only add the correct album to the albumOverview.
-     * If none of the albums have the equivalent name, the method will display an alert.
+     * This method runs when albumSearchButton is clicked. It will check if the album selected in albumComboBox is equal to any of the album names. If it is, the method will clear the albumOverview, and only add the correct album to the albumOverview.
+     * <br>If none of the albums have the equivalent name, the method will display an alert.
      */
     @FXML
     private void handleAlbumSearchButtonClicked(){
@@ -129,10 +128,9 @@ public class SearchAlbumController implements Initializable {
 
     /**
      * A method for displaying every album in the Database.
-     * The display is a VBox with multiple HBoxes, depending on how many albums the Database contains.
-     * Each albumRow contains up to 3 albumItems.
-     * If there are no pictures in an album, the albumItem displays a default image: imageNotFound, and albumName.
-     * Else, the albumItem displays the first image in the album and albumName.
+     * <br>The display is a VBox with multiple HBoxes, depending on how many albums the Database contains.
+     * <br>Each albumRow contains up to 3 albumItems.
+     * <br>If there are no pictures in an album, the albumItem displays a default image: imageNotFound, and albumName. If there is a picture the albumItem displays the first image in the album and albumName.
      */
     private void makeAlbumOverview(){
         AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());

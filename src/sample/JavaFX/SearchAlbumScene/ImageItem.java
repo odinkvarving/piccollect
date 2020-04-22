@@ -16,8 +16,7 @@ import java.io.File;
 
 /**
  * ImageItem is a class which extends Button to apply a button's traits.
- * An ImageItem is an ImageView with the image, and the image name below it.
- * We took some inspiration from AlbumItem.
+ * <br>An ImageItem is an ImageView with the image, and the image name below it.
  */
 public class ImageItem extends Button {
 
@@ -41,7 +40,7 @@ public class ImageItem extends Button {
 
     /**
      * This method creates the layout of the button.
-     * The method is responsible for how ImageItem looks.
+     * <br>The method is responsible for how ImageItem looks.
      */
     private void createButtonLayout(){
         setContentDisplay(ContentDisplay.TOP);

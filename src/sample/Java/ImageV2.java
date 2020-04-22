@@ -16,12 +16,12 @@ import java.util.List;
 
 /**
  * ImageV2 is a class that is used for making an ImageV2-object, and is defined as an entity, so that objects of this class can be mapped to a relation database-table
- * the @Entity is used for defining objects of this class as an entity
- * the @Table defines the name of the table that correlates with the name in our database
- * the @Id defines the primary key as an Id-column
- * the @Column is used for defining information about the column
- * the @GeneratedValue defines how this value is generated
- * the @ManyToMany is used to define what relationship this class has with other entities
+ * <br>The @Entity is used for defining objects of this class as an entity
+ * <br>The @Table defines the name of the table that correlates with the name in our database
+ * <br>The @Id defines the primary key as an Id-column
+ * <br>The @Column is used for defining information about the column
+ * <br>The @GeneratedValue defines how this value is generated
+ * <br>The @ManyToMany is used to define what relationship this class has with other entities
  */
 @Entity
 @Table(name = "image_table")
@@ -64,8 +64,8 @@ public class ImageV2 {
      * @param tags the tags of the image
      * @param filePath the file-path of the image
      * @throws MetadataException the exception that is thrown
-     * Some of the object-variables is defined using methods from external libraries - like location and date, which uses the GeoConverter API and the ImageMetaData API
-     * There is also created a ImageMetaData-object using the same filepath, so that we gain access to the metadata stored in the image.
+     * <br>Some of the object-variables is defined using methods from external libraries - like location and date, which uses the GeoConverter API and the ImageMetaData API
+     * <br>There is also created a ImageMetaData-object using the same filepath, so that we gain access to the metadata stored in the image.
      */
 
     public ImageV2(String imageName, String tags, String filePath) throws MetadataException {

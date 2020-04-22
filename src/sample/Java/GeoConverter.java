@@ -10,7 +10,7 @@ import com.byteowls.jopencage.model.JOpenCageReverseRequest;
 public class GeoConverter {
     /**
      * This method takes in latitude and longitude as parameters.
-     * It uses JOpenCage to convert latitude and longitude to a real address.
+     * <br>It uses JOpenCage to convert latitude and longitude to a real address.
      * @param latitude the double value of the latitude
      * @param longitude the double value of the longitude
      * @return a formatted address in the form of a string, which displays the location correlating with given longitude and latitude

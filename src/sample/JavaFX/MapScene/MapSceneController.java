@@ -40,8 +40,8 @@ import java.util.*;
 
 /**
  * MapSceneController controls the mapScene.
- * It implements Initializable and MapComponentInitializedListener.
- * the @FXML tells the compiler that this variable is connected to an FXML-file
+ * <br>Implements Initializable and MapComponentInitializedListener.
+ * <br>the @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class MapSceneController implements Initializable, MapComponentInitializedListener {
@@ -66,11 +66,11 @@ public class MapSceneController implements Initializable, MapComponentInitialize
 
 
     /**
-     * In the initialize-method we first fetch the images from the database and fill the image-ArrayList.
-     * then we create the GoogleMapView object with our API-key and adds the mapinitializer.
-     * then we add the GoogleMapView to the mapAnchorPane and attaches it to the sides so it is stretchable.
-     * We then moves the search textfield to the front and binds it to the StringProperty-variable above.
-     * At last we load in the custom window menu buttons.
+     * In the initialize-method the images are first fetched from the database and the image-ArrayList is filled.
+     * <br>A GoogleMapView object is created with the given API-key and adds the MapInitializer.
+     * <br>After this the GoogleMapView is added to the mapAnchorPane and it attaches to the sides so it is stretchable.
+     * <br>The search textfield is then moved to the front and is bound to the StringProperty-variable.
+     * <br>Lastly the custom window menu buttons are loaded.
      * @param location the URL used to resolve relative paths for the root object, or null if the location is not known
      * @param resources the ResourceBundle used to localize the root object, or null if the root object was not localized
      */
@@ -107,9 +107,8 @@ public class MapSceneController implements Initializable, MapComponentInitialize
     }
 
     /**
-     * Initializes the GeocodingService object and creates a MapOptions variable
-     * that is edited after our needs and then used to create a map with the createMap(MapOptions mapOptions) method.
-     * At last we use the method placeImagesOnMap().
+     * Initializes the GeocodingService object and creates a MapOptions variable that is edited after our needs and then used to create a map with the createMap(MapOptions mapOptions) method.
+     * <br>The placeImagesOnMap is then used
      */
     @Override
     public void mapInitialized() {
@@ -131,9 +130,8 @@ public class MapSceneController implements Initializable, MapComponentInitialize
     }
 
     /**
-     * A method that goes through all images and checks if the geolocation is there or not, and if the geolocaiton
-     * exists we create a marker with the geolocation from the image and put a eventhandler on them, and at last
-     * we add them to the map with the addMarker(Marker marker) method.
+     * A method that goes through all images and checks if the geolocation is there or not
+     * <br>If the geolocation exists a marker with the geolocation is added to the map using the addMarker-method
      */
     private void placeImagesOnMap(){
         images.stream().forEach(imageV2 -> {
@@ -146,9 +144,8 @@ public class MapSceneController implements Initializable, MapComponentInitialize
     }
 
     /**
-     * This method creates a listener to the marker where it first checks if
-     * any other images is being previewed, if so, we clear all children to the StackPane before we add the
-     * new ImagePreviewDialog. After that we create an image preview dialog with the marker/image.
+     * This method creates a listener to the marker where it first checks if any other images is being previewed, if so, all the children of the StackPane are cleared before adding the new ImagePreviewDialog
+     * <br>After this an image preview dialog with the marker/image is created
      * @param marker the marker that is clicked
      * @param imageV2 the image that will be previewed
      */
@@ -165,10 +162,7 @@ public class MapSceneController implements Initializable, MapComponentInitialize
 
     /**
      * Uses the JFoenix library that has custom dialogs and more.
-     * First create a layout and some JFX-buttons. Then creates the dialog and
-     * use the layout we just made. After that we add some eventhandlers on the button.
-     * Tells the dialog to close if user click close, while if the user press "Add to album" button
-     * the handleAddToAlbumButtonPressed(ImageV2 imageV2);
+     * First create a layout and some JFX-buttons. Then creates the dialog and use the layout we just made. After that we add some EventHandlers on the button. Tells the dialog to close if user click close, while if the user press "Add to album" button the handleAddToAlbumButtonPressed-method is used.
      * @param imageV2 the image that will be previewed
      */
     private void createImagePreviewDialog(ImageV2 imageV2){
@@ -248,7 +242,7 @@ public class MapSceneController implements Initializable, MapComponentInitialize
 
     /**
      * A method for handling the BackButton.
-     * Sends you back to MainScene.
+     * <br>Sends you back to MainScene.
      */
     public void handleBackButtonClicked(){
         FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("../MainMenuScene/MainMenu.fxml"));
@@ -261,7 +255,7 @@ public class MapSceneController implements Initializable, MapComponentInitialize
     }
 
     /**
-     * Method for handling the text input in the adress textfield.
+     * Method for handling the text input in the address textfield.
      * @param event the ActionEvent
      */
     @FXML

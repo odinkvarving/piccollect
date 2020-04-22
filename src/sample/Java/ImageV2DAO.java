@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * ImageV2DAO is a class which connects ImageV2 (and Album) class to a database.
- * The class adds and collects information about the images from database.
+ * <br>The class adds and collects information about the images from database.
  */
 public class ImageV2DAO {
 
@@ -27,7 +27,7 @@ public class ImageV2DAO {
 
     /**
      * This method stores a new image.
-     * It stores the image in an album (if an album is chosen)
+     * <br>It stores the image in an album (if an album is chosen)
      * @param imageV2 the image that is stored
      * @param album the album the image can be added to (NB: user doesn't need to choose an album)
      */

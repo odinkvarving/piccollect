@@ -34,9 +34,9 @@ import java.util.stream.Collectors;
 
 /**
  * SearchImageSceneController controls the SearchImageScene.
- * Every method in this class is used to handle the different functionalities on the SearchImageScene.
- * The class implements Initializable
- * the @FXML tells the compiler that this variable is connected to an FXML-file
+ * <br>Every method in this class is used to handle the different functionalities on the SearchImageScene.
+ * <br>The class implements Initializable
+ * <br>The @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class SearchImageSceneController implements Initializable {
@@ -68,8 +68,7 @@ public class SearchImageSceneController implements Initializable {
     ArrayList<SearchListItem> searchListItems = new ArrayList<>();
 
     /**
-     * Initialize-method where we fill inn the images-arraylist with images from the database, and fill the scrollpane with
-     * all the SearchListItems.
+     * Initialize-method where the image-ArrayList with images from the database are filled in, and the ScrollPane is filled with all the SearchListItems.
      * @param url the URL used to resolve relative paths for the root object, or null if the location is not known
      * @param resourceBundle the ResourceBundle used to localize the root object, or null if the root object was not localized
      */
@@ -99,8 +98,7 @@ public class SearchImageSceneController implements Initializable {
     }
 
     /**
-     * Handles the search button clicked. Goes through all input-fields and checks whether they are empty or not. Uses streams to
-     * filter through each criteria. At the end we reload the ScrollPane with all the search-results and clear all input-fields.
+     * Handles the search button clicked. Goes through all input-fields and checks whether they are empty or not. Uses streams to filter through each criteria. At the end the ScrollPane is reloaded with all the search-results, and all input-fields are cleared.
      */
     public void handleSearchButtonClicked(){
         ArrayList<ImageV2> filteredImages = (ArrayList<ImageV2>) allImages.clone();
@@ -174,7 +172,7 @@ public class SearchImageSceneController implements Initializable {
 
     /**
      * A method for handling the BackButton.
-     * Sends you back to MainScene.
+     * <br>Sends you back to MainScene.
      */
     public void handleBackButtonClicked(){
         FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("../MainMenuScene/MainMenu.fxml"));
@@ -188,7 +186,7 @@ public class SearchImageSceneController implements Initializable {
 
     /**
      * A method for handling the SearchButton
-     * Clears any search inputs and refreshes the images
+     * <br>Clears any search inputs and refreshes the images
      */
     public void handleResetSearchButtonClicked(){
         clearAllSearchInputs();
@@ -197,7 +195,6 @@ public class SearchImageSceneController implements Initializable {
 
     /**
      * A method for handling the AddTagButton
-     *
      */
     public void handleAddTagButtonClicked(){
         addTag();
@@ -252,7 +249,7 @@ public class SearchImageSceneController implements Initializable {
     }
 
     /**
-     * Goes through all the SearchListItems-objects and checks if the checkbox is checkd, and adds them to the list of selected images if so.
+     * Goes through all the SearchListItems-objects and checks if the checkbox is checked, and adds them to the list of selected images if so.
      * @return the images that were selected
      */
     private ArrayList<ImageV2> collectAllSelectedImages(){
@@ -264,8 +261,7 @@ public class SearchImageSceneController implements Initializable {
 
     /**
      * Method for handling the CreateButton
-     * Opens a dialog where the user enters the name of the new album. After that we go through all selected images
-     * and adds them to the new album.
+     * <br>Opens a dialog where the user enters the name of the new album. After that we go through all selected images and adds them to the new album.
      */
     public void handleCreateButtonClicked(){
         if(collectAllSelectedImages().isEmpty()) {
@@ -295,8 +291,8 @@ public class SearchImageSceneController implements Initializable {
 
     /**
      * Method for handling GeneratePFDButton
-     * Generates a pdf based on selected images
-     * IMPORTANT: Access to directory needs to be public, if a FileNotFoundException will be thrown
+     * <br>Generates a pdf based on selected images
+     * <br>IMPORTANT: Access to directory needs to be public, if a FileNotFoundException will be thrown
      * @throws Exception the exception that is thrown
      */
     public void handleGeneratePDFButtonClicked() throws Exception {
