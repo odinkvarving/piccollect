@@ -1,32 +1,26 @@
 package sample.JavaFX.SearchAlbumScene;
 
 
-import com.drew.metadata.MetadataException;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import sample.Java.Album;
+import sample.Java.AlbumDAO;
+import sample.Java.DatabaseConnection;
+import sample.Java.ImageV2;
 
 import java.io.File;
 import java.io.IOException;
-import javafx.scene.control.cell.PropertyValueFactory;
-import sample.Java.*;
-import sample.Main;
-
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;

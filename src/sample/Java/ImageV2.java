@@ -3,18 +3,13 @@ package sample.Java;
 
 import com.drew.lang.GeoLocation;
 import com.drew.metadata.MetadataException;
-import com.sun.xml.fastinfoset.tools.FI_DOM_Or_XML_DOM_SAX_SAXEvent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
