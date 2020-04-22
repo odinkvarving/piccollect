@@ -30,7 +30,7 @@ import java.util.ResourceBundle;
  * UploadSceneController controls the UploadScene.
  * It covers all methods needed for the UploadScene.
  * The class implements Initializable.
- * @FXML tells the compiler that this variable is connected to an FXML-file
+ * the @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class UploadSceneController implements Initializable{

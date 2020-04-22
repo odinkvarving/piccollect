@@ -17,17 +17,13 @@ import java.util.ArrayList;
  */
 public class Main extends Application {
 
-    /**
-     * xOffset is a double for the x-offset
-     * yOffset is a double for the y-offset
-     */
     private double xOffset = 0;
     private double yOffset = 0;
 
     /**
      * start method is a method Main can run when extending Application. start method initializes the Application.
-     * @param primaryStage: The primary stage
-     * @throws Exception Defines what exception is thrown
+     * @param primaryStage the primary stage
+     * @throws Exception the exception that is thrown
      */
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -51,7 +47,7 @@ public class Main extends Application {
 
     /**
      * main method launches the Application, with help from start method.
-     * @param args Main method parameter
+     * @param args the main method parameter
      */
     public static void main(String[] args) {
         DatabaseConnection databaseConnection = DatabaseConnection.getInstance();

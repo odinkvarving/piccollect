@@ -19,9 +19,9 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * ImageV2Tests is a test-class that uses JUnit-tests for some of the methods in our application
- * @Test tells the compiler that this method is connected to a JUnit-test
- * @ParameterizedTest tells the compiler that this test has parameters
- * @ValueSource Defines what type of parameter will be used
+ * the @Test tells the compiler that this method is connected to a JUnit-test
+ * the @ParameterizedTest tells the compiler that this test has parameters
+ * the @ValueSource Defines what type of parameter will be used
  */
 public class ImageV2Tests {
 

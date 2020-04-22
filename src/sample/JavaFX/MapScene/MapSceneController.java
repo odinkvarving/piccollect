@@ -41,7 +41,7 @@ import java.util.*;
 /**
  * MapSceneController controls the mapScene.
  * It implements Initializable and MapComponentInitializedListener.
- * @FXML tells the compiler that this variable is connected to an FXML-file
+ * the @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class MapSceneController implements Initializable, MapComponentInitializedListener {

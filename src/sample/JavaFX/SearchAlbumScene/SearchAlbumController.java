@@ -29,21 +29,11 @@ import java.util.ResourceBundle;
 /**
  * SearchAlbumController covers all methods which are needed to run AlbumScene properly.
  * The class implements Initializable
+ * the @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class SearchAlbumController implements Initializable {
 
-    /**
-     * These are the object variables of SearchAlbumController.
-     * albumSearchInput stores the input from the user.
-     * albumChoiceBox lists all albums.
-     * albumSearchButton makes the controller display the album which the user searched for.
-     * albumTableView displays all albums or the album the user has searched for.
-     * nameColumn is a column for albumName in albumTableView.
-     * albumColumn is a column which should display the first image of the album.
-     * albumRegister is just a test register, which will be replaced by a database or something.
-     * albums is an ArrayList containing all albums
-     */
     @FXML
     private Pane windowMenuButtonsBox;
     @FXML
@@ -74,8 +64,8 @@ public class SearchAlbumController implements Initializable {
 
     /**
      * This method runs when user presses "Search Album" in main scene. It initializes the class, and fills albumTableView with all albums in Database.
-     * @param url Location used to resolve relative paths for the root object, or null if the location is not known
-     * @param resourceBundle Used to localize the root object, or null if the root object was not localized
+     * @param url the URL used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle the ResourceBundle used to localize the root object, or null if the root object was not localized
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -203,7 +193,7 @@ public class SearchAlbumController implements Initializable {
 
     /**
      * Method for showing all images in a chosen album. If the album contains zero images, the user will be notified by text in albumOverview.
-     * @param albumName: albumName is used to check what album was clicked
+     * @param albumName the albumName that is used to check what album was clicked
      */
     private void loadAllPicturesFromAlbum(String albumName){
         for(int j = 0; j < albums.size(); j ++){

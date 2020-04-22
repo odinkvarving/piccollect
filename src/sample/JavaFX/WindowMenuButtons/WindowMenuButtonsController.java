@@ -10,7 +10,7 @@ import java.util.Optional;
 
 /**
  * A class that controls the window-menu-buttons
- * @FXML tells the compiler that this variable is connected to an FXML-file
+ * the @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class WindowMenuButtonsController {

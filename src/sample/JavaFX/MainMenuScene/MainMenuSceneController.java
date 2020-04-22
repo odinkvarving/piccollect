@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 /**
  * MainMenuSceneController controls the MainMenuScene.
  * The class implements Initializable.
- * @FXML tells the compiler that this variable is connected to an FXML-file
+ * the @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class MainMenuSceneController implements Initializable {

@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
  * SearchImageSceneController controls the SearchImageScene.
  * Every method in this class is used to handle the different functionalities on the SearchImageScene.
  * The class implements Initializable
- * @FXML tells the compiler that this variable is connected to an FXML-file
+ * the @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class SearchImageSceneController implements Initializable {
