@@ -27,7 +27,7 @@ public class MainMenuSceneController implements Initializable {
 
     /**
      * These are the object variables which is used in the controller.
-     * uploadImageButton is a button the user can click to go to SploadImageScene
+     * uploadImageButton is a button the user can click to go to uploadImageScene
      * searchImageButton is a button the user can click to go to SearchImageScene
      * albumsButton is a button the user can click to go to SearchAlbumScene
      * mapButton is a button the user can click to go to MapScene

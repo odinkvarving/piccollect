@@ -11,8 +11,8 @@ public class GeoConverter {
     /**
      * This method takes in latitude and longitude as parameters.
      * It uses JOpenCage to convert latitude and longitude to a real address.
-     * @param latitude
-     * @param longitude
+     * @param latitude Double value of the latitude
+     * @param longitude Double value of the longitude
      * @return a formatted address in the form of a string, which displays the location correlating with given longitude and latitude
      */
     public static String reverseGeocoder(double latitude, double longitude){

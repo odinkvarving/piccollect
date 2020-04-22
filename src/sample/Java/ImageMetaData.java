@@ -44,7 +44,6 @@ public class ImageMetaData {
 
     /**
      * This is the method that reads metadata from an image
-     * @throws MetadataException
      */
     private void readMetadataFromImage(){
         try{
@@ -56,7 +55,6 @@ public class ImageMetaData {
 
     /**
      * This method prints out metadata from an image and displays it in a defined order
-     * @throws MetadataException
      */
     public void printMetaDataFromImage() {
         try {
@@ -80,7 +78,6 @@ public class ImageMetaData {
     /**
      * Method for fetching width from image based on what datatype the image is (jpeg, png or gif)
      * @return width as an Integer
-     * @throws MetadataException
      */
     public int getWidthFromMetadata() throws MetadataException {
         String dataType = checkFileType();
@@ -99,7 +96,6 @@ public class ImageMetaData {
     /**
      * Method for fetching height from image based in what datatype the image is (jpeg, png or gif)
      * @return image height as an Integer
-     * @throws MetadataException
      */
     public int getHeightFromMetadata() throws MetadataException {
         String dataType = checkFileType();
@@ -120,7 +116,6 @@ public class ImageMetaData {
      * we need different methods for different files because not every file
      * has the same directories.
      * @return the width of the image as an int
-     * @throws MetadataException
      */
     private int getWidthFromMetadataJPEG() {
         int width;
@@ -160,7 +155,6 @@ public class ImageMetaData {
      * Methods for fetching height from the image. Need more than
      * one method for the same reason stated above.
      * @return the width of the image as an int
-     * @throws MetadataException
      */
     private int getHeightFromMetadataJPEG() {
         int height;
@@ -200,7 +194,6 @@ public class ImageMetaData {
      * A method for retrieving the date the image was created/captured by looking for a specific Date-tag in the ExifIFD0Directory
      * Not all images gives the information we need to read the date
      * @return the date.
-     * @throws NullPointerException
      */
     public Date getDateFromMetaData(){
         Date date;
@@ -216,7 +209,6 @@ public class ImageMetaData {
     /**
      * This method returns timestamp from when the image was taken by looking for a specific Datetime-tag in the ExifIFD0Directory
      * @return timestamp from image
-     * @throws NullPointerException
      */
     public Timestamp getTimeFromMetaData() {
         Timestamp timestamp;
@@ -232,7 +224,6 @@ public class ImageMetaData {
     /**
      * This method returns the location in the form of a Geolocation object. This method can later be used for extracting the longitude and latitude
      * @return geoLocation from image
-     * @throws NullPointerException
      */
     public GeoLocation getGeoDataFromMetadata() {
         GeoLocation geoLocation;
