@@ -36,26 +36,11 @@ import java.util.stream.Collectors;
  * SearchImageSceneController controls the SearchImageScene.
  * Every method in this class is used to handle the different functionalities on the SearchImageScene.
  * The class implements Initializable
+ * @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class SearchImageSceneController implements Initializable {
 
-    /**
-     * windowMenuButtonsBox is is a pane which contains exit button etc.
-     * nameSearchField is a text field where the user types in the image name
-     * locationSearchField is a text field where the user types in the image location
-     * fromDatePicker is a DatePicker where the user chooses a from-date
-     * toDatePicker is a DatePicker where the user chooses a to-date. These two DatePickers are used to find a/multiple image(s) by their date
-     * addTagButton is a button used to add tags for search
-     * tagHBox is a HBox which shows every tag in the search
-     * tagSearchField is a text field where the user can write a tag to add to the search
-     * resetSearchButton is a button which resets the search
-     * backButton is a button the user can press to go back to the main menu
-     * imageList is a VBox of all images
-     * allImages is an ArrayList with all the images from the database
-     * tagLabels is an ArrayList with all the tags from the images
-     * searchListItems is an ArrayList with the searchListItems that is an HBox that contains the image information
-     */
     @FXML
     private Pane windowMenuButtonsBox;
     @FXML
@@ -85,8 +70,8 @@ public class SearchImageSceneController implements Initializable {
     /**
      * Initialize-method where we fill inn the images-arraylist with images from the database, and fill the scrollpane with
      * all the SearchListItems.
-     * @param url Location used to resolve relative paths for the root object, or null if the location is not known
-     * @param resourceBundle Used to localize the root object, or null if the root object was not localized
+     * @param url the URL used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle the ResourceBundle used to localize the root object, or null if the root object was not localized
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -114,8 +99,8 @@ public class SearchImageSceneController implements Initializable {
     }
 
     /**
-     * Handles the search button clicked. Goes through all input-fields and checks whether they are empty or not. Usese streams to
-     * filter through each criteria. At the end we reload the scrollpane with all the search-results and clear all input-fields.
+     * Handles the search button clicked. Goes through all input-fields and checks whether they are empty or not. Uses streams to
+     * filter through each criteria. At the end we reload the ScrollPane with all the search-results and clear all input-fields.
      */
     public void handleSearchButtonClicked(){
         ArrayList<ImageV2> filteredImages = (ArrayList<ImageV2>) allImages.clone();
@@ -143,7 +128,7 @@ public class SearchImageSceneController implements Initializable {
 
     /**
      * A for loop that checks if the image contains any tags from the search field
-     * @param imageV2 Used to define what image to be checked
+     * @param imageV2 the image that is checked
      * @return true or false
      */
     private boolean checkIfImageContainsSameTags(ImageV2 imageV2){
@@ -156,9 +141,9 @@ public class SearchImageSceneController implements Initializable {
     }
 
     /**
-     * Method for converting localdate to date
-     * @param date Defines what date to be converted
-     * @return Date in a specified format
+     * Method for converting LocalDate to Date
+     * @param date the date that is converted
+     * @return the date as a Date-object
      */
     private Date convertDateFormat(LocalDate date){
         return java.sql.Date.valueOf(date);
@@ -166,9 +151,9 @@ public class SearchImageSceneController implements Initializable {
 
     /**
      * Method for checking if a date is between two dates.
-     * @param fromDate Start date
-     * @param toDate End date
-     * @param betweenDate Date between start and end
+     * @param fromDate the first date
+     * @param toDate the last date
+     * @param betweenDate the date between the first and the last
      * @return true or false
      */
     private boolean checkIfDateIsInBetween(Date fromDate, Date toDate, Date betweenDate){
@@ -177,7 +162,7 @@ public class SearchImageSceneController implements Initializable {
 
     /**
      * Method for refreshing the list when the search has been done
-     * @param filteredImages
+     * @param filteredImages a list of images that will be refreshed
      */
     private void refreshList(ArrayList<ImageV2> filteredImages){
         searchListItems.clear();
@@ -188,8 +173,8 @@ public class SearchImageSceneController implements Initializable {
 
 
     /**
-     * A method for handling the backbutton.
-     * Sends you back to mainscene.
+     * A method for handling the BackButton.
+     * Sends you back to MainScene.
      */
     public void handleBackButtonClicked(){
         FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("../MainMenuScene/MainMenu.fxml"));
@@ -201,18 +186,26 @@ public class SearchImageSceneController implements Initializable {
         }
     }
 
+    /**
+     * A method for handling the SearchButton
+     * Clears any search inputs and refreshes the images
+     */
     public void handleResetSearchButtonClicked(){
         clearAllSearchInputs();
         refreshList((ArrayList<ImageV2>) allImages.clone());
     }
 
     /**
-     * Button to handle when the add tag button is clicked
+     * A method for handling the AddTagButton
+     *
      */
     public void handleAddTagButtonClicked(){
         addTag();
     }
 
+    /**
+     * Method for adding tags
+     */
     private void addTag(){
         if(!(tagSearchField.equals(""))) {
             Label tag = new Label();
@@ -222,6 +215,10 @@ public class SearchImageSceneController implements Initializable {
             tagSearchField.clear();
         }
     }
+
+    /**
+     * Method for initializing a listener to the textfield
+     */
     private void initializeTagTextFieldListener(){
         tagSearchField.setOnKeyPressed(new EventHandler<KeyEvent>(){
             public void handle(KeyEvent keyEvent){
@@ -256,7 +253,7 @@ public class SearchImageSceneController implements Initializable {
 
     /**
      * Goes through all the SearchListItems-objects and checks if the checkbox is checkd, and adds them to the list of selected images if so.
-     * @return Images that were selected
+     * @return the images that were selected
      */
     private ArrayList<ImageV2> collectAllSelectedImages(){
         ArrayList<ImageV2> selectedImages = new ArrayList<>();
@@ -266,6 +263,7 @@ public class SearchImageSceneController implements Initializable {
     }
 
     /**
+     * Method for handling the CreateButton
      * Opens a dialog where the user enters the name of the new album. After that we go through all selected images
      * and adds them to the new album.
      */
@@ -296,9 +294,10 @@ public class SearchImageSceneController implements Initializable {
     }
 
     /**
-     * Method for generating a pdf based on selected images
+     * Method for handling GeneratePFDButton
+     * Generates a pdf based on selected images
      * IMPORTANT: Access to directory needs to be public, if a FileNotFoundException will be thrown
-     * @throws Exception The exception that is thrown
+     * @throws Exception the exception that is thrown
      */
     public void handleGeneratePDFButtonClicked() throws Exception {
         if(collectAllSelectedImages().isEmpty()) {

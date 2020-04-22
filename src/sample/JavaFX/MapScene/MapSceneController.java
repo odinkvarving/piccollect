@@ -40,24 +40,12 @@ import java.util.*;
 
 /**
  * MapSceneController controls the mapScene.
- * It implements Initalizable and MapComponentInitializedListener.
+ * It implements Initializable and MapComponentInitializedListener.
+ * @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class MapSceneController implements Initializable, MapComponentInitializedListener {
 
-    /**
-     * mapView is the layout with the map
-     * map is the map which is connected to the mapview. Controls the options of the mapView
-     * geocodingService is for locating areas in the world
-     * scenePane is the root pane
-     * mapAnchorPane is an Anchorpane where the mapview and adresstextfield is in
-     * addressTextField is an input field where user can search for a place
-     * backButton is a homebutton to get back to mainscene
-     * windowMenuButtonBox is a pane with custom window-menu buttons
-     * imageDialogPane is a stackpane where the preview image dialog pops up
-     * address is a StringProperty that is bound to the adresstextfield
-     * images is an ArrayList with all the images from the database
-     */
     private GoogleMapView mapView;
     private GoogleMap map;
     private GeocodingService geocodingService;
@@ -78,13 +66,13 @@ public class MapSceneController implements Initializable, MapComponentInitialize
 
 
     /**
-     * In the initialize-method we first fetch the images from the database and fill the imagearraylist.
+     * In the initialize-method we first fetch the images from the database and fill the image-ArrayList.
      * then we create the GoogleMapView object with our API-key and adds the mapinitializer.
      * then we add the GoogleMapView to the mapAnchorPane and attaches it to the sides so it is stretchable.
      * We then moves the search textfield to the front and binds it to the StringProperty-variable above.
      * At last we load in the custom window menu buttons.
-     * @param location Location used to resolve relative paths for the root object, or null if the location is not known
-     * @param resources Used to localize the root object, or null if the root object was not localized
+     * @param location the URL used to resolve relative paths for the root object, or null if the location is not known
+     * @param resources the ResourceBundle used to localize the root object, or null if the root object was not localized
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -159,11 +147,10 @@ public class MapSceneController implements Initializable, MapComponentInitialize
 
     /**
      * This method creates a listener to the marker where it first checks if
-     *
-     * any other images is being previewed, if so, we clear all children to the stackpane before we add the
-     * new imagepreviewdialog. After that we create an image preview dialog with the marker/image.
-     * @param marker 
-     * @param imageV2
+     * any other images is being previewed, if so, we clear all children to the StackPane before we add the
+     * new ImagePreviewDialog. After that we create an image preview dialog with the marker/image.
+     * @param marker the marker that is clicked
+     * @param imageV2 the image that will be previewed
      */
     private void addMarkerClickHandler(Marker marker, ImageV2 imageV2){
         map.addUIEventHandler(marker, UIEventType.click, (JSObject obj) -> {
@@ -182,7 +169,7 @@ public class MapSceneController implements Initializable, MapComponentInitialize
      * use the layout we just made. After that we add some eventhandlers on the button.
      * Tells the dialog to close if user click close, while if the user press "Add to album" button
      * the handleAddToAlbumButtonPressed(ImageV2 imageV2);
-     * @param imageV2
+     * @param imageV2 the image that will be previewed
      */
     private void createImagePreviewDialog(ImageV2 imageV2){
         JFXDialogLayout dialogLayout = new JFXDialogLayout();
@@ -214,8 +201,8 @@ public class MapSceneController implements Initializable, MapComponentInitialize
 
     /**
      * Method for creating a preview image that is shown in the preview image dialog.
-     * @param imageV2
-     * @return
+     * @param imageV2 the image to be converted to the ImageView
+     * @return the ImageView created
      */
     private ImageView createPreviewImage(ImageV2 imageV2){
         File file = new File(imageV2.getFilePath());
@@ -226,7 +213,7 @@ public class MapSceneController implements Initializable, MapComponentInitialize
 
     /**
      * Opens a dialog where the user can select album to add the image to.
-     * @param imageV2
+     * @param imageV2 the image that is added
      */
     private void handleAddToAlbumButtonPressed(ImageV2 imageV2){
         List<Album> albums = new ArrayList<>();
@@ -257,8 +244,8 @@ public class MapSceneController implements Initializable, MapComponentInitialize
     }
 
     /**
-     * A method for handling the backbutton.
-     * Sends you back to mainscene.
+     * A method for handling the BackButton.
+     * Sends you back to MainScene.
      */
     public void handleBackButtonClicked(){
         FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("../MainMenuScene/MainMenu.fxml"));
@@ -272,7 +259,7 @@ public class MapSceneController implements Initializable, MapComponentInitialize
 
     /**
      * Method for handling the text input in the adress textfield.
-     * @param event
+     * @param event the ActionEvent
      */
     @FXML
     public void addressTextFieldAction(ActionEvent event) {

@@ -21,25 +21,11 @@ import java.util.ResourceBundle;
 /**
  * MainMenuSceneController controls the MainMenuScene.
  * The class implements Initializable.
+ * @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class MainMenuSceneController implements Initializable {
 
-    /**
-     * These are the object variables which is used in the controller.
-     * uploadImageButton is a button the user can click to go to uploadImageScene
-     * searchImageButton is a button the user can click to go to SearchImageScene
-     * albumsButton is a button the user can click to go to SearchAlbumScene
-     * mapButton is a button the user can click to go to MapScene
-     * title is a label for the title of the application
-     * titleAddition is a label for the title additions below the title
-     * uploadScene is a scene where the user can upload an image
-     * searchScene is a scene where the user can search for an image
-     * albumScene is a scene where the user can search and browse images
-     * mapScene is a scene where the user can use a map to find images
-     * xOffset is a variable for making it possible to drag the window in x-axis
-     * yOffset is a variable for making it possible to drag the window in y-axis
-     */
     @FXML
     private AnchorPane mainMenuPane;
     @FXML
@@ -64,7 +50,7 @@ public class MainMenuSceneController implements Initializable {
     private double yOffset = 0;
 
     /**
-     * handleUploadImageButton method displays uploadScene and makes it draggable.
+     * Method for what happens when UploadImageButton is clicked. Displays uploadScene and makes it draggable.
      */
     public void handleUploadImageButton(){
         //Initialzes the upload scene
@@ -81,7 +67,7 @@ public class MainMenuSceneController implements Initializable {
     }
 
     /**
-     * handleSearchSceneButton method displays the searchScene and makes it draggable.
+     * Method for what happens when SearchSceneButton is clicked. Displays the searchScene and makes it draggable.
      */
     public void handleSearchSceneButton(){
         //Initializes search image scene
@@ -97,7 +83,7 @@ public class MainMenuSceneController implements Initializable {
     }
 
     /**
-     * handleAlbumsButton method displays the albumScene and makes it draggable
+     * Method for what happens when AlbumsButton is clicked. Displays the albumScene and makes it draggable
      */
     public void handleAlbumsButton(){
         FXMLLoader albumSceneLoader = new FXMLLoader(getClass().getResource("../SearchAlbumScene/SearchAlbum.fxml"));
@@ -114,7 +100,7 @@ public class MainMenuSceneController implements Initializable {
     }
 
     /**
-     * Loads in the MapScene and makes it draggable
+     * Method for what happens when MapButton is clicked. Loads in the MapScene and makes it draggable
      */
     public void handleMapButton(){
         FXMLLoader mapSceneLoader = new FXMLLoader(getClass().getResource("../MapScene/MapScene.fxml"));
@@ -130,8 +116,8 @@ public class MainMenuSceneController implements Initializable {
 
     /**
      * Method for making the scene draggable
-     * @param root Parent object - Base class for all nodes that have children in the scene graph
-     * @param stage Used to set a new stage
+     * @param root the Parent object - Base class for all nodes that have children in the scene graph
+     * @param stage the stage that is dragged
      */
     public void makeSceneDraggable(Parent root, Stage stage){
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -161,8 +147,8 @@ public class MainMenuSceneController implements Initializable {
 
     /**
      * Initialize where we load in the custom window-menubuttons-
-     * @param url Location used to resolve relative paths for the root object, or null if the location is not known
-     * @param resourceBundle Used to localize the root object, or null if the root object was not localized
+     * @param url the URL used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle the ResourceBundle used to localize the root object, or null if the root object was not localized
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

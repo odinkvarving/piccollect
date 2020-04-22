@@ -20,18 +20,15 @@ import java.io.File;
  * We took some inspiration from AlbumItem.
  */
 public class ImageItem extends Button {
-    /**
-     * imageView is the imageView with the image
-     * imageViewCopy is a copy of imageView
-     */
+
     private ImageView imageView;
     private ImageView imageViewCopy;
 
     /**
      * This constructor takes in image path, image name and a StackPane as parameters
-     * @param path: image path
-     * @param name: image name
-     * @param stackPane: StackPane
+     * @param path the path of the image
+     * @param name the name of the image
+     * @param stackPane the StackPane of the ImageItem
      */
     public ImageItem(String path, String name, StackPane stackPane){
         this.imageView = new ImageView(new Image(new File(path).toURI().toString()));
@@ -66,7 +63,7 @@ public class ImageItem extends Button {
 
     /**
      * This method changes the appearance of the button, when the cursor is hovering
-     * @param stackPane: StackPane
+     * @param stackPane the StackPane
      */
     private void setListenersOnButton(StackPane stackPane){
         setOnMouseEntered(e -> {
@@ -82,7 +79,7 @@ public class ImageItem extends Button {
 
     /**
      * This method creates a dialog window
-     * @param stackPane: StackPane
+     * @param stackPane the StackPane
      */
     private void createImagePreviewDialog(StackPane stackPane){
         JFXDialogLayout dialogLayout = new JFXDialogLayout();

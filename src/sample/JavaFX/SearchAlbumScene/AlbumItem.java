@@ -13,19 +13,15 @@ import java.io.File;
  * An AlbumItem is an ImageView with the first image of the album, and the album name below it.
  */
 public class AlbumItem extends Button {
-    /**
-     * imageView is the ImageView which is presented in the given AlbumItem.
-     * imageNotFoundFile is the path to a default image (see below)
-     * imageNotFound is the ImageView which is shown if there are no images in the given album
-     */
+
     private ImageView imageView;
     private File imageNotFoundFile = new File("src/sample/JavaFX/resources/imageNotFound.png");
     private ImageView imageNotFound = new ImageView(new Image(imageNotFoundFile.toURI().toString()));
 
     /**
      * The constructor takes the path for image nr 0 and album name as parameters
-     * @param path: image nr 0 path
-     * @param albumName: album name
+     * @param path the path of image number 0
+     * @param albumName the name of the album
      */
     public AlbumItem(String path, String albumName){
         try{

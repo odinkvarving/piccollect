@@ -30,29 +30,11 @@ import java.util.ResourceBundle;
  * UploadSceneController controls the UploadScene.
  * It covers all methods needed for the UploadScene.
  * The class implements Initializable.
+ * @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class UploadSceneController implements Initializable{
 
-    /**
-     * windowMenuButtonBox is a pane which contains exit button etc.
-     * previewImagePane is the pane which previews the image
-     * dragAreaInfoBox is the place where the user can choose an image
-     * browse is a button for browsing images on the users PC
-     * closeImageButton removes the image which the user chose, but didn't upload
-     * imageNameTextField is a text field where the user can write the image name
-     * albumChoiceBox is a choicebox where the user can choose an album to add the image to
-     * createAlbumButton is a button which creates a new album for the image added
-     * tagTextField is a text field for tags
-     * addTagButton is a button that will add the tag written in tagTextField
-     * tagListView is an overview over all tags added to the image
-     * uploadButton is a button used for uploading the image
-     * cancelButton is a button which cancels the whole process
-     * backButton is a button the user presses when he/she wants to go back to the main menu
-     * uploadImagePath is a String which holds the image path
-     * uploadedImage is an ImageView which stores the uploaded image
-     * tags is a String with all tags
-     */
     @FXML
     private Pane windowMenuButtonBox;
     @FXML
@@ -88,14 +70,14 @@ public class UploadSceneController implements Initializable{
     private String tags = "";
 
     /**
-     * This constructor is an emtpy constructor which throws an SQLException
-     * @throws SQLException Defines what exception to be thrown
+     * This constructor is an empty constructor which throws an SQLException
+     * @throws SQLException the exception that is thrown
      */
     public UploadSceneController() throws SQLException {
     }
 
     /**
-     * A file chooser that lets user select file to upload
+     * Method that creates a file chooser that lets user select file to upload
      */
     @FXML
     private void browseImages() {
@@ -122,7 +104,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * A method to handle when some files are dropped in the pane where you can drop files
-     * @param dragEvent Defines an event to be used for handle-method
+     * @param dragEvent the DragEvent that is handled
      */
     public void handleFilesDropped(DragEvent dragEvent){
         Dragboard db = dragEvent.getDragboard();
@@ -151,7 +133,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * Method for accepting files to be dropped in the pane
-     * @param dragEvent Defines an event to be used for handle-method
+     * @param dragEvent the DragEvent that is handled
      */
     public void handleFilesDragged(DragEvent dragEvent){
         if(dragEvent.getGestureSource() != previewImagePane && dragEvent.getDragboard().hasFiles()){
@@ -175,8 +157,8 @@ public class UploadSceneController implements Initializable{
 
 
     /**
-     * Method for handling when the upload button
-     * is clicked. Clear all fields if operation is successful
+     * Method for handling when the upload button is clicked
+     * Clear all fields if operation is successful
      */
     public void handleUploadButtonClicked(){
         boolean uploadingSuccessful = false;
@@ -197,7 +179,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * Checks if the inputs are ok, if not show a explaining dialog
-     * @return boolean
+     * @return true or false
      */
     private boolean checkIfInputsAreOk(){
         Boolean noTagsOk;
@@ -219,7 +201,7 @@ public class UploadSceneController implements Initializable{
     }
 
     /**
-     * Collects all tags from the listview and put them into a string
+     * Collects all tags from the ListView and put them into a string
      */
     private void collectImageTags(){
         ArrayList<String> tagsList = collectListViewTags();
@@ -230,7 +212,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * Uploads the image to the database
-     * @return returns true or false
+     * @return true or false
      */
     private boolean uploadImage(){
         ImageV2DAO imageV2DAO = new ImageV2DAO(DatabaseConnection.getInstance().getEntityManagerFactory());
@@ -249,8 +231,8 @@ public class UploadSceneController implements Initializable{
 
 
     /**
-     * Method for handling when the "+" button is
-     * clicked. Adds tag then clears the input field.
+     * Method for handling when the "+" button i clicked
+     * Adds tag then clears the input field.
      */
     public void handleAddTagButtonClicked(){
         addTagToList();
@@ -264,6 +246,9 @@ public class UploadSceneController implements Initializable{
         }
     }
 
+    /**
+     * Method for initializing a textfield-listener
+     */
     private void initializeTagTextFieldListener(){
         tagTextField.setOnKeyPressed(new EventHandler<KeyEvent>(){
             public void handle(KeyEvent keyEvent){
@@ -275,8 +260,7 @@ public class UploadSceneController implements Initializable{
     }
 
     /**
-     * Handles create album button clicked. Shows a dialog
-     * where user can write the name of the new album.
+     * Handles create album button clicked. Shows a dialog where user can write the name of the new album
      */
     public void handleCreateAlbumButton(){
         String albumName;
@@ -306,7 +290,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * Method for reloading the album choicebox
-     * @param albums new list to be loaded into choicebox
+     * @param albums a list to be loaded into ChoiceBox
      */
     private void reloadAlbumChoiceBox(ArrayList<Album> albums){
         albumChoiceBox.getItems().clear();
@@ -318,7 +302,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * A method for collecting the tags in the listview
-     * @return an arraylist with all the tags
+     * @return an ArrayList with all the tags
      */
     public ArrayList<String> collectListViewTags(){
         ArrayList<String> tagsList = new ArrayList<>();
@@ -331,8 +315,8 @@ public class UploadSceneController implements Initializable{
 
 
     /**
-     * A method for handling the backbutton.
-     * Sends you back to mainscene.
+     * A method for handling the BackButton.
+     * Sends you back to MainScene.
      */
     public void handleBackButtonClicked(){
         FXMLLoader mainSceneLoader = new FXMLLoader(getClass().getResource("../MainMenuScene/MainMenu.fxml"));
@@ -346,7 +330,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * Shows alert dialog, used when user did not select an image
-     * @param alertType Defines what type of alert will be used for different situations
+     * @param alertType the type of alert that will be used for different situations
      */
     public void showAlertDialog(String alertType){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -364,9 +348,8 @@ public class UploadSceneController implements Initializable{
 
 
     /**
-     * Method that comes up when the listview with tags is empty
-     * and user tries to upload. Asks them if they are sure they want
-     * no tags
+     * Method that comes up when the ListView with tags is empty and user tries to upload
+     * Asks them if they are sure they want no tags
      * @return boolean representing yes or no from user
      */
     public boolean showConfirmationDialog(){
@@ -384,7 +367,7 @@ public class UploadSceneController implements Initializable{
     }
 
     /**
-     * Code to clear all input fields. Gets called when upload or cancel button is pressed
+     * Method to clear all input fields. Gets called when upload or cancel button is pressed
      */
     @FXML
     private void clearAllFields(){
@@ -413,8 +396,8 @@ public class UploadSceneController implements Initializable{
 
     /**
      * Initialize method that gets run when the scene is loaded.
-     * @param url Location used to resolve relative paths for the root object, or null if the location is not known
-     * @param resourceBundle Used to localize the root object, or null if the root object was not localized
+     * @param url the URL used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle the ResourceBundle used to localize the root object, or null if the root object was not localized
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

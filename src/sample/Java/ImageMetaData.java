@@ -25,17 +25,13 @@ import java.util.Date;
  */
 public class ImageMetaData {
 
-    /**
-     * file is an image file
-     * metadata is all metadata from the image in the same Metadata object
-     */
     File file;
     Metadata metaData;
 
     /**
      * This constructor takes the image file as a parameter
      * Uses a method from the metadata-extractor API to read metadata from the given image-file
-     * @param imageFile: image file
+     * @param imageFile the image file that will be read
      */
     public ImageMetaData(File imageFile) {
         this.file = imageFile;
@@ -77,7 +73,7 @@ public class ImageMetaData {
 
     /**
      * Method for fetching width from image based on what datatype the image is (jpeg, png or gif)
-     * @return width as an Integer
+     * @return the width as an Integer
      */
     public int getWidthFromMetadata() throws MetadataException {
         String dataType = checkFileType();
@@ -95,7 +91,7 @@ public class ImageMetaData {
 
     /**
      * Method for fetching height from image based in what datatype the image is (jpeg, png or gif)
-     * @return image height as an Integer
+     * @return the image height as an Integer
      */
     public int getHeightFromMetadata() throws MetadataException {
         String dataType = checkFileType();
@@ -193,7 +189,7 @@ public class ImageMetaData {
     /**
      * A method for retrieving the date the image was created/captured by looking for a specific Date-tag in the ExifIFD0Directory
      * Not all images gives the information we need to read the date
-     * @return the date.
+     * @return the date stored in the metadata
      */
     public Date getDateFromMetaData(){
         Date date;
@@ -208,7 +204,7 @@ public class ImageMetaData {
 
     /**
      * This method returns timestamp from when the image was taken by looking for a specific Datetime-tag in the ExifIFD0Directory
-     * @return timestamp from image
+     * @return the timestamp stored in the metadata
      */
     public Timestamp getTimeFromMetaData() {
         Timestamp timestamp;
@@ -223,7 +219,7 @@ public class ImageMetaData {
 
     /**
      * This method returns the location in the form of a Geolocation object. This method can later be used for extracting the longitude and latitude
-     * @return geoLocation from image
+     * @return the geoLocation stored in the metadata
      */
     public GeoLocation getGeoDataFromMetadata() {
         GeoLocation geoLocation;
@@ -238,7 +234,7 @@ public class ImageMetaData {
 
     /**
      * Method for finding out what the type of file the image is
-     * @return Type of file as a String
+     * @return the type of file as a String
      */
     public String checkFileType(){
         String fileType;
@@ -249,7 +245,7 @@ public class ImageMetaData {
 
     /**
      * This method prints out any kind of exception as an error in the terminal window
-     * @param exception: any kind of exception as it takes in an exception object
+     * @param exception any kind of exception as it takes in an exception object
      */
     private static void print(Exception exception)
     {

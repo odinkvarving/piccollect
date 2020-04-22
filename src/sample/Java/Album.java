@@ -36,7 +36,7 @@ public class Album {
 
     /**
      * We also have another constructor that takes albumName as a parameter.
-     * @param albumName: Album name
+     * @param albumName the name of the album
      */
     public Album(String albumName){
         this.albumName = albumName;
@@ -44,7 +44,6 @@ public class Album {
 
     /**
      * Below there are some getters and setters for each object variable. //DO WE NEED JAVADOC FOR EACH GETTER AND SETTER METHOD???
-     * @return the equivalent object variable
      */
     public Integer getId() {
         return id;
@@ -68,7 +67,7 @@ public class Album {
 
     /**
      * Method for adding images to an album
-     * @param imageV2 Defines what image should be added
+     * @param imageV2 the image that will be added
      */
     public void addImage(ImageV2 imageV2){
         this.images.add(imageV2);
@@ -77,7 +76,7 @@ public class Album {
 
     /**
      * Method for removing images from an album
-     * @param imageV2 Defines what image should be removed
+     * @param imageV2 the image that will be removed
      */
     public void removeImage(ImageV2 imageV2){
         this.images.remove(imageV2);

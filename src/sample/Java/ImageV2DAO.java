@@ -11,9 +11,6 @@ import java.util.List;
  */
 public class ImageV2DAO {
 
-    /**
-     * emf is an EntityManagerFactory
-     */
     private EntityManagerFactory emf;
 
     /* NB! EntityManagerFactory is thread safe, EntityManger is not!
@@ -22,7 +19,7 @@ public class ImageV2DAO {
 
     /**
      * This constructor takes in emf as a parameter
-     * @param emf: EntityManagerFactory
+     * @param emf the EntityManagerFactory
      */
     public ImageV2DAO(EntityManagerFactory emf) {
         this.emf = emf;
@@ -31,8 +28,8 @@ public class ImageV2DAO {
     /**
      * This method stores a new image.
      * It stores the image in an album (if an album is chosen)
-     * @param imageV2: The image from user
-     * @param album: The album user can choose (NB: user doesn't need to choose an album)
+     * @param imageV2 the image that is stored
+     * @param album the album the image can be added to (NB: user doesn't need to choose an album)
      */
     public void storeNewImage(ImageV2 imageV2, Album album) {
         EntityManager em = getEM();
@@ -55,7 +52,7 @@ public class ImageV2DAO {
 
     /**
      * This method updates a given image from the user
-     * @param imageV2: Image from user
+     * @param imageV2 the image to update
      */
     public void updateImage(ImageV2 imageV2){
         EntityManager em = getEM();
@@ -70,7 +67,7 @@ public class ImageV2DAO {
 
     /**
      * This method returns a list of all images in the database
-     * @return q.getResultList(): a list of all images
+     * @return a list of all images
      */
     public List<ImageV2> getImages(){
         EntityManager em = getEM();
@@ -84,7 +81,7 @@ public class ImageV2DAO {
 
     /**
      * Method for creating and returning the EntityManager
-     * @return EntityManager
+     * @return an EntityManager
      */
     private EntityManager getEM() {
         return emf.createEntityManager();
@@ -92,7 +89,7 @@ public class ImageV2DAO {
 
     /**
      * Method for closing the connection and EntityManager
-     * @param em: EntityManager
+     * @param em the EntityManager to be closed
      */
     private void closeEM(EntityManager em) {
         if (em != null && em.isOpen()) em.close();

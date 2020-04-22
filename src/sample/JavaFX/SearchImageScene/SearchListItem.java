@@ -8,6 +8,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import sample.Java.ImageV2;
 
+/**
+ * This class is used to create a HBox with custom settings using an image
+ */
 public class SearchListItem extends HBox {
 
     private CheckBox checkBox;
@@ -19,6 +22,10 @@ public class SearchListItem extends HBox {
 
     private ImageV2 imageV2;
 
+    /**
+     * The constructor for this class
+     * @param imageV2 the image used for the HBox
+     */
     public SearchListItem(ImageV2 imageV2){
         this.imageV2 = imageV2;
 
@@ -43,7 +50,9 @@ public class SearchListItem extends HBox {
         getChildren().addAll(imageView, imageName, location, date, tags, checkBox);
     }
 
-
+    /**
+     * Method for setting size-preferences to the object-variables
+     */
     private void setPrefSizes(){
         this.imageName.setPrefSize(120, 20);
         this.location.setPrefSize(120, 20);
@@ -51,6 +60,9 @@ public class SearchListItem extends HBox {
         this.tags.setPrefSize(150, 20);
     }
 
+    /**
+     * Method for adjusting the HBox and defining how it should look
+     */
     private void adjustHBox(){
         setAlignment(Pos.CENTER_LEFT);
         setPrefHeight(53);
@@ -60,6 +72,9 @@ public class SearchListItem extends HBox {
         setStyle("-fx-background-color: #ffffff; -fx-background-insets: 0; -fx-border-radius: 5; -fx-border-color: #2681F2");
     }
 
+    /**
+     * Method for initializing what happens when the cursor enters different parts of the HBox
+     */
     private void initializeMouseEvents(){
         setOnMouseEntered(mouseEvent -> {
             setStyle("-fx-background-color: #DCDCDC; -fx-cursor: hand; -fx-border-radius: 5; -fx-border-color: #2681F2");
@@ -78,6 +93,9 @@ public class SearchListItem extends HBox {
     }
 
 
+    /**
+     * Method for adjusting the IamgeView
+     */
     private void adjustImageView(){
         this.imageView.isPickOnBounds();
         this.imageView.setOnMouseEntered(e -> {
@@ -88,6 +106,9 @@ public class SearchListItem extends HBox {
         });
     }
 
+    /**
+     * Method for defining the fonts of the labels
+     */
     private void setLabelFonts(){
         imageName.setStyle("-fx-font-family: 'Montserrat Medium'");
         location.setStyle("-fx-font-family: 'Montserrat Medium'");

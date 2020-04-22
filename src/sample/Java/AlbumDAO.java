@@ -19,7 +19,7 @@ public class AlbumDAO {
 
     /**
      * Constructor which takes in an EntityManagerFactory as a parameter
-     * @param emf: EntityManagerFactory
+     * @param emf the EntityManagerFactory
      */
     public AlbumDAO(EntityManagerFactory emf){
         this.emf = emf;
@@ -27,7 +27,7 @@ public class AlbumDAO {
 
     /**
      * This method returns all albums from the database.
-     * @return q.getResultList(): a list of all albums.
+     * @return a list of all albums.
      */
     public List<Album> getAlbums(){
         EntityManager em = getEM();
@@ -42,7 +42,7 @@ public class AlbumDAO {
 
     /**
      * This method returns all albums and their images
-     * @return q.getResultList(): a list of all albums and their images
+     * @return a list of all albums and their images
      */
     public List<Album> getAlbumsAndTheirImages(){
         EntityManager em = getEM();
@@ -54,6 +54,11 @@ public class AlbumDAO {
         }
     }
 
+    /**
+     * Method for finding the path for the first image in an album
+     * @param album the album that is used
+     * @return the path if the first image
+     */
     public String getAlbumsFirstImagePath(Album album){
         EntityManager em = getEM();
         try {
@@ -70,6 +75,10 @@ public class AlbumDAO {
         }
     }
 
+    /**
+     * Method for making a list of paths for every first images in all albums
+     * @return a list of paths for every album
+     */
     public List<String> getAllAlbumsFirstImagePath(){
         EntityManager em = getEM();
         List<String> albumsFirstImagePaths = new ArrayList<>();
@@ -90,8 +99,8 @@ public class AlbumDAO {
 
     /**
      * This method stores new album, and takes in an album, which is going to be added, as parameter
-     * @param album: Album
-     * @return boolean: true or false, depending on if the sequence was a success
+     * @param album the album to be stored
+     * @return true or false, depending on if the sequence was a success or not
      */
     public boolean storeNewAlbum(Album album) {
         EntityManager em = getEM();
@@ -109,8 +118,8 @@ public class AlbumDAO {
 
     /**
      * This method finds an album by using their ID
-     * @param id: Album ID
-     * @return album: album with given ID
+     * @param id the id of the album
+     * @return album with given ID
      */
     public Album findAlbum(Integer id){
         EntityManager em = getEM();
@@ -123,8 +132,8 @@ public class AlbumDAO {
 
     /**
      * This method creates new album, and adds an image to the album
-     * @param album: Album added
-     * @param imageV2: Image added
+     * @param album the album that is created
+     * @param imageV2 the image that is added
      */
     public void createNewAlbumWithImages(Album album, ImageV2 imageV2){
         EntityManager em = getEM();
@@ -142,16 +151,15 @@ public class AlbumDAO {
     }
     /**
      * This method creates and returns an EntityManager
-     * @return EntityManager
+     * @return an EntityManager
      */
     private EntityManager getEM() {
         return emf.createEntityManager();
     }
 
     /**
-     * Metode for å lukke connectionen
-     * This method closes the EntityManager
-     * @param em: EntityManager
+     * Method for closing the connection (closes the EntityManager)
+     * @param em the EntityManager
      */
     private void closeEM(EntityManager em) {
         if (em != null && em.isOpen()) em.close();

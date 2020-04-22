@@ -9,10 +9,7 @@ import javax.persistence.Persistence;
  * EntityManager is used to represent a connection to a database
  */
 public class DatabaseConnection {
-    /**
-     * instance is a DatabaseConnection
-     * entityManagerFactory is an EntityManagerFactory
-     */
+
     private static DatabaseConnection instance;
     private EntityManagerFactory entityManagerFactory;
 
@@ -25,7 +22,7 @@ public class DatabaseConnection {
 
     /**
      * This method returns an EntityManagerFactory
-     * @return EntityManagerFactory
+     * @return the EntityManagerFactory
      */
     public EntityManagerFactory getEntityManagerFactory(){
         return entityManagerFactory;
@@ -33,7 +30,7 @@ public class DatabaseConnection {
 
     /**
      * This method returns DatabaseConnection. If there are no other existing instances of DatabaseConnection, a new connection will be created
-     * @return instance: DatabaseConnection
+     * @return the DatabaseConnection
      */
     public static DatabaseConnection getInstance(){
         if(instance == null){

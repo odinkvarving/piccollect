@@ -9,16 +9,12 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 /**
- * WindowsMenyButtonsController controls the window-menu-buttons
+ * A class that controls the window-menu-buttons
+ * @FXML tells the compiler that this variable is connected to an FXML-file
  */
 
 public class WindowMenuButtonsController {
 
-    /**
-     * exitButton is a button the user can click to exit the application
-     * sizeButton is a button the user can click to minimize or enlarge the application
-     * hideButton is a button the user can click to hide the application
-     */
     @FXML
     private Button exitButton;
     @FXML
@@ -28,8 +24,8 @@ public class WindowMenuButtonsController {
 
 
     /**
-     * Method for showing a dialog that gets confirmation about closing the program. And closes the program
-     * if the user selects ok.
+     * Method for showing a dialog that gets confirmation about closing the program
+     * Closes the program if the user selects ok
      */
     public void handleExitButton(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -47,6 +43,7 @@ public class WindowMenuButtonsController {
     }
 
     /**
+     * Method for handling SizeButton
      * Makes the program fullscreen if the program is small and vise versa.
      */
     public void handleSizeButton(){
@@ -60,7 +57,8 @@ public class WindowMenuButtonsController {
     }
 
     /**
-     * Hides the program.
+     * Method for handling HideButton
+     * Hides the program
      */
     public void handleHideButton(){
         Stage stage = (Stage) hideButton.getScene().getWindow();

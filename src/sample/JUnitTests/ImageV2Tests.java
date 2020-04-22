@@ -19,6 +19,9 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * ImageV2Tests is a test-class that uses JUnit-tests for some of the methods in our application
+ * @Test tells the compiler that this method is connected to a JUnit-test
+ * @ParameterizedTest tells the compiler that this test has parameters
+ * @ValueSource Defines what type of parameter will be used
  */
 public class ImageV2Tests {
 
@@ -27,8 +30,9 @@ public class ImageV2Tests {
     private File file;
 
     /**
-     * The BeforeEach command allow you to define setup and teardown tasks that are performed at the beginning and end of every It block (For example before every assert-method).
-     * @throws MetadataException
+     * Method for defining a task at the start of every It-block
+     * @BeforeEach command that allow you to define setup and teardown tasks that are performed at the beginning and end of every It block (For example before every assert-method).
+     * @throws MetadataException the exception that is thrown
      */
     @BeforeEach
     public void BeforeEach() throws MetadataException {
@@ -39,7 +43,8 @@ public class ImageV2Tests {
     }
 
     /**
-     * Test-method for creating an instance of ImageV2 with valid data. Checks if we are able to create a ImageV2 object with input that should be accepted.
+     * Test-method for creating an instance of ImageV2 with valid data
+     * Checks if we are able to create a ImageV2 object with input that should be accepted
      */
     @Test
     public void testCreatingInstanceWithValidData() {
@@ -69,7 +74,7 @@ public class ImageV2Tests {
     /**
      * Simple parameterized test for testing the setImageName-method in ImageV2
      * @assertEquals Asserts that the string in the parameter is equal to the string from getImageName-method
-     * @param newName
+     * @param newName the new name for the image
      */
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
@@ -81,7 +86,7 @@ public class ImageV2Tests {
     /**
      * Simple parameterized test for testing the setTags-method in ImageV2
      * @assertEquals Asserts that the string in the parameter is equal to the string from getTags-method
-     * @param tags
+     * @param tags the tags that will be added
      */
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
