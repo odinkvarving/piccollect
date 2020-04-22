@@ -85,8 +85,8 @@ public class SearchImageSceneController implements Initializable {
     /**
      * Initialize-method where we fill inn the images-arraylist with images from the database, and fill the scrollpane with
      * all the SearchListItems.
-     * @param url: URL
-     * @param resourceBundle: ResourceBundle
+     * @param url Location used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle Used to localize the root object, or null if the root object was not localized
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -143,7 +143,7 @@ public class SearchImageSceneController implements Initializable {
 
     /**
      * A for loop that checks if the image contains any tags from the search field
-     * @param imageV2
+     * @param imageV2 Used to define what image to be checked
      * @return true or false
      */
     private boolean checkIfImageContainsSameTags(ImageV2 imageV2){
@@ -157,8 +157,8 @@ public class SearchImageSceneController implements Initializable {
 
     /**
      * Method for converting localdate to date
-     * @param date
-     * @return Date
+     * @param date Defines what date to be converted
+     * @return Date in a specified format
      */
     private Date convertDateFormat(LocalDate date){
         return java.sql.Date.valueOf(date);
@@ -166,9 +166,9 @@ public class SearchImageSceneController implements Initializable {
 
     /**
      * Method for checking if a date is between two dates.
-     * @param fromDate
-     * @param toDate
-     * @param betweenDate
+     * @param fromDate Start date
+     * @param toDate End date
+     * @param betweenDate Date between start and end
      * @return true or false
      */
     private boolean checkIfDateIsInBetween(Date fromDate, Date toDate, Date betweenDate){
@@ -256,7 +256,7 @@ public class SearchImageSceneController implements Initializable {
 
     /**
      * Goes through all the SearchListItems-objects and checks if the checkbox is checkd, and adds them to the list of selected images if so.
-     * @return
+     * @return Images that were selected
      */
     private ArrayList<ImageV2> collectAllSelectedImages(){
         ArrayList<ImageV2> selectedImages = new ArrayList<>();
@@ -298,7 +298,7 @@ public class SearchImageSceneController implements Initializable {
     /**
      * Method for generating a pdf based on selected images
      * IMPORTANT: Access to directory needs to be public, if a FileNotFoundException will be thrown
-     * @throws Exception
+     * @throws Exception The exception that is thrown
      */
     public void handleGeneratePDFButtonClicked() throws Exception {
         if(collectAllSelectedImages().isEmpty()) {

@@ -89,7 +89,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * This constructor is an emtpy constructor which throws an SQLException
-     * @throws SQLException
+     * @throws SQLException Defines what exception to be thrown
      */
     public UploadSceneController() throws SQLException {
     }
@@ -122,7 +122,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * A method to handle when some files are dropped in the pane where you can drop files
-     * @param dragEvent
+     * @param dragEvent Defines an event to be used for handle-method
      */
     public void handleFilesDropped(DragEvent dragEvent){
         Dragboard db = dragEvent.getDragboard();
@@ -151,7 +151,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * Method for accepting files to be dropped in the pane
-     * @param dragEvent
+     * @param dragEvent Defines an event to be used for handle-method
      */
     public void handleFilesDragged(DragEvent dragEvent){
         if(dragEvent.getGestureSource() != previewImagePane && dragEvent.getDragboard().hasFiles()){
@@ -159,6 +159,10 @@ public class UploadSceneController implements Initializable{
         }
         dragEvent.consume();
     }
+
+    /**
+     * Method for handling the CloseImageButton when it is clicked
+     */
 
     public void handleCloseImageButtonClicked(){
         uploadedImage = null;
@@ -173,7 +177,6 @@ public class UploadSceneController implements Initializable{
     /**
      * Method for handling when the upload button
      * is clicked. Clear all fields if operation is successful
-     * @return a boolean
      */
     public void handleUploadButtonClicked(){
         boolean uploadingSuccessful = false;
@@ -227,7 +230,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * Uploads the image to the database
-     * @return
+     * @return returns true or false
      */
     private boolean uploadImage(){
         ImageV2DAO imageV2DAO = new ImageV2DAO(DatabaseConnection.getInstance().getEntityManagerFactory());
@@ -343,6 +346,7 @@ public class UploadSceneController implements Initializable{
 
     /**
      * Shows alert dialog, used when user did not select an image
+     * @param alertType Defines what type of alert will be used for different situations
      */
     public void showAlertDialog(String alertType){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -409,8 +413,8 @@ public class UploadSceneController implements Initializable{
 
     /**
      * Initialize method that gets run when the scene is loaded.
-     * @param url
-     * @param resourceBundle
+     * @param url Location used to resolve relative paths for the root object, or null if the location is not known
+     * @param resourceBundle Used to localize the root object, or null if the root object was not localized
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

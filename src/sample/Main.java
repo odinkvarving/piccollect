@@ -27,7 +27,7 @@ public class Main extends Application {
     /**
      * start method is a method Main can run when extending Application. start method initializes the Application.
      * @param primaryStage: The primary stage
-     * @throws Exception
+     * @throws Exception Defines what exception is thrown
      */
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -51,7 +51,7 @@ public class Main extends Application {
 
     /**
      * main method launches the Application, with help from start method.
-     * @param args
+     * @param args Main method parameter
      */
     public static void main(String[] args) {
         DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
