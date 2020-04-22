@@ -25,7 +25,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 /**
- * ImageMetaData is a class which is used to collect all metadata from a image
+ * ImageMetaData is a class which is used to collect all metadata from a image, using the Metadata-extractor API
  */
 public class ImageMetaData {
 
