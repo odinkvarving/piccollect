@@ -14,10 +14,25 @@ import javafx.scene.layout.StackPane;
 
 import java.io.File;
 
+/**
+ * ImageItem is a class which extends Button to apply a button's traits.
+ * An ImageItem is an ImageView with the image, and the image name below it.
+ * We took some inspiration from AlbumItem.
+ */
 public class ImageItem extends Button {
+    /**
+     * imageView is the imageView with the image
+     * imageViewCopy is a copy of imageView
+     */
     private ImageView imageView;
     private ImageView imageViewCopy;
 
+    /**
+     * This constructor takes in image path, image name and a StackPane as parameters
+     * @param path: image path
+     * @param name: image name
+     * @param stackPane: StackPane
+     */
     public ImageItem(String path, String name, StackPane stackPane){
         this.imageView = new ImageView(new Image(new File(path).toURI().toString()));
         this.imageViewCopy = new ImageView(new Image(new File(path).toURI().toString(), 550, 550, true, true));
@@ -27,6 +42,10 @@ public class ImageItem extends Button {
         setListenersOnButton(stackPane);
     }
 
+    /**
+     * This method creates the layout of the button.
+     * The method is responsible for how ImageItem looks.
+     */
     private void createButtonLayout(){
         setContentDisplay(ContentDisplay.TOP);
         setPrefSize(150, 160);
@@ -35,6 +54,9 @@ public class ImageItem extends Button {
         setPadding(new Insets(20, 20, 20, 20));
     }
 
+    /**
+     * This method sets image view properties, such as width and height
+     */
     private void setImageViewProperties(){
         this.imageView.setFitWidth(150);
         this.imageView.setFitHeight(150);
@@ -42,6 +64,10 @@ public class ImageItem extends Button {
         this.imageView.isPreserveRatio();
     }
 
+    /**
+     * This method changes the appearance of the button, when the cursor is hovering
+     * @param stackPane: StackPane
+     */
     private void setListenersOnButton(StackPane stackPane){
         setOnMouseEntered(e -> {
             setStyle("-fx-cursor: hand; -fx-background-color: #f2f2f2; -fx-background-radius: 5");
@@ -54,6 +80,10 @@ public class ImageItem extends Button {
         });
     }
 
+    /**
+     * This method creates a dialog window
+     * @param stackPane: StackPane
+     */
     private void createImagePreviewDialog(StackPane stackPane){
         JFXDialogLayout dialogLayout = new JFXDialogLayout();
 
@@ -73,5 +103,4 @@ public class ImageItem extends Button {
         stackPane.toFront();
         dialog.show();
     }
-
 }

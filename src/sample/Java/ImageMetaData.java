@@ -24,18 +24,32 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
-//https://github.com/drewnoakes/metadata-extractor/wiki/Getting-Started-(Java) Follow this to understand more
-
+/**
+ * ImageMetaData is a class which is used to collect all metadata from a image, using the Metadata-extractor API
+ */
 public class ImageMetaData {
 
+    /**
+     * file is an image file
+     * metadata is all metadata from the image in the same Metadata object
+     */
     File file;
     Metadata metaData;
 
+    /**
+     * This constructor takes the image file as a parameter
+     * Uses a method from the metadata-extractor API to read metadata from the given image-file
+     * @param imageFile: image file
+     */
     public ImageMetaData(File imageFile) {
         this.file = imageFile;
         readMetadataFromImage();
     }
 
+    /**
+     * This is the method that reads metadata from an image
+     * @throws MetadataException
+     */
     private void readMetadataFromImage(){
         try{
             metaData = ImageMetadataReader.readMetadata(file);
@@ -44,6 +58,10 @@ public class ImageMetaData {
         }
     }
 
+    /**
+     * This method prints out metadata from an image and displays it in a defined order
+     * @throws MetadataException
+     */
     public void printMetaDataFromImage() {
         try {
             metaData = ImageMetadataReader.readMetadata(file);
@@ -64,7 +82,7 @@ public class ImageMetaData {
     }
 
     /**
-     * Method for fetching width from image
+     * Method for fetching width from image based on what datatype the image is (jpeg, png or gif)
      * @return width as an Integer
      * @throws MetadataException
      */
@@ -83,7 +101,7 @@ public class ImageMetaData {
     }
 
     /**
-     * Method for fetching height from image
+     * Method for fetching height from image based in what datatype the image is (jpeg, png or gif)
      * @return image height as an Integer
      * @throws MetadataException
      */
@@ -119,7 +137,6 @@ public class ImageMetaData {
         }
         return width;
     }
-
     private int getWidthFromMetadataPNG() {
         int width;
         PngDirectory pngDirectory = metaData.getFirstDirectoryOfType(PngDirectory.class);
@@ -131,7 +148,6 @@ public class ImageMetaData {
         }
         return width;
     }
-
     private int getWidthFromMetadataGIF() {
         int width;
         GifImageDirectory gifImageDirectory = metaData.getFirstDirectoryOfType(GifImageDirectory.class);
@@ -172,7 +188,6 @@ public class ImageMetaData {
         }
         return height;
     }
-
     private int getHeightFromMetadataGIF() {
         int height;
         GifImageDirectory gifImageDirectory = metaData.getFirstDirectoryOfType(GifImageDirectory.class);
@@ -186,10 +201,10 @@ public class ImageMetaData {
     }
 
     /**
-     * A method for retrieving the date the image was created/captured
-     * Not all images gives the information we need to read the date, may have to
-     * find a fix for that.
+     * A method for retrieving the date the image was created/captured by looking for a specific Date-tag in the ExifIFD0Directory
+     * Not all images gives the information we need to read the date
      * @return the date.
+     * @throws NullPointerException
      */
     public Date getDateFromMetaData(){
         Date date;
@@ -202,6 +217,11 @@ public class ImageMetaData {
         return date;
     }
 
+    /**
+     * This method returns timestamp from when the image was taken by looking for a specific Datetime-tag in the ExifIFD0Directory
+     * @return timestamp from image
+     * @throws NullPointerException
+     */
     public Timestamp getTimeFromMetaData() {
         Timestamp timestamp;
         ExifIFD0Directory exifIFD0Directory = metaData.getFirstDirectoryOfType(ExifIFD0Directory.class);
@@ -213,6 +233,11 @@ public class ImageMetaData {
         return timestamp;
     }
 
+    /**
+     * This method returns the location in the form of a Geolocation object. This method can later be used for extracting the longitude and latitude
+     * @return geoLocation from image
+     * @throws NullPointerException
+     */
     public GeoLocation getGeoDataFromMetadata() {
         GeoLocation geoLocation;
         GpsDirectory gpsDirectory = metaData.getFirstDirectoryOfType(GpsDirectory.class);
@@ -225,8 +250,8 @@ public class ImageMetaData {
     }
 
     /**
-     * Method for finding out what the filetype is.
-     * @return filetype as a String
+     * Method for finding out what the type of file the image is
+     * @return Type of file as a String
      */
     public String checkFileType(){
         String fileType;
@@ -235,7 +260,10 @@ public class ImageMetaData {
         return fileType;
     }
 
-
+    /**
+     * This method prints out any kind of exception as an error in the terminal window
+     * @param exception: any kind of exception as it takes in an exception object
+     */
     private static void print(Exception exception)
     {
         System.err.println("EXCEPTION: " + exception);

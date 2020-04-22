@@ -20,14 +20,13 @@ import java.util.ArrayList;
  */
 public class Main extends Application {
 
-
-    /*
-    int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
-    int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
+    /**
+     * xOffset is a double for the x-offset
+     * yOffset is a double for the y-offset
      */
-
     private double xOffset = 0;
     private double yOffset = 0;
+
     /**
      * start method is a method Main can run when extending Application. start method initializes the Application.
      * @param primaryStage: The primary stage
@@ -42,18 +41,6 @@ public class Main extends Application {
         int sceneWidth = 1066;
         int sceneHeight = 600;
 
-        /*
-        if (screenWidth <= 1280 && screenHeight <= 768) {
-            sceneWidth = 1066;
-            sceneHeight = 600;
-
-        }
-         */
-        /*else if (screenWidth <= 1920 && screenHeight <= 1080) {
-            sceneWidth = 1422;
-            sceneHeight = 800;
-        }*/
-
         primaryStage.setTitle("Hello World");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, sceneWidth, sceneHeight));
@@ -61,15 +48,7 @@ public class Main extends Application {
 
         GeoConverter.reverseGeocoder(1, 1);
 
-
-        //File testFile = new File("C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
-        //Metadata testMetadata = ImageMetadataReader.readMetadata(testFile);
-
         ArrayList<String> testing = new ArrayList<>();
-
-        //Image test = new Image(testing, "C:\\Users\\odink\\OneDrive – NTNU\\Programmering2\\Piccollect\\piccollect\\src\\sample\\testBildeGPS.jpg");
-
-        //GeoConverter.reverseGeocoder(test.getLocation().getLatitude(), test.getLocation().getLongitude());
 
 }
 

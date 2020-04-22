@@ -31,6 +31,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * SearchAlbumController covers all methods which are needed to run AlbumScene properly.
+ * The class implements Initializable
+ */
 
 public class SearchAlbumController implements Initializable {
 
@@ -71,9 +75,6 @@ public class SearchAlbumController implements Initializable {
     Image img = new Image(new File("src/sample/JavaFX/resources/imageNotFound.png").toURI().toString());
     ImageView imageNotFound = new ImageView(img);
 
-    @FXML
-    private GridPane albumGridPane;
-
 
 
     /**
@@ -86,9 +87,6 @@ public class SearchAlbumController implements Initializable {
         AlbumDAO albumDAO = new AlbumDAO(DatabaseConnection.getInstance().getEntityManagerFactory());
         albums = (ArrayList<Album>) albumDAO.getAlbumsAndTheirImages();
         albumsWithoutImageList = (ArrayList<Album>) albumDAO.getAlbums();
-
-
-
         loadAlbumComboBox();
         makeAlbumOverview();
         try {
@@ -167,7 +165,7 @@ public class SearchAlbumController implements Initializable {
             int rowCounter = 0;
             while(counter < albumsWithoutImageList.size() && rowCounter < 3){
                 AlbumItem albumItem;
-                if(!(counter >= albums.size())) {
+                if(!(counter >= albumsg.size())) {
                     if (albums.get(counter).getImages().isEmpty()) {
                         albumItem = new AlbumItem("", albumsWithoutImageList.get(counter).getAlbumName());
                     } else {
