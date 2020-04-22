@@ -165,7 +165,7 @@ public class SearchAlbumController implements Initializable {
             int rowCounter = 0;
             while(counter < albumsWithoutImageList.size() && rowCounter < 3){
                 AlbumItem albumItem;
-                if(!(counter >= albumsg.size())) {
+                if(!(counter >= albums.size())) {
                     if (albums.get(counter).getImages().isEmpty()) {
                         albumItem = new AlbumItem("", albumsWithoutImageList.get(counter).getAlbumName());
                     } else {
