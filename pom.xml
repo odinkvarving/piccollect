@@ -14,23 +14,21 @@
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.byteowls/jopencage -->
         <dependency>
             <groupId>com.byteowls</groupId>
             <artifactId>jopencage</artifactId>
             <version>1.0.3</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.19</version>
-        </dependency><!-- https://mvnrepository.com/artifact/org.clojure/java.jdbc -->
+        </dependency>
         <dependency>
             <groupId>org.clojure</groupId>
             <artifactId>java.jdbc</artifactId>
             <version>0.7.11</version>
-        </dependency><!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -42,7 +40,6 @@
             <artifactId>javafx-controls</artifactId>
             <version>13</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-fxml -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
