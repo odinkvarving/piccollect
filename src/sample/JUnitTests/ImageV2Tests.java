@@ -31,7 +31,7 @@ public class ImageV2Tests {
 
     /**
      * Method for defining a task at the start of every It-block
-     * @BeforeEach command that allow you to define setup and teardown tasks that are performed at the beginning and end of every It block (For example before every assert-method).
+     * the @BeforeEach command that allow you to define setup and teardown tasks that are performed at the beginning and end of every It block (For example before every assert-method).
      * @throws MetadataException the exception that is thrown
      */
     @BeforeEach
@@ -73,7 +73,7 @@ public class ImageV2Tests {
 
     /**
      * Simple parameterized test for testing the setImageName-method in ImageV2
-     * @assertEquals Asserts that the string in the parameter is equal to the string from getImageName-method
+     * the @assertEquals Asserts that the string in the parameter is equal to the string from getImageName-method
      * @param newName the new name for the image
      */
     @ParameterizedTest
@@ -85,7 +85,7 @@ public class ImageV2Tests {
 
     /**
      * Simple parameterized test for testing the setTags-method in ImageV2
-     * @assertEquals Asserts that the string in the parameter is equal to the string from getTags-method
+     * the @assertEquals Asserts that the string in the parameter is equal to the string from getTags-method
      * @param tags the tags that will be added
      */
     @ParameterizedTest
@@ -97,7 +97,7 @@ public class ImageV2Tests {
 
     /**
      * Test-method for testing all the metadata-methods in ImageV2.
-     * @assertEquals Asserts equality between information already defined to ImageV2 object in the @BeforeEach command, and the get-methods for these parameters
+     * the @assertEquals Asserts equality between information already defined to ImageV2 object in the @BeforeEach command, and the get-methods for these parameters
      */
     @Test
     public void testExtractingImageMetaData() {
