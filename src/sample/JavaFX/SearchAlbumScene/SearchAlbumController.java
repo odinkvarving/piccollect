@@ -18,7 +18,6 @@ import sample.Java.Album;
 import sample.Java.AlbumDAO;
 import sample.Java.DatabaseConnection;
 import sample.Java.ImageV2;
-import sample.JavaFX.ResponseDialogs.InformationDialog;
 
 import java.io.File;
 import java.io.IOException;
