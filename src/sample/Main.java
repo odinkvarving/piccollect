@@ -34,14 +34,10 @@ public class Main extends Application {
         int sceneWidth = 1066;
         int sceneHeight = 600;
 
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Piccollect");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, sceneWidth, sceneHeight));
         primaryStage.show();
-
-        GeoConverter.reverseGeocoder(1, 1);
-
-        ArrayList<String> testing = new ArrayList<>();
 
 }
 
