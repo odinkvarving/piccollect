@@ -92,6 +92,11 @@
             <artifactId>GMapsFX</artifactId>
             <version>2.12.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.2.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -117,5 +122,13 @@
             <url>https://jcenter.bintray.com</url>
         </repository>
     </repositories>
-    
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
