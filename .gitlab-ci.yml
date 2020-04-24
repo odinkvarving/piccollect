@@ -4,7 +4,7 @@ pages:
   stage: deploy
   script:
     - mkdir .public
-    - cp -r /builds/piccollect/target * .public
+    - cp -r javadoc/* .public
     - mv .public public
   artifacts:
     paths:
