@@ -34,7 +34,6 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.4.12.Final</version>
         </dependency>
-
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -69,21 +68,9 @@
             <version>5.5.13.1</version>
         </dependency>
         <dependency>
-            <groupId>de.jensd</groupId>
-            <artifactId>fontawesomefx-commons</artifactId>
-            <version>11.0</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
             <groupId>com.jfoenix</groupId>
             <artifactId>jfoenix</artifactId>
             <version>9.0.8</version>
-        </dependency>
-        <dependency>
-            <groupId>de.jensd</groupId>
-            <artifactId>fontawesomefx-commons</artifactId>
-            <version>8.15</version>
-            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>com.drewnoakes</groupId>
