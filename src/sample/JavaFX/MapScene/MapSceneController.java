@@ -87,7 +87,6 @@ public class MapSceneController implements Initializable, MapComponentInitialize
         mapAnchorPane.setBottomAnchor(mapView, 0.0);
         mapAnchorPane.setTopAnchor(mapView, 0.0);
 
-        addressTextField.toFront();
         address.bind(addressTextField.textProperty());
 
         try {
@@ -96,6 +95,8 @@ public class MapSceneController implements Initializable, MapComponentInitialize
         } catch (IOException e) {
             e.printStackTrace();
         }
+        mapView.toFront();
+        addressTextField.toFront();
     }
 
     /**

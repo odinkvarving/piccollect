@@ -35,13 +35,9 @@ public class ImageV2DAO {
         EntityManager em = getEM();
         try {
             em.getTransaction().begin();
-
-            List<Album> albums = em.createQuery("SELECT a from Album a JOIN FETCH a.images", Album.class).getResultList();
-            for(Album album1 : albums){
-                if(album1.getId() == album.getId()){
-                    imageV2.addAlbum(album1);
-                }
-            }
+            
+            Album album1 = em.find(Album.class, album.getId());
+            album1.addImage(imageV2);
 
             em.persist(imageV2);
             em.getTransaction().commit();
